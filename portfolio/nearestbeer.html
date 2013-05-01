@@ -1,0 +1,53 @@
+<?php 
+	include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+	
+	$_PageTitle = "Nearest Beer";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow">
+	<meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Portfolio: <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="nearest beer, beer, brew, pub, tap, location" />
+	<meta name="description" content="Founder of the social beer finding app Nearest Beer, available both as web app and coming soon to iPhone, Android and Windows Mobile." />
+	<meta name="author" content="Ole Bjørn Michelsen" />
+	
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/nearestbeer.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+	<link rel="image_src" href="http://cdn.ole.michelsen.dk/portfolio/nearestbeer/appicon.png" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio" itemscope itemtype="http://schema.org/CreativeWork">
+		<hgroup>
+			<h1>Portfolio</h1>
+			<h2 itemprop="name"><?php echo $_PageTitle ?></h2>
+		</hgroup>
+		
+		<p class="tags" itemprop="keywords">
+			<b itemprop="dateCreated">2012</b> &middot; Founder &middot; Design &middot; Programming: HTML5, JQuery Mobile, MVC4
+		</p>
+		
+		<p>I founded Nearest Beer, a social app which helps you find your favourite brew served nearest you.</p>
+		
+		<p>The app has integration to Fourquare, Google Maps and Facebook OAuth.</p>
+		
+		<p>Backend is implemented in C# using ASP.NET MVC4 and Entity Framework 5. I'm using a code first approach with a generic repository pattern, a service layer and Ninject for dependency inejction.</p>
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+
+$_PageTitle = "MeterMan";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Portfolio: <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="ole michelsen, web developer, programming, work, projects, design, layout, sandberg, asp, asp.net, sql, ajax, javascript, html5, css3, sandberg.it, meterman, meterman.it" />
+	<meta name="description" content="MeterMan.it is a website offering interactive management of product placement on racks in stores which I created for Sandberg A/S." />
+	<meta name="author" content="Ole Bjørn Michelsen" />
+	
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/meterman.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+	<link rel="image_src" href="http://cdn.ole.michelsen.dk/portfolio/meterman/thumb.png" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio" itemscope itemtype="http://schema.org/CreativeWork">
+		<hgroup>
+			<h1>Portfolio</h1>
+			<h2 itemprop="name"><?php echo $_PageTitle ?></h2>
+		</hgroup>
+		
+		<p class="tags" itemprop="keywords">
+			<b itemprop="dateCreated">2009</b> &middot; Design &middot; Programming: C#, ASP.NET, AJAX
+		</p>
+	
+		<p>I developed this system to help small and medium shops manage their <a href="sandberg.html">Sandberg</a> products and organize them on the racks, that Sandberg delivers. The interface is based heavily on AJAX for front end features, which is using a special algorithm I developed in C# for automatically calculating the best placement of the products.</p>
+		
+		<p>The MeterMan system is intended for direct embedding on a vendors own website in an iframe, and is therefore kept in a minimalistic design. Shop functionality is also offered, with the option of full integration/redirect to the vendors basket or shipping of an e-mail order for simpler setups.</p>
+		
+		<div class="columns">
+			<div class="col">
+				<img alt="Range Setup and Selection" src="http://cdn.ole.michelsen.dk/portfolio/sandberg/meterman-1.png" class="frame" width="280" height="208" /><br /><br />
+				
+				<h5>MeterMan range setup</h5>
+				<p>Starting up MeterMan is as easy as selecting a name and the dimensions for the racks used in the store. The user is linked to the account on the calling site, so no login is needed.</p>
+				<p>Easy-to-use interface and simple configuration means, that a store can be up and running with a MeterMan product assortment in only 4 steps.</p>
+			</div>
+			<div class="col">
+				<img alt="Rack layout, preview and auto-fill" src="http://cdn.ole.michelsen.dk/portfolio/sandberg/meterman-2.png" class="frame" width="280" height="208" /><br /><br />
+				
+				<h5>Rack layout preview</h5>
+				<p>Preview of the racks is "on-the-fly" generated PNG's for portability and printing purposes. Several racks can be shown side by side, and more details will be added on high-res displays.<br />
+				Using AJAX the previews can be zoomed and the layout position of the products changed instantly.</p>
+				
+				<h5>Automatic fill</h5>
+				<p>The "Fill" function automates the placement of the selected products on the number of racks. The C# algorithm completes in less than 2 sec. for 20 racks, which was well below the targeted max response time for a "real-time" web request.</p>
+			</div>
+			<div class="col">
+				<img alt="Labels and print options" src="http://cdn.ole.michelsen.dk/portfolio/sandberg/meterman-3.png" class="frame" width="280" height="208" /><br /><br />
+				
+				<h5>Print options</h5>					
+				<p>Instructions for unboxing deliveries and physically placing the products on racks can be printed out.<br />
+				Labels can also be made on special paper for the front of the spikes and shelves on the racks. An ActiveX component is used, so to be able to print on special paper with millimeters precision.</p>
+				
+				<h5>Customizable labels</h5>
+				<p>The labels are highly customizable, with a live preview of the result. You can scroll through the products in the range to see how a specific product label will look.</p>
+			</div>
+		</div>
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

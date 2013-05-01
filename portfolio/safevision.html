@@ -1,0 +1,67 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+
+$_PageTitle = "SafeVision";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Portfolio: <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="safevision, asp, asp.net, mvc, programming, 2011" />
+	<meta name="description" content="Created a website for surveillance company SafeVision using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information." />
+	<meta name="author" content="Ole Bjørn Michelsen" />
+
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/safevision.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+	<link rel="image_src" href="http://cdn.ole.michelsen.dk/portfolio/safevision/safevision-logo.png" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio" itemscope itemtype="http://schema.org/CreativeWork">
+		<hgroup>
+			<h1>Portfolio</h1>
+			<h2 itemprop="name"><?php echo $_PageTitle ?></h2>
+		</hgroup>
+		
+		<p class="tags" itemprop="keywords">
+			<b itemprop="dateCreated">2009</b> &middot; Programming: ASP.NET, HTML5
+		</p>
+
+		<div class="column-left">
+		<ul>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/safevision/products.jpg" alt="Product page showing a range of products and prices" class="frame" width="450" height="427" /></li>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/safevision/support.jpg" alt="Support page for extra information about returns and policies" class="frame" width="450" height="269" /></li>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/safevision/files.jpg" alt="Files download site containing all software and manuals for the Ernitec products" class="frame" width="450" height="345" /></li>
+		</ul>
+		</div>
+		
+		<div class="column-right">
+			<p><a href="http://dk.safevision.eu" target="_blank">SafeVision</a> is a surveillance company selling cameras and accessories and monitors.</p>
+			
+			<p>The company was purchased and made a sub division of the <a href="eet.html">EET Group</a>, and the website is based on the platform I developed for them. This includes a web shop and order status with track and trace, as well as customer support functions such as return shipment handling.</p>
+			
+			<p>The site features a different layout from the normal EET Group theme, with slight modifications to some of the pages in form of product category presentation etc.</p>
+			
+			<p>An additional support site was created to allow for download of the many manuals and special software pertaining to the products. This was also created using ASP.NET MVC, and is directory/file based to allow for easy updates.</p>
+			
+			<p><a href="/portfolio/">&larr; Back to Portfolio</a></p>
+		</div>
+
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

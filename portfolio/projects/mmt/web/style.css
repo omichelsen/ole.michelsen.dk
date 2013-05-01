@@ -1,0 +1,48 @@
+ body			{ font-family: Verdana, Sans-Serif; font-size: 10pt; color: #000000; background: #FFFFFF; margin: 0px; }
+ A:link			{ color: #3366FF; text-decoration: none; }
+ A:visited		{ color: #3366FF; text-decoration: none; }
+ A:hover		{ color: #990033; text-decoration: underline; }
+ h1			{ font-size: 25px; color: #990033; font-weight: normal; }
+ h2			{ font-size: 16px; color: #990033; font-weight: normal; }
+ h3			{ font-size: 12px; color: #000000; margin-bottom: -10px; }
+ li			{ color: #990033; }
+
+ .base_colour1		{ background: #5959BF; }
+ .base_colour2		{ background: #C7C7FF; }
+
+ .body			{ padding: 20px; padding-top: 10px; line-height: 17px; }
+ .text			{ color: #000000; }
+ .descr			{ font-size: 9pt; color: #666666; }
+ .image			{ margin: 10px; padding: 8px; border: 1px solid #C0C0C0; }
+ .image_front		{ padding: 8px; border: 1px solid #C0C0C0; }
+ .image_descr		{ font-size: 10px; color: #999999; font-style: italic; text-align: center; }
+
+ .menu			{ font-size: 11pt; background: #ECE9D8; color: #003366; border-right: 1px dotted #000000; padding: 15px; padding-top: 0px; line-height: 17px; }
+ .menu A:link		{ font-size: 11pt; color: #990033; text-decoration: none; }
+ .menu A:visited	{ font-size: 11pt; color: #990033; text-decoration: none; }
+ .menu A:hover		{ font-size: 11pt; color: #C0C0C0; text-decoration: none; }
+ .menu h1		{ font-size: 12pt; color: #003366; font-weight: bold; margin-bottom: 2px; }
+
+ .active		{ font-size: 11pt; color: #003366; background-image: URL('img/active.png'); background-repeat: no-repeat; text-indent: 15px; }
+ .active A:link		{ font-size: 11pt; color: #990033; font-weight: normal; text-decoration: none; }
+ .active A:visited	{ font-size: 11pt; color: #990033; font-weight: normal; text-decoration: none; }
+ .active A:hover	{ font-size: 11pt; color: #003366; font-weight: normal; text-decoration: none; }
+
+ .unvisited		{ font-size: 11pt; color: #003366; background-image: URL('img/dot.gif'); background-repeat: no-repeat; text-indent: 15px; }
+ .unvisited A:link	{ font-size: 11pt; color: #990033; text-decoration: none; }
+ .unvisited A:visited	{ font-size: 11pt; color: #990033; text-decoration: none; }
+ .unvisited A:hover	{ font-size: 11pt; color: #003366; text-decoration: none; }
+
+ .visited		{ font-size: 11pt; color: #003366; background-image: URL('img/dot_visited.gif'); background-repeat: no-repeat; text-indent: 15px; }
+ .visited A:link	{ font-size: 11pt; color: #999999; text-decoration: none; }
+ .visited A:visited	{ font-size: 11pt; color: #999999; text-decoration: none; }
+ .visited A:hover	{ font-size: 11pt; color: #003366; text-decoration: none; }
+
+ .bottom_menu		{ font-size: 12px; background: #EDEDFB; color: #003366; border-top: 1px dotted #C0C0C0; padding: 10px; }
+ .bottom_menu A:link	{ font-size: 12px; color: #000000; text-decoration: none; }
+ .bottom_menu A:visited	{ font-size: 12px; color: #000000; text-decoration: none; }
+ .bottom_menu A:hover	{ font-size: 12px; color: #990033; text-decoration: underline; }
+ .bottom_menu h1	{ font-size: 12px; color: #990033; font-weight: bold; margin-bottom: 5px; }
+ .bottom_menu h1 A:link	{ font-size: 12px; color: #000000; text-decoration: none; }
+ .bottom_menu h1 A:visited	{ font-size: 12px; color: #000000; text-decoration: none; }
+ .bottom_menu h1 A:hover	{ font-size: 12px; color: #990033; text-decoration: underline; }

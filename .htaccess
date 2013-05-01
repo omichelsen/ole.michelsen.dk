@@ -1,0 +1,57 @@
+## Set cache expire headers ##
+<IfModule mod_headers.c>
+	Header unset ETag
+	FileETag None
+
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|htc)$">
+		Header set Cache-Control "max-age=31557600, public"
+	</FilesMatch>
+
+	<FilesMatch "\.(txt|xml)$">
+		Header set Cache-Control "max-age=7200, public"
+	</FilesMatch>
+	
+	<FilesMatch "\.manifest$">
+		Header set Cache-Control ""
+	</FilesMatch>
+</IfModule>
+
+## Enable gzip compression ##
+<IfModule mod_deflate.c>
+	<FilesMatch "\.(css|html|js|json|mustache|txt|xml)$">
+		SetOutputFilter DEFLATE
+	</FilesMatch>
+</IfModule>
+
+## Parse HTML files like PHP ##
+Addhandler application/x-httpd-php .html .php
+
+## Serve content as UTF8 ##
+AddDefaultCharset UTF-8
+
+## Custom error documents ##
+ErrorDocument 404 /404.html
+
+## Ensure correct MIME types ##
+AddType text/x-vcard .vcf
+
+## Enable .manifest files for HTML5 offline caching ##
+AddType text/cache-manifest .manifest
+
+#RedirectPermanent /index.php http://ole.michelsen.dk/
+RedirectPermanent /about.html /profile.html
+RedirectPermanent /about.php /profile.html
+RedirectPermanent /cv.html /profile.html
+RedirectPermanent /links.php http://ole.michelsen.dk/
+RedirectPermanent /projects.php /portfolio/
+RedirectPermanent /photos.php /photos/
+RedirectPermanent /alsted.html /portfolio/projects/alsted.html
+RedirectPermanent /cortex.html /portfolio/projects/cortex.html
+RedirectPermanent /intonet.html /portfolio/projects/intonet.html
+RedirectPermanent /lejdirect.html /portfolio/projects/lejdirect.html
+RedirectPermanent /majazz.html /portfolio/projects/majazz.html
+RedirectPermanent /portfolio/projects/dentatoveredeenke.html /portfolio/dentatoveredeenke.html
+RedirectPermanent /portfolio/projects/hnp.html /portfolio/hnp.html
+RedirectPermanent /tools/idevice.html /mobile/
+RedirectPermanent /photos/map.html /photos/travel-map.html
+RedirectPermanent /portfolio/html5-animation.html /demos/html5-animation.html

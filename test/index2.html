@@ -1,0 +1,316 @@
+<?php
+	include("../includes/FileCache.php");
+	
+	function rssToArray($name,$xml)
+	{
+		foreach($xml->channel->item as $item)
+		{
+			$date = strtotime($item->pubDate);
+
+			$arr[] = array('feed' => $name, 
+						   'date' => $date, 
+						   'title' => "$item->title",
+						   'description' => "$item->description",
+						   'link' => "$item->link");
+		}		
+		return $arr;
+	}
+	
+	function getFeed($name,$uri)
+	{
+		$cache = new FileCache('../cache/');
+		
+		// Cache feed for half a day/12 hours
+		$data = $cache->get($name,43200);
+
+		if ($data === FALSE)
+		{
+			// Pull fresh data from the feed
+			$curl = curl_init();
+		    curl_setopt ($curl, CURLOPT_URL, $uri);
+		    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+		    $data = curl_exec ($curl);
+
+		    curl_close ($curl);
+			
+			$cache->set($name, $data);
+		}
+
+		return rssToArray($name,simplexml_load_string($data));
+	}
+	
+	function tweetToHtml($text)
+	{
+		// Insert HTML links for URI's
+		$pattern = "/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+		if(preg_match($pattern, $text, $match))
+		{
+			$text = preg_replace($pattern, sprintf('<a href="%1$s" rel="external">%1$s</a>',$match[0]), $text);
+		}
+
+		// Insert HTML links for Twitter #-searches
+		$pattern = "/#[a-zA-Z0-9]+/";
+		if(preg_match($pattern, $text, $match))
+		{
+			$text = preg_replace($pattern, sprintf('<a href="http://twitter.com/search/%s" rel="external">%s</a>',rawurlencode($match[0]),$match[0]), $text);
+		}
+		
+		// Insert HTML links for Twitter @-usernames
+		$pattern = "/@\w+/";
+		if(preg_match($pattern, $text, $match))
+		{
+			$text = preg_replace($pattern, sprintf('<a href="http://twitter.com/%s" rel="external">%s</a>',rawurlencode($match[0]),$match[0]), $text);
+		}		
+
+		return $text;
+	}
+
+	// Get the local blog feed (using Yahoo Pipes due to internal server DNS probs)
+	$blog = getFeed('blog','http://pipes.yahoo.com/pipes/pipe.run?_id=5dc101dbbe077fe4627a269692d1d6d7&_render=rss');
+
+	// Get the local feed (no caching needed)
+	$local = rssToArray('michelsen',simplexml_load_file('../feed.xml'));
+
+	// Get the Twitter feed 
+	$twitter = rssToArray('twitter',simplexml_load_file('../feeds/twitter.rss'));
+	
+	// Get the Flickr feed
+	$flickr = rssToArray('flickr',simplexml_load_file('../feeds/flickr.rss'));
+	
+	// Get the Google+ feed
+	$googleplus = rssToArray('googleplus',simplexml_load_file('../feeds/googleplus.rss'));
+	
+	/* First, sort input array by date */	
+	function compareByDate($a, $b)
+	{
+	    if ($a['date'] == $b['date']) {
+	        return 0;
+	    }
+	    return ($a['date'] < $b['date']) ? 1 : -1;
+	}
+	
+	$items = array_merge($googleplus,$twitter);
+	
+	uasort($items, 'compareByDate');
+	//arsort($items);
+	print_r($items);
+	
+	/* Aggregate required data 
+	$result = array();
+	foreach($items as $item)
+	{
+	    if (isset($result[$item['city']])) {
+	        $result[$item['city']] .= ', '. $item['freq'];
+	    } else {
+	        $result[$item['city']] = $item['city'] . ' ' . $item['freq'];
+	    }
+	    if (! empty($item['pl'])) {
+	        $result[$item['city']] .= '/' . $item['pl'];
+	    }
+	}
+	
+	$result = array_values($result); // get rid of assoc keys
+*/
+
+	// Set the HTML feed output
+	$html  = "\t\t\t<li>\n";
+	$html .=	"\t\t\t\t<a href=\"%s\" class=\"feedType\"><span class=\"%s-small\"></span></a> %s<br />\n";
+	$html .=	"\t\t\t\t<time datetime=\"%s\">%s</time>\n";
+	$html .= "\t\t\t</li>\n";
+
+	// Set counters for each feed array
+	$localCount = $blogCount =
+	$twitterCount = $flickrCount = 0;
+
+	// Output the most recent posts from the feeds
+	for($i = 0; $i < 5; $i++)
+	{
+		// Find newest posts in local feeds
+		if ($blog[$blogCount]['date']>$local[$localCount]['date'])
+		{
+			$post = $blog[$blogCount];
+			$blogCount++;
+		}
+		else
+		{
+			$post = $local[$localCount];
+			$post['title'] = strip_tags($post['description']);
+			$localCount++;
+		}
+
+		// Put local feeds into column 1
+		$title = sprintf('<a href="%s">%s</a>',$post['link'],$post['title']);
+		$col1 .= sprintf($html,$post['link'],$post['feed'],$title,date('Y-m-d',$post['date']),date('l\, F j<\s\u\p>S</\s\u\p> Y',$post['date']));
+
+		// Find newest posts in social feeds
+		if ($twitter[$twitterCount]['date']>$flickr[$flickrCount]['date'])
+		{
+			$post = $twitter[$twitterCount];
+			$post['title'] = str_replace('omichelsen: ','',$post['title']);
+			$title = tweetToHtml($post['title']);
+			$twitterCount++;
+		}
+		else
+		{
+			$post = $flickr[$flickrCount];
+			$title = sprintf('<a href="%s" rel="external">%s</a>',$post['link'],$post['title']);
+			$flickrCount++;
+		}
+
+		// Put social media feeds into column 2
+		$col2 .= sprintf($html,$post['link'],$post['feed'],$title,date('Y-m-d',$post['date']),date('l\, F j<\s\u\p>S</\s\u\p> Y',$post['date']));
+	}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Ole Michelsen | Web development and computer science</title>
+	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=1024, user-scalable=yes" />
+
+	<meta name="keywords" content="ole michelsen, ole bjørn michelsen, curriculum vitae, cv, web developer, computer science, bachelor, programming, photography, eet, sandberg, asp, javascript, html5, css3" />
+	<meta name="description" content="Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL." />
+
+	<link rel="canonical" href="http://ole.michelsen.dk/" />
+	
+<?php include(getenv("DOCUMENT_ROOT")."/ole/templates/header.html"); ?>
+<style type="text/css">
+<?php 
+/* Toggle minified CSS */
+$DEBUG = FALSE;
+
+if ($DEBUG) { 
+?>
+.columns { 
+	margin-top: 15px;
+	font: normal 14px 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Arial, Helvetica, Norasi, sans-serif; 
+}
+.columns .col { 
+	width: 37%;
+}
+.columns .last { 
+	width: 20%;
+}
+.columns a:link, .feed a:visited {
+	color: #333;
+	text-decoration: none;
+}
+.columns a:hover {
+	color: maroon;
+}
+.columns a:active {
+	color: #000;
+}
+h4 {
+	color: #999;
+	font-size: 20px;
+	font-family: Georgia, "Bitstream Charter", serif;
+	font-style: italic;
+}
+.feed li {
+	margin: 5px 0 5px 20px;
+	padding-top: 5px;
+	border-top: 1px dotted #eee;
+}
+.feed li:first-child {
+	padding-top: 0;
+	border-top: none;
+}
+.feed .feedType {
+	margin-left: -20px;
+}
+.feed time {
+	font-size: 11px;
+	font-style: italic;
+	letter-spacing: 1px;
+}
+.columns ul { 
+	display: block;
+	clear: both;
+	overflow: hidden;
+	list-style: none;
+	padding: 3px 0;
+	border-top: 3px double #ccc;
+	border-bottom: 1px solid #ddd;
+}
+.last li { 
+	float: left; 
+	margin: 3%; 
+}
+#postit {
+	width: 115px;
+	height: 90px;
+	padding: 60px 20px 20px 15px;
+	margin: 20px;
+	background:url(../images/post-it-note.jpg);
+}
+#postit span {
+	display: block;
+	-webkit-transform: rotate(-4deg);	
+	-moz-transform: rotate(-4deg);
+	-ms-transform: rotate(-4deg);
+	-o-transform: rotate(-4deg);
+	transform: rotate(-4deg);
+	font: normal 130%/16pt "Marker Felt", "Comic Sans MS", Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+<?php } else { ?>
+.columns{margin-top:15px;font:normal 14px 'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Arial,Helvetica,Norasi,sans-serif}.columns .col{width:37%}.columns .last{width:20%}.columns a:link,.feed a:visited{color:#333;text-decoration:none}.columns a:hover{color:maroon}.columns a:active{color:#000}h4{color:#999;font-size:20px;font-family:Georgia,"Bitstream Charter",serif;font-style:italic}.feed li{margin:5px 0 5px 20px;padding-top:5px;border-top:1px dotted #eee}.feed li:first-child{padding-top:0;border-top:none}.feed .feedType{margin-left:-20px}.feed time{font-size:11px;font-style:italic;letter-spacing:1px}.columns ul{display:block;clear:both;overflow:hidden;list-style:none;padding:3px 0;border-top:3px double #ccc;border-bottom:1px solid #ddd}.last li{float:left;margin:3%}#postit{width:115px;height:90px;padding:60px 20px 20px 15px;margin:20px;background:url(../images/post-it-note.jpg)}#postit span{display:block;-webkit-transform:rotate(-4deg);-moz-transform:rotate(-4deg);-ms-transform:rotate(-4deg);-o-transform:rotate(-4deg);transform:rotate(-4deg);font:normal 130%/16pt "Marker Felt","Comic Sans MS",Helvetica,Arial,sans-serif;text-align:center}
+<?php } ?>
+</style>
+</head>
+
+<body>
+
+<?php include(getenv("DOCUMENT_ROOT")."/ole/templates/topnav.html"); ?>
+
+<div id="content">
+	<section>
+		<ul class="slideshow">
+			<li class="show"><a href="profile.html"><img src="http://cdn.ole.michelsen.dk/images/olemichelsen-1.jpg" title="Welcome" alt="This is my new curriculum vitae website" width="950" height="400" /></a></li>
+			<li><a href="./portfolio/"><img src="http://cdn.ole.michelsen.dk/images/olemichelsen-2.jpg" title="Portfolio" alt="Presenting some of my work and projects" width="950" height="400" /></a></li>
+			<li><a href="./photos/"><img src="http://cdn.ole.michelsen.dk/images/olemichelsen-3.jpg" title="Photos" alt="Shots from my travels around the world" width="950" height="400" /></a></li>
+		</ul>
+	</section>
+	
+	<section class="columns">
+		<div class="feed col">
+			<h4>Things I do</h4>
+			<ul>
+				<?php echo $col1 ?>
+			</ul>
+		</div>
+
+		<div class="feed col">
+			<h4>Things I say</h4>
+			<ul>
+				<?php echo $col2 ?>
+			</ul>
+		</div>
+		
+		<div class="col last">
+			<h4>Where to find me</h4>
+			<ul>
+				<li><a href="http://www.linkedin.com/in/olebjornmichelsen" rel="external" hreflang="en" title="LinkedIn"><span class="linkedin"></span></a></li>
+				<li><a href="http://www.twitter.com/omichelsen" rel="external" hreflang="en" title="Twitter"><span class="twitter"></span></a></li>
+				<li><a href="http://www.facebook.com/olemichelsen" rel="external" hreflang="en" title="Facebook"><span class="facebook"></span></a></li>
+				<li><a href="http://www.flickr.com/photos/olemichelsen" rel="external" hreflang="en"><span class="flickr" title="Flickr"></span></a></li>
+			</ul>
+
+			<div id="postit">
+				<span>You can also <a href="mailto:ole@michelsen.dk">drop me a line</a></span>
+			</div>
+		</div>
+	</section>
+</div>
+
+<?php include(getenv("DOCUMENT_ROOT")."/ole/templates/footer.html"); ?>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.ole.michelsen.dk/scripts/slideshow-1.0.min.js"></script>
+
+</body>
+</html>

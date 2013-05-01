@@ -1,0 +1,111 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+
+$_PageTitle = "Sandberg A/S";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Portfolio: <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="ole michelsen, web developer, programming, work, projects, design, layout, sandberg, asp, asp.net, sql, ajax, javascript, html5, css3, sandberg.it, meterman, meterman.it" />
+	<meta name="description" content="My work creating Sandberg's websites, company identity and product presentation on sandberg.it, meterman.it interactive management of store product placement." />
+	<meta name="author" content="Ole Bjørn Michelsen" />
+	
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/sandberg.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio" itemscope itemtype="http://schema.org/CreativeWork">
+		<hgroup>
+			<h1>Portfolio</h1>
+			<h2 itemprop="name"><?php echo $_PageTitle ?></h2>
+		</hgroup>
+		
+		<p class="tags" itemprop="keywords">
+			<b itemprop="dateCreated">2001-2006</b> &middot; Design &middot; Programming
+		</p>
+		
+		<p>I started working for Sandberg in 2001 and have since then been responsible for all their websites and related systems. Sandberg was bought in 2006 by the IT distributor <a href="eet.html">EET Nordic A/S</a>. I got hired by EET but continued to maintain and develop for Sandberg as a part of the EET group.</p>
+		
+		<p>As lead developer of all Sandberg's websites, I have handled both architectural and graphical design, and programmed their systems from the ground up. The first versions of the primary website were based on ASP 3.0 and an MS Access database. Most everything has been changed since then, and now all systems are running ASP.NET 4.0, AJAX and LINQ with MS SQL Server.</p>
+		
+		<section class="columns">
+			<div class="col">
+				<h4>www.sandberg.it</h4>
+				<p class="l"><img src="http://cdn.ole.michelsen.dk/portfolio/sandberg/StreetBlaster.png" alt="StreetBlaster Headset" height="121" width="90" class="floatright" />
+				Sandberg's main profile on the web, featuring both product presentations, support information and downloads, as well as a webshop fully integrated with Sandberg's vendors, facilitating customer purchases to a local store of their choosing.</p>
+				<p><a href="#sandberg">Read more</a> <span class="a">&rarr;</span></p>
+			</div>
+			
+			<div class="col">
+				<h4>MeterMan</h4>
+				<p class="l"><img src="http://cdn.ole.michelsen.dk/portfolio/sandberg/rack.jpg" alt="Store Product Rack" class="floatright" height="130" width="77" />
+				MeterMan was developed to help small and medium shops manage their Sandberg products, and organize them on racks.</p>
+				<p class="l">It's based on AJAX for front end features and uses C# algorithms for business logic, on-the-fly PNG drawing etc.</p>
+				<p><a href="meterman.html">Read more</a> <span class="a">&rarr;</span></p>
+			</div>
+			
+			<div class="col">
+				<h4>Sandberg Guide</h4>
+				<p class="l"><img src="http://cdn.ole.michelsen.dk/portfolio/sandberg/guide.png" alt="Guide PC" class="floatright" height="80" width="80" />
+				The Sandberg Guide is meant to help customers navigate the many new types of technologies and the corresponding cables used to connect them.</p>
+				<p class="l">It's a versatile system, able to determine how to connect e.g. a sound system to a computer, even if it requires joining multiple adapters and cables.</p>
+				<p><a href="#guide">Read more</a> <span class="a">&rarr;</span></p>
+			</div>			
+		</section>
+
+		<section id="sandberg">
+			<h3>www.sandberg.it</h3>
+			<p>The page design was changed radically to create a sharper brand profile for the company. Sections of the website was created with very different graphical layouts, to create new profiles for different product series.</p>
+			
+			<div class="columns">
+				<div class="col colspan c">
+					<img src="http://cdn.ole.michelsen.dk/portfolio/sandberg/sandberg-product.png" alt="Product details" class="frame" width="600" height="522" />
+				</div>
+				<div class="col">
+					<img src="http://cdn.ole.michelsen.dk/portfolio/sandberg/sandberg-series.png" alt="Product details" class="frame" width="280" height="240" /><br /><br />
+					
+					<h5>Series branding</h5>
+					<p>A custom logo and other branding graphics is applied into the normal page layout to create a sub section of the website dedicated to the series.</p>
+					
+					<h5>Search and language</h5>
+					<p>Search with "search as you type" functionality. Language and localization settings for 12 country and language combinations.</p>
+					
+					<h5>3D product rotation</h5>
+					<p>Images of the product is shown as well as a 3D Flash presentation with mouse rotation on 3 axis and zoom functionality.</p>
+				</div>
+			</div>
+		</section>
+	
+		<section id="meterman" class="page-break">
+			<h3>MeterMan</h3>
+			
+			<p>I developed this system to help small and medium shops manage their Sandberg products and organize them on the racks, that Sandberg delivers.</p>
+			
+			<p><a href="meterman.html">Read about MeterMan &rarr;</a></p>
+		</section>
+		
+		<section id="guide">
+			<h3>Sandberg Guide</h3>
+			
+			<p>More information to be added soon.</p>
+		</section>
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

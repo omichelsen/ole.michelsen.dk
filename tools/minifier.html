@@ -1,0 +1,153 @@
+<?php 
+	include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+	
+	$_PageTitle = "Script Minifier";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Tools: <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="ole michelsen, ole bjørn michelsen, web developer, programming, work, url, yui, compress, compression, minify, minifier, minifyer, yui compress, css, stylesheet, javascript, js, yahoo user interface group, microsoft ajax minifier, ajax" />
+	<meta name="description" content="Minify CSS and JS scripts by rewriting the code to a more compact form. Minifying eliminates white-space and line breaks, and renames long variable names in JS." />
+	
+	<link rel="canonical" href="http://ole.michelsen.dk/tools/minifier.html" />
+	<link rel="index" href="http://ole.michelsen.dk/tools/" />
+	<link rel="image_src" href="http://cdn.ole.michelsen.dk/images/tools-minifier.png" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="tools">
+		<section>
+			<h1>Tools</h1>
+		
+			<h2><?php echo $_PageTitle ?></h2>
+			
+			<p>This web page compresses Style Sheets and JavaScripts, by rewriting the code to a more compact form. This is called <i>minifying</i>, and is based on safe renaming of variables within a defined scope (for JavaScript), and elimination of line-breaks and unneeded whitespace.</p>
+			
+			<p>I have described the <a href="../portfolio/site-optimization.html#minify">savings achieved</a> by this in a previous article, and it is a technique which quickly has become standard practice in recent years. Normally you would apply a minifier as a part of your build scripts, but for small sites and/or testing I have found it very useful to have a quick reference tool available.</p>
+			
+			<p>Just paste your <abbr title="Cascading Style Sheet">CSS</abbr> or <abbr title="JavaScript">JS</abbr> into the input-field below, and select the engine you would like to use. I normally use <a href="http://developer.yahoo.com/yui/compressor/" rel="external" target="_blank">YUI Compressor</a>, but my <i>very</i> informal tests actually gives a small lead to <a href="http://ajaxmin.codeplex.com/" rel="external" target="_blank">Microsoft AJAX Minifier</a>, both with regards to speed and the attained compression.</p>
+		</section>
+		
+		<section>
+			<form id="minifier">
+			<div class="column-left">
+				<p>
+				<label for="input"><b>Input:</b></label><br />
+				<textarea autofocus="autofocus" class="text" id="input" name="input" style="width:440px;height:120px;font-size:smaller;" tabindex="1" required="required"></textarea>
+				</p>
+			</div>
+				
+			<div class="column-right">				
+				<p>
+				<label for="output"><b>Output:</b></label><br />
+				<textarea class="text" id="output" name="output" style="width:440px;height:120px;font-size:smaller;" readonly="readonly" tabindex="5"></textarea>
+				</p>
+			</div>
+			
+			<p>
+				<span class="floatright" id="resultstats"></span>
+
+				<select id="datatype" name="datatype" tabindex="2">
+					<option value="css">CSS</option>
+					<option value="js">JavaScript</option>
+				</select>
+				
+				&nbsp;&nbsp;&nbsp;
+				<select id="engine" name="engine" tabindex="3">
+					<option value="ms">Microsoft AJAX Minifier</option>
+					<option value="yui">YUI Compressor</option>
+				</select>
+			
+				&nbsp;&nbsp;&nbsp;
+				<input class="button" type="submit" value="Compress" tabindex="4" />
+				
+				&nbsp;&nbsp;&nbsp;
+				<img id="loader" style="display:none;" src="http://cdn.ole.michelsen.dk/images/ajax-loader.gif" alt="Loading..." height="11" width="16" />
+			</p>
+			</form>
+		</section>
+		
+		<section>
+			<h3>Implementation with AJAX and cURL</h3>
+			<p>Since the most popular minifiers are "real" programs, running them from a web page requires some trickery.
+			After a bit of research, I found the following solutions for implementing my minifier tool:</p>
+			
+			<dl>
+				<dt>Executing the Java program directly from <abbr title="PHP: Hypertext Preprocessor">PHP</abbr></dt>
+				<dd>Though you <i>can</i> execute Java programs from PHP (or EXE from ASP.NET), it usually requires security permissions which are normally not granted on standard web hosting<sup><a href="#footnote1">1</a></sup>.<br /><br /></dd>
+				
+				<dt>Perform a POST to .NET code using AJAX<sup><a href="#footnote2">2</a></sup></dt>
+				<dd>The minifiers I use are available in DLL versions, which can run under ASP.NET. However since my server is running Linux/Apache, this requires hosting on another server/domain, which means we can't readily use <abbr title="Asynchronous JavaScript and XML">AJAX</abbr> due to security constraints of the <a href="http://en.wikipedia.org/wiki/Same_origin_policy" rel="external" target="_blank">same origin policy</a>.</dd>
+			</dl>
+				
+			<h4>Proxy the POST with PHP</h4>
+			<p>To circumvent the <abbr title="Cross-Site Scripting">XSS</abbr> security restrictions mentioned above, we can proxy the call with PHP using <a href="http://php.net/manual/en/book.curl.php" rel="external" target="_blank"><code>curl()</code></a>. This enables us to POST to a local PHP script, which will then forward the request to the ASP.NET server and fetch the results server-side.<br />
+			This is a common work-around, which is still secure if you observe proper input and host checking, and the posting will now work seamlessly with AJAX.</p>
+		</section>
+		
+		<aside id="footnotes">
+			<ol>
+				<li id="footnote1"><span>Basing my tools and implementations on root access to the server is a no-go, since I'd like my personal site to be portable across standard hosting options, which are usually Linux/Apache based and restricted to a handful of standard modules.</span></li>
+				<li id="footnote2"><span>This could also have been done with regular POST's, but using AJAX and proxying provides a cleaner interface with the ASP.NET server. Furthermore, it allows for an easy switch to a "real" web service at a later stage and is more fun anyhow.</span></li>
+			</ol>
+		</aside>
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+<?php if (function_exists('jQueryCdn')) { jQueryCdn(); } ?>
+<script type="text/javascript">
+<?php if ($DEBUG) { ?>
+$(document).ready(function() {
+	$('#minifier').submit(function() {
+
+		// Disable the submit button
+		$('input[type=submit]').prop('disabled', true);
+
+		// Display the loading animation
+		$('#loader').toggle();
+		
+		// Serialize and post the form data to the proxy
+		var formdata = $(this).serialize();
+		$.post('minifier-proxy.php'
+			, formdata
+			, function(data) {
+				// Write result to output field
+				$('#output').val(data).select();
+				
+				// Write stats
+				var sizeInput = $('#input').val().length;
+				var sizeOutput = data.length;
+				var percent = Math.round((sizeOutput/sizeInput-1)*100);
+				$('#resultstats').html('Reduced input size from '+sizeInput+' to '+sizeOutput+' ('+percent+'%)');
+				
+				// Enable the submit button
+				$('input[type=submit]').prop('disabled', false);
+				
+				// Hide the loading animation
+				$('#loader').toggle();
+			}
+		);
+		return false;
+	});
+});
+<?php } else { ?>
+$(document).ready(function(){$("#minifier").submit(function(){$("input[type=submit]").prop("disabled",true);$("#loader").toggle();var a=$(this).serialize();$.post("minifier-proxy.php",a,function(c){$("#output").val(c).select();var b=$("#input").val().length,a=c.length,d=Math.round((a/b-1)*100);$("#resultstats").html("Reduced input size from "+b+" to "+a+" ("+d+"%)");$("input[type=submit]").prop("disabled",false);$("#loader").toggle()});return false})})
+<?php } ?>
+</script>
+
+</body>
+</html>

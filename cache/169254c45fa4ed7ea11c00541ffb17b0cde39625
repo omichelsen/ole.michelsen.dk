@@ -1,0 +1,527 @@
+s:90127:"<?xml version="1.0"?>
+<rss version="2.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:yt="http://gdata.youtube.com/schemas/2007" xmlns:atom="http://www.w3.org/2005/Atom">
+   <channel>
+      <title>blog</title>
+      <description>Pipes Output</description>
+      <link>http://pipes.yahoo.com/pipes/pipe.info?_id=5dc101dbbe077fe4627a269692d1d6d7</link>
+      <atom:link rel="next" href="http://pipes.yahoo.com/pipes/pipe.run?_id=5dc101dbbe077fe4627a269692d1d6d7&amp;_render=rss&amp;page=2"/>
+      <pubDate>Tue, 23 Oct 2012 07:48:16 +0000</pubDate>
+      <generator>http://pipes.yahoo.com/pipes/</generator>
+      <item>
+         <title>Serialize object into a query string with Reflection</title>
+         <link>http://ole.michelsen.dk/blog/serialize-object-into-a-query-string-with-reflection/</link>
+         <description>Serialize any object in C# to a query string with the .ToQueryString() extension method. Supports primitives, strings, arrays and collections.</description>
+         <guid isPermaLink="false">http://ole.michelsen.dk/blog/?p=356</guid>
+         <pubDate>Thu, 13 Sep 2012 22:39:04 +0000</pubDate>
+         <content:encoded><![CDATA[<p>When you are coding modern web applications against websites and web services, you often have to serialize a lot of data and pass it off to some URI. This could be when calling up a product page with some preset settings for sorting, or requesting data from a web service such as Google Places.</p>
+<p>So you have an object with all the request data that you need to transfer, but now you have to convert this into a query string. There are a lot of ways to do this, but often it becomes a rather manual task concatenating all the properties one by one. Wouldn&#8217;t it be easier if you could somehow automatically transform all the properties of your class into a query string?</p>
+<p>The good news is, that by using C# reflection and extension methods, you can create a simple solution, which will be extremely easy to use and work well for most types of (POCO) classes.<span id="more-356"></span></p>
+<h2>The Code</h2>
+<p>Let&#8217;s not beat around the bush, so I&#8217;ll serve the solution up front, and then I&#8217;ll step through and explain each section afterwards.</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">static</span> <span style="color:#6666cc;font-weight:bold;">class</span> UrlHelpers
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">static</span> <span style="color:#6666cc;font-weight:bold;">string</span> ToQueryString<span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">this</span> <span style="color:#6666cc;font-weight:bold;">object</span> request, <span style="color:#6666cc;font-weight:bold;">string</span> separator <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;,&quot;</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#0600FF;font-weight:bold;">if</span> <span style="color:#008000;">&#40;</span>request <span style="color:#008000;">==</span> <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#0600FF;font-weight:bold;">throw</span> <span style="color:#008000;">new</span> ArgumentNullException<span style="color:#008000;">&#40;</span><span style="color:#666666;">&quot;request&quot;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+        <span style="color:#008080;font-style:italic;">// Get all properties on the object</span>
+        <span style="color:#0600FF;font-weight:bold;">var</span> properties <span style="color:#008000;">=</span> request<span style="color:#008000;">.</span><span style="color:#0000FF;">GetType</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">.</span><span style="color:#0000FF;">GetProperties</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Where</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">CanRead</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Where</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">GetValue</span><span style="color:#008000;">&#40;</span>request, <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span> <span style="color:#008000;">!=</span> <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">.</span><span style="color:#0000FF;">ToDictionary</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">Name</span>, x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">GetValue</span><span style="color:#008000;">&#40;</span>request, <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+        <span style="color:#008080;font-style:italic;">// Get names for all IEnumerable properties (excl. string)</span>
+        <span style="color:#0600FF;font-weight:bold;">var</span> propertyNames <span style="color:#008000;">=</span> properties
+            <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Where</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> <span style="color:#008000;">!</span><span style="color:#008000;">&#40;</span>x<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Value</span> <span style="color:#008000;">is</span> <span style="color:#6666cc;font-weight:bold;">string</span><span style="color:#008000;">&#41;</span> <span style="color:#008000;">&amp;&amp;</span> x<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Value</span> <span style="color:#008000;">is</span> IEnumerable<span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Select</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">Key</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">.</span><span style="color:#0000FF;">ToList</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+        <span style="color:#008080;font-style:italic;">// Concat all IEnumerable properties into a comma separated string</span>
+        <span style="color:#0600FF;font-weight:bold;">foreach</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> key <span style="color:#0600FF;font-weight:bold;">in</span> propertyNames<span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">var</span> valueType <span style="color:#008000;">=</span> properties<span style="color:#008000;">&#91;</span>key<span style="color:#008000;">&#93;</span><span style="color:#008000;">.</span><span style="color:#0000FF;">GetType</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            <span style="color:#0600FF;font-weight:bold;">var</span> valueElemType <span style="color:#008000;">=</span> valueType<span style="color:#008000;">.</span><span style="color:#0000FF;">IsGenericType</span>
+                                    <span style="color:#008000;">?</span> valueType<span style="color:#008000;">.</span><span style="color:#0000FF;">GetGenericArguments</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#91;</span><span style="color:#FF0000;">0</span><span style="color:#008000;">&#93;</span>
+                                    <span style="color:#008000;">:</span> valueType<span style="color:#008000;">.</span><span style="color:#0000FF;">GetElementType</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            <span style="color:#0600FF;font-weight:bold;">if</span> <span style="color:#008000;">&#40;</span>valueElemType<span style="color:#008000;">.</span><span style="color:#0000FF;">IsPrimitive</span> <span style="color:#008000;">||</span> valueElemType <span style="color:#008000;">==</span> <span style="color:#008000;">typeof</span> <span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">string</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">&#123;</span>
+                <span style="color:#0600FF;font-weight:bold;">var</span> enumerable <span style="color:#008000;">=</span> properties<span style="color:#008000;">&#91;</span>key<span style="color:#008000;">&#93;</span> <span style="color:#0600FF;font-weight:bold;">as</span> IEnumerable<span style="color:#008000;">;</span>
+                properties<span style="color:#008000;">&#91;</span>key<span style="color:#008000;">&#93;</span> <span style="color:#008000;">=</span> <span style="color:#6666cc;font-weight:bold;">string</span><span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Join</span><span style="color:#008000;">&#40;</span>separator, enumerable<span style="color:#008000;">.</span><span style="color:#0000FF;">Cast</span><span style="color:#008000;">&lt;</span><span style="color:#6666cc;font-weight:bold;">object</span><span style="color:#008000;">&gt;</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            <span style="color:#008000;">&#125;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#008080;font-style:italic;">// Concat all key/value pairs into a string separated by ampersand</span>
+        <span style="color:#0600FF;font-weight:bold;">return</span> <span style="color:#6666cc;font-weight:bold;">string</span><span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Join</span><span style="color:#008000;">&#40;</span><span style="color:#666666;">&quot;&amp;&quot;</span>, properties
+            <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Select</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> <span style="color:#6666cc;font-weight:bold;">string</span><span style="color:#008000;">.</span><span style="color:#0000FF;">Concat</span><span style="color:#008000;">&#40;</span>
+                Uri<span style="color:#008000;">.</span><span style="color:#0000FF;">EscapeDataString</span><span style="color:#008000;">&#40;</span>x<span style="color:#008000;">.</span><span style="color:#0000FF;">Key</span><span style="color:#008000;">&#41;</span>, <span style="color:#666666;">&quot;=&quot;</span>,
+                Uri<span style="color:#008000;">.</span><span style="color:#0000FF;">EscapeDataString</span><span style="color:#008000;">&#40;</span>x<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Value</span><span style="color:#008000;">.</span><span style="color:#0000FF;">ToString</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+    <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<h2>What does it do?</h2>
+<p>This extension method allows us to call .ToQueryString() on all objects, and uses reflection to read the properties of that object, which are then serialized and encoded into a fully qualified query string, which we can append to any URI.</p>
+<p>The following part looks for all object properties that have a publicly accessible getter, and where the value is not null.</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#008080;font-style:italic;">// Get all properties on the object</span>
+<span style="color:#0600FF;font-weight:bold;">var</span> properties <span style="color:#008000;">=</span> request<span style="color:#008000;">.</span><span style="color:#0000FF;">GetType</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">.</span><span style="color:#0000FF;">GetProperties</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Where</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">CanRead</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Where</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">GetValue</span><span style="color:#008000;">&#40;</span>request, <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span> <span style="color:#008000;">!=</span> <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">.</span><span style="color:#0000FF;">ToDictionary</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">Name</span>, x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">GetValue</span><span style="color:#008000;">&#40;</span>request, <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span></pre></td></tr></table></div>
+
+<p>This works well for most simple types, like int, decimal, char and string, but arrays and collections needs special attention to be properly serialized. Therefore we pull out a list of all properties that implement the IEnumerable interface. This is both Array, List, Dictionary etc. but also string, which is actually a list of chars, and therefore needs to be excluded.</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#008080;font-style:italic;">// Get names for all IEnumerable properties (excl. string)</span>
+<span style="color:#0600FF;font-weight:bold;">var</span> propertyNames <span style="color:#008000;">=</span> properties
+    <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Where</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> <span style="color:#008000;">!</span><span style="color:#008000;">&#40;</span>x<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Value</span> <span style="color:#008000;">is</span> <span style="color:#6666cc;font-weight:bold;">string</span><span style="color:#008000;">&#41;</span> <span style="color:#008000;">&amp;&amp;</span> x<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Value</span> <span style="color:#008000;">is</span> IEnumerable<span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Select</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> x<span style="color:#008000;">.</span><span style="color:#0000FF;">Key</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">.</span><span style="color:#0000FF;">ToList</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span></pre></td></tr></table></div>
+
+<p>We want to convert the collections into a string, so we loop through the IEnumerable properties, and check if they contain primitives or strings (we won&#8217;t handle i.e. lists of classes). A bit of special care must be given when determining the contained type, whether we are dealing with an array or a generic collection, and then we concatenate all the values with a custom separator.</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#008080;font-style:italic;">// Concat all IEnumerable properties into a comma separated string</span>
+<span style="color:#0600FF;font-weight:bold;">foreach</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> key <span style="color:#0600FF;font-weight:bold;">in</span> propertyNames<span style="color:#008000;">&#41;</span>
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">var</span> valueType <span style="color:#008000;">=</span> properties<span style="color:#008000;">&#91;</span>key<span style="color:#008000;">&#93;</span><span style="color:#008000;">.</span><span style="color:#0000FF;">GetType</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+    <span style="color:#0600FF;font-weight:bold;">var</span> valueElemType <span style="color:#008000;">=</span> valueType<span style="color:#008000;">.</span><span style="color:#0000FF;">IsGenericType</span>
+                            <span style="color:#008000;">?</span> valueType<span style="color:#008000;">.</span><span style="color:#0000FF;">GetGenericArguments</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#91;</span><span style="color:#FF0000;">0</span><span style="color:#008000;">&#93;</span>
+                            <span style="color:#008000;">:</span> valueType<span style="color:#008000;">.</span><span style="color:#0000FF;">GetElementType</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+    <span style="color:#0600FF;font-weight:bold;">if</span> <span style="color:#008000;">&#40;</span>valueElemType<span style="color:#008000;">.</span><span style="color:#0000FF;">IsPrimitive</span> <span style="color:#008000;">||</span> valueElemType <span style="color:#008000;">==</span> <span style="color:#008000;">typeof</span> <span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">string</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#0600FF;font-weight:bold;">var</span> enumerable <span style="color:#008000;">=</span> properties<span style="color:#008000;">&#91;</span>key<span style="color:#008000;">&#93;</span> <span style="color:#0600FF;font-weight:bold;">as</span> IEnumerable<span style="color:#008000;">;</span>
+        properties<span style="color:#008000;">&#91;</span>key<span style="color:#008000;">&#93;</span> <span style="color:#008000;">=</span> <span style="color:#6666cc;font-weight:bold;">string</span><span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Join</span><span style="color:#008000;">&#40;</span>separator, enumerable<span style="color:#008000;">.</span><span style="color:#0000FF;">Cast</span><span style="color:#008000;">&lt;</span><span style="color:#6666cc;font-weight:bold;">object</span><span style="color:#008000;">&gt;</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+    <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>Finally we can just concatenate all our property names and values, URI encode them and separate them by an ampersand into a query string. The following example shows how a simple class is successfully converted into a query string:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">var</span> example <span style="color:#008000;">=</span> <span style="color:#008000;">new</span>
+<span style="color:#008000;">&#123;</span>
+    Category <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Shoes&quot;</span>,
+    NumberOfItems <span style="color:#008000;">=</span> <span style="color:#FF0000;">20</span>,
+    Sizes <span style="color:#008000;">=</span> <span style="color:#008000;">new</span><span style="color:#008000;">&#91;</span><span style="color:#008000;">&#93;</span> <span style="color:#008000;">&#123;</span> <span style="color:#FF0000;">40</span>, <span style="color:#FF0000;">41</span>, <span style="color:#FF0000;">42</span> <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span><span style="color:#008000;">;</span>
+&nbsp;
+<span style="color:#6666cc;font-weight:bold;">string</span> querystring <span style="color:#008000;">=</span> example<span style="color:#008000;">.</span><span style="color:#0000FF;">ToQueryString</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+<span style="color:#008080;font-style:italic;">// Output: Category=Shoes&amp;NumberOfItems=20&amp;Sizes=40%2C41%2C42</span></pre></td></tr></table></div>
+
+<p>The return value of .ToQueryString() can then be added to a URI, to form a request to an imaginary product page for a shoe shop:</p>
+<pre>http://shoes4us.com/products?Category=Shoes&#038;NumberOfItems=20&#038;Sizes=40%2C41%2C42</pre>
+<p>Hopefully this has shown how powerful C# reflection can be. We can pull out a lot of information about anonymous objects and create a general extension method which can be used on all our classes without special interfaces or inheritance. Also it is very easy to extend this implementation to handle custom serialization of more complex class types, take into account special property attributes etc.</p>
+<p>This implementation shown here only support classes with properties that are primitives, strings and collections of the former. Complex nested classes are not easily converted to the key/value format of a query string and are not supported.</p>
+<p>You can <a rel="nofollow" target="_blank" href="http://toquerystring.codeplex.com/">find my Visual Studio solution for .ToQueryString() on CodePlex</a> along with some small examples and unit tests. I look forward to your comments and suggestions &#8211; happy coding!</p>]]></content:encoded>
+      </item>
+      <item>
+         <title>Calculate a running total in SQL Server 2012</title>
+         <link>http://ole.michelsen.dk/blog/calculate-a-running-total-in-sql-server-2012/</link>
+         <description>In the previous versions of SQL Server, calculating a running total for say, a bank account ledger, has been a frustratingly complex task. Fortunately SQL Server 2012 makes this a breeze with new support for windowed aggregate functions. In this test example &amp;#8230;</description>
+         <guid isPermaLink="false">http://ole.michelsen.dk/blog/?p=340</guid>
+         <pubDate>Fri, 06 Apr 2012 22:03:29 +0000</pubDate>
+         <content:encoded><![CDATA[<p><img class="alignleft size-full wp-image-345" title="Running total" src="http://ole.michelsen.dk/blog/wp-content/uploads/2012/04/running-total.png" alt="" width="180" height="107"/>In the previous versions of SQL Server, calculating a running total for say, a bank account ledger, has been a frustratingly complex task. Fortunately <a rel="nofollow" title="Microsoft SQL Server" target="_blank" href="http://www.microsoft.com/sql/">SQL Server 2012</a> makes this a breeze with new support for windowed aggregate functions.<br />
+<span id="more-340"></span><br />
+In this test example we&#8217;ll be creating a running total for an imaginary ledger using the OVER clause with SUM (you can get the entire <a rel="nofollow" title="SQL test script" target="_blank" href="http://ole.michelsen.dk/blog/wp-content/uploads/2012/04/running-total-sql-server-2012.txt">test script here</a>):</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="sql" style="font-family:monospace;"><span style="color:#993333;font-weight:bold;">SELECT</span> a<span style="color:#66cc66;">.</span>id<span style="color:#66cc66;">,</span> a<span style="color:#66cc66;">.</span>account<span style="color:#66cc66;">,</span> a<span style="color:#66cc66;">.</span>deposit<span style="color:#66cc66;">,</span> <span style="color:#993333;font-weight:bold;">SUM</span><span style="color:#66cc66;">&#40;</span>a<span style="color:#66cc66;">.</span>deposit<span style="color:#66cc66;">&#41;</span> <span style="color:#993333;font-weight:bold;">OVER</span> <span style="color:#66cc66;">&#40;</span><span style="color:#993333;font-weight:bold;">ORDER</span> <span style="color:#993333;font-weight:bold;">BY</span> a<span style="color:#66cc66;">.</span>id<span style="color:#66cc66;">&#41;</span> <span style="color:#993333;font-weight:bold;">AS</span> <span style="color:#ff0000;">'total'</span>
+<span style="color:#993333;font-weight:bold;">FROM</span> #TestData a
+<span style="color:#993333;font-weight:bold;">ORDER</span> <span style="color:#993333;font-weight:bold;">BY</span> a<span style="color:#66cc66;">.</span>id;</pre></td></tr></table></div>
+
+<p><img class="alignnone size-full wp-image-347" title="Results" src="http://ole.michelsen.dk/blog/wp-content/uploads/2012/04/results.png" alt="" width="255" height="196"/></p>
+<p>You can even do a running total for each account separately using the PARTITION clause:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="sql" style="font-family:monospace;"><span style="color:#993333;font-weight:bold;">SELECT</span> a<span style="color:#66cc66;">.</span>id<span style="color:#66cc66;">,</span> a<span style="color:#66cc66;">.</span>account<span style="color:#66cc66;">,</span> a<span style="color:#66cc66;">.</span>deposit<span style="color:#66cc66;">,</span> <span style="color:#993333;font-weight:bold;">SUM</span><span style="color:#66cc66;">&#40;</span>a<span style="color:#66cc66;">.</span>deposit<span style="color:#66cc66;">&#41;</span> <span style="color:#993333;font-weight:bold;">OVER</span> <span style="color:#66cc66;">&#40;</span>PARTITION <span style="color:#993333;font-weight:bold;">BY</span> a<span style="color:#66cc66;">.</span>account <span style="color:#993333;font-weight:bold;">ORDER</span> <span style="color:#993333;font-weight:bold;">BY</span> a<span style="color:#66cc66;">.</span>id<span style="color:#66cc66;">&#41;</span> <span style="color:#993333;font-weight:bold;">AS</span> <span style="color:#ff0000;">'total'</span>
+<span style="color:#993333;font-weight:bold;">FROM</span> #TestData a
+<span style="color:#993333;font-weight:bold;">ORDER</span> <span style="color:#993333;font-weight:bold;">BY</span> a<span style="color:#66cc66;">.</span>id;</pre></td></tr></table></div>
+
+<p><img class="alignnone size-full wp-image-346" title="Results with partition" src="http://ole.michelsen.dk/blog/wp-content/uploads/2012/04/results-partition.png" alt="" width="255" height="196"/></p>
+<h2>SQL Server 2005 and 2008</h2>
+<p>For those still stuck on older versions of SQL Server, the solution is a little less straightforward. There are a lot of techniques, but I have found the best performance using a recursive CTE (Common Table Expression), a feature added in SQL Server 2005.</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="sql" style="font-family:monospace;">;<span style="color:#993333;font-weight:bold;">WITH</span> cte <span style="color:#993333;font-weight:bold;">AS</span> <span style="color:#66cc66;">&#40;</span>
+<span style="color:#993333;font-weight:bold;">SELECT</span> id<span style="color:#66cc66;">,</span> account<span style="color:#66cc66;">,</span> deposit<span style="color:#66cc66;">,</span> deposit <span style="color:#993333;font-weight:bold;">AS</span> <span style="color:#ff0000;">'total'</span>
+<span style="color:#993333;font-weight:bold;">FROM</span> #TestData
+<span style="color:#993333;font-weight:bold;">WHERE</span> id <span style="color:#66cc66;">=</span> <span style="color:#cc66cc;">1</span>
+&nbsp;
+<span style="color:#993333;font-weight:bold;">UNION</span> <span style="color:#993333;font-weight:bold;">ALL</span>
+&nbsp;
+<span style="color:#993333;font-weight:bold;">SELECT</span> a<span style="color:#66cc66;">.</span>id<span style="color:#66cc66;">,</span> a<span style="color:#66cc66;">.</span>account<span style="color:#66cc66;">,</span> a<span style="color:#66cc66;">.</span>deposit<span style="color:#66cc66;">,</span> cte<span style="color:#66cc66;">.</span>total <span style="color:#66cc66;">+</span> a<span style="color:#66cc66;">.</span>deposit
+<span style="color:#993333;font-weight:bold;">FROM</span> cte <span style="color:#993333;font-weight:bold;">JOIN</span> #TestData a <span style="color:#993333;font-weight:bold;">ON</span> cte<span style="color:#66cc66;">.</span>id <span style="color:#66cc66;">+</span> <span style="color:#cc66cc;">1</span> <span style="color:#66cc66;">=</span> a<span style="color:#66cc66;">.</span>id
+<span style="color:#66cc66;">&#41;</span>
+<span style="color:#993333;font-weight:bold;">SELECT</span> <span style="color:#66cc66;">*</span> <span style="color:#993333;font-weight:bold;">FROM</span> cte
+<span style="color:#993333;font-weight:bold;">OPTION</span> <span style="color:#66cc66;">&#40;</span>MAXRECURSION <span style="color:#cc66cc;">32767</span><span style="color:#66cc66;">&#41;</span>;</pre></td></tr></table></div>
+
+<p>There is one caveat though, since CTEs can do at most 32767 recursions. So if you have more records than that, you must fall back on the old sub-select:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="sql" style="font-family:monospace;"><span style="color:#993333;font-weight:bold;">SELECT</span> a<span style="color:#66cc66;">.*,</span>
+<span style="color:#66cc66;">&#40;</span><span style="color:#993333;font-weight:bold;">SELECT</span> <span style="color:#993333;font-weight:bold;">SUM</span><span style="color:#66cc66;">&#40;</span>b<span style="color:#66cc66;">.</span>deposit<span style="color:#66cc66;">&#41;</span> <span style="color:#993333;font-weight:bold;">FROM</span> #TestData b <span style="color:#993333;font-weight:bold;">WHERE</span> b<span style="color:#66cc66;">.</span>id <span style="color:#66cc66;">&lt;=</span> a<span style="color:#66cc66;">.</span>id<span style="color:#66cc66;">&#41;</span> <span style="color:#993333;font-weight:bold;">AS</span> <span style="color:#ff0000;">'total'</span>
+<span style="color:#993333;font-weight:bold;">FROM</span> #TestData a</pre></td></tr></table></div>]]></content:encoded>
+         <category>SQL</category>
+      </item>
+      <item>
+         <title>Bind a model property to a different named query string field</title>
+         <link>http://ole.michelsen.dk/blog/bind-a-model-property-to-a-different-named-query-string-field/</link>
+         <description>How to bind a model property to a different named query string field with a custom alias attribute and model binder in MVC3.</description>
+         <guid isPermaLink="false">http://ole.michelsen.dk/blog/?p=300</guid>
+         <pubDate>Wed, 21 Mar 2012 10:17:32 +0000</pubDate>
+         <content:encoded><![CDATA[<p>The ASP MVC model binder automatically maps a query string to an object model by matching each field to a property name. This is very handy, but things can quickly get quite verbose:</p>
+<p>http://domain/products?CategoryId=42&#038;SortBy=Name&#038;SortAscending=True</p>
+<p>Ideally what I want is to give my class properties an abbreviated alias for use in the query string. Thus, I should be able to use the following URI instead, and still have the input values mapped automatically to the model:</p>
+<p>http://domain/products?c=42&#038;s=Name&#038;asc=True</p>
+<p>Fortunately there is an elegant solution, which I must admit I&#8217;m blatantly writing up based on an <a rel="nofollow" title="Bind a model's property to a different named value" target="_blank" href="http://stackoverflow.com/questions/4316301/asp-net-mvc-2-bind-a-models-property-to-a-different-named-value#answer-4316327">answer given on Stack Overflow</a>. My solution does however fix a bug to make multiple aliases on a single property work as intended.<span id="more-300"></span></p>
+<p>So let&#8217;s get cracking. If you want to skip ahead, you can <a rel="nofollow" title="Visual Studio Project" target="_blank" href="http://ole.michelsen.dk/blog/wp-content/uploads/2012/03/QueryStringAlias.zip">download the project here</a>. We create a custom attribute which will hold the alias name:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#008000;">&#91;</span>AttributeUsage<span style="color:#008000;">&#40;</span>AttributeTargets<span style="color:#008000;">.</span><span style="color:#0000FF;">Property</span>, AllowMultiple <span style="color:#008000;">=</span> <span style="color:#0600FF;font-weight:bold;">true</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#93;</span>
+<span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">class</span> BindAliasAttribute <span style="color:#008000;">:</span> Attribute
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> BindAliasAttribute<span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">string</span> alias<span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">&#123;</span>
+        Alias <span style="color:#008000;">=</span> alias<span style="color:#008000;">;</span>
+    <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">string</span> Alias <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">get</span><span style="color:#008000;">;</span> <span style="color:#0600FF;font-weight:bold;">private</span> <span style="color:#0600FF;font-weight:bold;">set</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> <span style="color:#6666cc;font-weight:bold;">object</span> TypeId
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#0600FF;font-weight:bold;">get</span> <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">return</span> Alias<span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+    <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">internal</span> <span style="color:#0600FF;font-weight:bold;">sealed</span> <span style="color:#6666cc;font-weight:bold;">class</span> AliasedPropertyDescriptor <span style="color:#008000;">:</span> PropertyDescriptor
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#0600FF;font-weight:bold;">public</span> PropertyDescriptor Inner <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">get</span><span style="color:#008000;">;</span> <span style="color:#0600FF;font-weight:bold;">private</span> <span style="color:#0600FF;font-weight:bold;">set</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> AliasedPropertyDescriptor<span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">string</span> alias, PropertyDescriptor inner<span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">:</span> <span style="color:#0600FF;font-weight:bold;">base</span><span style="color:#008000;">&#40;</span>alias, <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            Inner <span style="color:#008000;">=</span> inner<span style="color:#008000;">;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> <span style="color:#6666cc;font-weight:bold;">bool</span> CanResetValue<span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">object</span> component<span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">return</span> Inner<span style="color:#008000;">.</span><span style="color:#0000FF;">CanResetValue</span><span style="color:#008000;">&#40;</span>component<span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> Type ComponentType
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">get</span> <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">return</span> Inner<span style="color:#008000;">.</span><span style="color:#0000FF;">ComponentType</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> <span style="color:#6666cc;font-weight:bold;">object</span> GetValue<span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">object</span> component<span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">return</span> Inner<span style="color:#008000;">.</span><span style="color:#0000FF;">GetValue</span><span style="color:#008000;">&#40;</span>component<span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> <span style="color:#6666cc;font-weight:bold;">bool</span> IsReadOnly
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">get</span> <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">return</span> Inner<span style="color:#008000;">.</span><span style="color:#0000FF;">IsReadOnly</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> Type PropertyType
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">get</span> <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">return</span> Inner<span style="color:#008000;">.</span><span style="color:#0000FF;">PropertyType</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> <span style="color:#6666cc;font-weight:bold;">void</span> ResetValue<span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">object</span> component<span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            Inner<span style="color:#008000;">.</span><span style="color:#0000FF;">ResetValue</span><span style="color:#008000;">&#40;</span>component<span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> <span style="color:#6666cc;font-weight:bold;">void</span> SetValue<span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">object</span> component, <span style="color:#6666cc;font-weight:bold;">object</span> <span style="color:#0600FF;font-weight:bold;">value</span><span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            Inner<span style="color:#008000;">.</span><span style="color:#0000FF;">SetValue</span><span style="color:#008000;">&#40;</span>component, <span style="color:#0600FF;font-weight:bold;">value</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#0600FF;font-weight:bold;">override</span> <span style="color:#6666cc;font-weight:bold;">bool</span> ShouldSerializeValue<span style="color:#008000;">&#40;</span><span style="color:#6666cc;font-weight:bold;">object</span> component<span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">return</span> Inner<span style="color:#008000;">.</span><span style="color:#0000FF;">ShouldSerializeValue</span><span style="color:#008000;">&#40;</span>component<span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+        <span style="color:#008000;">&#125;</span>
+    <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>This was quite a mouthful, but most of it is straightforward boilerplate. By implementing a PropertyDescriptor, we can register the property with the alias name, but still use the default model binding, type validation etc.</p>
+<p>We have marked our attribute with AllowMultiple, but by default the MemberDescriptor base class will see all BindAliasAttributes as being of identical type and <a rel="nofollow" title="PropertyDescriptor.Attributes doesn't return all attributes" target="_blank" href="http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/e6bb4146-eb1a-4c1b-a5b1-f3528d8a7864/">filter them as duplicates</a> (FilterAttributesIfNeeded). To avoid this we must implement the <a rel="nofollow" title="Attribute.TypeId Property" target="_blank" href="http://msdn.microsoft.com/en-us/library/system.attribute.typeid.aspx">TypeId property</a>, and make sure it returns a unique value for each attribute. The easiest is just to return the alias name.</p>
+<p>Finally we have to handle our BindAliasAttribute using a custom model binder:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">class</span> AliasModelBinder <span style="color:#008000;">:</span> DefaultModelBinder
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">protected</span> <span style="color:#0600FF;font-weight:bold;">override</span> PropertyDescriptorCollection GetModelProperties<span style="color:#008000;">&#40;</span>
+        ControllerContext controllerContext,
+        ModelBindingContext bindingContext
+    <span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#0600FF;font-weight:bold;">var</span> toReturn <span style="color:#008000;">=</span> <span style="color:#0600FF;font-weight:bold;">base</span><span style="color:#008000;">.</span><span style="color:#0000FF;">GetModelProperties</span><span style="color:#008000;">&#40;</span>controllerContext, bindingContext<span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">var</span> additional <span style="color:#008000;">=</span> <span style="color:#008000;">new</span> List<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">foreach</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> p <span style="color:#0600FF;font-weight:bold;">in</span>
+            <span style="color:#0600FF;font-weight:bold;">this</span><span style="color:#008000;">.</span><span style="color:#0000FF;">GetTypeDescriptor</span><span style="color:#008000;">&#40;</span>controllerContext, bindingContext<span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">.</span><span style="color:#0000FF;">GetProperties</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">.</span><span style="color:#0000FF;">Cast</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">foreach</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> attr <span style="color:#0600FF;font-weight:bold;">in</span> p<span style="color:#008000;">.</span><span style="color:#0000FF;">Attributes</span><span style="color:#008000;">.</span><span style="color:#0000FF;">OfType</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">&#123;</span>
+                additional<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">new</span> BindAliasAttribute<span style="color:#008000;">.</span><span style="color:#0000FF;">AliasedPropertyDescriptor</span><span style="color:#008000;">&#40;</span>attr<span style="color:#008000;">.</span><span style="color:#0000FF;">Alias</span>, p<span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+                <span style="color:#0600FF;font-weight:bold;">if</span> <span style="color:#008000;">&#40;</span>bindingContext<span style="color:#008000;">.</span><span style="color:#0000FF;">PropertyMetadata</span><span style="color:#008000;">.</span><span style="color:#0000FF;">ContainsKey</span><span style="color:#008000;">&#40;</span>p<span style="color:#008000;">.</span><span style="color:#0000FF;">Name</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span>
+                    bindingContext<span style="color:#008000;">.</span><span style="color:#0000FF;">PropertyMetadata</span><span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span>attr<span style="color:#008000;">.</span><span style="color:#0000FF;">Alias</span>,
+                            bindingContext<span style="color:#008000;">.</span><span style="color:#0000FF;">PropertyMetadata</span><span style="color:#008000;">&#91;</span>p<span style="color:#008000;">.</span><span style="color:#0000FF;">Name</span><span style="color:#008000;">&#93;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            <span style="color:#008000;">&#125;</span>
+        <span style="color:#008000;">&#125;</span>
+&nbsp;
+        <span style="color:#0600FF;font-weight:bold;">return</span> <span style="color:#008000;">new</span> PropertyDescriptorCollection
+            <span style="color:#008000;">&#40;</span>toReturn<span style="color:#008000;">.</span><span style="color:#0000FF;">Cast</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">.</span><span style="color:#0000FF;">Concat</span><span style="color:#008000;">&#40;</span>additional<span style="color:#008000;">&#41;</span><span style="color:#008000;">.</span><span style="color:#0000FF;">ToArray</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+    <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>Now we can create our new model and mark the properties with the BindAliasAttribute and make sure it&#8217;s handled by our custom model provider. You can register the AliasModelBinder directly on the model as shown here, or register it in Global.asax (shown in <a rel="nofollow" title="Visual Studio Project" target="_blank" href="http://ole.michelsen.dk/blog/wp-content/uploads/2012/03/QueryStringAlias.zip">attached project</a>).</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#008000;">&#91;</span>ModelBinder<span style="color:#008000;">&#40;</span><span style="color:#008000;">typeof</span><span style="color:#008000;">&#40;</span>AliasModelBinder<span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#93;</span>
+<span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">class</span> ExampleAliasModel
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#008000;">&#91;</span>BindAlias<span style="color:#008000;">&#40;</span><span style="color:#666666;">&quot;c&quot;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#93;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">int</span> CategoryId <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">get</span><span style="color:#008000;">;</span> <span style="color:#0600FF;font-weight:bold;">set</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#008000;">&#91;</span>BindAlias<span style="color:#008000;">&#40;</span><span style="color:#666666;">&quot;s&quot;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#93;</span>
+    <span style="color:#008000;">&#91;</span>BindAlias<span style="color:#008000;">&#40;</span><span style="color:#666666;">&quot;sort&quot;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#93;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">string</span> SortBy <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">get</span><span style="color:#008000;">;</span> <span style="color:#0600FF;font-weight:bold;">set</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#008000;">&#91;</span>BindAlias<span style="color:#008000;">&#40;</span><span style="color:#666666;">&quot;asc&quot;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#93;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">bool</span> SortAscending <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">get</span><span style="color:#008000;">;</span> <span style="color:#0600FF;font-weight:bold;">set</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>And that&#8217;s it! We can now use either the alias or the real name for each property as we see fit. In the following example I have created a small form, which creates a query string using the alias names and displays the model after binding:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">public</span> ActionResult Index<span style="color:#008000;">&#40;</span>ExampleAliasModel model<span style="color:#008000;">&#41;</span>
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">return</span> View<span style="color:#008000;">&#40;</span>model<span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p><img class="alignnone  wp-image-313" title="BindAliasAttribute Example" src="http://ole.michelsen.dk/blog/wp-content/uploads/2012/03/BindAliasAttribute-Example.png" alt="" width="492" height="558"/></p>
+<p>Notice that this solution only works when binding. If you use the built-in templates like DisplayFor and EditorFor, MVC will output the normal property name and not the alias(es).</p>]]></content:encoded>
+      </item>
+      <item>
+         <title>Grouping data with LINQ and MVC</title>
+         <link>http://ole.michelsen.dk/blog/grouping-data-with-linq-and-mvc/</link>
+         <description>Showing a list or table of data in groups is very common, and fortunately also very easy to do with LINQ. In the end we want our data to look something like this: Group A Item 1 Item 2 Group B Item &amp;#8230;</description>
+         <guid isPermaLink="false">http://ole.michelsen.dk/blog/?p=277</guid>
+         <pubDate>Sun, 20 Nov 2011 22:40:37 +0000</pubDate>
+         <content:encoded><![CDATA[<p>Showing a list or table of data in groups is very common, and fortunately also very easy to do with LINQ. In the end we want our data to look something like this:<span id="more-277"></span></p>
+<ul>
+<li>Group A</li>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+</ul>
+<li>Group B</li>
+<ul>
+<li>Item 3</li>
+</ul>
+</ul>
+<p>In the olden days we would probably just loop the data, and insert a group header each time we encountered a new group, but this is not especially elegant and can lead to some pretty illegible code. And while you can also achieve this <a rel="nofollow" title="Mapping relational table data to a tree structure in MVC" target="_blank" href="http://ole.michelsen.dk/blog/mapping-relational-table-data-to-a-tree-structure-in-mvc/">grouping with a Tree structure</a>, it&#8217;s a bit overkill for this application, and requires your data to have unique keys and parent keys.</p>
+<p>LINQ fortunately contains a handy <code>group by</code> function, but unfortunately this returns an anonymous type <code>IEnumerable&lt;'a&gt;</code>, which we can&#8217;t use as data model for our view.</p>
+<p>My simple solution uses a generic Group class to hold the data and a key of your own choosing to group by. By creating the Group class as a generic, we can reuse it for any kind of key and object types.</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">namespace</span> LinqGrouping<span style="color:#008000;">.</span><span style="color:#0000FF;">Models</span>
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">class</span> <span style="color:#0600FF;font-weight:bold;">Group</span><span style="color:#008000;">&lt;</span>T, K<span style="color:#008000;">&gt;</span>
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#0600FF;font-weight:bold;">public</span> K Key<span style="color:#008000;">;</span>
+        <span style="color:#0600FF;font-weight:bold;">public</span> IEnumerable<span style="color:#008000;">&lt;</span>T<span style="color:#008000;">&gt;</span> Values<span style="color:#008000;">;</span>
+    <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>We will also create a test class called Book, and use it to create a list of books which we can then group by Genre:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">class</span> Book
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">string</span> Title<span style="color:#008000;">;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">string</span> Author<span style="color:#008000;">;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">string</span> Genre<span style="color:#008000;">;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">decimal</span> Price<span style="color:#008000;">;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">using</span> <span style="color:#008080;">System.Collections.Generic</span><span style="color:#008000;">;</span>
+<span style="color:#0600FF;font-weight:bold;">using</span> <span style="color:#008080;">System.Linq</span><span style="color:#008000;">;</span>
+<span style="color:#0600FF;font-weight:bold;">using</span> <span style="color:#008080;">System.Web.Mvc</span><span style="color:#008000;">;</span>
+<span style="color:#0600FF;font-weight:bold;">using</span> <span style="color:#008080;">LinqGrouping.Models</span><span style="color:#008000;">;</span>
+&nbsp;
+<span style="color:#0600FF;font-weight:bold;">namespace</span> LinqGrouping<span style="color:#008000;">.</span><span style="color:#0000FF;">Controllers</span>
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">class</span> GroupingController <span style="color:#008000;">:</span> Controller
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#0600FF;font-weight:bold;">public</span> ActionResult Index<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">var</span> books <span style="color:#008000;">=</span> <span style="color:#008000;">new</span> List<span style="color:#008000;">&lt;</span>Book<span style="color:#008000;">&gt;</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+            <span style="color:#008080;font-style:italic;">// Add test data</span>
+            books<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">new</span> Book <span style="color:#008000;">&#123;</span> Author <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Douglas Adams&quot;</span>, Title <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;The Hitchhiker's Guide to the Galaxy&quot;</span>, Genre <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Fiction&quot;</span>, Price <span style="color:#008000;">=</span> 159<span style="color:#008000;">.</span>95M <span style="color:#008000;">&#125;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            books<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">new</span> Book <span style="color:#008000;">&#123;</span> Author <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Scott Adams&quot;</span>, Title <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;The Dilbert Principle&quot;</span>, Genre <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Fiction&quot;</span>, Price <span style="color:#008000;">=</span> 23<span style="color:#008000;">.</span>95M <span style="color:#008000;">&#125;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            books<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">new</span> Book <span style="color:#008000;">&#123;</span> Author <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Douglas Coupland&quot;</span>, Title <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Generation X&quot;</span>, Genre <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Fiction&quot;</span>, Price <span style="color:#008000;">=</span> 300<span style="color:#008000;">.</span>00M <span style="color:#008000;">&#125;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            books<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">new</span> Book <span style="color:#008000;">&#123;</span> Author <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Walter Isaacson&quot;</span>, Title <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Steve Jobs&quot;</span>, Genre <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Biography&quot;</span>, Price <span style="color:#008000;">=</span> 219<span style="color:#008000;">.</span>25M <span style="color:#008000;">&#125;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            books<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">new</span> Book <span style="color:#008000;">&#123;</span> Author <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Michael Freeman&quot;</span>, Title <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;The Photographer's Eye&quot;</span>, Genre <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Photography&quot;</span>, Price <span style="color:#008000;">=</span> 195<span style="color:#008000;">.</span>50M <span style="color:#008000;">&#125;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+            <span style="color:#008080;font-style:italic;">// Group the books by Genre</span>
+            <span style="color:#0600FF;font-weight:bold;">var</span> booksGrouped <span style="color:#008000;">=</span> <span style="color:#0600FF;font-weight:bold;">from</span> b <span style="color:#0600FF;font-weight:bold;">in</span> books
+                               <span style="color:#0600FF;font-weight:bold;">group</span> b <span style="color:#0600FF;font-weight:bold;">by</span> b<span style="color:#008000;">.</span><span style="color:#0000FF;">Genre</span> <span style="color:#0600FF;font-weight:bold;">into</span> g
+                               <span style="color:#0600FF;font-weight:bold;">select</span> <span style="color:#008000;">new</span> <span style="color:#0600FF;font-weight:bold;">Group</span><span style="color:#008000;">&lt;</span><span style="color:#6666cc;font-weight:bold;">string</span>, Book<span style="color:#008000;">&gt;</span> <span style="color:#008000;">&#123;</span> Key <span style="color:#008000;">=</span> g<span style="color:#008000;">.</span><span style="color:#0000FF;">Key</span>, Values <span style="color:#008000;">=</span> g <span style="color:#008000;">&#125;</span><span style="color:#008000;">;</span>
+&nbsp;
+            <span style="color:#0600FF;font-weight:bold;">return</span> View<span style="color:#008000;">&#40;</span>booksGrouped<span style="color:#008000;">.</span><span style="color:#0000FF;">ToList</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+        <span style="color:#008000;">&#125;</span>
+    <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>The grouping is handled with the LINQ <code>group by</code> statement, and here we choose the Genre field as our key to group by. Now we select our subsets into the Group object, which will consist of a key and a collection of each book which matches this key. The end result is a <code>List&lt;Group&lt;string, Book&gt;&gt;</code>, which makes it easy for us to output as HTML:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;">@<span style="color:#0600FF;font-weight:bold;">using</span> LinqGrouping<span style="color:#008000;">.</span><span style="color:#0000FF;">Models</span>
+@model List<span style="color:#008000;">&lt;</span><span style="color:#0600FF;font-weight:bold;">Group</span><span style="color:#008000;">&lt;</span><span style="color:#6666cc;font-weight:bold;">string</span>, Book<span style="color:#008000;">&gt;&gt;</span>
+&nbsp;
+@<span style="color:#008000;">&#123;</span>
+    ViewBag<span style="color:#008000;">.</span><span style="color:#0000FF;">Title</span> <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;LINQ Grouping&quot;</span><span style="color:#008000;">;</span>
+<span style="color:#008000;">&#125;</span>
+&nbsp;
+<span style="color:#008000;">&lt;</span>h2<span style="color:#008000;">&gt;</span>Grouping books <span style="color:#0600FF;font-weight:bold;">by</span> Genre<span style="color:#008000;">&lt;/</span>h2<span style="color:#008000;">&gt;</span>
+&nbsp;
+<span style="color:#008000;">&lt;</span>table<span style="color:#008000;">&gt;</span>
+<span style="color:#008000;">&lt;</span>thead<span style="color:#008000;">&gt;&lt;</span>tr<span style="color:#008000;">&gt;&lt;</span>th<span style="color:#008000;">&gt;</span>Author<span style="color:#008000;">&lt;/</span>th<span style="color:#008000;">&gt;&lt;</span>th<span style="color:#008000;">&gt;</span>Title<span style="color:#008000;">&lt;/</span>th<span style="color:#008000;">&gt;&lt;</span>th<span style="color:#008000;">&gt;</span>Price<span style="color:#008000;">&lt;/</span>th<span style="color:#008000;">&gt;&lt;/</span>tr<span style="color:#008000;">&gt;&lt;/</span>thead<span style="color:#008000;">&gt;</span>
+<span style="color:#008000;">&lt;</span>tbody<span style="color:#008000;">&gt;</span>
+@<span style="color:#0600FF;font-weight:bold;">foreach</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> <span style="color:#0600FF;font-weight:bold;">group</span> <span style="color:#0600FF;font-weight:bold;">in</span> Model<span style="color:#008000;">&#41;</span>
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#008000;">&lt;</span>tr<span style="color:#008000;">&gt;&lt;</span>th colspan<span style="color:#008000;">=</span><span style="color:#666666;">&quot;3&quot;</span><span style="color:#008000;">&gt;</span>@<span style="color:#0600FF;font-weight:bold;">group</span><span style="color:#008000;">.</span><span style="color:#0000FF;">Key</span><span style="color:#008000;">&lt;/</span>th<span style="color:#008000;">&gt;&lt;/</span>tr<span style="color:#008000;">&gt;</span>
+    <span style="color:#0600FF;font-weight:bold;">foreach</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> book <span style="color:#0600FF;font-weight:bold;">in</span> <span style="color:#0600FF;font-weight:bold;">group</span><span style="color:#008000;">.</span><span style="color:#0000FF;">Values</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#008000;">&lt;</span>tr<span style="color:#008000;">&gt;&lt;</span>td<span style="color:#008000;">&gt;</span>@book<span style="color:#008000;">.</span><span style="color:#0000FF;">Author</span><span style="color:#008000;">&lt;/</span>td<span style="color:#008000;">&gt;&lt;</span>td<span style="color:#008000;">&gt;</span>@book<span style="color:#008000;">.</span><span style="color:#0000FF;">Title</span><span style="color:#008000;">&lt;/</span>td<span style="color:#008000;">&gt;&lt;</span>td<span style="color:#008000;">&gt;</span>@book<span style="color:#008000;">.</span><span style="color:#0000FF;">Price</span><span style="color:#008000;">.</span><span style="color:#0000FF;">ToString</span><span style="color:#008000;">&#40;</span><span style="color:#666666;">&quot;c&quot;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&lt;/</span>td<span style="color:#008000;">&gt;&lt;/</span>tr<span style="color:#008000;">&gt;</span>
+    <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&lt;/</span>tbody<span style="color:#008000;">&gt;</span>
+<span style="color:#008000;">&lt;/</span>table<span style="color:#008000;">&gt;</span></pre></td></tr></table></div>
+
+<p>Looping through the groups of books is very straightforward, and for each group we create a header in the table. Our code is now very easy to read, and the Group class can be reused for any other data type as well. Here is the final output:</p>
+<p><img class="alignnone size-full wp-image-281" title="Output" src="http://ole.michelsen.dk/blog/wp-content/uploads/2011/11/Output.png" alt="Books grouped by Genre" width="501" height="547"/></p>
+<p>For your reviewing pleasure, you can <a rel="nofollow" title="Visual Studio Project LinqGrouping.zip" target="_blank" href="http://ole.michelsen.dk/blog/wp-content/uploads/2011/11/LinqGrouping.zip">download the VS project</a> and try it out yourself.</p>
+<p>For other uses of the group by in LINQ, Microsoft have provided some <a rel="nofollow" title="LINQ - Grouping Operators" target="_blank" href="http://code.msdn.microsoft.com/LINQ-to-DataSets-Grouping-c62703ea">further examples</a>.</p>]]></content:encoded>
+      </item>
+      <item>
+         <title>Mapping relational table data to a tree structure in MVC</title>
+         <link>http://ole.michelsen.dk/blog/mapping-relational-table-data-to-a-tree-structure-in-mvc/</link>
+         <description>How to map SQL table data into a tree structure and display it as a nested list using recursive Razor display templates.</description>
+         <guid isPermaLink="false">http://ole.michelsen.dk/blog/?p=247</guid>
+         <pubDate>Mon, 03 Oct 2011 09:32:13 +0000</pubDate>
+         <content:encoded><![CDATA[<p>With the advent of MVC in ASP.NET, proper object oriented code is encouraged more than ever, and Razor makes it a joy to work recursively with tree structures. So how do we go about converting our SQL table data to a tree structure?<span id="more-247"></span></p>
+<p>It&#8217;s common to have tree data stored this way in a database:</p>
+<div id="attachment_260" class="wp-caption alignnone" style="width:351px;"><img class="size-full wp-image-260" title="Sql2Tree SQL table data" src="http://ole.michelsen.dk/blog/wp-content/uploads/2011/10/Sql2Tree-SQL-table-data.png" alt="" width="341" height="272"/><p class="wp-caption-text">Tree data stored in SQL table</p></div>
+<p>What we want is to map this data into the following tree node structure, where each node has a parent, and optionally a set of child nodes:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">class</span> TreeNode
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">int</span> Id<span style="color:#008000;">;</span>
+&nbsp;
+    <span style="color:#008000;">&#91;</span>ScriptIgnore<span style="color:#008000;">&#93;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">int</span> ParentId<span style="color:#008000;">;</span>
+&nbsp;
+    <span style="color:#008000;">&#91;</span>ScriptIgnore<span style="color:#008000;">&#93;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> TreeNode Parent<span style="color:#008000;">;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">string</span> Name<span style="color:#008000;">;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">public</span> List Children <span style="color:#008000;">=</span> <span style="color:#008000;">new</span> List<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>The <code>ScriptIgnore</code> attributes are only there so we can serialize our nodes as JSON for a web service. In JSON you can&#8217;t have circular references, and the fields will automatically be left out of the serialized string saving precious bytes.</p>
+<p>To handle the tree nodes we create a Tree class, which holds the nodes and builds the tree by setting the node relations:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">class</span> Tree
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">private</span> TreeNode rootNode<span style="color:#008000;">;</span>
+    <span style="color:#0600FF;font-weight:bold;">public</span> TreeNode RootNode
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#0600FF;font-weight:bold;">get</span> <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">return</span> rootNode<span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+        <span style="color:#0600FF;font-weight:bold;">set</span>
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">if</span> <span style="color:#008000;">&#40;</span>RootNode <span style="color:#008000;">!=</span> <span style="color:#0600FF;font-weight:bold;">null</span><span style="color:#008000;">&#41;</span>
+                Nodes<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Remove</span><span style="color:#008000;">&#40;</span>RootNode<span style="color:#008000;">.</span><span style="color:#0000FF;">Id</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+            Nodes<span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">value</span><span style="color:#008000;">.</span><span style="color:#0000FF;">Id</span>, <span style="color:#0600FF;font-weight:bold;">value</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            rootNode <span style="color:#008000;">=</span> <span style="color:#0600FF;font-weight:bold;">value</span><span style="color:#008000;">;</span>
+        <span style="color:#008000;">&#125;</span>
+    <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">public</span> Dictionary Nodes <span style="color:#008000;">&#123;</span> <span style="color:#0600FF;font-weight:bold;">get</span><span style="color:#008000;">;</span> <span style="color:#0600FF;font-weight:bold;">set</span><span style="color:#008000;">;</span> <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">public</span> Tree<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">&#123;</span>
+    <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">public</span> <span style="color:#6666cc;font-weight:bold;">void</span> BuildTree<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">&#123;</span>
+        TreeNode parent<span style="color:#008000;">;</span>
+        <span style="color:#0600FF;font-weight:bold;">foreach</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> node <span style="color:#0600FF;font-weight:bold;">in</span> Nodes<span style="color:#008000;">.</span><span style="color:#0000FF;">Values</span><span style="color:#008000;">&#41;</span>
+        <span style="color:#008000;">&#123;</span>
+            <span style="color:#0600FF;font-weight:bold;">if</span> <span style="color:#008000;">&#40;</span>Nodes<span style="color:#008000;">.</span><span style="color:#0000FF;">TryGetValue</span><span style="color:#008000;">&#40;</span>node<span style="color:#008000;">.</span><span style="color:#0000FF;">ParentId</span>, <span style="color:#0600FF;font-weight:bold;">out</span> parent<span style="color:#008000;">&#41;</span> <span style="color:#008000;">&amp;&amp;</span>
+                node<span style="color:#008000;">.</span><span style="color:#0000FF;">Id</span> <span style="color:#008000;">!=</span> node<span style="color:#008000;">.</span><span style="color:#0000FF;">ParentId</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">&#123;</span>
+                node<span style="color:#008000;">.</span><span style="color:#0000FF;">Parent</span> <span style="color:#008000;">=</span> parent<span style="color:#008000;">;</span>
+                parent<span style="color:#008000;">.</span><span style="color:#0000FF;">Children</span><span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Add</span><span style="color:#008000;">&#40;</span>node<span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+            <span style="color:#008000;">&#125;</span>
+        <span style="color:#008000;">&#125;</span>
+    <span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>To build the tree we run through all the nodes and map each to their parent. Since we are storing the nodes in a hash table, looking up the parent of each node is only taking constant time <em>k</em>, which means we can generate our tree structure in <em>O</em>(<em>n</em><em>k</em>) linear time which is very acceptable.</p>
+<p>Now we can map our SQL table into our tree by using a little LINQ magic in our controller:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;"><span style="color:#0600FF;font-weight:bold;">private</span> Tree GetData<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span>
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">var</span> tree <span style="color:#008000;">=</span> <span style="color:#008000;">new</span> Tree<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">using</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> db <span style="color:#008000;">=</span> <span style="color:#008000;">new</span> TreeEntities<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&#41;</span>
+    <span style="color:#008000;">&#123;</span>
+        <span style="color:#008080;font-style:italic;">// Add each element as a tree node</span>
+        tree<span style="color:#008000;">.</span><span style="color:#0000FF;">Nodes</span> <span style="color:#008000;">=</span> db<span style="color:#008000;">.</span><span style="color:#0000FF;">TreeMenu</span>
+            <span style="color:#008000;">.</span><span style="color:#0600FF;font-weight:bold;">Select</span><span style="color:#008000;">&#40;</span>t <span style="color:#008000;">=&gt;</span> <span style="color:#008000;">new</span> TreeNode <span style="color:#008000;">&#123;</span> Id <span style="color:#008000;">=</span> t<span style="color:#008000;">.</span><span style="color:#0000FF;">Id</span>, ParentId <span style="color:#008000;">=</span> t<span style="color:#008000;">.</span><span style="color:#0000FF;">ParentId</span>, Name <span style="color:#008000;">=</span> t<span style="color:#008000;">.</span><span style="color:#0000FF;">Name</span> <span style="color:#008000;">&#125;</span><span style="color:#008000;">&#41;</span>
+            <span style="color:#008000;">.</span><span style="color:#0000FF;">ToDictionary</span><span style="color:#008000;">&#40;</span>t <span style="color:#008000;">=&gt;</span> t<span style="color:#008000;">.</span><span style="color:#0000FF;">Id</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+&nbsp;
+        <span style="color:#008080;font-style:italic;">// Create a new root node</span>
+        tree<span style="color:#008000;">.</span><span style="color:#0000FF;">RootNode</span> <span style="color:#008000;">=</span> <span style="color:#008000;">new</span> TreeNode <span style="color:#008000;">&#123;</span> Id <span style="color:#008000;">=</span> <span style="color:#FF0000;">0</span>, Name <span style="color:#008000;">=</span> <span style="color:#666666;">&quot;Root&quot;</span> <span style="color:#008000;">&#125;</span><span style="color:#008000;">;</span>
+&nbsp;
+        <span style="color:#008080;font-style:italic;">// Build the tree, setting parent and children references for all elements</span>
+        tree<span style="color:#008000;">.</span><span style="color:#0000FF;">BuildTree</span><span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+    <span style="color:#008000;">&#125;</span>
+&nbsp;
+    <span style="color:#0600FF;font-weight:bold;">return</span> tree<span style="color:#008000;">;</span>
+<span style="color:#008000;">&#125;</span>
+&nbsp;
+<span style="color:#0600FF;font-weight:bold;">public</span> ActionResult Index<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span>
+<span style="color:#008000;">&#123;</span>
+    <span style="color:#0600FF;font-weight:bold;">var</span> model <span style="color:#008000;">=</span> GetData<span style="color:#008000;">&#40;</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+    <span style="color:#0600FF;font-weight:bold;">return</span> View<span style="color:#008000;">&#40;</span>model<span style="color:#008000;">&#41;</span><span style="color:#008000;">;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>To display our tree as a nested list in HTML we use a recursive display template in Razor like so:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;">@model Sql2Tree<span style="color:#008000;">.</span><span style="color:#0000FF;">Models</span><span style="color:#008000;">.</span><span style="color:#0000FF;">TreeNode</span>
+&nbsp;
+@Model<span style="color:#008000;">.</span><span style="color:#0000FF;">Name</span>
+@<span style="color:#0600FF;font-weight:bold;">if</span> <span style="color:#008000;">&#40;</span>Model<span style="color:#008000;">.</span><span style="color:#0000FF;">Children</span><span style="color:#008000;">.</span><span style="color:#0000FF;">Count</span> <span style="color:#008000;">&gt;</span> <span style="color:#FF0000;">0</span><span style="color:#008000;">&#41;</span>
+<span style="color:#008000;">&#123;</span>
+<span style="color:#008000;">&lt;</span>ul<span style="color:#008000;">&gt;</span>
+@<span style="color:#0600FF;font-weight:bold;">foreach</span> <span style="color:#008000;">&#40;</span><span style="color:#0600FF;font-weight:bold;">var</span> node <span style="color:#0600FF;font-weight:bold;">in</span> Model<span style="color:#008000;">.</span><span style="color:#0000FF;">Children</span><span style="color:#008000;">&#41;</span> <span style="color:#008000;">&#123;</span>
+	<span style="color:#008000;">&lt;</span>li<span style="color:#008000;">&gt;</span>@Html<span style="color:#008000;">.</span><span style="color:#0000FF;">DisplayFor</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> node<span style="color:#008000;">&#41;</span><span style="color:#008000;">&lt;/</span>li<span style="color:#008000;">&gt;</span>
+<span style="color:#008000;">&#125;</span>
+<span style="color:#008000;">&lt;/</span>ul<span style="color:#008000;">&gt;</span>
+<span style="color:#008000;">&#125;</span></pre></td></tr></table></div>
+
+<p>Using the template in our view is simple:</p>
+
+<div class="wp_syntax"><table><tr><td class="code"><pre class="csharp" style="font-family:monospace;">@model Sql2Tree<span style="color:#008000;">.</span><span style="color:#0000FF;">Models</span><span style="color:#008000;">.</span><span style="color:#0000FF;">Tree</span>
+<span style="color:#008000;">&lt;</span>ul<span style="color:#008000;">&gt;</span>
+	<span style="color:#008000;">&lt;</span>li<span style="color:#008000;">&gt;</span>@Html<span style="color:#008000;">.</span><span style="color:#0000FF;">DisplayFor</span><span style="color:#008000;">&#40;</span>x <span style="color:#008000;">=&gt;</span> Model<span style="color:#008000;">.</span><span style="color:#0000FF;">RootNode</span><span style="color:#008000;">&#41;</span><span style="color:#008000;">&lt;/</span>li<span style="color:#008000;">&gt;</span>
+<span style="color:#008000;">&lt;/</span>ul<span style="color:#008000;">&gt;</span></pre></td></tr></table></div>
+
+<p>And voilá, our &#8220;flat&#8221; SQL table is now a beautiful nested tree list. This is very convenient for menus, and can easily be adapted for nested select lists and tables etc.</p>
+<div id="attachment_259" class="wp-caption alignnone" style="width:325px;"><img class="size-full wp-image-259" title="Sql2Tree HTML nested list" src="http://ole.michelsen.dk/blog/wp-content/uploads/2011/10/Sql2Tree-HTML-nested-list.png" alt="Sql2Tree HTML nested list" width="315" height="322"/><p class="wp-caption-text">Tree data displayed as a HTML nested list</p></div>
+<p>You can download the example project here, with examples of a list that does not display the root node and how to output the tree as JSON for AJAX-based menus.</p>
+<p><a rel="nofollow" target="_blank" href="http://ole.michelsen.dk/blog/wp-content/uploads/2011/10/Sql2Tree.zip"><img class="alignnone size-full wp-image-232" title="Visual Studio 10 Project" src="http://ole.michelsen.dk/blog/wp-content/uploads/2011/08/vs.png" alt="" width="31" height="29"/></a> <a rel="nofollow" target="_blank" href="http://ole.michelsen.dk/blog/wp-content/uploads/2011/10/Sql2Tree.zip">Download Sql2Tree.zip project.</a></p>]]></content:encoded>
+      </item>
+   </channel>
+</rss>
+<!-- fe3.pipes.ch1.yahoo.com uncompressed/chunked Tue Oct 23 07:48:13 UTC 2012 -->
+";

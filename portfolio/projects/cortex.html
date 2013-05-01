@@ -1,0 +1,53 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+
+$_PageTitle = "Cortex Facaderens ApS";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Portfolio: <?= $_PageTitle ?></title>
+	
+	<meta name="keywords" content="ole michelsen, ole bjørn michelsen, cortex, facaderens, aps, design, asp, vbscript" />
+	<meta name="description" content="Cortex Facaderens ApS website design screenshots. Featuring a Flash menu and ASP 3.0 with MS Access, using HTML frames and CSS 2.0." />
+	
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/projects/cortex.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio" itemscope itemtype="http://schema.org/CreativeWork">
+		<hgroup>
+			<h1>Portfolio</h1>	
+			<h2 itemprop="name"><?php echo $_PageTitle ?></h2>
+		</hgroup>
+		
+		<p class="tags" itemprop="keywords">
+			<b itemprop="dateCreated">2002</b> &middot; Design &middot; Programming: ASP VB6, Flash
+		</p>
+
+		<p><a href="http://www.facaderens.dk/" hreflang="da" rel="external">Cortex Facaderens ApS</a> is a company which cleans/restores facades on buildings. Features a Flash intro. Flash menu is a bit unorthodox, but was a requirement from the customer. Site used some <abbr title="IE flavor of non-standard JavaScript">DHTML</abbr>, which of course, by todays standards, should be replaced by proper JavaScript. Menu also relies on HTML frames which would be completely unacceptable by modern standards.</p>
+
+		<ul class="screenshots">
+			<li><h4>Front</h4><img src="http://cdn.ole.michelsen.dk/portfolio/projects/cortex/1.png" alt="Front" class="frame" width="400" height="259" /></li>
+			<li><h4>About</h4><img src="http://cdn.ole.michelsen.dk/portfolio/projects/cortex/2.png" alt="About" class="frame" width="400" height="259" /></li>
+			<li><h4>Content page</h4><img src="cortex/3.png" alt="Content page" class="frame" width="400" height="259" /></li>
+		</ul>
+
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+include('ExifReader.php');
+
+$_PageTitle = "World Travel Map";
+
+$dir = 'map';
+$dirThumbs = $dir.'/t';
+
+// Extract GPS coordinates from JPEG files in given dir
+function getEXIFImageData($args)
+{
+	$target = $args[0];
+	$params = explode(',', $args[1]);
+
+	$exif = new ExifReader();
+	if (is_file($target)) return $exif->readImage($target, $params);
+	if (is_dir($target)) return $exif->readDirectory($target, $params);
+
+	return array('ERROR: Target Does Not Exist');
+}
+
+// Round GPS coordinates to 4 decimal points
+function latlngRound(&$val, $key)
+{
+	$val = round($val,4);
+}
+
+// Output the coords to the map
+$images = getEXIFImageData(array($dir, 'gps'));
+if ($images)
+{
+	foreach($images as $data)
+	{
+		// Reduce output JSON array size by rounding coordinates (precision not needed)
+		array_walk($data['gps'], 'latlngRound');
+
+		// Store for JSON array
+		$jsArr[] = $data['gps'];
+
+		// Store filename and size of thumbnails
+		$filename = $data['name'];
+		$size = getimagesize("$dirThumbs/$filename");
+		$imgArr[] = array(filename => $filename, width => $size[0], height => $size[1]);
+	}
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | <?= $_PageTitle ?></title>
+
+	<meta name="keywords" content="ole michelsen, ole bjørn michelsen, photography, travel, world, exif, gps, geotag, tagging, google maps, api, javascript" />
+	<meta name="description" content="Selected photographic waypoints for all the places I have visited around the world, plotted on a world map using GPS EXIF image data." />
+
+	<link rel="canonical" href="http://ole.michelsen.dk/photos/travel-map.html" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+
+<style type="text/css">
+#thumbs {
+	position: relative;
+	overflow: hidden;
+	margin: 0 -3px;
+}
+#thumbs img {
+	float:left;
+	margin: 3px;
+}
+#thumbs img:hover {
+	margin-bottom: 1px;
+	border-bottom: 2px solid #BB0000;
+	cursor: pointer;
+}
+</style>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<?php if (function_exists('jQueryCdn')) { jQueryCdn(); } ?>
+<script type="text/javascript" src="http://cdn.ole.michelsen.dk/scripts/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="http://cdn.ole.michelsen.dk/scripts/markerclusterer-1.0.min.js"></script>
+<script type="text/javascript">
+function initialize() {
+	var locations = <?=json_encode($jsArr)?>;
+
+	var opt = {
+		zoom: 2,
+		center: new google.maps.LatLng(40.416698,-3.700354),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(document.getElementById("map_canvas"), opt);
+
+	var marker, i, pos;
+	for (i = 0; i < locations.length; i++) {
+		marker = new google.maps.Marker({
+			position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+			map: map
+		});
+		// Overwrite coords array with Marker object instead (reduce mem)
+		locations[i] = marker;
+	}
+
+	// Cluster adjacent markers depending on zoom level
+	var markerStyle = {url:'/images/mapmarker.png',width:20,height:20,opt_textSize:9};
+	var mc = new MarkerClusterer(map, locations, { gridSize: 20, maxZoom: 4, styles: [markerStyle,markerStyle] });
+	
+	var canvasOffset = $('#map_canvas').offset().top - 5;
+	
+	$('#thumbs').masonry({ 
+		itemSelector: 'img',
+		columnWidth: 106,
+		resizable: false
+	})
+	.children('img').click(function() {
+		// Cancel any active animations
+		if (marker) marker.setAnimation(null);
+		
+		// Activate new pin
+		marker = locations[$(this).attr('alt')];
+		marker.setAnimation(google.maps.Animation.BOUNCE);
+		map.panTo(marker.getPosition());
+
+		// Set zoom level
+		if (map.getZoom()<5 || map.getZoom()>15)
+			map.setZoom(5);	
+		
+		$('html,body').animate({scrollTop: canvasOffset}, 1000);
+		
+		return false;
+	});
+}
+</script>
+</head>
+
+<body onload="initialize()" itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<section id="content">	
+	<h1>Photos</h1>
+
+	<h2><?= $_PageTitle ?></h2>
+
+	<p>Selected photographic waypoints for all the places I have visited around the world. My implementation is reading the GPS EXIF data from my photos, and adding them as map markers using <a href="http://code.google.com/apis/maps/documentation/javascript/" rel="external">Google Maps API</a> and <a href="http://masonry.desandro.com/" rel="external">jQuery Masonry</a> for photo layout.</p>
+
+	<p id="map_canvas" style="width:100%;height:400px"></p>
+
+	<p id="thumbs">
+<?php
+$i = 0;
+foreach ($imgArr as $img)
+{
+	// Load even number images from static host for parallel downloading
+	$host = ($i % 2 == 0) ? 'http://cdn.ole.michelsen.dk/photos/' : '';
+	echo '<img alt=', $i, ' src="', $host, $dirThumbs, '/', rawurlencode($img['filename']), '" width=', $img['width'], ' height=', $img['height'], ' />';
+	$i++;
+}
+?>
+	</p>
+</section>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>
+<?php
+// http://www.quietless.com/kitchen/extract-exif-data-using-php-to-display-gps-tagged-images-in-google-maps/
+// http://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
+?>

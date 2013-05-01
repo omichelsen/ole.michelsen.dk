@@ -1,0 +1,122 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+
+$_PageTitle = "EET Group A/S";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Portfolio: <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="ole michelsen, web developer, programming, work, projects, design, layout, asp, sql, navision, eet nordic, eet, eetnordic, it distributor, europe" />
+	<meta name="description" content="Presenting my work for EET creating a multinational webshop platform integrated with Navision, deployed to 16 countries in 11 languages to &gt;50000 users." />
+	<meta name="author" content="Ole Bjørn Michelsen" />
+
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/eet.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+	<link rel="image_src" href="http://cdn.ole.michelsen.dk/portfolio/eet/thumb-large.png" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio" itemscope itemtype="http://schema.org/CreativeWork">
+		<hgroup>
+			<h1>Portfolio</h1>
+			<h2 itemprop="name"><?php echo $_PageTitle ?></h2>
+		</hgroup>
+		
+		<p class="tags" itemprop="keywords">
+			<b itemprop="dateCreated">2006-Present</b> &middot; Project Management &middot; Webdesign &middot; Programming: C#, T-SQL, ASP.NET MVC, HTML5
+		</p>
+		
+<!--
+	EET Europarts, founded in 1986, is an IT distribution company having 25 sales offices in 21 countries across Europe and Africa. We carry more than 400.000 different items and operate and specialize in 3 specific business areas:
+-->
+
+		<p>I have been working for EET Nordic A/S for <?php echo ceil(date('Y')-2006) ?> years now as the lead web developer of their website platform, serving sales entities in 16 countries across Europe, as well as separate businesses and brands under the EET Nordic Group, such as <a href="sandberg.html">Sandberg</a>. EET is an IT distributor that specializes in spare parts and accessories, and maintains over 350.000 products with more than 35.000 buying customers across Europe.</p>
+
+		<p>A major project was to create a completely new website platform, highly integrated into EET's finance systems and able to be configured independently to serve all operating countries. The website is an e-commerce platform, focusing on shopping functionality and customer care - such as order status, returns management and customer service - and offers web services for direct integration with partners.</p>
+
+		<section id="website">
+			<h3>Website platform and backend <abbr title="Enterprise Resource Planning">ERP</abbr></h3>			
+
+			<div class="columns">
+				<div class="col">
+					<p>The website is based on ASP.NET, utilizing both <abbr title="Asynchronous JavaScript and XML">AJAX</abbr> and <abbr title="Language Integrated Query">LINQ</abbr>, and runs on a Microsoft SQL database. Custom functionality is added with <abbr title="SQL Common Language Runtime">SQL CLR</abbr>, used for example to create a custom translation module between Navision <abbr title="Client/Server Integrated Development Environment">C/SIDE</abbr> language filters and SQL.<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All major browsers are supported - even IE6-7 seen as many large businesses have still not upgraded.</p>
+
+
+					<h4><abbr title="Enterprise Resource Planning">ERP</abbr> synchronization</h4>
+					
+					<p><img src="http://cdn.ole.michelsen.dk/portfolio/eet/msdyn-nav.png" alt="Logo for Microsoft Dynamics NAV" class="floatright" width="100" height="30" />
+					All data is being drawn live from the <abbr title="Microsoft Dynamics NAV">Navision</abbr> ERP system and it's 400+ GB database of products, customers and order transactions. This is served by a custom built synchronization system, and every day we are pre-caching more than 136 million product prices worldwide, tailored for each customer based on local currency, VAT, freight charges, purchase agreements etc.</p>
+				</div>
+				<div class="col colspan c">
+					<img src="http://cdn.ole.michelsen.dk/portfolio/eet/screenflip.jpg" alt="Screenshots of eetnordic.com shown in a 3D fan" width="600" height="350" />
+				</div>
+			</div>
+		
+			<div class="columns">
+				<div class="col">
+					<h4>Scalability</h4>
+					
+					<p>When designing a multinational commerce system, you must account for extended "peak hours" across multiple time zones, and sudden increases in transactions, traffic etc.</p>
+					
+					<p>A scalable server farm and flexible load-balancing is important, but huge improvements can also be gained by examining page content and <a href="site-optimization.html">optimizing each request</a>. If you can shave even 10-30% kilobytes off each request, it will greatly reduce the need for server upgrades as your traffic increases.</p>
+
+					<figure>
+						<figcaption>Web traffic</figcaption>
+						<p>During my employment with EET, the number of unique visitors has increased by more than 400%!</p>
+						<p class="c"><img src="http://cdn.ole.michelsen.dk/portfolio/eet/visitors.png" alt="Graph of the increase in unique visitors from 2007-2010" height="165" width="290" /></p>
+					</figure>
+				</div>
+
+				<div class="col">
+					<h4>Statistics and tracking</h4>
+					
+					<p>It is no easy task to gather and parse (meaningful) statistics, especially when the <i>daily</i> logs can surpass 1.5 mill. lines, but it's vital for any business when evaluating success and tracking usage and performance.</p>
+					
+					<p>To match the logs with our internal business logic, I have built a custom log parsing program to track registered customers and in-page clicks, and we are using Google Analytics and AWStats as well for performance- and general monitoring.</p>
+					
+					
+					<h5>Campaign advertising</h5>
+					
+					<p>A flexible system enables marketing in each EET country, to add special "Ads" on product- and brand pages. The system has click tracking, so popularity and relevance can be measured, which also allows for data-driven design and adapting the focus of the sales campaigns to reflect user trends.</p>
+					
+					<p>As an added benefit, the custom log parsing gives us a range of security features, enabling tracking and blocking of malicious access to our sites. This has both helped os eliminate <abbr title="Denial of Serivce">DoS</abbr> attacks, as well as unauthorized crawling of our <abbr title="Intelligent Property">IP</abbr> data.</p>
+				</div>
+
+				<div class="col">
+					<h4>CRN Image analysis 2010</h4>
+					
+					<p>In a big image analysis by <abbr title="Computer Reseller News">CRN</abbr>, we ranked second among Danish IT distributors in the category "Electronic Communication/Website":</p>
+					<p class="c"><img src="http://cdn.ole.michelsen.dk/portfolio/eet/CRN-Image-2010.jpg" alt="Second place in the CRN Image analysis 2010 for IT distributors" height="345" width="270" /></p>
+				</div>
+			</div>
+		</section>
+
+		<section id="guide">
+			<h3>Product Guide</h3>
+			
+			<p>A special component of the eetnordic.com site is the Product Guide, which helps customers find spare parts or accessories for their existing IT equipment. If you have a laptop and is looking for a replacement battery or new peripherals like e.g. a FireWire PC Card, the Guide will list compatible solutions from a database counting over 60.000 known models.</p>
+			
+			<p>The Guide is also offered for partners and can be embedded directly in other websites through an iframe. It supports customization - like different color schemes - and integration with the shopping basket on the hosting website.</p>
+
+		</section>
+
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

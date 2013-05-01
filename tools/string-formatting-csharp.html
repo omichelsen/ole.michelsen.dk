@@ -1,0 +1,556 @@
+<?php 
+	include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+	$_PageTitle = "String Formatting in C#";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Tools: <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="string formatting, string, format, csharp, c#" />
+	<meta name="description" content="Quick reference for string formatting in C# and a tool for testing with different cultures." />
+	
+	<link rel="canonical" href="http://ole.michelsen.dk/tools/string-formatting-csharp.html" />
+	<link rel="index" href="http://ole.michelsen.dk/tools/" />
+	<link rel="image_src" href="http://cdn.ole.michelsen.dk/images/tools-regex-thompson.png" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="tools">
+		<h1>Tools</h1>
+	
+		<h2><?php echo $_PageTitle ?></h2>
+
+		<p>Quick reference for string formatting in C#, along with a tool to quickly test out formatting expressions with different cultures. You can click any line in the tables below to transfer the example values to the testing tool.</p>
+		
+		<section>
+			<form id="formStringFormat">
+			<div class="columns">
+				<div class="col">
+					<p>
+					<label for="format"><b>Format:</b></label><br />
+					<input autofocus="autofocus" class="text" id="format" name="format" style="width:100%" tabindex="1" type="text" required="required" />
+					</p>
+				</div>
+
+				<div class="col">
+					<p>
+					<label for="input"><b>Input:</b></label><br />
+					<input class="text" id="input" name="input" style="width:100%" tabindex="2" type="text" required="required" />
+					</p>
+				</div>
+
+				<div class="col">
+					<p>
+					<label for="input"><b>Output:</b></label><br />
+					<input class="text" id="output" name="output" style="width:100%" tabindex="5" type="text" readonly="readonly" />
+					</p>
+				</div>
+			</div>
+			
+			<div style="clear:both">
+				<p class="floatleft">
+					<b>Culture:</b><br />
+					<select id="culture" name="culture" tabindex="3">
+						<option value="js">Danish (da-DK)</option>
+						<option value="php">English UK (en-UK)</option>
+						<option value="php">English US (en-US)</option>
+					</select>
+					&nbsp;&nbsp;&nbsp;
+				</p>
+				
+				<p class="floatright" style="padding-top:1em">
+					<input class="button" id="doValidate" type="submit" value="Format" tabindex="4" />
+				</p>
+			</div>
+			
+			</form>
+		</section>
+		
+		<br />
+		
+		<h3 style="clear:both">Numbers</h3>
+
+		<p>Basic number formatting specifiers:</p>
+
+		<table class="datasheet" style="font-size:0.9em;">
+			<thead>
+				<tr>
+					<th>Specifier</th>
+					<th>Type</th>
+					<th>Format</th>
+					<th>Output (Passed Double 1.42)</th>
+					<th>Output (Passed Int -12400)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>c</td>
+					<td>Currency</td>
+					<td>{0:c}</td>
+					<td>$1.42</td>
+					<td>-$12,400</td>
+				</tr>
+				<tr>
+					<td>d</td>
+					<td>Decimal (Whole number)</td>
+					<td>{0:d}</td>
+					<td><strong>System.FormatException</strong></td>
+					<td>-12400</td>
+				</tr>
+				<tr>
+					<td>e</td>
+					<td>Scientific</td>
+					<td>{0:e}</td>
+					<td>1.420000e+000</td>
+					<td>-1.240000e+004</td>
+				</tr>
+				<tr>
+					<td>f</td>
+					<td>Fixed point</td>
+					<td>{0:f}</td>
+					<td>1.42</td>
+					<td>-12400.00</td>
+				</tr>
+				<tr>
+					<td>g</td>
+					<td>General</td>
+					<td>{0:g}</td>
+					<td>1.42</td>
+					<td>-12400</td>
+				</tr>
+				<tr>
+					<td>n</td>
+					<td>Number with commas for thousands</td>
+					<td>{0:n}</td>
+					<td>1.42</td>
+					<td>-12,400</td>
+				</tr>
+				<tr>
+					<td>r</td>
+					<td>Round trippable</td>
+					<td>{0:r}</td>
+					<td>1.42</td>
+					<td><strong>System.FormatException</strong></td>
+				</tr>
+				<tr>
+					<td>x</td>
+					<td>Hexadecimal</td>
+					<td>{0:x4}</td>
+					<td><strong>System.FormatException</strong></td>
+					<td>cf90</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h4>Custom number formatting</h4>
+
+		<table class="datasheet" style="font-size:0.9em;">
+			<thead>
+				<tr>
+					<th>Specifier</th>
+					<th>Type</th>
+					<th>Example</th>
+					<th>Output (Passed Double 1500.42)</th>
+					<th>Note</th>
+				</tr>
+			</thead>			
+			<tbody>
+				<tr>
+					<td>0</td>
+					<td>Zero placeholder</td>
+					<td>{0:00.0000}</td>
+					<td>1500.4200</td>
+					<td>Pads with zeroes.</td>
+				</tr>
+				<tr>
+					<td>#</td>
+					<td>Digit placeholder</td>
+					<td>{0:(#).##}</td>
+					<td>(1500).42</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>.</td>
+					<td>Decimal point</td>
+					<td>{0:0.0}</td>
+					<td>1500.4</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>,</td>
+					<td>Thousand separator</td>
+					<td>{0:0,0}</td>
+					<td>1,500</td>
+					<td>Must be between two zeroes.</td>
+				</tr>
+				<tr>
+					<td>,.</td>
+					<td>Number scaling</td>
+					<td>{0:0,.}</td>
+					<td>2</td>
+					<td>Comma adjacent to Period scales by 1000.</td>
+				</tr>
+				<tr>
+					<td>%</td>
+					<td>Percent</td>
+					<td>{0:0%}</td>
+					<td>150042%</td>
+					<td>Multiplies by 100, adds % sign.</td>
+				</tr>
+				<tr>
+					<td>e</td>
+					<td>Exponent placeholder</td>
+					<td>{0:00e+0}</td>
+					<td>15e+2</td>
+					<td>Many exponent formats available.</td>
+				</tr>
+				<tr>
+					<td>;</td>
+					<td>Group separator</td>
+					<td>see below</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p>The group separator is especially useful for formatting currency values
+	which require that negative values be enclosed in parentheses. This
+	currency formatting example at the bottom of this document makes it
+	obvious:</p>
+
+	<h3>Dates</h3>
+
+	<p>Note that date formatting is especially dependant on the system’s
+	regional settings; the example strings here are from my local locale.</p>
+
+	<div class="columns" style="font-size:0.9em;">
+		<div class="column-left">
+			<table class="datasheet">
+				<thead>
+					<tr>
+						<th>Specifier</th>
+						<th>Type</th>
+						<th>Example</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>d</td>
+						<td>Short date</td>
+						<td>10/12/2002</td>
+					</tr>
+					<tr>
+						<td>D</td>
+						<td>Long date</td>
+						<td>December 10, 2002</td>
+					</tr>
+					<tr>
+						<td>t</td>
+						<td>Short time</td>
+						<td>10:11 PM</td>
+					</tr>
+					<tr>
+						<td>T</td>
+						<td>Long time</td>
+						<td>10:11:29 PM</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Full date &amp; time</td>
+						<td>December 10, 2002 10:11 PM</td>
+					</tr>
+					<tr>
+						<td>F</td>
+						<td>Full date &amp; time (long)</td>
+						<td>December 10, 2002 10:11:29 PM</td>
+					</tr>
+					<tr>
+						<td>g</td>
+						<td>Default date &amp; time</td>
+						<td>10/12/2002 10:11 PM</td>
+					</tr>
+					<tr>
+						<td>G</td>
+						<td>Default date &amp; time (long)</td>
+						<td>10/12/2002 10:11:29 PM</td>
+					</tr>
+					<tr>
+						<td>M</td>
+						<td>Month day pattern</td>
+						<td>December 10</td>
+					</tr>
+					<tr>
+						<td>r</td>
+						<td>RFC1123 date string</td>
+						<td>Tue, 10 Dec 2002 22:11:29 GMT</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Sortable date string</td>
+						<td>2002-12-10T22:11:29</td>
+					</tr>
+					<tr>
+						<td>u</td>
+						<td>Universal sortable, local time</td>
+						<td>2002-12-10 22:13:50Z</td>
+					</tr>
+					<tr>
+						<td>U</td>
+						<td>Universal sortable, GMT</td>
+						<td>December 11, 2002 3:13:50 AM</td>
+					</tr>
+					<tr>
+						<td>Y</td>
+						<td>Year month pattern</td>
+						<td>December, 2002</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>The ‘U’ specifier seems broken; that string certainly isn’t
+			sortable.</p>
+		</div>
+
+		<div class="column-right">
+			<table class="datasheet">
+				<thead>
+					<tr>
+						<th>Specifier</th>
+						<th>Type</th>
+						<th>Example</th>
+						<th>Example Output</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>dd</td>
+						<td>Day</td>
+						<td>{0:dd}</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>ddd</td>
+						<td>Day name</td>
+						<td>{0:ddd}</td>
+						<td>Tue</td>
+					</tr>
+					<tr>
+						<td>dddd</td>
+						<td>Full day name</td>
+						<td>{0:dddd}</td>
+						<td>Tuesday</td>
+					</tr>
+					<tr>
+						<td>f, ff, …</td>
+						<td>Second fractions</td>
+						<td>{0:fff}</td>
+						<td>932</td>
+					</tr>
+					<tr>
+						<td>gg, …</td>
+						<td>Era</td>
+						<td>{0:gg}</td>
+						<td>A.D.</td>
+					</tr>
+					<tr>
+						<td>hh</td>
+						<td>2 digit hour</td>
+						<td>{0:hh}</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>HH</td>
+						<td>2 digit hour, 24hr format</td>
+						<td>{0:HH}</td>
+						<td>22</td>
+					</tr>
+					<tr>
+						<td>mm</td>
+						<td>Minute 00-59</td>
+						<td>{0:mm}</td>
+						<td>38</td>
+					</tr>
+					<tr>
+						<td>MM</td>
+						<td>Month 01-12</td>
+						<td>{0:MM}</td>
+						<td>12</td>
+					</tr>
+					<tr>
+						<td>MMM</td>
+						<td>Month abbreviation</td>
+						<td>{0:MMM}</td>
+						<td>Dec</td>
+					</tr>
+					<tr>
+						<td>MMMM</td>
+						<td>Full month name</td>
+						<td>{0:MMMM}</td>
+						<td>December</td>
+					</tr>
+					<tr>
+						<td>ss</td>
+						<td>Seconds 00-59</td>
+						<td>{0:ss}</td>
+						<td>46</td>
+					</tr>
+					<tr>
+						<td>tt</td>
+						<td>AM or PM</td>
+						<td>{0:tt}</td>
+						<td>PM</td>
+					</tr>
+					<tr>
+						<td>yy</td>
+						<td>Year, 2 digits</td>
+						<td>{0:yy}</td>
+						<td>02</td>
+					</tr>
+					<tr>
+						<td>yyyy</td>
+						<td>Year</td>
+						<td>{0:yyyy}</td>
+						<td>2002</td>
+					</tr>
+					<tr>
+						<td>zz</td>
+						<td>Timezone offset, 2 digits</td>
+						<td>{0:zz}</td>
+						<td>-05</td>
+					</tr>
+					<tr>
+						<td>zzz</td>
+						<td>Full timezone offset</td>
+						<td>{0:zzz}</td>
+						<td>-05:00</td>
+					</tr>
+					<tr>
+						<td>:</td>
+						<td>Separator</td>
+						<td>{0:hh:mm:ss}</td>
+						<td>10:43:20</td>
+					</tr>
+					<tr>
+						<td>/</td>
+						<td>Separator</td>
+						<td>{0:dd/MM/yyyy}</td>
+						<td>10/12/2002</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div class="columns" style="font-size:0.9em;">
+		<div class="column-left">
+			<h3>Enumerations</h3>
+			<table class="datasheet">
+				<thead>
+					<tr>
+						<th>Specifier</th>
+						<th>Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>g</td>
+						<td>Default (Flag names if available, otherwise decimal)</td>
+					</tr>
+					<tr>
+						<td>f</td>
+						<td>Flags always</td>
+					</tr>
+					<tr>
+						<td>d</td>
+						<td>Integer always</td>
+					</tr>
+					<tr>
+						<td>x</td>
+						<td>Eight digit hex.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="column-right">
+			<h3>Boolean</h3>
+			<table class="datasheet">
+				<thead>
+					<tr>
+						<th>Format</th>
+						<th>Example</th>				
+						<th>Output</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{0:yes;;no}</td>
+						<td>True</td>
+						<td>yes</td>
+					</tr>
+					<tr>
+						<td>{0:yes;;no}</td>
+						<td>False</td>
+						<td>no</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	
+	<h3>Some Useful Examples</h3>
+
+	<p>String.Format(“{0:$#,##0.00;($#,##0.00);Zero}”, value);</p>
+
+	<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+		<p>This will output “$1,240.00″ if passed 1243.50. It will output the
+		same format but in parentheses if the number is negative, and will
+		output the string “Zero” if the number is zero.</p>
+	</blockquote>
+
+	<p>String.Format(“{0:(###) ###-####}”, 8005551212);</p>
+
+	<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+		<p>This will output “(800) 555-1212″.</p>
+	</blockquote>
+		
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/scripts/String.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#formStringFormat').submit(function () {
+			var format = $('#format').val(); 
+			var input = $('#input').val();
+			
+			try {
+				var output = String.format(format, input);
+			} catch (exception) {
+				alert(exception);
+			}
+			
+			$('#output').val(output);
+			
+			return false;
+		});
+	});
+</script>
+
+</body>
+</html>

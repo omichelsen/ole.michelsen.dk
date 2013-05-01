@@ -1,0 +1,67 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+
+$_PageTitle = "Ernitec";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Portfolio: <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="ernitec, asp, mvc, programming, 2011" />
+	<meta name="description" content="Website for surveillance company Ernitec using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information." />
+	<meta name="author" content="Ole Bjørn Michelsen" />
+
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/ernitec.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+	<link rel="image_src" href="http://cdn.ole.michelsen.dk/portfolio/ernitec/thumb.png" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio" itemscope itemtype="http://schema.org/CreativeWork">
+		<hgroup>
+			<h1>Portfolio</h1>
+			<h2 itemprop="name"><?php echo $_PageTitle ?></h2>
+		</hgroup>
+		
+		<p class="tags" itemprop="keywords">
+			<b itemprop="dateCreated">2011</b> &middot; Programming: ASP.NET MVC, HTML5, jQuery
+		</p>
+
+		<div class="column-left">
+		<ul>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/ernitec/front.jpg" alt="Front page showing a random product and the latest company news" class="frame" width="450" height="298" /></li>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/ernitec/product.jpg" alt="Product page showing details and part numbers as well as any available spec sheets, images and simliar products" class="frame" width="450" height="503" /></li>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/ernitec/files.jpg" alt="Files download site containing all software and manuals for the Ernitec products" class="frame" width="450" height="342" /></li>
+		</ul>
+		</div>
+		
+		<div class="column-right">
+			<p><a href="http://www.ernitec.com" target="_blank">Ernitec</a> is a surveillance company selling cameras and offering consulting on installation.</p>
+			
+			<p>Ernitec had a legacy company site based on an obsolete version of SiteCore. As the pages did no longer work in modern browsers, and the maintenance agreement had expired, we decided to redo the whole site in ASP.NET MVC and HTML5.</p>
+			
+			<p>The original design was preserved to align with the established brand identity. The site structure was improved to allow for easier navigation, and an increased amount of products following a company expansion.</p>
+			
+			<p>An additional support site was created to allow for download of the many manuals and special software pertaining to the products. This was also created using ASP.NET MVC, and is directory/file based to allow for easy updates.</p>
+			
+			<p><a href="/portfolio/">&larr; Back to Portfolio</a></p>
+		</div>
+
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

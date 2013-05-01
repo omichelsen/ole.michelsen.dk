@@ -1,0 +1,30 @@
+<?php 
+$uri = $_SERVER["REQUEST_URI"];
+$uriArr = explode('/', trim($uri, '/'));
+if ($uriArr[0] != '')
+{
+	for ($i = 0; $i < count($uriArr) - 1; $i++) 
+	{
+		$value = ucwords($uriArr[$i]);
+		
+		$path = '/' . implode('/', array_slice($uriArr, 0, $i + 1, true)) . '/';
+		$path = preg_replace('/\/projects\/$/', '/#projects', $path);
+		
+		$breadcrumb .= " &rsaquo; <span itemscope itemtype=\"http://data-vocabulary.org/Breadcrumb\"><a href=\"$path\" itemprop=\"url\"><span itemprop=\"title\">$value</span></a></span>";
+	}					
+	$breadcrumb .= " &rsaquo; <span class=\"current\">$_PageTitle</span>\n";
+}
+?>
+<footer id="footer">
+	<section>
+		<p id="colophon" class="floatright">
+			Created by <a href="/profile.html" rel="author">Ole Michelsen</a> updated <time datetime="<? echo date("Y-m-d", getlastmod()) ?>"><? echo date("F j, Y", getlastmod()) ?></time>
+		</p>
+		<p id="sitemappath">
+			<span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">Home</span></a></span>
+			<?= $breadcrumb ?>
+		</p>
+	</section>
+</footer>
+
+</div>

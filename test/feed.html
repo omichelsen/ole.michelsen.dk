@@ -1,0 +1,84 @@
+<?php $_PageTitle = "Feed Test"; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=1024, user-scalable=yes" />
+
+	<title>Ole Michelsen | <?php echo $_PageTitle ?></title>
+	
+	<meta name="keywords" content="ole michelsen, ole bjørn michelsen, curriculum vitae, web developer, programming" />
+	<meta name="description" content="Test for RSS feeds from various sources." />
+
+<?php include(getenv("DOCUMENT_ROOT")."/ole/templates/header.html"); ?>
+</head>
+
+<body>
+
+<?php include(getenv("DOCUMENT_ROOT")."/ole/templates/topnav.html"); ?>
+
+<div id="content">	
+	<section>
+		<h2><?php echo $_PageTitle ?></h2>
+		<p id="feedcontent"></p>
+	</section>
+</div>
+
+<?php include(getenv("DOCUMENT_ROOT")."/ole/templates/footer.html"); ?>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript">
+/* FeedReader
+ *  - Uses Google Feeds API to consume RSS feeds among others
+ */
+(function($){
+	$.extend({
+		
+		jFeedReader : function(url, fnk, num, key){
+		
+			// Make sure url to get is defined
+			if(url == null) return false;
+
+			// Build Google Feed API URL
+			var gurl = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q="+url;
+			if(num != null) gurl += "&num="+num;
+			if(key != null) gurl += "&key="+key;
+
+			// AJAX request the API
+			$.getJSON(gurl, function(data){
+			if(typeof fnk == 'function')
+				fnk.call(this, data.responseData.feed);
+			else
+				return false;
+			});
+		}
+
+	});
+})(jQuery);
+
+$(document).ready(function() {
+
+	$.jFeedReader('http://ole.michelsen.dk/feed.xml',
+		function(feeds){
+			// Check for errors
+			if(!feeds){
+			  // there was an error
+			  return false;
+			}
+			var feedHtml = '';
+			// do whatever you want with feeds here
+			for(var i=0; i<feeds.entries.length; i++){
+			  var entry = feeds.entries[i];
+			  // Entry title
+			  feedHtml += entry.title + "<br />";
+			}
+			$("#feedcontent").html(feedHtml);
+		}, 
+		10);
+
+});
+</script>
+
+</body>
+</html>

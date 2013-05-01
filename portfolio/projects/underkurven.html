@@ -1,0 +1,48 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+
+$_PageTitle = "Under Kurven";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=1024, user-scalable=yes" />
+
+	<title>Ole Michelsen | Portfolio: <?= $_PageTitle ?></title>
+	
+	<meta name="keywords" content="under kurven, band, music, sing, design, photoshop" />
+	<meta name="description" content="Under Kurven splash art design for an amateur fun-rock band, made mostly for the fun of it as branding for the band." />
+
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/projects/underkurven.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio">
+
+		<h1>Portfolio</h1>
+	
+		<h2><?= $_PageTitle ?> (2004)</h2>
+
+		<p>An underground fun-rock band band, which some of my friends have started. This splash art was mostly made for fun, as a sort of branding for their band.</p>
+
+		<ul class="screenshots">
+			<li><h4>Splash</h4><img src="http://cdn.ole.michelsen.dk/portfolio/projects/underkurven/1.png" alt="Splash composite of the band members" class="frame" width="400" height="300" /></li>
+			<li><h4>Source material</h4><img src="http://cdn.ole.michelsen.dk/portfolio/projects/underkurven/2.png" alt="Source material, images used for composite" class="frame" width="400" height="300" /></li>
+		</ul>
+
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

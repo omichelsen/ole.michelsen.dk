@@ -1,0 +1,57 @@
+<?php 
+include(getenv("DOCUMENT_ROOT").'/includes/functions.php');
+
+$_PageTitle = "MaJazz";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+
+	<title>Ole Michelsen | Portfolio: <?= $_PageTitle ?></title>
+
+	<meta name="keywords" content="ole michelsen, ole bjørn michelsen, majazz, choir, sing, design, php" />
+	<meta name="description" content="Webdesign for the amateur choir MaJazz made in PHP featuring editing of updates and calendar events, and a restricted section for members." />
+
+	<link rel="canonical" href="http://ole.michelsen.dk/portfolio/projects/majazz.html" />
+	<link rel="index" href="http://ole.michelsen.dk/portfolio/" />
+	<link rel="image_src" href="http://cdn.ole.michelsen.dk/portfolio/projects/majazz/thumb.png" />
+
+<?php include(WWWROOT."/templates/header.html"); ?>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<?php include(WWWROOT."/templates/topnav.html"); ?>
+
+<div id="content">
+	<section id="portfolio" itemscope itemtype="http://schema.org/CreativeWork">
+		<hgroup>
+			<h1>Portfolio</h1>	
+			<h2 itemprop="name"><?php echo $_PageTitle ?></h2>
+		</hgroup>
+		
+		<p class="tags" itemprop="keywords">
+			<b itemprop="dateCreated">2004</b> &middot; Design &middot; Programming
+		</p>
+
+		<p>A page for the amateur choir, <a href="http://www.majazz.dk" hreflang="da" rel="external">MaJazz</a>. Site was made in PHP and featured a back end text editing interface for updates and calendar events, and a login system to an internal section for members.</p>
+
+		<ul class="screenshots">
+			<li><img src="majazz/1.png" alt="Front" class="frame" width="400" height="334" /></li>
+			<li><img src="majazz/2.png" alt="Calendar" class="frame" width="400" height="334" /></li>
+			<li><img src="majazz/3.png" alt="Pictures" class="frame" width="400" height="334" /></li>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/projects/majazz/4.png" alt="Sound clips" class="frame" width="400" height="334" /></li>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/projects/majazz/5.png" alt="Contact" class="frame" width="400" height="334" /></li>
+			<li><img src="http://cdn.ole.michelsen.dk/portfolio/projects/majazz/6.png" alt="Links" class="frame" width="400" height="334" /></li>
+		</ul>
+
+	</section>
+</div>
+
+<?php include(WWWROOT."/templates/footer.html"); ?>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:yt="http://gdata.youtube.com/schemas/2007" xmlns:atom="http://www.w3.org/2005/Atom">
+   <channel>
+      <title>twitter</title>
+      <description>Pipes Output</description>
+      <link>http://pipes.yahoo.com/pipes/pipe.info?_id=055f5cc6234733e445ecd51c34bdf577</link>
+      <atom:link rel="next" href="http://pipes.yahoo.com/pipes/pipe.run?_id=055f5cc6234733e445ecd51c34bdf577&amp;_render=rss&amp;page=2"/>
+      <pubDate>Wed, 17 Oct 2012 07:53:07 +0000</pubDate>
+      <generator>http://pipes.yahoo.com/pipes/</generator>
+      <item>
+         <title>omichelsen: LOL, fun programming terms: &quot;Pokémon Exception Handling: For when you just Gotta Catch 'Em All&quot; http://t.co/u4TAh2Wl</title>
+         <link>http://twitter.com/omichelsen/statuses/257856786063843328</link>
+         <description>omichelsen: LOL, fun programming terms: &quot;Pokémon Exception Handling: For when you just Gotta Catch 'Em All&quot; http://t.co/u4TAh2Wl</description>
+         <guid isPermaLink="false">http://twitter.com/omichelsen/statuses/257856786063843328</guid>
+         <pubDate>Mon, 15 Oct 2012 14:53:43 +0000</pubDate>
+      </item>
+      <item>
+         <title>omichelsen: RT @DamianEdwards: jQuery Mobile 1.2.0 on #nuget http://t.co/VN5szGvW</title>
+         <link>http://twitter.com/omichelsen/statuses/255929351705600000</link>
+         <description>omichelsen: RT @DamianEdwards: jQuery Mobile 1.2.0 on #nuget http://t.co/VN5szGvW</description>
+         <guid isPermaLink="false">http://twitter.com/omichelsen/statuses/255929351705600000</guid>
+         <pubDate>Wed, 10 Oct 2012 07:14:47 +0000</pubDate>
+      </item>
+      <item>
+         <title>omichelsen: Seems newly released #jQueryMobile 1.2.0 supports #jQuery 1.8.2 - now just waiting for #NuGet and MS CDN!</title>
+         <link>http://twitter.com/omichelsen/statuses/255223196188565504</link>
+         <description>omichelsen: Seems newly released #jQueryMobile 1.2.0 supports #jQuery 1.8.2 - now just waiting for #NuGet and MS CDN!</description>
+         <guid isPermaLink="false">http://twitter.com/omichelsen/statuses/255223196188565504</guid>
+         <pubDate>Mon, 08 Oct 2012 08:28:46 +0000</pubDate>
+      </item>
+      <item>
+         <title>omichelsen: LOL brilliant parody on #iPhone5 http://t.co/ozA8DnGQ</title>
+         <link>http://twitter.com/omichelsen/statuses/253901115320590337</link>
+         <description>omichelsen: LOL brilliant parody on #iPhone5 http://t.co/ozA8DnGQ</description>
+         <guid isPermaLink="false">http://twitter.com/omichelsen/statuses/253901115320590337</guid>
+         <pubDate>Thu, 04 Oct 2012 16:55:17 +0000</pubDate>
+      </item>
+      <item>
+         <title>omichelsen: RT @vegancto: I know the Apple Maps database is out of date, but this is ridiculous http://t.co/42vaHLVb</title>
+         <link>http://twitter.com/omichelsen/statuses/249486452969336832</link>
+         <description>omichelsen: RT @vegancto: I know the Apple Maps database is out of date, but this is ridiculous http://t.co/42vaHLVb</description>
+         <guid isPermaLink="false">http://twitter.com/omichelsen/statuses/249486452969336832</guid>
+         <pubDate>Sat, 22 Sep 2012 12:33:00 +0000</pubDate>
+      </item>
+   </channel>
+</rss>
+<!-- fe1.pipes.ch1.yahoo.com uncompressed/chunked Wed Oct 17 07:53:07 UTC 2012 -->

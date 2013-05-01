@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>http://ole.michelsen.dk/test/</loc>
+  <lastmod>2011-01-18T19:55:22+00:00</lastmod>
+  <priority>0.01</priority>
+</url>
+<url>
+  <loc>http://ole.michelsen.dk/test/invalid.html</loc>
+  <lastmod>2010-12-02T00:25:30+00:00</lastmod>
+  <priority>0.01</priority>
+</url>
+<url>
+  <loc>http://ole.michelsen.dk/test/404.html</loc>
+  <lastmod>2010-01-12T23:33:16+00:00</lastmod>
+  <priority>0.01</priority>
+</url>
+<url>
+  <loc>malformed-uri</loc>
+  <lastmod>2010-01-12T23:33:16+00:00</lastmod>
+  <priority>0.01</priority>
+</url>
+</urlset>
