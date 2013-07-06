@@ -50,10 +50,10 @@ header("Content-Type: text/plain");
 //				'../feeds/googleplus.rss'	);
 
 // Download Twitter feed
-GetFeedTimer(	'Twitter',
-				//'http://pipes.yahoo.com/pipes/pipe.run?_id=055f5cc6234733e445ecd51c34bdf577&_render=rss',
-				'http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=omichelsen&count=5',
-				'../feeds/twitter.rss'	);
+//GetFeedTimer(	'Twitter',
+//				//'http://pipes.yahoo.com/pipes/pipe.run?_id=055f5cc6234733e445ecd51c34bdf577&_render=rss',
+//				'http://www.twitter-rss.com/user_timeline.php?screen_name=omichelsen',
+//				'../feeds/twitter.rss'	);
 
 // Download Flickr feed
 GetFeedTimer(	'Flickr',
