@@ -18,6 +18,13 @@
 		<ttl>120</ttl>
 
 		<item>
+			<title>Validator improved</title>
+			<description>Improved the W3C &lt;a href="http://ole.michelsen.dk/tools/validator.html"&gt;Batch Validator tool&lt;/a&gt; to work better and faster.</description>
+			<pubDate>Mon, 7 Oct 2013 06:44:46 +0200</pubDate>
+			<link>http://ole.michelsen.dk/tools/validator.html</link>
+			<guid>http://ole.michelsen.dk/tools/validator.html#20131007</guid>
+		</item>
+		<item>
 			<title>Regex Crossword</title>
 			<description>Created a new puzzle game called &lt;a href="http://ole.michelsen.dk/portfolio/regexcrossword.html"&gt;Regex Crossword&lt;/a&gt;</description>
 			<pubDate>Sun, 24 Mar 2013 21:14:55 +0200</pubDate>

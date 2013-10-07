@@ -9,7 +9,7 @@ html, body, ul, menu, h1, h2, h3, h4, h5, h6, p, a, img, figure
     list-style: none;
 }
 /* HTML5 reset */
-article, aside, figure, footer, header, hgroup, menu, nav, section, figcaption 
+article, aside, figure, footer, header, menu, nav, section, figcaption 
 { 
 	display: block; 
 }
@@ -64,7 +64,7 @@ p  { margin: 0.5em 0 1em 0; line-height: 130% }
 	z-index: 1;
 }
 
-header>hgroup, header>nav>ul, #content, footer section
+header>.title, header>nav>ul, #content, footer section
 {
 	clear: both;
 	margin: 0 auto;
@@ -79,7 +79,7 @@ header
     -pie-background: linear-gradient(#FFF 40%, #EEE 100%);
     behavior: url(/scripts/PIE-1.0.0.htc);
 }
-header hgroup {	padding: 10px 0; }
+header .title {	padding: 10px 0; }
 header h1 { margin: 0; font: normal 35pt 'Century Gothic', Optima, Verdana; }
 header h2 { margin: 0; color: #666; font: normal 12pt Helvetica; }
 
