@@ -55,3 +55,9 @@ RedirectPermanent /portfolio/projects/hnp.html /portfolio/hnp.html
 RedirectPermanent /tools/idevice.html /mobile/
 RedirectPermanent /photos/map.html /photos/travel-map.html
 RedirectPermanent /portfolio/html5-animation.html /demos/html5-animation.html
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	## Enable auto_version() of static files
+	RewriteRule ^(.*)\.[\d]+\.(css|js)$ $1.$2 [L] # Strip out the version number
+</IfModule>

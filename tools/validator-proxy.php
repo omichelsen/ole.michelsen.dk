@@ -41,8 +41,8 @@ function http_parse_headers( $header )
     }
     return $retVal;
 }
-$uri = $_GET['uri'];
 
+$uri = $_GET['uri'];
 if($uri) 
 {
 	// Create URI for W3C validation service

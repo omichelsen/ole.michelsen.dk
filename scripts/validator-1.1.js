@@ -12,15 +12,11 @@ $(document).ready(function() {
 		// Insert sitemap status message (overwrite previous results)
 		$("#results").html('<tr><td class="c" colspan="3">Processing sitemap...<br /><img src="http://cdn.ole.michelsen.dk/images/ajax-loader.gif" height="11" width="16" /></td></tr>');
 		
-		$.getJSON(
-			  "validator-sitemap.php"
-			, { "uri": $("#sitemapuri").val() }
-			, function(data) {
-
+		$.getJSON("validator-sitemap.php", {"uri":$("#sitemapuri").val()}, function(data) {
 				if (data.length > 0) {
-
 					var delay = 2000;
 					var out = '';
+					var requestLimit = 1000;
 
 					$.each(data, function(index,value) {
 
@@ -28,10 +24,10 @@ $(document).ready(function() {
 							+  '<td class="r">' + (index+1) + ':</td>'
 							+  '<td>' + value + '</td>'
 							+  '<td class="c" id="loading' + index + '">'
-							+	(index < 30 ? '<img src="http://cdn.ole.michelsen.dk/images/ajax-loader.gif" height="11" width="16" />' : 'Deferred')
+							+	(index < requestLimit ? '<img src="http://cdn.ole.michelsen.dk/images/ajax-loader.gif" height="11" width="16" />' : 'Deferred')
 							+  '</td></tr>';
 
-						if (index < 30) {
+						if (index < requestLimit) {
 							// Request the validation service for each uri with specified delay
 							setTimeout("validate(" + index + ", '" + value + "')", delay * index);
 
