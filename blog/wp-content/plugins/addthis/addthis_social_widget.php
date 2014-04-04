@@ -23,7 +23,7 @@
 * Plugin Name: AddThis Social Bookmarking Widget
 * Plugin URI: http://www.addthis.com
 * Description: Help your visitor promote your site! The AddThis Social Bookmarking Widget allows any visitor to bookmark your site easily with many popular services. Sign up for an AddThis.com account to see how your visitors are sharing your content--which services they're using for sharing, which content is shared the most, and more. It's all free--even the pretty charts and graphs.
-* Version: 3.0
+* Version: 3.5.9
 *
 * Author: The AddThis Team
 * Author URI: http://www.addthis.com/blog
@@ -46,12 +46,13 @@ function addthis_early(){
 
 
 define( 'addthis_style_default' , 'fb_tw_p1_sc');
-define( 'ADDTHIS_PLUGIN_VERSION' , '3.0');
-define( 'ADDTHIS_PRODUCT_VERSION' , 'wpp-3.0');
+define( 'ADDTHIS_PLUGIN_VERSION' , '3.5.8');
+define( 'ADDTHIS_PRODUCT_VERSION' , 'wpp-3.5.9');
 define( 'ADDTHIS_ATVERSION', '300');
 define( 'ADDTHIS_ATVERSION_MANUAL_UPDATE', -1);
 define( 'ADDTHIS_ATVERSION_AUTO_UPDATE', 0);
 define( 'ADDTHIS_ATVERSION_REVERTED', 1);
+define( 'ENABLE_ADDITIONAL_PLACEMENT_OPTION', 0);
 
 $addthis_settings = array();
 $addthis_settings['isdropdown'] = 'true';
@@ -62,6 +63,7 @@ $addthis_settings['username'] = '';
 $addthis_settings['fallback_username'] = '';
 $addthis_settings['style'] = 'share';
 $addthis_settings['atversion'] = ADDTHIS_ATVERSION;
+$addthis_settings['placement'] = ENABLE_ADDITIONAL_PLACEMENT_OPTION;
 
 $addthis_languages = array(''=>'Automatic','af'=>'Afrikaaner', 'ar'=>'Arabic', 'zh'=>'Chinese', 'cs'=>'Czech', 'da'=>'Danish', 'nl'=>'Dutch', 'en'=>'English', 'fa'=>'Farsi', 'fi'=>'Finnish', 'fr'=>'French', 'ga'=>'Gaelic', 'de'=>'German', 'el'=>'Greek', 'he'=>'Hebrew', 'hi'=>'Hindi', 'it'=>'Italian', 'ja'=>'Japanese', 'ko'=>'Korean', 'lv'=>'Latvian', 'lt'=>'Lithuanian', 'no'=>'Norwegian', 'pl'=>'Polish', 'pt'=>'Portugese', 'ro'=>'Romanian', 'ru'=>'Russian', 'sk'=>'Slovakian', 'sl'=>'Slovenian', 'es'=>'Spanish', 'sv'=>'Swedish', 'th'=>'Thai', 'ur'=>'Urdu', 'cy'=>'Welsh', 'vi'=>'Vietnamese');
 
@@ -75,28 +77,29 @@ $addthis_styles = array(
                       'bookmark-small' => array('img'=>'sm-bookmark-en.gif', 'w'=>83, 'h'=>16),
                       'plus' => array('img'=>'sm-plus.gif', 'w'=>16, 'h'=>16)
                     );
+
 $addthis_options = get_option('addthis_settings');
-$atversion = array_key_exists('atversion_reverted', $addthis_options) && $addthis_options['atversion_reverted'] == 1 ? $addthis_options['atversion'] : ADDTHIS_ATVERSION;
+$atversion = is_array($addthis_options) && array_key_exists('atversion_reverted', $addthis_options) && $addthis_options['atversion_reverted'] == 1 ? $addthis_options['atversion'] : ADDTHIS_ATVERSION;
 
 $addthis_new_styles = array(
 
-    'fb_tw_p1_sc' => array( 'src' => '<div class="addthis_toolbox addthis_default_style " %s  ><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_button_tweet"></a><a class="addthis_button_google_plusone" g:plusone:size="medium"></a><a class="addthis_counter addthis_pill_style"></a></div>' , 'img' => 'horizontal_share_rect.png' , 'name' => 'Like, Tweet, +1, Share', 'above' => '', 'below' => ''
+    'fb_tw_p1_sc' => array( 'src' => '<div class="addthis_toolbox addthis_default_style " %1$s  ><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_button_tweet"></a><a class="addthis_button_pinterest_pinit"></a><a class="addthis_counter addthis_pill_style"></a></div>' , 'img' => 'horizontal_share_rect.png' , 'name' => 'Like, Tweet, +1, Share', 'above' => '', 'below' => ''
     ), // facebook tweet plus 1 share counter
-    'large_toolbox' => array( 'src' =>  '<div class="addthis_toolbox addthis_default_style addthis_32x32_style" %s ><a class="addthis_button_preferred_1"></a><a class="addthis_button_preferred_2"></a><a class="addthis_button_preferred_3"></a><a class="addthis_button_preferred_4"></a><a class="addthis_button_compact"></a></div>', 'img' => 'toolbox-large.png', 'name' => 'Large Toolbox', 'above' => 'hidden ', 'below' => 'hidden'
+    'large_toolbox' => array( 'src' =>  '<div class="addthis_toolbox addthis_default_style addthis_32x32_style" %1$s ><a class="addthis_button_facebook"></a><a class="addthis_button_twitter"></a><a class="addthis_button_email"></a><a class="addthis_button_pinterest_share"></a><a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a></div>', 'img' => 'toolbox-large.png', 'name' => 'Large Toolbox', 'above' => 'hidden ', 'below' => 'hidden'
     ), // 32x32
-    'small_toolbox' => array( 'src' =>  '<div class="addthis_toolbox addthis_default_style addthis_" %s ><a class="addthis_button_preferred_1"></a><a class="addthis_button_preferred_2"></a><a class="addthis_button_preferred_3"></a><a class="addthis_button_preferred_4"></a><a class="addthis_button_compact"></a></div>', 'img' => 'toolbox-small.png', 'name' => 'Small Toolbox', 'above' => 'hidden ', 'below' => '' 
+    'small_toolbox' => array( 'src' =>  '<div class="addthis_toolbox addthis_default_style addthis_" %1$s ><a class="addthis_button_facebook"></a><a class="addthis_button_twitter"></a><a class="addthis_button_email"></a><a class="addthis_button_pinterest_share"></a><a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a></div>', 'img' => 'toolbox-small.png', 'name' => 'Small Toolbox', 'above' => 'hidden ', 'below' => '' 
     ), // 32x32
-    'plus_one_share_counter' => array( 'src' => '<div class="addthis_toolbox addthis_default_style" %s ><a class="addthis_button_google_plusone" g:plusone:size="medium" ></a><a class="addthis_counter addthis_pill_style"></a></div>', 'img' => 'plusone-share.gif', 'name' => 'Plus One and Share Counter', 'above'=> 'hidden', 'below'=>'hidden' , 'defaultHide' => true 
+    'plus_one_share_counter' => array( 'src' => '<div class="addthis_toolbox addthis_default_style" %1$s ><a class="addthis_button_google_plusone" g:plusone:size="medium" ></a><a class="addthis_counter addthis_pill_style"></a></div>', 'img' => 'plusone-share.gif', 'name' => 'Plus One and Share Counter', 'above'=> 'hidden', 'below'=>'hidden' , 'defaultHide' => true 
     ), // +1
-    'small_toolbox_with_share' => array( 'src' =>  '<div class="addthis_toolbox addthis_default_style " %s ><a href="//addthis.com/bookmark.php?v='.$atversion.'&amp;username=xa-4d2b47597ad291fb" class="addthis_button_compact">Share</a><span class="addthis_separator">|</span><a class="addthis_button_preferred_1"></a><a class="addthis_button_preferred_2"></a><a class="addthis_button_preferred_3"></a><a class="addthis_button_preferred_4"></a></div>', 'img' => 'small-toolbox.jpg', 'name' => 'Small Toolbox with Share first', 'above' => '', 'below' => 'hidden' , 'defaultHide' => true
+    'small_toolbox_with_share' => array( 'src' =>  '<div class="addthis_toolbox addthis_default_style " %1$s ><a href="//addthis.com/bookmark.php?v='.$atversion.'&amp;username=xa-4d2b47597ad291fb" class="addthis_button_compact">Share</a><span class="addthis_separator">|</span><a class="addthis_button_preferred_1"></a><a class="addthis_button_preferred_2"></a><a class="addthis_button_preferred_3"></a><a class="addthis_button_preferred_4"></a></div>', 'img' => 'small-toolbox.jpg', 'name' => 'Small Toolbox with Share first', 'above' => '', 'below' => 'hidden' , 'defaultHide' => true
     ), // Plus sign share | four buttons
-    'fb_tw_sc' => array( 'src' => '<div class="addthis_toolbox addthis_default_style " %s  ><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_button_tweet"></a><a class="addthis_counter addthis_pill_style"></a></div>' , 'img' => 'fb-tw-sc.jpg' , 'name' => 'Like, Tweet, Counter', 'above' => 'hidden', 'below' => 'hidden', 'defaultHide' => true
+    'fb_tw_sc' => array( 'src' => '<div class="addthis_toolbox addthis_default_style " %1$s  ><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_button_tweet"></a><a class="addthis_counter addthis_pill_style"></a></div>' , 'img' => 'fb-tw-sc.jpg' , 'name' => 'Like, Tweet, Counter', 'above' => 'hidden', 'below' => 'hidden', 'defaultHide' => true
     ), // facebook tweet share counter
-    'simple_button' => array('src' => '<div class="addthis_toolbox addthis_default_style " %s><a href="//addthis.com/bookmark.php?v='.$atversion.'&amp;username=xa-4d2b47f81ddfbdce" class="addthis_button_compact">Share</a></div>', 'img' => 'share.jpg', 'name' => 'Share Button', 'above' => 'hidden ', 'below' => 'hidden', 'defaultHide' => true
+    'simple_button' => array('src' => '<div class="addthis_toolbox addthis_default_style " %1$s><a href="//addthis.com/bookmark.php?v='.$atversion.'&amp;username=xa-4d2b47f81ddfbdce" class="addthis_button_compact">Share</a></div>', 'img' => 'share.jpg', 'name' => 'Share Button', 'above' => 'hidden ', 'below' => 'hidden', 'defaultHide' => true
     ), // Plus sign share
-    'button' => array( 'src' => '<div><a class="addthis_button" href="//addthis.com/bookmark.php?v='.$atversion.'" %s><img src="//cache.addthis.com/cachefly/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a></div>', 'img' => 'horizontal_share.png', 'name' => 'Classic Share Button', 'above' => 'hidden ', 'below' => 'hidden'
+    'button' => array( 'src' => '<div><a class="addthis_button" href="//addthis.com/bookmark.php?v='.$atversion.'" %1$s><img src="//cache.addthis.com/cachefly/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a></div>', 'img' => 'horizontal_share.png', 'name' => 'Classic Share Button', 'above' => 'hidden ', 'below' => 'hidden'
     ), // classic
-    'share_counter' => array( 'src' => '<div class="addthis_toolbox addthis_default_style " %s  ><a class="addthis_counter"></a></div>', 'img' => 'share_counter.png', 'name' => 'Share Counter', 'above' => 'hidden ', 'below' => 'hidden' , 'defaultHide' => true
+    'share_counter' => array( 'src' => '<div class="addthis_toolbox addthis_default_style " %1$s  ><a class="addthis_counter"></a></div>', 'img' => 'share_counter.png', 'name' => 'Share Counter', 'above' => 'hidden ', 'below' => 'hidden' , 'defaultHide' => true
     ),
 );
 
@@ -144,7 +147,7 @@ function addthis_script_to_content($content)
 add_filter('language_attributes', 'addthis_language_attributes');
 function addthis_language_attributes($input)
 {
-    return $input . ' xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:addthis="http://www.addthis.com/help/api-spec" ';
+    return $input . ' xmlns:fb="http://ogp.me/ns/fb#" xmlns:addthis="http://www.addthis.com/help/api-spec" ';
 }
 
 
@@ -171,6 +174,9 @@ if ( apply_filters( 'at_do_options_upgrades', '__return_true') || apply_filters(
         if ($show_stats = get_option('addthis_show_stats'))
             $addthis_new_options['addthis_show_stats'] = $show_stats;
         
+        if ($asynchronous_loading = get_option('addthis_asynchronous_loading'))
+            $addthis_new_options['addthis_asynchronous_loading'] = $asynchronous_loading;
+        
         if ($append_data = get_option('addthis_append_data'))
             $addthis_new_options['addthis_append_data'] = $append_data;
         
@@ -185,7 +191,14 @@ if ( apply_filters( 'at_do_options_upgrades', '__return_true') || apply_filters(
        
         if ($showonarchives = get_option('addthis_showonarchives'))
             $addthis_new_options['addthis_showonarchives'] = $showonarchives;
-
+            
+        if ($aftertitle = get_option('addthis_aftertitle'))
+			$addthis_new_options['addthis_aftertitle'] = $aftertitle;
+			
+		if ($beforecomments = get_option('addthis_beforecomments'))
+			$addthis_new_options['addthis_beforecomments'] = $beforecomments;
+			
+			
         if (get_option('addthis_showonposts') != true)
             $addthis_new_options['below'] = 'none';
         elseif (get_option('addthis_sidebar_only') == true)
@@ -220,6 +233,7 @@ if ( apply_filters( 'at_do_options_upgrades', '__return_true') || apply_filters(
         // if the option saved, delete the old options
         
         delete_option('addthis_show_stats');
+        delete_option('addthis_asynchronous_loading');
         delete_option('addthis_password');
         delete_option('addthis_fallback_username');
         delete_option('addthis_options'); 
@@ -232,6 +246,8 @@ if ( apply_filters( 'at_do_options_upgrades', '__return_true') || apply_filters(
         delete_option('addthis_showonpages');
         delete_option('addthis_showoncats');
         delete_option('addthis_showonarchives');
+        delete_option('addthis_aftertitle');
+        delete_option('addthis_beforecomments');
         delete_option('addthis_style');
         delete_option('addthis_header_background');
         delete_option('addthis_header_color');
@@ -282,7 +298,7 @@ function addthis_check_footer() {
 */
 function cuid()
 {
-    $base = home_url();
+    $base = get_option('home');
     $cuid = hash_hmac('md5', $base, 'addthis'); 
     return $cuid;
 } 
@@ -299,11 +315,11 @@ function addthis_get_wp_version() {
 /**
 * For templates, we need a wrapper for printing out the code on demand. 
 */
-function addthis_print_widget($url=null, $title=null, $style = addthis_style_default ) {
+function addthis_print_widget($url = null, $title = null, $style = addthis_style_default) {
     global $addthis_styles, $addthis_new_styles;
     $styles = array_merge($addthis_styles, $addthis_new_styles);
 
-    if ( isset($_GET['preview']) &&  $_GET['preview'] == 1 && $options = get_transient('addthis_settings') )
+    if (isset($_GET['preview']) && $_GET['preview'] == 1 && $options = get_transient('addthis_settings'))
         $preview = true;
     else
         $options = get_option('addthis_settings');
@@ -311,20 +327,15 @@ function addthis_print_widget($url=null, $title=null, $style = addthis_style_def
     $identifier = addthis_get_identifier($url, $title);
 
 echo "\n<!-- AddThis Custom -->\n";
-    if ( ! is_array($style) &&  isset($addthis_new_styles[$style]) ){
+    if (!is_array($style) && isset($addthis_new_styles[$style])) {
         echo sprintf($addthis_new_styles[$style]['src'], $identifier);
-    }
-    elseif ($style == 'above')
-    {
-        if ( isset ($styles[$options['above']]['src'] ))
-            echo sprintf($styles[$options['above']]['src'], $identifier);
-    }
-    elseif ($style == 'below')
-    {
-        if ( isset ($styles[$options['below']]['src'] ))
-            echo sprintf($styles[$options['below']]['src'], $identifier);
-    }
-    elseif (is_array($style))
+    } elseif ($style == 'above') {
+        $above = addthis_display_widget_above($styles, $url, $title, $options);
+        echo sprintf($above, $identifier);
+    } elseif ($style == 'below') {
+        $below = addthis_display_widget_below($styles, $url, $title, $options);
+        echo sprintf($below, $identifier);
+    } elseif (is_array($style))
         echo addthis_custom_toolbox($style, $url, $title);
 echo "\n<!-- End AddThis Custom -->\n";
 }
@@ -367,35 +378,71 @@ function addthis_custom_toolbox($options, $url, $title)
     if (isset($options['size']) && $options['size'] == '32')
         $outerClasses .= ' addthis_32x32_style';
 
-    $button = '<div class="'.$outerClasses.'" '.$identifier.' >'; 
-    
-    if (isset($options['services']) )
-    {
-        $services = explode(',', $options['services']);
-        foreach ($services as $service)
-        {
-            $service = trim($service);
-            if ($service == 'more')
-                $button .= '<a class="addthis_button_compact"></a>';
-            else
-                $button .= '<a class="addthis_button_'.strtolower($service).'"></a>';
+    if (isset($options['type']) && $options['type'] != 'custom_string') {
+        $button = '<div class="'.$outerClasses.'" '.$identifier.' >'; 
+        
+        if (isset($options['addthis_options']) && $options['addthis_options'] != "") {
+            $addthis_options = split(',', $options['addthis_options']);
+            foreach ($addthis_options as $option) {
+                $option = trim($option);  
+                if ($option != 'more') {
+                    $button .= '<a class="addthis_button_'.$option.'"></a>';
+                }
+            }
         }
-    }
-    
-    if (isset($options['preferred']) && is_numeric($options['preferred']))
-    {
-        for ($a = 1; $a <= $options['preferred']; $a++)
-        {
-            $button .= '<a class="addthis_button_preferred_'.$a.'"></a>';
+        else if (isset($options['services']) ) {
+            $services = explode(',', $options['services']);
+            foreach ($services as $service)
+            {
+                $service = trim($service);
+                if ($service == 'more' || $service == 'compact') {
+                    if (isset($options['type']) && $options['type'] != 'fb_tw_p1_sc') {
+                        $button .= '<a class="addthis_button_compact"></a>';
+                    }
+                }
+                else if ($service == 'counter') {
+                    if (isset($options['type']) && $options['type'] == 'fb_tw_p1_sc') {
+                        $button .= '<a class="addthis_counter addthis_pill_style"></a>';
+                    }
+                    else {
+                        $button .= '<a class="addthis_counter addthis_bubble_style"></a>';
+                    }
+                }
+                else if ($service == 'google_plusone') {
+                    $button .= '<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>';
+                }
+                else
+                    $button .= '<a class="addthis_button_'.strtolower($service).'"></a>';
+            }
         }
-    }
+    
+        if (isset($options['preferred']) && is_numeric($options['preferred']))
+        {
+            for ($a = 1; $a <= $options['preferred']; $a++)
+            {
+                $button .= '<a class="addthis_button_preferred_'.$a.'"></a>';
+            }
+        }
 
-    if (isset($options['more']) && $options['more'] == true)
-    {
-            $button .= '<a class="addthis_button_compact"></a>';
+        if (isset($options['more']) && $options['more'] == true)
+        {
+                $button .= '<a class="addthis_button_compact"></a>';
+        }
+
+        if (isset($options['counter']) && ($options['counter'] != "") && ($options['counter'] !== false))
+        {
+            if ($options['counter'] === true)
+            {  //no style was specified
+               $button .= '<a class="addthis_counter"></a>';
+            }
+            else
+            {  //a specific style was specified such as pill_style or bubble_style
+                $button .= '<a class="addthis_counter addthis_'.$options['counter'].'"></a>';
+            }
+        }
+        
+        $button .= '</div>';
     }
-    
-    $button .= '</div>';
 
     return $button;
 
@@ -438,7 +485,7 @@ function addthis_admin_notices(){
     elseif ( ( ! isset($options['username']) ||  $options['username'] == false) && ! get_user_meta($user_id, 'addthis_nag_username_ignore'))
     {
         echo '<div class="updated addthis_setup_nag"><p>'; 
-        printf( __('Sign up for AddThis and add your username/password to recieve analytics about how people are sharing your content.<br /> <a href="%1$s">Enter username and password</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="%2$s" target="_blank">Sign Up</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="%3$s">Ignore this notice</a>'),
+        printf( __('Sign up for AddThis and add your username/password to receive analytics about how people are sharing your content.<br /> <a href="%1$s">Enter username and password</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="%2$s" target="_blank">Sign Up</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="%3$s">Ignore this notice</a>'),
         admin_url('options-general.php?page=' . basename(__FILE__) ),
         'https://www.addthis.com/register?profile=wpp',
         '?addthis_nag_username_ignore=0');
@@ -549,10 +596,8 @@ function addthis_render_dashboard_widget() {
         echo 'No Password entered';
         return false;
     }
-    $domain = get_home_url();
-   
 
-    $domain = str_replace(array('http://', 'https://'), '', $domain);
+    $domain = str_ireplace('www.', '', parse_url(get_home_url(), PHP_URL_HOST));
   
     if (isset($options['profile']))
         $profile = '&pubid='.urlencode($options['profile']);
@@ -585,7 +630,7 @@ function addthis_render_dashboard_widget() {
             'domain='.$domain.'&period='.$period.
             '&username='.$username.
             '&password='.$password.
-            $profile;
+            $profile.'&origin=wordpress_plugin';
             $stats[$metric.$dimension.$period] = wp_remote_get($url, array('period' => $period, 'domain' => $domain, 'password' => $password, 'username' => $username) );
       
             if ( is_wp_error( $stats[$metric.$dimension.$period] ) )
@@ -735,7 +780,7 @@ function addthis_render_dashboard_widget() {
         {
             $url = array_shift($shareurls);
             $displayUrl = str_replace( array('http://', 'https://', $domain), '',$url->url);
-            echo "<li><span class='urlCount'>" .  $url->shares . "</span><span class='urlUrl'>". $displayUrl . "</span></li>";
+            echo "<li><span class='urlCount'>" .  $url->shares . "</span><span class='urlUrl'>". urldecode($displayUrl) . "</span></li>";
         }
         echo "</ul>";
         echo "<h5>Top Services for shares(last month)</h5>";
@@ -749,7 +794,7 @@ function addthis_render_dashboard_widget() {
         {
             $url = array_shift($clickbackurls);
             $displayUrl = str_replace( array('http://', 'https://', $domain), '',$url->url);
-            echo "<li><span class='urlCount'>" .  $url->clickbacks . "</span><span class='urlUrl'>". $displayUrl . "</span></li>";
+            echo "<li><span class='urlCount'>" .  $url->clickbacks . "</span><span class='urlUrl'>". urldecode($displayUrl) . "</span></li>";
         }
         echo "</ul>";
         echo "<h5>Top Services for clicks(last month)</h5>";
@@ -844,6 +889,7 @@ global $addthis_styles, $addthis_new_styles;
 
 $styles = array_merge($addthis_styles, $addthis_new_styles);
 
+$below_custom_styles = $above_custom_styles = '';
 
 $options = array();
 
@@ -870,13 +916,12 @@ if ( isset($data['wpfooter']))
     $options['wpfooter'] = (bool) $data['wpfooter'];
 
 
-if (! isset($data['enable_above']) ){
-    $options['above'] = 'none';
-}
-elseif ( isset ($data['show_above']) )
+if ( isset ($data['show_above']) )
     $options['above'] = 'none';
 elseif ( isset($styles[$data['above']]) )
     $options['above'] = $data['above'];
+elseif ($data['above'] == 'disable')
+	$options['above'] = $data['above'];
 elseif ($data['above'] == 'none')
 {
     $options['above'] = 'none';
@@ -897,17 +942,22 @@ elseif ($data['above'] == 'custom_string')
 {
 
     $options['above'] = 'custom_string';
-    $options['above_custom_string'] = addthis_kses($data['above_custom_string']);
+    if (strpos($data['above_custom_string'], "style=") != false) {
+    	$custom_style = explode('style=', $data['above_custom_string']);
+    	$custom_style = explode('>', $custom_style[1]);
+    	$custom_style = explode(' ', $custom_style[0]);
+    	$above_custom_styles = " style=$custom_style[0]";
+    }
+    $options['above_custom_string'] = addthis_kses($data['above_custom_string'], $above_custom_styles);
 
 }
 
-if ( ! isset($data['enable_below'] )){
-     $options['below'] = 'none';
-}
-elseif ( isset ($data['show_below']) )
+if ( isset ($data['show_below']) )
     $options['below'] = 'none';
 elseif ( isset($styles[$data['below']]) )
     $options['below'] = $data['below'];
+elseif ($data['below'] == 'disable')
+	$options['below'] = $data['below'];
 elseif ($data['below'] == 'none')
 {
     $options['below'] = 'none';
@@ -926,15 +976,20 @@ elseif ($data['below'] == 'custom')
 elseif ($data['below'] == 'custom_string')
 {
     $options['below'] = 'custom_string';
-    $options['below_custom_string'] = addthis_kses($data['below_custom_string']);
+    if (strpos($data['below_custom_string'], "style=") != false) {
+    	$custom_style = explode('style=', $data['below_custom_string']);
+    	$custom_style = explode('>', $custom_style[1]);
+    	$custom_style = explode(' ', $custom_style[0]);
+    	$below_custom_styles = " style=$custom_style[0]";
+    }
+    $options['below_custom_string'] = addthis_kses($data['below_custom_string'], $below_custom_styles);
 }
-
 
 if (isset($data['addthis_copytrackingremove']) && $data['addthis_copytrackingremove'] == true)
     unset($data['addthis_copytracking1']);
 
 // All the checkbox fields
-foreach (array('addthis_show_stats', 'addthis_append_data', 'addthis_showonhome', 'addthis_showonpages', 'addthis_showonarchives', 'addthis_showoncats', 'addthis_showonexcerpts', 'addthis_addressbar','addthis_508','addthis_copytracking2' ) as $field)
+foreach (array('addthis_show_stats', 'addthis_asynchronous_loading','addthis_append_data', 'addthis_showonhome', 'addthis_showonpages', 'addthis_showonarchives', 'addthis_showoncats', 'addthis_showonexcerpts', 'addthis_aftertitle' , 'addthis_beforecomments', 'addthis_addressbar','addthis_508','addthis_copytracking2' ) as $field)
 {
     if ( isset($data[$field]) &&  $data[$field] == true)
         $options[$field] = true; 
@@ -1009,6 +1064,21 @@ if (isset ($data['addthis_share_json']) && strlen($data['addthis_share_json']) !
     $options['addthis_share_json'] = sanitize_text_field($data['addthis_share_json']);
 }
 
+if (isset ($data['above_chosen_list']) && strlen($data['above_chosen_list']) != 0) 
+{
+	$options['above_chosen_list'] = sanitize_text_field($data['above_chosen_list']);
+}
+else {
+	$options['above_chosen_list'] = "";
+}
+
+if (isset ($data['below_chosen_list']) && strlen($data['below_chosen_list']) != 0)
+{
+	$options['below_chosen_list'] = sanitize_text_field($data['below_chosen_list']);
+}
+else {
+	$options['below_chosen_list'] = "";
+}
 
    return $options;
 
@@ -1039,8 +1109,12 @@ function addthis_add_content_filters()
     if ( ! empty( $options) ){
         if ( isset($options['addthis_showonexcerpts']) &&  $options['addthis_showonexcerpts'] == true )
             add_filter('get_the_excerpt', 'addthis_display_social_widget_excerpt', 11);
+            
+        if ( isset($options['addthis_aftertitle']) && $options['addthis_aftertitle'] == true)
+        	add_filter('the_title', 'addthis_display_after_title', 11);
+
+  		add_filter('the_content', 'addthis_display_social_widget', 15);
         
-        add_filter('the_content', 'addthis_display_social_widget', 15);
     }
 }
 
@@ -1287,6 +1361,73 @@ function addthis_display_social_widget_excerpt($content)
         return $content;
 }
 
+function addthis_display_widget_above($styles, $url, $title, $options) {
+    $above = '';
+    if (isset($styles[$options['above']])) {
+        if (isset($options['above_chosen_list']) && strlen($options['above_chosen_list']) != 0) {
+            if (isset($options['above']) && $options['above'] == 'large_toolbox') {
+                $aboveOptions['size'] = '32';
+            } elseif (isset($options['above']) && $options['above'] == 'small_toolbox') {
+                $aboveOptions['size'] = '16';
+            }
+            $aboveOptions['type'] = $options['above'];
+            $aboveOptions['services'] = $options['above_chosen_list'];
+            if(isset($options['addthis_options']))
+                $aboveOptions['addthis_options'] = $options['addthis_options'];
+            else
+                $aboveOptions['addthis_options'] = '';
+            $above = apply_filters('addthis_above_content', addthis_custom_toolbox($aboveOptions, $url, $title));
+        } else {
+            $above = apply_filters('addthis_above_content', $styles[$options['above']]['src']);
+        }
+    } elseif ($options['above'] == 'custom') {
+        $aboveOptions['size'] = $options['above_custom_size'];
+        if ($options['above_do_custom_services'])
+            $aboveOptions['services'] = $options['above_custom_services'];
+        if ($options['above_do_custom_preferred'])
+            $aboveOptions['preferred'] = $options['above_custom_preferred'];
+        $aboveOptions['more'] = $options['above_custom_more'];
+        $aboveOptions['addthis_options'] = $options['addthis_options'];
+        $above = apply_filters('addthis_above_content', addthis_custom_toolbox($aboveOptions, $url, $title));
+    } elseif ($options['above'] == 'custom_string') {
+        $custom = preg_replace('/<\s*div\s*/', '<div %1$s ', $options['above_custom_string']);
+        $above = apply_filters('addthis_above_content', $custom);
+    }
+    return $above;
+}
+
+function addthis_display_widget_below($styles, $url, $title, $options) {
+    $below = '';
+    if (isset($styles[$options['below']])) {
+        if (isset($options['below_chosen_list']) && strlen($options['below_chosen_list']) != 0) {
+            if (isset($options['below']) && $options['below'] == 'large_toolbox') {
+                $belowOptions['size'] = '32';
+            } elseif (isset($options['below']) && $options['below'] == 'small_toolbox') {
+                $belowOptions['size'] = '16';
+            }
+            $belowOptions['type'] = $options['below'];
+            $belowOptions['services'] = $options['below_chosen_list'];
+            if(isset($options['addthis_options']))
+                $belowOptions['addthis_options'] = $options['addthis_options'];
+            else
+                $belowOptions['addthis_options'] = '';
+            $below = apply_filters('addthis_above_content', addthis_custom_toolbox($belowOptions, $url, $title));
+        } else {
+            $below = apply_filters('addthis_below_content', $styles[$options['below']]['src']);
+        }
+    } elseif ($options['below'] == 'custom') {
+        $belowOptions['size'] = $options['below_custom_size'];
+        $belowOptions['services'] = $options['below_custom_services'];
+        $belowOptions['preferred'] = $options['below_custom_preferred'];
+        $belowOptions['more'] = $options['below_custom_more'];
+        $belowOptions['addthis_options'] = $options['addthis_options'];
+        $below = apply_filters('addthis_below_content', addthis_custom_toolbox($belowOptions, $url, $title));
+    } elseif ($options['below'] == 'custom_string') {
+        $custom = preg_replace('/<\s*div\s*/', '<div %1$s ', $options['below_custom_string']);
+        $below = apply_filters('addthis_below_content', $custom);
+    }
+    return $below;
+}
 
 function addthis_display_social_widget($content, $filtered = true, $below_excerpt = false)
 {
@@ -1300,16 +1441,41 @@ function addthis_display_social_widget($content, $filtered = true, $below_excerp
     else
         $options = get_option('addthis_settings');
 
-
-    if ( is_home() || is_front_page() ) 
-        $display = (isset($options['addthis_showonhome']) &&  $options['addthis_showonhome'] == true ) ? true : false;
+	if ( is_home() || is_front_page() ) {
+    	if (isset($options['addthis_showonhome']) &&  $options['addthis_showonhome'] == true ) {
+	    	if (isset($options['addthis_showonexcerpts']) &&  $options['addthis_showonexcerpts'] == true ) {
+		    		$display = true;
+		    }
+		    else {
+				if( strpos($post->post_content, '<!--more-->') != false) {
+		    		$display = false;
+	    		}
+	    		else {
+	    			$display = true;
+	    		}
+	    	}
+    	}
+    	else {
+	    	if (isset($options['addthis_showonexcerpts']) &&  $options['addthis_showonexcerpts'] == true ) {
+	    		if( strpos($post->post_content, '<!--more-->') != false) {
+			  		$display = true;
+	    		}
+	    		else {
+	    			$display = false;
+	    		}
+		    }
+		    else {
+		    	$display = false;
+	    	}
+    	}
+    }
     elseif ( is_archive() && ! is_category() )
         $display = (isset($options['addthis_showonarchives']) && $options['addthis_showonarchives'] == true ) ? true : false;
     // Cat
     elseif ( is_category() )
         $display = (isset($options['addthis_showoncats']) && $options['addthis_showoncats'] == true ) ? true : false;
     // Pages
-    elseif ( is_page() )
+    elseif ( is_page($post->ID) )
         $display = (isset($options['addthis_showonpages']) && $options['addthis_showonpages'] == true) ? true: false;
     // Single pages (true by default and design)
     elseif ( is_single() )
@@ -1335,53 +1501,19 @@ function addthis_display_social_widget($content, $filtered = true, $below_excerp
     $below = '';
 
     // Still here?  Well let's add some social goodness
-    if ( isset( $options['above'] ) &&  $options['above'] != 'none' && $display  )
+    if ( isset( $options['above'] ) &&  $options['above'] != 'none' && $options['above'] != 'disable' && $display  )
     {
-        if (isset ($styles[$options['above']]))
-        {
-            $above = apply_filters('addthis_above_content',  $styles[$options['above']]['src']);
-        }
-        elseif ($options['above'] == 'custom')
-        {
-            $aboveOptions['size'] = $options['above_custom_size'];
-            if ($options['above_do_custom_services']) 
-                $aboveOptions['services'] = $options['above_custom_services'];
-            if ($options['above_do_custom_preferred']) 
-                $aboveOptions['preferred'] = $options['above_custom_preferred'];
-            $aboveOptions['more'] = $options['above_custom_more'];
-            $above = apply_filters('addthis_above_content',  addthis_custom_toolbox($aboveOptions, $url, $title) );
-        }
-        elseif( $options['above'] == 'custom_string')
-        {
-            $custom = preg_replace( '/<\s*div\s*/', '<div %s ', $options['above_custom_string'] );
-            $above = apply_filters('addthis_above_content', $custom);
-        }
-    }
+        $above = addthis_display_widget_above($styles, $url, $title, $options);
+	        	}
     elseif ($display)
         $above = apply_filters('addthis_above_content','' );
     else
         $above = '';
 
-    if ( isset( $options['below'] ) &&  $options['below'] != 'none' && $display && ! $below_excerpt  )
+    if ( isset( $options['below'] ) &&  $options['below'] != 'none'  && $options['below'] != 'disable'  && $display && ! $below_excerpt  )
     {
-        if (isset ($styles[$options['below']]))
-        {    
-            $below = apply_filters('addthis_below_content', $styles[$options['below']]['src']);
-        }
-        elseif ($options['below'] == 'custom')
-        {
-            $belowOptions['size'] = $options['below_custom_size'];
-            $belowOptions['services'] = $options['below_custom_services'];
-            $belowOptions['preferred'] = $options['below_custom_preferred'];
-            $belowOptions['more'] = $options['below_custom_more'];
-            $below = apply_filters('addthis_below_content',  addthis_custom_toolbox($belowOptions, $url, $title) );
-        }
-        elseif( $options['below'] == 'custom_string')
-        {
-            $custom = preg_replace( '/<\s*div\s*/', '<div %s ', $options['below_custom_string'] );
-            $below = apply_filters('addthis_below_content', $custom);
-        }
-    }
+        $below = addthis_display_widget_below($styles, $url, $title, $options);
+	        	}
     elseif ($below_excerpt && $display && $options['below'] != 'none'  )
     {
         $below = apply_filters('addthis_below_content','' );
@@ -1394,22 +1526,16 @@ function addthis_display_social_widget($content, $filtered = true, $below_excerp
         $below = '';
 
    
-
     if ($display) 
     {
         if ( isset($above) )
         {
-            if ($options['above'] == 'custom')
-                $content = $above . $content;
-            else
-                $content = sprintf($above, $url_above) . $content;
+
+            $content = sprintf($above, $url_above) . $content;
         }
         if ( isset($below) )
         {
-            if ($options['below'] == 'custom')
-                $content = $content . $below;
-            else
-                $content = $content . sprintf($below, $url_below); 
+            $content = $content . sprintf($below, $url_below); 
         }
         if ($filtered == true)
             add_filter('wp_trim_excerpt', 'addthis_remove_tag', 11, 2);
@@ -1439,6 +1565,7 @@ function addthis_output_script($return = false, $justConfig = false )
 {
 
     global $addthis_settings;
+    wp_enqueue_style( 'output', plugins_url('css/output.css', __FILE__) );	
 
     if ( isset($_GET['preview']) &&  $_GET['preview'] == 1 && $options = get_transient('addthis_settings') )
         $preview = true;
@@ -1522,14 +1649,15 @@ function addthis_output_script($return = false, $justConfig = false )
     if ($justConfig)
     {
         $return = '';
-        if ( isset( $options['addthis_share_json'] ) && $options['addthis_share_json'] != '')
-            $return .= 'if (typeof(addthis_share) == "undefined"){ addthis_share = ' . $options['addthis_share_json'] . ';}';
+    	$share = apply_filters('addthis_share_js_var', $addthis_share );
+        if ( isset( $options['addthis_share_json'] ) && $options['addthis_share_json'] != '') {
+        	$addthis_json_share = array_key_exists('addthis_share_json', $options) ? $options['addthis_share_json'] : '';
+        	$return .= merge_share_with_json_share($addthis_share, $addthis_json_share);
+        }
         else
         {
-            $share = apply_filters('addthis_share_js_var', $addthis_share );
             if (! empty($share) )
                 $return .= 'if (typeof(addthis_share) == "undefined"){ addthis_share = ' . json_encode( apply_filters('addthis_share_js_var', $addthis_share ) ) .';}';
-
         }
         $return .= "\n";
 
@@ -1548,7 +1676,7 @@ function addthis_output_script($return = false, $justConfig = false )
 
 
     if ( isset( $options['addthis_share_json'] ) && $options['addthis_share_json'] != '')
-        $script .= 'if (typeof(addthis_share) == "undefined"){ addthis_share = ' . $options['addthis_share_json'] . ';}';
+        $script .= merge_share_with_json_share($addthis_share, $addthis_json_share);
     else
         $script .= 'if (typeof(addthis_share) == "undefined"){ addthis_share = ' . json_encode( apply_filters('addthis_share_js_var', $addthis_share ) ) .';}';
     $script .= '</script>';
@@ -1573,9 +1701,9 @@ function validate_addthis_api_credentials()
                            'credentialerror' => 'true', 'credentialmessage' => '');
     if ($_POST['addthis_username'] && $_POST['addthis_password'] && $_POST['addthis_profile']) {
         $url = 'https://api.addthis.com/analytics/1.0/pub/shares.json?'.
-            'username=' . $_POST['addthis_username'].
-            '&password=' . $_POST['addthis_password'].
-            '&pubid=' . $_POST['addthis_profile'];
+            'username=' . urlencode($_POST['addthis_username']).
+            '&password=' . urlencode($_POST['addthis_password']).
+            '&pubid=' . urlencode($_POST['addthis_profile']);
         $response = wp_remote_get($url);
         $credential_error = '&#x2716; The username, password, and profile combination you entered is invalid.';
         $profile_error = '&#x2716; Invalid AddThis profile ID';
@@ -1623,7 +1751,27 @@ function merge_config_with_json_config($append_string, $addthis_config, $addthis
         $append_string .= 'var addthis_config = '. json_encode($addthis_config) .';';
     return $append_string;
 }
-
+/*
+ * Merge the Add this settings with that given using JSON format
+* @param String $appendString - The string to build and return the script
+* @param array $addthis_share - The setting array for add this share
+* @param String $addthis_json_share - The JSON String
+* @return String $appendString - The string to build and return the script
+*/
+function merge_share_with_json_share($addthis_share, $addthis_json_share) {
+	$append_string = '';
+	if ( isset( $addthis_json_share ) &&   trim($addthis_json_share) != '') {
+		$addthis_share_json_list = json_decode($addthis_json_share, true);
+		if (! empty ($addthis_share_json_list) && ! empty ($addthis_share)) {
+			foreach($addthis_share_json_list as $key_json => $json_share_value) {
+				$addthis_share[$key_json] = $json_share_value;
+			}
+		}
+	}
+	if (! empty ($addthis_share) )
+		$append_string = 'if (typeof(addthis_share) == "undefined"){ addthis_share = '. json_encode($addthis_share) .';}';
+	return $append_string;
+}
 /**
 * Appends AddThis button to post content.
 */
@@ -1752,12 +1900,25 @@ EOF;
 
 function addthis_options_page_scripts()
 {
-    $script = (addthis_get_wp_version() >= 3.2 || apply_filters('at_assume_latest', __return_false() ) || apply_filters('addthis_assume_latest', __return_false() ) ) ? 'options-page.32.js' : 'options-page.js';
+	$script = (addthis_get_wp_version() >= 3.2 || apply_filters('at_assume_latest', __return_false() ) || apply_filters('addthis_assume_latest', __return_false() ) ) ? 'options-page.32.js' : 'options-page.js';
 
     $script_location = apply_filters( 'at_files_uri',  plugins_url( '', basename(dirname(__FILE__)) ) ) . '/addthis/js/'.$script ;
     $script_location = apply_filters( 'addthis_files_uri',  plugins_url( '', basename(dirname(__FILE__)) ) ) . '/addthis/js/'.$script ;
+    $imgLocationBase = apply_filters( 'at_files_uri',  plugins_url( '' , basename(dirname(__FILE__)))) . '/addthis/img/'  ;
+	$imgLocationBase = apply_filters( 'addthis_files_uri',  plugins_url( '' , basename(dirname(__FILE__)))) . '/addthis/img/'  ;
     wp_enqueue_script( 'addthis_options_page_script',  $script_location , array('jquery-ui-tabs', 'thickbox'  ));  
-    wp_localize_script( 'addthis_options_page_script', 'addthis_option_params', array('wp_ajax_url'=> admin_url('admin-ajax.php'), 'addthis_validate_action' => 'validate_addthis_api_credentials') );
+    wp_enqueue_script( 'addthis_core',plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis/js/core-1.1.1.js');
+    wp_enqueue_script( 'addthis_lr', plugins_url( '', basename(dirname(__FILE__)) ) .'/addthis/js/lr.js');
+    wp_enqueue_script('addthis_qtip_script', plugins_url( '', basename(dirname(__FILE__)) ) .'/addthis/js/jquery.qtip.min.js');
+    wp_enqueue_script('addthis_ui_script', plugins_url( '', basename(dirname(__FILE__)) ) .'/addthis/js/jqueryui.sortable.js');
+    wp_enqueue_script( 'addthis_selectbox',plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis/js/jquery.selectBoxIt.min.js');
+    wp_enqueue_script( '', plugins_url( '', basename(dirname(__FILE__)) ) .'/addthis/js/jquery.messagebox.js');
+    wp_enqueue_script( '', plugins_url( '', basename(dirname(__FILE__)) ) .'/addthis/js/jquery.atjax.js');
+    wp_enqueue_script( 'addthis_lodash_script', plugins_url( '', basename(dirname(__FILE__)) ) .'/addthis/js/lodash-0.10.0.js');
+	wp_enqueue_script('addthis_services_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis/js/gtc-sharing-personalize.js');
+    wp_enqueue_script('addthis_service_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis/js/gtc.cover.js');
+    wp_localize_script( 'addthis_options_page_script', 'addthis_option_params', array('wp_ajax_url'=> admin_url('admin-ajax.php'), 'addthis_validate_action' => 'validate_addthis_api_credentials', 'img_base' => $imgLocationBase) );
+    wp_localize_script( 'addthis_services_script', 'addthis_params', array('img_base' => $imgLocationBase) );
 
 }
 
@@ -1767,6 +1928,10 @@ function addthis_options_page_style()
     $style_location = apply_filters( 'addthis_files_uri' ,  plugins_url('', basename(dirname(__FILE__))  )  ) . '/addthis/css/options-page.css' ;
     wp_enqueue_style( 'addthis_options_page_style', $style_location);
     wp_enqueue_style( 'thickbox' );
+    wp_enqueue_style( 'addthis_services_style', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis/css/gtc.sharing-personalize.css' );
+    wp_enqueue_style('addthis_bootstrap_style', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis/css/bootstrap.css');
+    wp_enqueue_style( 'addthis_widget', 'https://ct1.addthis.com/static/r07/widget114.css');
+    wp_enqueue_style( 'addthis_widget_big', 'https://ct1.addthis.com/static/r07/widgetbig056.css');
 }
 
 function addthis_admin_menu()
@@ -1785,11 +1950,14 @@ function addthis_admin_menu()
         'below'     => 'fb_tw_p1_sc',
         'above'     => 'large_toolbox',
         'addthis_show_stats' => true,
+        'addthis_asynchronous_loading' => true,
         'addthis_append_data'=> true,
         'addthis_showonhome'  => true,
         'addthis_showonpages'   => true,
         'addthis_showonarchives'  => true,
         'addthis_showoncats' => true,
+    	'addthis_aftertitle'  => false,
+        'addthis_beforecomments' => false,
         'addthis_addressbar' => false,
         'addthis_copytracking1' => false,
         'addthis_copytracking2' => false,
@@ -1804,12 +1972,12 @@ function addthis_admin_menu()
         'above_custom_services' => '',
         'above_custom_preferred' => '',
         'above_custom_more' => '',
-        'above_custom_string' => '',
+    	'above_custom_string' => '',
         'below_custom_size' => '',
         'below_custom_services' => '',
         'below_custom_preferred' => '',
         'below_custom_more' => '',
-        'below_custom_string' => '',
+    	'below_custom_string' => '',
         'addthis_twitter_template' => '',
         'addthis_508' => '',
         'data_ga_property' => '',
@@ -1858,7 +2026,7 @@ function addthis_plugin_options_php4() {
         if ($addthis_options == false)
             add_option('addthis_settings', array() );
 
-        foreach ( array( 'addthis_show_stats', 'addthis_append_data', 'addthis_showonhome', 'addthis_showonpages', 'addthis_showonarchives', 'addthis_showoncats' ) as $option)
+        foreach ( array( 'addthis_show_stats', 'addthis_asynchronous_loading','addthis_append_data', 'addthis_showonhome', 'addthis_showonpages', 'addthis_showonarchives', 'addthis_showoncats' ) as $option)
         {                                                                                                                                                                                                                                                               
             if ( $addthis_options && ! isset($addthis_options[$option]) )
                 $addthis_options[$option] = false;
@@ -1867,7 +2035,18 @@ function addthis_plugin_options_php4() {
         extract($options);        
     ?>
 
-    <p><?php echo $addthis_addjs->getAtPluginPromoText();  ?></p>
+    <p>
+        <?php if(!at_share_is_pro_user()) { ?>
+            <div class="updated addthis_setup_nag">
+                <p>AddThis Pro now available - start your trial at 
+                    <a href="http://www.addthis.com" target="_blank">www.addthis.com</a> 
+                    and get premium widgets, personalized content recommendations, 
+                    advanced customization options and priority support.
+                </p>
+            </div>
+        <?php } ?>
+        <?php echo $addthis_addjs->getAtPluginPromoText();  ?>
+    </p>
     <img alt='addthis' src="//cache.addthis.com/icons/v1/thumbs/32x32/more.png" class="header-img"/>
     <span class="addthis-title">AddThis</span> <span class="addthis-plugin-name">Share</span>
     <div class="page-header" id="tabs">
@@ -1889,6 +2068,7 @@ function addthis_plugin_options_php4() {
         <div class='clear'>&nbsp;</div> 
         
         <div id="tabs-1">
+        	<div style="float: left;width: 620px; margin-right: 10px;">
                         <?php echo $version_notification_content = _addthis_version_notification($atversion_update_status, $atversion);?>
                         <input type="hidden" value="<?php echo $atversion?>"  name="addthis_settings[atversion]" id="addthis_atversion_hidden" />
                         <input type="hidden" value="<?php echo $atversion_update_status?>"  name="addthis_settings[atversion_update_status]" id="addthis_atversion_update_status" />
@@ -1934,8 +2114,37 @@ function addthis_plugin_options_php4() {
 			</table>
 			<div class='clear'>&nbsp;</div>  
 			<br/>
+			</div>
+			
+			<div style="display:block; float:left; width:470px;">
+                <div id="preview_floater">
+        			<table class="form-table">
+            			<tbody>
+                			<tr>
+                                <td id="below" colspan="2">
+                                    <fieldset>  
+                        				<legend id="previewHeader">&nbsp;<strong>Preview</strong> &nbsp;</legend>
+                        	            <div id="previewBox" class="previewbox">
+                        			    	<div id="addthis_share_demo" class="addthis_tshare_demo" >
+                                                <div class="addthis-share-list">
+                                                    <h3 style="margin-top:0;">Another Post with Everything in it</h3>
+                                                    <div id="above_previewContainer" style="float: left; width: 100%;"></div>
+                                                    <p style="float: left; width: 100%;">Published by <a href="#">admin</a> on September 17, 2008 | <a href="#">2 Responses</a> | <a href="#">Edit</a></p> 
+                                                    <div id="preview_post"><p style="float: left; width: 100%;">Lorem dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>
+                                                    <div id="below_previewContainer" style="float: left; width: 100%;"></div>
+                                                    <p style="float:left;">Posted in <a href="#">Child Category I</a>, <a href="#">Parent Category I</a>, <a href="#">Parent Category II</a></p>
+                                                  </div>
+                        			          </div>                    
+                        			    </div>      				
+                        			</fieldset>	
+                    	        </td>
+                            </tr>
+                        </tbody>
+        			</table>
+                </div>
+		    </div>
 		</div>
-	
+
         <div id="tabs-2">
             <?php echo $version_notification_content?>
 			<table class="form-table">
@@ -1962,6 +2171,16 @@ function addthis_plugin_options_php4() {
 					<th scope="row"><?php _e("excerpts:", 'addthis_trans_domain' ); ?></th>
 					<td><input type="checkbox" name="addthis_settings[addthis_showonexcerpts]" value="true" <?php echo ( $addthis_showonexcerpts == true ? 'checked="checked"' : ''); ?>/></td>
 				</tr>
+				<?php if($addthis_settings['placement'] != "0") { ?>
+					<tr>
+						<th scope="row"><?php _e("after title:", 'addthis_trans_domain' ); ?></th>
+						<td><input type="checkbox" name="addthis_settings[addthis_aftertitle]" value="true" <?php echo ( $addthis_aftertitle == true ? 'checked="checked"' : ''); ?>/></td>
+					</tr>
+					<tr>
+						<th scope="row"><?php _e("before comments:", 'addthis_trans_domain' ); ?></th>
+						<td><input type="checkbox" name="addthis_settings[addthis_beforecomments]" value="true" <?php echo ( $addthis_beforecomments == true ? 'checked="checked"' : ''); ?>/></td>
+					</tr>
+				<?php } ?>
                 <tr>
                     <th><h2>Have AddThis track &hellip;</h2></th> 
                 </tr>
@@ -1986,7 +2205,7 @@ function addthis_plugin_options_php4() {
                     <th><h2>Display Options</h2></th>
                 </tr>
 				<tr valign="top">
-					<td colspan="2">For more details on the following options, see <a href="//addthis.com/customization">our customization documentation</a>.</td>
+					<td colspan="2">For more details on the following options, see <a href="//support.addthis.com/customer/portal/articles/381263-addthis-client-api">our customization documentation</a>.</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php _e("Custom service list:", 'addthis_trans_domain' ); ?><br /><span class='description'><?php _e(
@@ -2037,6 +2256,10 @@ function addthis_plugin_options_php4() {
 					<td><input type="checkbox" name="addthis_settings[addthis_show_stats]" value="true" <?php echo ($addthis_show_stats == true ? 'checked="checked"' : ''); ?>/></td>
 				</tr>
 				<tr>
+					<th scope="row"><?php _e("Asynchronous Loading:", 'addthis_trans_domain' ); ?></th>
+					<td><input type="checkbox" name="addthis_settings[addthis_asynchronous_loading]" value="true" <?php echo ($addthis_asynchronous_loading == true ? 'checked="checked"' : ''); ?>/></td>
+				</tr>
+				<tr>
 				<tr>
 					<th scope="row"><?php _e("Enable enhanced accessibility:", 'addthis_trans_domain' ); ?></th>
 					<td><input type="checkbox" name="addthis_settings[addthis_508]" value="true" <?php echo ( $addthis_508 == true ? 'checked="checked"' : ''); ?>/></td>
@@ -2059,11 +2282,13 @@ function addthis_plugin_options_php4() {
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php _e("addthis_config values:<br/><span class=\"description\">(json format)</span>", 'addthis_trans_domain' ); ?></th>
-					<td><textarea rows='3' cols='40' type="text" name="addthis_settings[addthis_config_json]"  /><?php echo $addthis_config_json; ?></textarea></td>
+					<td><textarea rows='3' cols='40' type="text" name="addthis_settings[addthis_config_json]" id="addthis-config-json"/><?php echo $addthis_config_json; ?></textarea></td>
+					<td id="config-error" style="display: none;color: red;float: left;margin-top: 25px;width: 150px;">Invalid JSON format</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><?php _e("addthis_share values:<br/><span class=\"description\">(json format)</span>", 'addthis_trans_domain' ); ?></th>
-					<td><textarea rows='3' cols='40' type="text" name="addthis_settings[addthis_share_json]"  /><?php echo $addthis_share_json; ?></textarea></td>
+					<td><textarea rows='3' cols='40' type="text" name="addthis_settings[addthis_share_json]" id="addthis-share-json" /><?php echo $addthis_share_json; ?></textarea></td>
+					<td id="share-error" style="display: none;color: red;float: left;margin-top: 25px;width: 150px;">Invalid JSON format</td>
                 </tr>               
 			</table>
 			<div class='clear'>&nbsp;</div>
@@ -2083,7 +2308,7 @@ function addthis_plugin_options_php4() {
 
 
     ?>    
-		<input type="submit" name="Submit" value="<?php _e('Save Changes') ?>" />
+		<input type="submit" name="Submit" value="<?php _e('Save Changes') ?>"  id="submit-button"/>
 		<a href="<?php echo $preview_link; ?>" class="thickbox thickbox-preview" id="preview" ><?php _e('Preview'); ?></a>
     </p>
 
@@ -2195,6 +2420,23 @@ if (! function_exists('get_first_twitter_username'))
     }
 }
 
-require_once('addthis_post_metabox.php');
+// check for pro user
+function at_share_is_pro_user() {
+    $isPro = false;
+    $options = get_option('addthis_settings');
+    $profile = $options['profile'];
+    if ($profile) {
+        $request = wp_remote_get( "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile );
+        $server_output = wp_remote_retrieve_body( $request );
+        $array = json_decode($server_output);
+        // check for pro user
+        if (array_key_exists('_default',$array)) {
+            $isPro = true;
+        } else {
+            $isPro = false;
+        }
+    }
+    return $isPro;
+}
 
-?>
+require_once('addthis_post_metabox.php');

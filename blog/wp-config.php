@@ -1,10 +1,10 @@
 <?php
-/**
+/** 
  * The base configurations of the WordPress.
  *
  * This file has the following configurations: MySQL settings, Table Prefix,
- * Secret Keys, WordPress Language, and ABSPATH. You can find more information
- * by visiting {@link http://codex.wordpress.org/Editing_wp-config.php Editing
+ * Secret Keys, WordPress Language, and ABSPATH. You can find more information by
+ * visiting {@link http://codex.wordpress.org/Editing_wp-config.php Editing
  * wp-config.php} Codex page. You can get the MySQL settings from your web host.
  *
  * This file is used by the wp-config.php creation script during the
@@ -16,16 +16,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'c5olemichelsen');
+define('DB_NAME', 'michelsen_dk_db');
 
 /** MySQL database username */
-define('DB_USER', 'c5ole');
+define('DB_USER', 'michelsen_dk');
 
 /** MySQL database password */
 define('DB_PASSWORD', '45aber0gud');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'mysql15.unoeuro.com:');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -34,23 +34,21 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 /**#@+
- * Authentication Unique Keys and Salts.
+ * Authentication Unique Keys.
  *
  * Change these to different unique phrases!
- * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
- * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ * You can generate these using the {@link http://api.wordpress.org/secret-key/1.1/ WordPress.org secret-key service}
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'w!@Mcv~QLo2y@}LY_[d($ X= LYY|<VM<!N=Ms+ v|z7%Y<AbTQ/Z6|><Xix|+!}');
-define('SECURE_AUTH_KEY',  '#RVdkh/T#8jv-k,bZU[^&kR|P)mj94u]ejf-Oc,}Uv|=69acHh(GdE|CGfU>eZc8');
-define('LOGGED_IN_KEY',    '0A4l>N 1__jd74`7S[|w$6En|F?`+Q|!zqoT^Wce_EH7Nfa8q>Gq|!<x.*8qj:~8');
-define('NONCE_KEY',        '|E5/*gEuMH+X+5L^YDC|t.u5.#{rCDiMN!Nw)C]S7gMR*PkS{v|.rGt^5.?GDRj7');
-define('AUTH_SALT',        'v&TKfFPI4efE=r<--J.Rs]&+P+HI[a=0z}[c9NRw8C/tt6t`+`KDKaQ-9/=>^+ J');
-define('SECURE_AUTH_SALT', '2;3 g+]+oxEA9O2%]DHkfFA|Ih2M^.tq-bRUFM%OQnMnhpYUQ.kN0r~ZGp:a;c;%');
-define('LOGGED_IN_SALT',   '81tU3#sbS]iwD`V2DP{rBI=-24?FD;U4B$iiV,_a:~lUgl,6hZx#<qJjZlw4 |y^');
-define('NONCE_SALT',       'HIZnz,$-Xzo~l95z3n=D4K5=z4>Q-Mribgd=@+Gaqj{WNe&dkkK:!^{RGqPG:DJk');
-
+define('AUTH_KEY',         '#h5YWxLc5QI6yyRx60f*C*gItB4F*JuKo8u7hFGViCiz11sp9WTachkMo6%E&3YL');
+define('SECURE_AUTH_KEY',  'X8aG$R&xftIma#J)C^svl9QHj%DShK(Lrv5U2iq#v73bUb(X@N6uyZPa8JYYvLMd');
+define('LOGGED_IN_KEY',    'e0mV#crHvUNehYNiANASLRXBHnkmufF^TXhffd4&vOVkA54ENgsyt63ZjZhzIX52');
+define('NONCE_KEY',        'qEMg)L9LMGGki4$8!!8x1sY7p*XNG11e5mQN*f*Dilg)DWgppDOo%1P8jA9o7fny');
+define('AUTH_SALT',        'XjssCVRqXv5UW&oaDlfttX64T8Tw2cCNi!Rfkymv44(oElh)Uf8ZEqlM2ObczmuH');
+define('SECURE_AUTH_SALT', 'CnY7JZvEt&06F%RAav2lCfnzgT#3HBoQPd2WWf%im44%nqUw1TnDqtW^ol&Asa#o');
+define('LOGGED_IN_SALT',   'b1D4X(DErPi7Fb8a&OAeZw2Q57bdMPO%XQg#$FR)wFAFs)0)GfemsPKKLhGtMQ&)');
+define('NONCE_SALT',       'cQDTDuvPLEJj7%8!o1LQuKizB#zg4$I@MoxShlJD2pi&79C*uTs1H6&kVIEl9r6C');
 /**#@-*/
 
 /**
@@ -59,7 +57,7 @@ define('NONCE_SALT',       'HIZnz,$-Xzo~l95z3n=D4K5=z4>Q-Mribgd=@+Gaqj{WNe&dkkK:
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'ole_';
+$table_prefix  = 'ole_wp_';
 
 /**
  * WordPress Localized Language, defaults to English.
@@ -69,22 +67,19 @@ $table_prefix  = 'ole_';
  * de.mo to wp-content/languages and set WPLANG to 'de' to enable German
  * language support.
  */
-define ('WPLANG', '');
+define ('WPLANG', 'en_US');
 
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- */
+define ('FS_METHOD', 'direct');
+
 define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 
-/** Absolute path to the WordPress directory. */
+/** WordPress absolute path to the Wordpress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+?>

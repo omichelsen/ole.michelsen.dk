@@ -2,15 +2,15 @@
 /*
 Plugin Name: WP-Footnotes
 Plugin URI: http://www.elvery.net/drzax/more-things/wordpress-footnotes-plugin/
-Version: 4.2
+Version: 4.2.2
 Description: Allows a user to easily add footnotes to a post.
 Author: Simon Elvery
 Author URI: http://www.elvery.net/drzax/
 */
 
 /*
- * This file is part of WP-Footnotes a plugin for Word Press
- * Copyright (C) 2007 Simon Elvery
+ * This file is part of WP-Footnotes a plugin for WordPress
+ * Copyright (C) 2007-2012 Simon Elvery
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -214,7 +214,7 @@ class swas_wp_footnotes {
 			$id_id = "identifier_".$key."_".$post->ID;
 			$id_num = ($style == 'decimal') ? $value['use_footnote']+$start_number : $this->convert_num($value['use_footnote']+$start_number, $style, count($footnotes));
 			$id_href = ( ($use_full_link) ? get_permalink($post->ID) : '' ) . "#footnote_".$value['use_footnote']."_".$post->ID;
-			$id_title = str_replace('"', "&quot;", htmlentities(strip_tags($value['text']), ENT_QUOTES, 'UTF-8'));
+			$id_title = str_replace('"', "&quot;", htmlentities(html_entity_decode(strip_tags($value['text']), ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8'));
 			$id_replace = $this->current_options['pre_identifier'].'<a href="'.$id_href.'" id="'.$id_id.'" class="footnote-link footnote-identifier-link" title="'.$id_title.'">'.$id_num.'</a>'.$this->current_options['post_identifier'];
 			if ($this->current_options['superscript']) $id_replace = '<sup>'.$id_replace.'</sup>';
 			if ($display) $data = substr_replace($data, $id_replace, strpos($data,$value[0]),strlen($value[0]));

@@ -1,20 +1,18 @@
-=== AddThis === 
-Contributors: srijith.v, solchea, jorbin, _mjk_, addthis_paul, joesullivan 
+=== Share Buttons by AddThis === 
+Contributors: srijith.v, solchea, _mjk_, addthis_paul
 Tags: share, addthis, social, bookmark, sharing, bookmarking, widget,AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg,e-mail, email, Facebook, google bookmarks, google buzz, myspace,network, NewsVine, Reddit, Share, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pintrest, widget
-Requires at least: 2.9
-Tested up to: 3.4.2
-Stable tag: 3.0
+Requires at least: 3.0
+Tested up to: 3.8.1
+Stable tag: 3.5.9
 
-The AddThis Social Bookmarking Widget allows any visitor to bookmark and share your site easily with over 330 popular services. 
+AddThis Share Buttons help drive traffic to your site by helping visitors share, bookmark and email your content to over 330 services.
 
 == Description ==
-Get more traffic back to your site by installing the AddThis WordPress plugin. With AddThis, your users can promote your content by sharing to 330 of the most popular social networking and bookmarking sites (like Facebook, Twitter, Digg, StumbleUpon and MySpace). We also support address bar sharing in modern browsers. Our button is small, unobtrusive, quick to load and recognized all over the web. 
+Get more traffic back to your site by installing the AddThis WordPress plugin. With AddThis, your users can promote your content by sharing to over 330 of the most popular social networking and bookmarking sites (like Facebook, Twitter, Pinterest, Google+ and LinkedIn). We also support address bar sharing in modern browsers. Our button is small, unobtrusive, quick to load and recognized all over the web. 
 
 Optionally, sign up for a free AddThis.com account to see how your visitors are sharing your content: which services they're using for sharing, which content is shared the most, and more.
 
-We also have plugins available for <a href='http://wordpress.org/extend/plugins/addthis-follow/'>Increasing followers on social networks</a> and <a href='http://wordpress.org/extend/plugins/addthis-welcome/'>Welcoming users based on social behavior</a>.
-
-Tell us what you think <a href='http://www.surveymonkey.com/s/53FDFRF'>Help make AddThis even better by taking this short customer survey.</a>
+We also have plugins available for <a href='http://wordpress.org/extend/plugins/addthis-follow/'>increasing followers on social networks</a>, <a href='http://wordpress.org/extend/plugins/addthis-welcome/'>welcoming users based on social behavior</a>, <a href='http://wordpress.org/extend/plugins/addthis-social-sign-in'>adding social authentication</a> and <a href='http://wordpress.org/extend/plugins/addthis-trending-content/'>showing your trending content</a> to your WordPress blog.
 
 <a href="http://www.addthis.com/blog">AddThis Blog</a> | <a href="http://www.addthis.com/privacy">Privacy Policy</a>
 
@@ -34,7 +32,6 @@ For a manual installation via FTP:
 To upload the plugin through WordPress, instead of FTP:
 
 1. Upload the downloaded zip file on the 'Add New' plugins screen (see the 'Upload' tab) in your WordPress admin area and activate.
-
 
 == Frequently Asked Questions ==
 
@@ -59,7 +56,7 @@ All of the options required through this plugin require javascript.   JavaScript
 1. It's free!
 
 = Who else uses AddThis? =
-Over 14,000,000 sites have installed AddThis. With over a billion unique users, AddThis is helping share content all over the world, in more than sixty languages. You might be surprised who's sharing their website using AddThis--<a href="http://www.addthis.com/features#partners">here are just a few</a>.
+Over 14,000,000 sites have installed AddThis. With over a billion unique users, AddThis is helping share content all over the world, in more than sixty languages.
 
 = What services does AddThis support? =
 We currently support over 330 services, from email and blogging platforms to social networks and news aggregators, and we add new services every month. Want to know if your favorite service is supported? This list is accurate up to the minute: <a href="http://www.addthis.com/services">http://www.addthis.com/services</a>.
@@ -78,6 +75,62 @@ In the screen options you can enable the AddThis meta box.  Check the box and sa
 PHP 5+ is preferred; PHP 4 is supported.
 
 == Changelog ==
+
+= 3.5.9 =
+* CURL bug fix
+
+= 3.5.8 =
+* Resolved conflict with another plugin
+
+= 3.5.7 =
+* Minor updates
+
+= 3.5.6 =
+* Fix for better analytics
+
+= 3.5.5 =
+* Minor bug fixes. 
+
+= 3.5.4 =
+* Fixed JS errors in Options page. 
+
+= 3.5.3 =
+* Fix for wrong url being shared while using Custom Button option
+
+= 3.5.2 =
+* Minor bug fixes.  
+
+= 3.5.1 =
+* Reintroduced Custom Button Code box 
+
+= 3.5 =
+* Drag and drop customization of buttons
+* Better preview of buttons
+* Bug fixes
+
+= 3.1 =
+* Better support for excerpts
+* Internal issues with tw:screenname resolved
+* Better JSON validation
+* Bug fixes
+
+= 3.0.5 = 
+* Bug fixes: Style conflicts resolved
+
+= 3.0.4 = 
+* Bug fix: Style conflicts with some themes resolved
+* Made friends with WPSupercache 
+
+= 3.0.3 = 
+* Bug fix: Style tags are now allowed in Custom Code box.
+
+= 3.0.2 = 
+* Bug fix: Conflict with WpSuperCache resolved
+* Wordpress 3.5 style conflicts resolved
+
+= 3.0.1 = 
+* Bug fix: Issues with usernames/passwords with special characters
+
 = 3.0 =
 * UX changes in admin settings
 * Credential verification in Admin settings. If AddThis account details are wrong it will be notified to user. 
@@ -207,6 +260,55 @@ Fixed nondeterministic bug with the_title(), causing the title to occasionally a
 
 
 == Upgrade Notice ==
+
+= 3.5.9 =
+* CURL bug fix
+
+= 3.5.8 =
+Minor bug fix
+
+= 3.5.7 =
+Minor updates
+
+= 3.5.6 =
+Minor updates
+
+= 3.5.5 =
+Bug fixes
+
+= 3.5.4 =
+Bug fixes
+
+= 3.5.3 =
+Fix for wrong url being shared while using Custom Button option
+
+= 3.5.2 = 
+Bug fixes. 
+
+= 3.5.1 = 
+Reintroduced Custom Button Code box
+
+= 3.5 =
+Drag and drop customization of buttons, better preview of buttons
+
+= 3.1 =
+Bug fixes, better validations
+
+= 3.0.5 = 
+Bug fixes
+
+= 3.0.4 = 
+Bug fixes, made WPSupercache friendly
+
+= 3.0.3 = 
+Bug fixes.
+
+= 3.0.2 = 
+Bug fixes.
+
+= 3.0.1 = 
+Bug fixes.
+
 = 3.0 =
 Updated UI, AddThis account verification and bug fixes.
 

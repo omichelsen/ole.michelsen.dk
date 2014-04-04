@@ -17,7 +17,8 @@ Class AddThis_addjs{
         'AddThis Social Bookmarking Widget' => array('http://wordpress.org/extend/plugins/addthis/', 'Share') ,
         'AddThis Follow Widget' => array('http://wordpress.org/extend/plugins/addthis-follow/', 'Follow'),
 //        'AddThis Trending Content Widget' => array('http://wordpress.org/extend/plugins/addthis-trending', 'Trending' ),
-        'AddThis Welcome Bar' => array('http://wordpress.org/extend/plugins/addthis-welcome/', 'Welcome'), 
+        'AddThis Welcome Bar' => array('http://wordpress.org/extend/plugins/addthis-welcome/', 'Welcome'),
+    	'AddThis Social Sign In' => array('http://wordpress.org/extend/plugins/addthis-social-sign-in/', 'SSI'),  
     );
     private $_atInstalled = array();
 
@@ -49,10 +50,11 @@ Class AddThis_addjs{
         $this->_options = $options;
         
         // Version of AddThis code to use
-        $this->atversion = array_key_exists('atversion_update_status', $options) && $options['atversion_update_status'] == ADDTHIS_ATVERSION_REVERTED ? $options['atversion'] : ADDTHIS_ATVERSION;
-        
+        if (is_array($options)) {
+       		$this->atversion = array_key_exists('atversion_update_status', $options) && $options['atversion_update_status'] == ADDTHIS_ATVERSION_REVERTED ? $options['atversion'] : ADDTHIS_ATVERSION;
+        }
         // set the cuid
-        $base = home_url();
+        $base = get_option('home');
         $cuid = hash_hmac('md5', $base, 'addthis'); 
         $this->_cuid = $cuid;
 
@@ -94,6 +96,11 @@ Class AddThis_addjs{
             $this->addAfterToJs();
             echo $this->jsToAdd;
             $this->_js_added = true;
+            $this->jsToAdd = false;
+        } else {        	
+        	 $this->addAfterToJs();
+        	 echo $this->jsToAdd;
+             $this->jsToAdd = false;
         }
     }
 
@@ -124,7 +131,7 @@ Class AddThis_addjs{
     }
 
     function check_for_footer(){
-        $url = add_query_arg( array( 'attest' => 'true') , home_url() );
+        $url = home_url();
         $response = wp_remote_get( $url, array( 'sslverify' => false ) );
         $code = (int) wp_remote_retrieve_response_code( $response );
             if ( $code == 200 ) {
@@ -135,10 +142,7 @@ Class AddThis_addjs{
     }
     
     function maybe_add_footer_comment(){
-        if ( $_GET['attest'] = 'true' )
-        {
             add_action( 'wp_footer', array($this, 'test_footer' ), 99999 ); // Some obscene priority, make sure we run last
-        }
     }
 
     function test_footer(){
@@ -151,16 +155,30 @@ Class AddThis_addjs{
     }
     
     function addAfterScript($newData){
-        $this->jsAfterAdd .= $newData;
+    	if ( $this->_js_added != true )
+        {
+        	$this->jsAfterAdd .= $newData;
+        } else {
+        	$this->jsAfterAdd = $newData;
+        }
     }
 
     function addWidgetToJs(){
-        $this->jsToAdd .= '<script type="text/javascript" src="//s7.addthis.com/js/'.$this->atversion.'/addthis_widget.js#pubid='. urlencode( $this->pubid ).'"></script>';
+        $addthis_settings_options = get_option('addthis_settings');
+        $addthis_asynchronous_loading = $addthis_settings_options['addthis_asynchronous_loading'];
+        if(isset($addthis_asynchronous_loading) && $addthis_asynchronous_loading) {
+            $this->jsToAdd .= '<script type="text/javascript" src="//s7.addthis.com/js/'.$this->atversion.'/addthis_widget.js#pubid='. urlencode( $this->pubid ).'&async=1"></script>';
+            $this->jsToAdd .= '<script type="text/javascript">jQuery(document).ready(function($) { addthis.init(); }); </script>';
+        } else {
+            $this->jsToAdd .= '<script type="text/javascript" src="//s7.addthis.com/js/'.$this->atversion.'/addthis_widget.js#pubid='. urlencode( $this->pubid ).'"></script>';
+        }
     }
 
     function addAfterToJs(){
-        if (! empty($this->jsAfterAdd));
+        if (! empty($this->jsAfterAdd)) {
             $this->jsToAdd .= '<script type="text/javascript">' . $this->jsAfterAdd . '</script>';
+            $this->jsAfterAdd = NULL;
+        }
     }
 
 
@@ -232,11 +250,8 @@ Class AddThis_addjs{
                     else if ($i == ($count -2))
                         $string .= ' and ';
                     else if ($i == ($count -1))
-                        $string .= ' plugins available.';
-                    
+                        $string .= ' plugins available.';                    
                 }
-
-
             }
 
             return '<p class="addthis_more_promo">' .$string . '</p>';

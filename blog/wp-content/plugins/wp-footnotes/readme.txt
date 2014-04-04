@@ -2,17 +2,19 @@
 Contributors: drzax
 Tags: footnotes, post, posts, notes, reference, formatting, referencing, bibliography
 Requires at least: 2.0
-Tested up to: 3.0.1
-Stable tag: 4.2
+Tested up to: 3.4.2
+Stable tag: 4.2.2
 
 Allows post authors to easily add and manage footnotes in posts.
 
 == Description ==
 
-Easily add footnotes or sidenotes to any post using a simple mark-up which degrades (kind of) gracefully in the event that for 
-some horrifying reason this plugin nolonger works.
+Easily add footnotes to any post using a simple mark-up which degrades (kind of) gracefully in the event that for 
+some horrifying reason this plugin no longer works.
 
 == Installation ==
+
+WordPress should take care of this for you if you install it via the admin area, but if you want to do it manually, go ahead with the instructions below.
 
 1. Upload the `wp-footnotes` folder and all it's contents to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress.
@@ -28,11 +30,22 @@ That's totally simple. Go and check out [the manual](http://elvery.net/drzax/wor
 
 Sure can! Feature requests (and bug reports) are best made via <a href="http://plugins.trac.wordpress.org/newticket?component=wp-footnotes&owner=drzax">the WordPress Plugins bug tracker</a>.
 
+If you fancy being even more helpful, you can write some code and submit a pull request.
+
 = Why aren't there more FAQs? =
 
 Because answers to pretty much all the questions that get asked frequently are in [the manual](http://elvery.net/drzax/wordpress-footnotes-plugin).
 
+= Licence? =
+
+This plugin is licensed under [the same license as WordPress](http://wordpress.org/about/license/) itself, the GPLv2 (or later).
+
 == Change Log ==
+
+= 4.2.1 =
+
+- Update readme.txt and admin screen notes regarding [contribution](https://github.com/drzax/WP-Footnotes).
+- Update licensing info.
 
 = 4.2 = 
 
