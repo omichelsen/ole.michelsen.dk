@@ -1,3 +1,8 @@
+/* Mixins
+ ------------------------------------------ */
+@import "mixins.less";
+
+
 /* Document settings */
 /*-------------------*/
 /* HTML reset */
@@ -53,7 +58,11 @@ h5, figcaption {
 	font-weight: bold; 
 }
 
-p  { margin: 0.5em 0 1em 0; line-height: 130% }
+section p  { 
+	margin: 0.5em 0 1em 0; 
+	font-size: 105%;
+	line-height: 150%;
+}
 
 #container 
 {
@@ -73,18 +82,23 @@ header>.title, header>nav>ul, #content, footer section
 
 header
 {
-    background: -webkit-linear-gradient(#FFF 40%, #EEE 100%);
-    background: -moz-linear-gradient(#FFF 40%, #EEE 100%);
-    background: linear-gradient(#FFF 40%, #EEE 100%);
-    -pie-background: linear-gradient(#FFF 40%, #EEE 100%);
-    behavior: url(/scripts/PIE-1.0.0.htc);
+    .linear-gradient(#FFF 40%, #EEE 100%);
+	
+	.title {
+		padding: 10px 0; 
+	}
+	h1 { 
+		margin: 0; 
+		font: normal 35pt 'Century Gothic', Optima, Verdana; 
+	}
+	h2 { 
+		margin: 0; 
+		color: #666; 
+		font: normal 12pt Helvetica; 
+	}
 }
-header .title {	padding: 10px 0; }
-header h1 { margin: 0; font: normal 35pt 'Century Gothic', Optima, Verdana; }
-header h2 { margin: 0; color: #666; font: normal 12pt Helvetica; }
 
-#topnav
-{
+#topnav {
 	overflow: hidden;
 	line-height: 130%;
 	
@@ -92,35 +106,28 @@ header h2 { margin: 0; color: #666; font: normal 12pt Helvetica; }
 	border-bottom: 3px solid #b00;
 
 	background: #000;
-    background: -webkit-linear-gradient(#333, #000);
-    background: -moz-linear-gradient(#333, #000);
-    background: linear-gradient(#333, #000);
-    -pie-background: linear-gradient(#333, #000);
-    behavior: url(/scripts/PIE-1.0.0.htc);
-}
-#topnav a
-{ 
-	color: #fafafa; 
-	font-size: 16px;
-	text-decoration: none;
-}
-#topnav a:hover 
-{
-	color: #B00;
-}
-#topnav li
-{
-	float: left;
-	padding: 10px 20px;
-}
-#topnav .subtitle 
-{ 
-	display: block;
-	padding-top: 5px;
-	line-height: 14px; 
-	color: #bbb; 
-	font-size: 85%;
-	text-transform: lowercase;
+    .linear-gradient(#333, #000);
+    
+	a { 
+		color: #fafafa; 
+		font-size: 16px;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #B00;
+	}
+	li {
+		float: left;
+		padding: 10px 20px;
+	}
+	.subtitle { 
+		display: block;
+		padding-top: 5px;
+		line-height: 14px; 
+		color: #bbb; 
+		font-size: 85%;
+		text-transform: lowercase;
+	}
 }
 
 #content
@@ -143,21 +150,22 @@ footer
 	border-top: 2px solid #444;
 	
 	background-color: #000;
-    background: -webkit-gradient(linear, 0 20%, 0 100%, from(#000), to(#333));
-    background: -moz-linear-gradient(#000 20%, #333 100%);
-    background: linear-gradient(#000 20%, #333 100%);
-    -pie-background: linear-gradient(#000 20%, #333 100%);
-    behavior: url(/scripts/PIE-1.0.0.htc);
+    .linear-gradient(#000 20%, #333 100%);
+
+	a,
+	time { 
+		color: Gray; 
+		font-size: inherit;
+		text-decoration: none 
+	}
+	a:hover { 
+		color: #ccc 
+	}
+	p { 
+		margin: 0 !important; 
+		padding: 0; 
+	}
 }
-footer a,
-footer time
-{ 
-	color: Gray; 
-	font-size: inherit;
-	text-decoration: none 
-}
-footer a:hover { color: #ccc }
-footer p { margin: 0 !important; padding: 0; }
 
 
 /*  Forms  */
@@ -167,20 +175,10 @@ input.text, select, textarea
 	vertical-align:middle;
 	padding: 4px;
 	font-size: 1em;
-
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F5F5F5));
-    background: -moz-linear-gradient(#FFF, #F5F5F5 100%);
-    background: linear-gradient(#FFF, #F5F5F5 100%);
-    -pie-background: linear-gradient(#FFF, #F5F5F5 100%);
-
+    .linear-gradient(#FFF, #F5F5F5); // includes PIE
 	border: 1px solid #CCC;
-    border-radius: 3px;
-	
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-
-    behavior: url(/scripts/PIE-1.0.0.htc);	
+    .border-radius(3px);
+	.box-sizing;
 }
 input[disabled],
 input[readonly],
@@ -215,33 +213,23 @@ select { padding: 2px; }
     
     border: 1px solid #757575;
 
-    border-radius: 3px;
-
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), to(#DDD));
-    background: -moz-linear-gradient(#FAFAFA, #DDD 100%);
-    background: linear-gradient(#FAFAFA, #DDD 100%);
-    -pie-background: linear-gradient(#FAFAFA, #DDD 100%);
-    behavior: url(/scripts/PIE-1.0.0.htc);
-}
-.button:hover
-{
-    color: #000;
-    border-color: Maroon;
-}
-.button[disabled]
-{
-    color: #999;
-    border-color: #DDD;
-    cursor: default;
-}
-.button[disabled]:hover
-{
-    color: #999;
-    border-color: #DDD;
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), to(#DDD));
-    background: -moz-linear-gradient(#FAFAFA, #DDD 100%);
-    background: linear-gradient(#FAFAFA, #DDD 100%);
-    -pie-background: linear-gradient(#FAFAFA, #DDD 100%);
+    .border-radius(3px);
+    .linear-gradient(#FAFAFA, #DDD);
+    
+	.button:hover {
+	    color: #000;
+	    border-color: Maroon;
+	}
+	.button[disabled] {
+	    color: #999;
+	    border-color: #DDD;
+	    cursor: default;
+	}
+	.button[disabled]:hover {
+	    color: #999;
+	    border-color: #DDD;
+	    .linear-gradient(#FAFAFA, #DDD);
+	}
 }
 
 
@@ -249,49 +237,43 @@ select { padding: 2px; }
 /*----------*/
 .datasheet {
 	width: 100%;
-}
-.datasheet th {
-	padding: 0.3em;
-	color: #FFF;
-	background-color: Maroon;
-	border-bottom: 2px solid #333;
-	text-align: left;
-    border-radius: 2px 2px 0 0;
-    behavior: url(/scripts/PIE-1.0.0.htc);	
-}
-.datasheet td {
-	padding: .1em .2em;
-}
-.datasheet tbody tr:nth-child(odd) {
-	background-color: #EEE;
+	th {
+		padding: 0.3em;
+		color: #FFF;
+		background-color: Maroon;
+		border-bottom: 2px solid #333;
+		text-align: left;
+	    .border-radius(2px 2px 0 0);
+	    behavior: url(/scripts/PIE-1.0.0.htc);	
+	}
+	td {
+		padding: .1em .2em;
+	}
+	tbody tr:nth-child(odd) {
+		background-color: #EEE;
+	}
 }
 
 .tableFigure {
 	border: 1px solid #CCC;
-    border-radius: 3px;
-    -webkit-box-shadow: #CCC 0 0 .25em;
-    -moz-box-shadow: #CCC 0 0 .25em;
-    box-shadow: #CCC 0 0 .25em;
+    .border-radius(3px);
+    .box-shadow(#CCC 0 0 .25em);
     behavior: url(/scripts/PIE-1.0.0.htc);
-}
-.tableFigure caption {
-	padding-bottom: .7em;
-	text-align: left;
-	font-size: larger;
-}
-.tableFigure th, .tableFigure td {
-	padding: 0.5em;
-}
-.tableFigure th {
-	background: #eae8d9;
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(#eae8d9), to(#e3e2d0));
-    background: -moz-linear-gradient(#eae8d9, #e3e2d0 100%);
-    background: linear-gradient(#eae8d9, #e3e2d0 100%);
-    -pie-background: linear-gradient(#eae8d9, #e3e2d0 100%);
-    behavior: url(/scripts/PIE-1.0.0.htc);
-}
-.tableFigure .alt td {
-	background: #F3F3EB;
+	caption {
+		padding-bottom: .7em;
+		text-align: left;
+		font-size: larger;
+	}
+	th, td {
+		padding: 0.5em;
+	}
+	th {
+		background: #eae8d9;
+	    .linear-gradient(#eae8d9, #e3e2d0);
+	}
+	.alt td {
+		background: #F3F3EB;
+	}
 }
 
 
@@ -329,18 +311,14 @@ p > .floatright { margin-top: 2px; }
     display: inline-block;
     width: 10px; height: 10px;
 
-    border-radius: 5px;
+    .border-radius(5px);
 
-    background: -webkit-linear-gradient(#008000, #006400);
-    background: -moz-linear-gradient(#008000, #006400);
-    background: linear-gradient(#008000, #006400);
-    -pie-background: linear-gradient(#008000, #006400);
-    behavior: url(/scripts/PIE-1.0.0.htc);
+    .linear-gradient(#008000, #006400);
 }
 .dot-half
 {
 	width: 5px;
-	border-radius: 5px 0 0 5px;
+	.border-radius(5px 0 0 5px);
 }
 
 #sitemappath .current { color: #ccc }
@@ -439,32 +417,25 @@ sup a { font-size: inherit; text-decoration: none; }
 {
 	float: left;
 	margin: 5px 0 5px 22px;
-	
 	border: 1px solid #CCC;
-    border-radius: 8px;
-
-    background: -webkit-linear-gradient(#FFF, #FAFAFA);
-    background: -moz-linear-gradient(#FFF, #FAFAFA);
-    background: linear-gradient(#FFF, #FAFAFA);
-    -pie-background: linear-gradient(#FFF, #FAFAFA);
-    behavior: url(/scripts/PIE-1.0.0.htc);
-}
-.project:first-child { margin-left: 0; }
-.project .image
-{
-	padding: 10px;
-}
-.project h3 
-{ 
-	clear: both; 
-	margin: 0;
-	padding: .5em;
-	font-size: small; 
-	color: #333;
-	background-color: #EEE; 
-
-    border-radius: 0 0 8px 8px;
-    behavior: url(/scripts/PIE-1.0.0.htc);
+    .border-radius(8px);
+    .linear-gradient(#FFF, #FAFAFA);
+    &:first-child { 
+    	margin-left: 0; 
+    }
+    .image {
+		padding: 10px;
+	}
+	h3 { 
+		clear: both; 
+		margin: 0;
+		padding: .5em;
+		font-size: small; 
+		color: #333;
+		background-color: #EEE; 	
+	    .border-radius(0 0 8px 8px);
+	    behavior: url(/scripts/PIE-1.0.0.htc);
+	}
 }
 
 
@@ -476,9 +447,19 @@ sup a { font-size: inherit; text-decoration: none; }
 	text-align: center;
 }
 
-ul.screenshots { overflow: hidden; list-style: none; padding: 10px 30px; }
-ul.screenshots li { float: left; margin: 0 15px 25px 15px; }
-ul.screenshots h4 { margin: 0 0 5px 0; text-align: left; }
+ul.screenshots { 
+	overflow: hidden; 
+	list-style: none; 
+	padding: 10px 30px; 
+	li { 
+		float: left; 
+		margin: 0 15px 25px 15px; 
+	}
+	h4 { 
+		margin: 0 0 5px 0; 
+		text-align: left; 
+	}
+}
 
 .frame
 {
@@ -492,35 +473,33 @@ ul.screenshots h4 { margin: 0 0 5px 0; text-align: left; }
 	top: 0; left: 0;
 	list-style: none;
 	background-color: Red;
-}
-.screenshots .comments li
-{
-	position: absolute;
-	padding: 10px;
-	width: 180px;
-	color:#EEE;
-	font-size: 9pt; 
-	text-align: justify;
+	li {
+		position: absolute;
+		padding: 10px;
+		width: 180px;
+		color:#EEE;
+		font-size: 9pt; 
+		text-align: justify;
+		
+		background-color: rgba(0,0,0,0.8);
+		-pie-background: rgba(0,0,0,0.8);
 	
-	background-color: rgba(0,0,0,0.8);
-	-pie-background: rgba(0,0,0,0.8);
-
-    border-radius: 8px;
-    behavior: url(/scripts/PIE-1.0.0.htc);
+	    .border-radius(8px);
+	    behavior: url(/scripts/PIE-1.0.0.htc);
+	}
+	.number {
+		position: absolute;
+		top: -12px; left: -12px;
+		padding: 3px 0; width: 25px;
+		text-align: center;
+		color: #FFF; font-size: larger; font-weight: bold;
+		background-color: #b00;
+	
+	    .border-radius(12px);
+	    behavior: url(/scripts/PIE-1.0.0.htc);
+	}
+	h4 { margin: 0; color: #FFF }
 }
-.screenshots .comments .number
-{
-	position: absolute;
-	top: -12px; left: -12px;
-	padding: 3px 0; width: 25px;
-	text-align: center;
-	color: #FFF; font-size: larger; font-weight: bold;
-	background-color: #b00;
-
-    border-radius: 12px;
-    behavior: url(/scripts/PIE-1.0.0.htc);
-}
-.screenshots .comments h4 { margin: 0; color: #FFF }
 
 
 
@@ -532,34 +511,30 @@ ul.screenshots h4 { margin: 0 0 5px 0; text-align: left; }
 	position: relative;
 	list-style:none;
 	width: 950px; height: 400px; 
-}
-.slideshow li 
-{ 
-	display: none; list-style: none; 
-	position: absolute; left: 0; top: 0; 
-}
-.slideshow .caption 
-{
-	display: none;
-	position: absolute;
-	left: 0; bottom: 0;	
-	padding: 10px 0;
-	width: 100%;
-	color: #999;
-	text-align: right;
-	background: rgba(0,0,0,.6);
-
-}
-.slideshow .caption .title,
-.slideshow .caption .alt
-{
-	display: block;
-	padding: 0 20px;
-}
-.slideshow .caption .title
-{
-	color: #ccc;
-	font-size: x-large; 
+	li { 
+		display: none; list-style: none; 
+		position: absolute; left: 0; top: 0; 
+	}
+	.caption {
+		display: none;
+		position: absolute;
+		left: 0; bottom: 0;	
+		padding: 10px 0;
+		width: 100%;
+		color: #999;
+		text-align: right;
+		background: rgba(0,0,0,.6);
+	
+		.title,
+		.alt {
+			display: block;
+			padding: 0 20px;
+		}
+		.title {
+			color: #ccc;
+			font-size: x-large; 
+		}
+	}
 }
 
 

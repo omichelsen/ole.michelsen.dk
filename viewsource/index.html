@@ -1,12 +1,4 @@
 <?php 
-/*
-$curl = curl_init();
-curl_setopt ($curl, CURLOPT_URL, $uri);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-$data = curl_exec ($curl);
-curl_close ($curl);
-*/
-
 include_once('../includes/geshi.php');
 
 function markupLinks($html,$uri)
@@ -43,7 +35,10 @@ if ($_POST)
 	preg_replace("/[ \t]+$/", '', $htmlenc);
 	
 	// Markup clickable links
-	$htmlenc = markupLinks($htmlenc,$uri);	
+	$htmlenc = markupLinks($htmlenc,$uri);
+	
+	// Print geshi stylesheet
+	$stylesheet = $geshi->get_stylesheet();
 }
 ?>
 <!DOCTYPE html>
@@ -61,7 +56,7 @@ if ($_POST)
 			white-space: pre-wrap;
 			word-wrap: break-word;
 		}
-		<?php echo $geshi->get_stylesheet(); ?>
+		<?php echo $stylesheet; ?>
 	</style>
 
 	<script type="text/javascript">

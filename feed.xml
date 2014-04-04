@@ -18,6 +18,13 @@
 		<ttl>120</ttl>
 
 		<item>
+			<title>View Source notes on iOS7</title>
+			<description>Updated the article on &lt;a href="http://ole.michelsen.dk/blog/view-source-on-the-ipad-and-iphone/"&gt;View Source on the iPad and iPhone&lt;/a&gt; regarding breaking when upgrading to iOS7.</description>
+			<pubDate>Sun, 3 Nov 2013 14:05:22 +0200</pubDate>
+			<link>http://ole.michelsen.dk/blog/view-source-on-the-ipad-and-iphone/</link>
+			<guid>http://ole.michelsen.dk/blog/view-source-on-the-ipad-and-iphone/#20131103</guid>
+		</item>
+		<item>
 			<title>Validator improved</title>
 			<description>Improved the W3C &lt;a href="http://ole.michelsen.dk/tools/validator.html"&gt;Batch Validator tool&lt;/a&gt; to work better and faster.</description>
 			<pubDate>Mon, 7 Oct 2013 06:44:46 +0200</pubDate>
