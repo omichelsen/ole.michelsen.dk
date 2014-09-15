@@ -1,0 +1,14 @@
+#content
+	section#portfolio
+		h1 Portfolio
+		p.tags
+			| Design and Programming from 1999-2013
+		ul#projects
+			for item, slug in public.portfolio._data
+				li
+					a(href='/portfolio/#{ slug }')
+						span.image
+							img(src='//cdn.ole.michelsen.dk/portfolio/eet/thumb-large.png', alt='#{ item.title }', width='370', height='250')
+						span.text
+							span.title= title
+							span.keywords Work · 2006-Present

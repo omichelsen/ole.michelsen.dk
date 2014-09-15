@@ -1,0 +1,48 @@
+doctype
+html(lang="#{ language }")
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=1024')
+		title= title
+		meta(name="description" content="#{ description }")
+		meta(name='author', content='Ole Bjørn Michelsen')
+		link(rel="stylesheet" href="/main.css")
+		link(rel="canonical" href="#{ url + current.path.join('/') }")
+		link(rel="index" href="#{ url + current.path[0] }")
+		link(rel="image_src" href="#{ cdn + thumbnail }")
+	body
+		#container
+			header#header
+				.title
+					h1 Ole Michelsen
+					h2 Web Development and Computer Science
+				nav#topnav
+					ul#menu
+						li
+							a(href="/") Home
+						li
+							a(href="/blog/", title="Um gesh de blårg blårg!") Blog
+							span.subtitle Things I say
+						li
+							a(href="/portfolio/") Portfolio
+							span.subtitle Things I do
+						li
+							a(href="/profile.html") Profile
+							span.subtitle Things about me
+						li
+							a(href="/photos/") Photos
+							span.subtitle Things I see
+
+			!= yield
+
+			footer#footer
+				section
+						p#colophon.floatright
+							| Created by
+							a(href='/profile.html', rel='author') Ole Michelsen
+							| updated
+							time(datetime='datetime') "
+						p#sitemappath
+							span(itemscope='itemscope', itemtype='http://data-vocabulary.org/Breadcrumb')
+								a(href='/', itemprop='url')
+									span(itemprop='title') Home

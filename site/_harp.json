@@ -1,0 +1,12 @@
+{
+	"globals": {
+		"title": "Ole Michelsen",
+		"description": "Web Development and Computer Science",
+		"url": "http://ole.michelsen.dk/",
+		"cdn": "http://cdn.ole.michelsen.dk/",
+		"language": "en"
+	},
+	"service": {
+		"analytics": "UA-19571265-2"
+	}
+}
