@@ -1,54 +1,54 @@
 doctype
 html(lang="#{ language }")
-	head
-		meta(charset='utf-8')
-		meta(name='viewport', content='width=1024')
-		title= title
-		meta(name="description", content="#{ description }")
-		meta(name='author', content='Ole Bjørn Michelsen')
-		link(rel="stylesheet", href="/styles/main.css")
-		link(rel="canonical", href="#{ url + current.path.join('/') }")
-		link(rel="index", href="#{ url + current.path[0] }")
-		link(rel="image_src", href="#{ cdn + thumbnail }")
-		link(rel="shortcut icon", href="http://static.michelsen.dk/favicon.png")
-		link(rel="alternate", href="#{ url }feed.xml", type="application/rss+xml", title="Ole Michelsen Latest Updates")
-	body
-		#container
-			header#header
-				.title
-					h1 Ole Michelsen
-					h2 Web Development and Computer Science
-				nav#topnav
-					ul#menu
-						li
-							a(href="/") Home
-						li
-							a(href="/blog/", title="Um gesh de blårg blårg!") Blog
-							span.subtitle Things I say
-						li
-							a(href="/portfolio/") Portfolio
-							span.subtitle Things I do
-						li
-							a(href="/profile.html") Profile
-							span.subtitle Things about me
-						li
-							a(href="/photos/") Photos
-							span.subtitle Things I see
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=1024')
+    title= title
+    meta(name="description", content="#{ description }")
+    meta(name="author", content="#{ author }")
+    link(rel="stylesheet", href="/styles/main.css")
+    link(rel="canonical", href="#{ url + current.path.join('/') }")
+    link(rel="index", href="#{ url + current.path[0] }")
+    link(rel="image_src", href="#{ cdn + thumbnail }")
+    link(rel="shortcut icon", href="http://static.michelsen.dk/favicon.png")
+    link(rel="alternate", href="#{ url }feed.xml", type="application/rss+xml", title="Ole Michelsen Latest Updates")
 
-			#content
-				if current.path[0] == "portfolio" && current.source !== 'index'
-					!= partial(current.path[0] + "/_nest")
-				else
-					!= yield
+  body(itemscope, itemtype="http://schema.org/WebPage")
 
-			footer#footer
-				section
-						p#colophon.floatright
-							| Created by
-							a(href='/profile.html', rel='author') Ole Michelsen
-							| updated
-							time(datetime='datetime') "
-						p#sitemappath
-							span(itemscope='itemscope', itemtype='http://data-vocabulary.org/Breadcrumb')
-								a(href='/', itemprop='url')
-									span(itemprop='title') Home
+    #container
+      header#header
+        .title
+          h1= author
+          h2= tagline
+        nav#topnav
+          ul#menu
+            li
+              a(href="/") Home
+            li
+              a(href="/blog/", title="Um gesh de blårg blårg!") Blog
+              span.subtitle Things I say
+            li
+              a(href="/portfolio/") Portfolio
+              span.subtitle Things I do
+            li
+              a(href="/profile.html") Profile
+              span.subtitle Things about me
+            li
+              a(href="/photos/") Photos
+              span.subtitle Things I see
+
+      #content
+        if current.path[0] == "portfolio" && current.source !== 'index'
+          != partial(current.path[0] + "/_nest")
+        else
+          != yield
+
+      footer#footer
+        section
+            p#colophon.floatright
+              | Created by&nbsp;
+              a(href='/profile.html', rel='author')= author
+              | &nbsp;updated&nbsp;
+              time(datetime="#{ date }")= date
+            p#sitemappath
+              != partial('_shared/breadcrumbs')

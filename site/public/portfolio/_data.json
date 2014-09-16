@@ -2,6 +2,7 @@
 	"kuranz": {
 		"title": "Kuranz",
 		"description": "Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.",
-		"thumbnail": "portfolio/kuranz/thumb.png"
+		"thumbnail": "portfolio/kuranz/thumb.png",
+		"date": "2013-11-13"
 	}
 }

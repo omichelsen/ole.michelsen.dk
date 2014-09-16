@@ -1,0 +1,12 @@
+- function capitalize(string) {
+  - return string.charAt(0).toUpperCase() + string.slice(1);
+- }
+
+!= partial('breadcrumb', {url: '/', title: 'Home'})
+|  &rsaquo;&nbsp;
+
+each item in current.path.slice(0, -1)
+  != partial("breadcrumb", {url: item, title: capitalize(item)})
+  |  &rsaquo;&nbsp;
+
+span.current= capitalize(current.source)

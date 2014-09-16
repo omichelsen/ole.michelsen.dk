@@ -1,10 +1,14 @@
 {
 	"globals": {
 		"title": "Ole Michelsen",
+		"tagline": "Web Development and Computer Science",
 		"description": "Web Development and Computer Science",
 		"url": "http://ole.michelsen.dk/",
 		"cdn": "http://cdn.ole.michelsen.dk/",
-		"language": "en"
+		"language": "en",
+		"author": "Ole Michelsen",
+		"author_full": "Ole Bjørn Michelsen",
+		"email": "ole@michelsen.dk"
 	},
 	"service": {
 		"analytics": "UA-19571265-2"
