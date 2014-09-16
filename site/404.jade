@@ -1,41 +1,33 @@
-!!! 5
-html(lang='en')
-head
-  meta(charset='utf-8')
-    meta(name='viewport', content='width=1024')
-    meta(name='keywords', content='ole michelsen, ole bjørn michelsen, not found, 404')
-    meta(name='description', content='The page you were trying to access could not be found, please check your links and/or bookmarks, and try to find the correct address from my front page.')
-    title Ole Michelsen
-    style(type='text/css')
-      #photo-header
-      {
-      position: relative;
-      }
-      #photo-header .caption
-      {
-      position: absolute;
-      left: 0; bottom: 20px;
-      width: 100%;
-      color: #FFF;
-      z-index: 500;
-      background-color: rgba(0, 0, 0, 0.3);
-      }
-      #photo-header h1 { margin: 0.1em 0.3em;  }
-      menu { list-style: none }
-  body(itemscope='itemscope', itemtype='http://schema.org/WebPage')
-    #content
-      section#photo-header
-        .caption
-          h1 Are you lost?
-        | 9 || date('n')
-      section(style='padding: 0 1em;')
-        h3 Page Not Found
-        p
-          | Oops! Looks like the file you were trying to access could not be found on this server. Please check that you have the right link and/or bookmark, and try to find the correct address from my front page.
-        menu
-          li
-            | »
-            a(href='/') Go to the front page
-          li
-            | »
-            a(href='javascript:window.history.go(-1)') Go to the page from whence you came
+style.
+  #photo-header { position: relative; }
+  #photo-header .caption
+  {
+    position: absolute;
+    left: 0; bottom: 20px;
+    width: 100%;
+    color: #FFF;
+    z-index: 500;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  #photo-header h1 { margin: 0.1em 0.3em;  }
+  menu { list-style: none }
+section#photo-header
+  .caption
+    h1 Are you lost?
+
+  if (new Date().getMonth()) > 9 || (new Date().getMonth()) < 5
+    img(src='#{ cdn }images/404-swans.jpg', alt='Can\'t find what you are looking for?', width='950', height='300')
+  else
+    img(src='#{ cdn }images/404-turtle.jpg', alt='Don\'t know where to go from here?', width='950', height='300')
+
+section(style='padding: 0 1em;')
+  h3 Page Not Found
+  p
+    | Oops! Looks like the file you were trying to access could not be found on this server. Please check that you have the right link and/or bookmark, and try to find the correct address from my front page.
+  menu
+    li
+      | »&nbsp;
+      a(href='/') Go to the front page
+    li
+      | »&nbsp;
+      a(href='javascript:window.history.go(-1)') Go to the page from whence you came

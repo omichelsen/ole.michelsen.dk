@@ -4,12 +4,14 @@ html(lang="#{ language }")
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=1024')
 		title= title
-		meta(name="description" content="#{ description }")
+		meta(name="description", content="#{ description }")
 		meta(name='author', content='Ole Bjørn Michelsen')
-		link(rel="stylesheet" href="/main.css")
-		link(rel="canonical" href="#{ url + current.path.join('/') }")
-		link(rel="index" href="#{ url + current.path[0] }")
-		link(rel="image_src" href="#{ cdn + thumbnail }")
+		link(rel="stylesheet", href="/styles/main.css")
+		link(rel="canonical", href="#{ url + current.path.join('/') }")
+		link(rel="index", href="#{ url + current.path[0] }")
+		link(rel="image_src", href="#{ cdn + thumbnail }")
+		link(rel="shortcut icon", href="http://static.michelsen.dk/favicon.png")
+		link(rel="alternate", href="#{ url }feed.xml", type="application/rss+xml", title="Ole Michelsen Latest Updates")
 	body
 		#container
 			header#header
@@ -33,7 +35,11 @@ html(lang="#{ language }")
 							a(href="/photos/") Photos
 							span.subtitle Things I see
 
-			!= yield
+			#content
+				if current.path[0] == "portfolio" && current.source !== 'index'
+					!= partial(current.path[0] + "/_nest")
+				else
+					!= yield
 
 			footer#footer
 				section
