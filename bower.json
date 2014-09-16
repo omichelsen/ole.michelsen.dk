@@ -1,0 +1,15 @@
+{
+  "name": "ole.michelsen.dk",
+  "version": "0.0.0",
+  "authors": [
+    "Ole Bjørn Michelsen <ole@michelsen.dk>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

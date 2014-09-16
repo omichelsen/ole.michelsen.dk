@@ -26,21 +26,19 @@ html(lang="#{ language }")
               a(href="/") Home
             li
               a(href="/blog/", title="Um gesh de blårg blårg!") Blog
-              span.subtitle Things I say
+                span.subtitle Things I say
             li
               a(href="/portfolio/") Portfolio
-              span.subtitle Things I do
+                span.subtitle Things I do
             li
               a(href="/profile.html") Profile
-              span.subtitle Things about me
+                span.subtitle Things about me
             li
               a(href="/photos/") Photos
-              span.subtitle Things I see
+                span.subtitle Things I see
 
       #content
-        if current.path[0] == "portfolio" && current.source !== 'index'
-          != partial(current.path[0] + "/_nest")
-        else
+        block content
           != yield
 
       footer#footer
@@ -51,4 +49,4 @@ html(lang="#{ language }")
               | &nbsp;updated&nbsp;
               time(datetime="#{ date }")= date
             p#sitemappath
-              != partial('_shared/breadcrumbs')
+              != partial('../_shared/breadcrumbs')

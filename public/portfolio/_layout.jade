@@ -1,0 +1,12 @@
+extends ../_layout.jade
+
+block content
+  section#portfolio(itemscope, itemtype="http://schema.org/CreativeWork")
+    h1 Portfolio
+    h2(itemprop='name')= title
+    p.tags(itemprop='keywords')
+      b(itemprop='dateCreated')= new Date(date).getFullYear()
+      | &nbsp;·&nbsp;
+      != keywords
+
+    != yield
