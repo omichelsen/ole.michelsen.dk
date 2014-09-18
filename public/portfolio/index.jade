@@ -1,7 +1,7 @@
 ul.projects
 	for item, slug in public.portfolio._data
 		li
-			a(href='/portfolio/#{ slug }')
+			a(href='/portfolio/#{ slug }.html')
 				span.image
 					img(src='#{ cdn }portfolio/#{ slug }/thumb.png', alt='#{ item.title }')
 				span.text
