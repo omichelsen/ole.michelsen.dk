@@ -1,43 +1,44 @@
-section
-  ul.slideshow
-    li
-      a(href='/profile.html')
-        img(src='#{ cdn }images/olemichelsen-1.jpg', title='Welcome', alt='This is my new curriculum vitae website', width='950', height='400')
-    li
-      a(href='/portfolio/')
-        img(src='#{ cdn }images/olemichelsen-2.jpg', title='Portfolio', alt='Presenting some of my work and projects', width='950', height='400')
-    li
-      a(href='/photos/')
-        img(src='#{ cdn }images/olemichelsen-3.jpg', title='Photos', alt='Shots from my travels around the world', width='950', height='400')
+.landingpage
+  section
+    ul.slideshow
+      li
+        a(href='/profile.html')
+          img(src='#{ cdn }images/olemichelsen-1.jpg', title='Welcome', alt='This is my new curriculum vitae website', width='950', height='400')
+      li
+        a(href='/portfolio/')
+          img(src='#{ cdn }images/olemichelsen-2.jpg', title='Portfolio', alt='Presenting some of my work and projects', width='950', height='400')
+      li
+        a(href='/photos/')
+          img(src='#{ cdn }images/olemichelsen-3.jpg', title='Photos', alt='Shots from my travels around the world', width='950', height='400')
 
-section.columns
-  .feed.col
-    h4 Things I do
-    ul
-      | ?php echo $col1 ?
-  .feed.col
-    h4 Things I say
-    ul
-      | ?php echo $col2 ?
-  .col.last
-    h4 Things I connect to
-    ul
-      li
-        a(href='https://www.linkedin.com/in/olebjornmichelsen', rel='external', title='LinkedIn')
-          span.linkedin
-      li
-        a(href='https://twitter.com/omichelsen', rel='external', title='Twitter')
-          span.twitter
-      li
-        a(href='https://www.facebook.com/olemichelsen', rel='external', title='Facebook')
-          span.facebook
-      li
-        a(href='https://www.flickr.com/photos/olemichelsen', rel='external', title='Flickr')
-          span.flickr
-    #postit
-      span
-        | You can also&nbsp;
-        a(href='mailto:#{ email }') drop me a line
+  section.columns
+    .feed.col
+      h4 Things I do
+      ul
+        | ?php echo $col1 ?
+    .feed.col
+      h4 Things I say
+      ul
+        | ?php echo $col2 ?
+    .col.last
+      h4 Things I connect to
+      ul
+        li
+          a(href='https://www.linkedin.com/in/olebjornmichelsen', rel='external', title='LinkedIn')
+            span.linkedin
+        li
+          a(href='https://twitter.com/omichelsen', rel='external', title='Twitter')
+            span.twitter
+        li
+          a(href='https://www.facebook.com/olemichelsen', rel='external', title='Facebook')
+            span.facebook
+        li
+          a(href='https://www.flickr.com/photos/olemichelsen', rel='external', title='Flickr')
+            span.flickr
+      #postit
+        span
+          | You can also&nbsp;
+          a(href='mailto:#{ email }') drop me a line
 
 script(src='#{ libs.jquery }')
 include ../bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js
