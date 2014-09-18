@@ -8,7 +8,11 @@
 		"language": "en",
 		"author": "Ole Michelsen",
 		"author_full": "Ole Bjørn Michelsen",
-		"email": "ole@michelsen.dk"
+		"email": "ole@michelsen.dk",
+		"libs": {
+			"jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js",
+			"moment": "//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"
+		}
 	},
 	"service": {
 		"analytics": "UA-19571265-2"

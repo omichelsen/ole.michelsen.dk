@@ -11,5 +11,11 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "moment": "~2.8.3",
+    "jquery": "~2.1.1",
+    "jquery-slideshow": "*",
+    "jquery.animate-enhanced": "~1.1.0"
+  }
 }

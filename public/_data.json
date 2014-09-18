@@ -6,6 +6,10 @@
 	"feed": {
 		"layout": false
 	},
+	"index": {
+		"title": "Ole Michelsen | Web Development and Computer Science",
+		"description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL."
+	},
 	"sitemap": {
 		"layout": false
 	}

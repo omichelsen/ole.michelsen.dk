@@ -1,0 +1,79 @@
+.columns {
+    margin-top: 15px;
+    font: 200 14px 'Helvetica Neue', Arial, Helvetica, Norasi, sans-serif;
+    .col {
+        width: 37%;
+    }
+    .last {
+        width: 20%;
+    }
+    a:link {
+        color: #333;
+        text-decoration: none;
+    }
+    a:hover {
+        color: maroon;
+    }
+    a:active {
+        color: #000;
+    }
+    ul {
+        display: block;
+        clear: both;
+        overflow: hidden;
+        list-style: none;
+        padding: 3px 0;
+        border-top: 3px double #ccc;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+h4 {
+    color: #999;
+    text-shadow: 0 1px 1px #f3f3f3;
+    font: italic 20px Georgia, "Bitstream Charter", serif;
+}
+
+.feed {
+    a:visited {
+        color: #333;
+        text-decoration: none;
+    }
+    li {
+        margin: 5px 0 5px 20px;
+        padding-top: 5px;
+        border-top: 1px dotted #eee;
+    }
+    li:first-child {
+        padding-top: 0;
+        border-top: none;
+    }
+    .feedType {
+        margin-left: -20px;
+    }
+    time {
+        font-size: 11px;
+        font-style: italic;
+        letter-spacing: 1px;
+    }
+}
+
+.last li {
+    float: left;
+    margin: 3%;
+}
+
+#postit {
+    width: 115px;
+    height: 90px;
+    padding: 60px 20px 20px 15px;
+    margin: 20px;
+    background:url(/images/post-it-note.jpg);
+
+    span {
+        display: block;
+        .transform(rotate(-4deg));
+        font: normal 130%/16pt "Marker Felt", "Comic Sans MS", Helvetica, Arial, sans-serif;
+        text-align: center;
+    }
+}
