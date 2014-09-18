@@ -1,4 +1,11 @@
 {
+    "regexcrossword": {
+        "title": "Regex Crossword",
+        "description": "A crossword puzzle game using regular expressions. Solve a set of crossword challenges to earn acheivements you can share with your friends.",
+        "keywords": "Design · Programming: AngularJS, jQuery, Bootstrap, LESS, PHP",
+        "created": "2013",
+        "date": "2014-06-14"
+    },
     "ernitec": {
         "title": "Ernitec",
         "description": "Website for surveillance company Ernitec using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
