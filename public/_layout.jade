@@ -9,7 +9,7 @@ html(lang="#{ language }")
     link(rel="stylesheet", href="/styles/main.css")
     link(rel="canonical", href="#{ url + current.path.join('/') }")
     link(rel="index", href="#{ url + current.path[0] }")
-    link(rel="image_src", href="#{ cdn + thumbnail }")
+    block link
     link(rel="shortcut icon", href="http://static.michelsen.dk/favicon.png")
     link(rel="alternate", href="#{ url }feed.xml", type="application/rss+xml", title="Ole Michelsen Latest Updates")
 

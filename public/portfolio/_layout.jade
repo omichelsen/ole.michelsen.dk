@@ -1,12 +1,19 @@
 extends ../_layout.jade
 
+block link
+  link(rel="image_src", href="#{ cdn + thumbnail }")
+
 block content
   section#portfolio(itemscope, itemtype="http://schema.org/CreativeWork")
     h1 Portfolio
-    h2(itemprop='name')= title
-    p.tags(itemprop='keywords')
-      b(itemprop='dateCreated')= new Date(date).getFullYear()
-      | &nbsp;·&nbsp;
-      != keywords
+    if current.source === 'index'
+      p.tags
+        | Design and Programming from 1999-2013
+    else
+      h2(itemprop='name')= title
+      p.tags(itemprop='keywords')
+        b(itemprop='dateCreated')= created
+        | &nbsp;·&nbsp;
+        != keywords
 
     != yield
