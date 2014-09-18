@@ -10,7 +10,8 @@
 		"author_full": "Ole Bjørn Michelsen",
 		"email": "ole@michelsen.dk",
 		"libs": {
-			"jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js",
+			"jquery": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js",
+			"masonry": "//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js",
 			"moment": "//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"
 		}
 	},
