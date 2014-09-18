@@ -1,9 +1,15 @@
 {
+    "ernitec": {
+        "title": "Ernitec",
+        "description": "Website for surveillance company Ernitec using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
+        "keywords": "Programming: ASP.NET MVC, HTML5, jQuery",
+        "created": "2011",
+        "date": "2011-10-07"
+    },
 	"kuranz": {
 		"title": "Kuranz",
 		"description": "Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.",
         "keywords": "Design · Programming: JavaScript, RequireJS, Knockout, HTML5 (offline cache, localStorage, geolocation)",
-		"thumbnail": "portfolio/kuranz/thumb.png",
         "created": "2013",
 		"date": "2013-11-13"
 	},
@@ -11,7 +17,6 @@
         "title": "Business Card",
         "description": "My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.",
         "keywords": "Design · Programming: SVG",
-        "thumbnail": "portfolio/business-card/thumb.png",
         "created": "2011",
         "date": "2011-10-07"
     },
@@ -19,7 +24,6 @@
         "title": "Cortex Facaderens ApS",
         "description": "Cortex Facaderens ApS website design screenshots. Featuring a Flash menu and ASP 3.0 with MS Access, using HTML frames and CSS 2.0.",
         "keywords": "Design · Programming: ASP VB6, Flash",
-        "thumbnail": "portfolio/cortex/thumb.png",
         "created": "2002",
         "date": "2013-10-07"
     },
@@ -27,7 +31,6 @@
         "title": "Hillerød NetParty",
         "description": "Board member, website design and competition/event planning for Hillerød NetParty (HNP) a computer LAN party association.",
         "keywords": "Organizer · Event planning · Design · Programming",
-        "thumbnail": "portfolio/hnp/thumb.png",
         "created": "1999-2001",
         "date": "2011-10-07"
     }
