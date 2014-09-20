@@ -48,6 +48,34 @@
         "created": "2011",
         "date": "2011-10-07"
     },
+    "alsted": {
+        "title": "Alsted Byg ApS",
+        "description": "Alsted Byg ApS website design screenshots. Simple HTML site made with ASP and MS Access, presenting the company's work history and contact information.",
+        "keywords": "Author · Design · Programming: ASP VB6, MS Access",
+        "created": "2005",
+        "date": "2013-10-07"
+    },
+    "mmt": {
+        "title": "JPEG compression",
+        "description": "Presentation of the JPEG image compression algorithm and the balance of file size vs. image quality settings in digital photography.",
+        "keywords": "Author · Design · Programming",
+        "created": "2004",
+        "date": "2013-10-07"
+    },
+    "majazz": {
+        "title": "MaJazz",
+        "description": "Webdesign for the amateur choir MaJazz made in PHP featuring editing of updates and calendar events, and a restricted section for members.",
+        "keywords": "Design · Programming: PHP",
+        "created": "2004",
+        "date": "2013-10-07"
+    },
+    "lejdirect": {
+        "title": "Lej Direct A/S",
+        "description": "Lej Direct website design screenshots. The site featured both a product editing system and shopping system made in ASP.",
+        "keywords": "Design · Programming: ASP VB6, MS Access",
+        "created": "2004",
+        "date": "2013-10-07"
+    },
     "cortex": {
         "title": "Cortex Facaderens ApS",
         "description": "Cortex Facaderens ApS website design screenshots. Featuring a Flash menu and ASP 3.0 with MS Access, using HTML frames and CSS 2.0.",

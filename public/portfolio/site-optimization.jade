@@ -19,7 +19,7 @@ p
       a(href='/tools/base64.html', title='Tools: Base64 Encoder') base64 encoded
       | &nbsp;them directly into the stylesheet. Base64 encoding has some downsides though: it doesn't work in IE6 and IE7, and generally increases size by 1/3. This must be considered against the benefit of the reduced HTTP requests.
     p.c
-      img.frame(src='http://cdn.ole.michelsen.dk/portfolio/site-optimization/yslow-smallsite.png', alt='YSlow Grade A - performance score 100/100', width='435', height='200')
+      img.frame(src='#{ cdn }/portfolio/site-optimization/yslow-smallsite.png', alt='YSlow Grade A - performance score 100/100', width='435', height='200')
   section#minify
     h3 Minification and compression
     p
@@ -34,7 +34,7 @@ p
       br
       | The overall reduction in file size using these compression techniques amounts to 57% for CSS, 78% for JS, and 60% for HTML, as shown in the chart below:
     p
-      img.frame(src='http://cdn.ole.michelsen.dk/portfolio/site-optimization/compression.png', alt='Compression results of 57% for CSS, 78% for JS and 60% for HTML', width='435', height='250')
+      img.frame(src='#{ cdn }/portfolio/site-optimization/compression.png', alt='Compression results of 57% for CSS, 78% for JS and 60% for HTML', width='435', height='250')
     p
       i
         | It's also possible to minify the HTML, but this require more control over the output/rendering process than I currently have implemented on my website.
@@ -55,7 +55,7 @@ section.column-right
         a(href='#footnote1') 1
       | :
     p
-      img.frame(src='http://cdn.ole.michelsen.dk/portfolio/site-optimization/page-speed.png', alt='Page Speed Score 99/100', width='435', height='200')
+      img.frame(src='#{ cdn }/portfolio/site-optimization/page-speed.png', alt='Page Speed Score 99/100', width='435', height='200')
   section
     h3 Search Engine Optimization
     p
@@ -85,7 +85,7 @@ section.column-right
         | &nbsp;unique URL, which can be a problem on larger sites with heavy use of query strings.
     h4 Lynx text browser
     p
-      img.floatright.frame(src='http://cdn.ole.michelsen.dk/portfolio/site-optimization/lynx.png', alt='This page when viewed through the Lynx web browser', width='100', height='80')
+      img.floatright.frame(src='#{ cdn }/portfolio/site-optimization/lynx.png', alt='This page when viewed through the Lynx web browser', width='100', height='80')
       | To really test your mettle, you can run your site through a text browser like Lynx. This can give you an idea how the web crawlers (as well as text-to-speak browsers for the handicapped) see your site, and how your content is actually structured when you cut away the design layer.
   section
     h3 Content Delivery Network
