@@ -1,0 +1,40 @@
+p
+  | I developed this system to help small and medium shops manage their&nbsp;
+  a(href='sandberg.html') Sandberg
+  | &nbsp;products and organize them on the racks, that Sandberg delivers. The interface is based heavily on AJAX for front end features, which is using a special algorithm I developed in C# for automatically calculating the best placement of the products.
+p
+  | The MeterMan system is intended for direct embedding on a vendors own website in an iframe, and is therefore kept in a minimalistic design. Shop functionality is also offered, with the option of full integration/redirect to the vendors basket or shipping of an e-mail order for simpler setups.
+.columns
+  .col
+    img.frame(alt='Range Setup and Selection', src='#{ cdn }portfolio/sandberg/meterman-1.png', width='280', height='208')
+    br
+    br
+    h5 MeterMan range setup
+    p
+      | Starting up MeterMan is as easy as selecting a name and the dimensions for the racks used in the store. The user is linked to the account on the calling site, so no login is needed.
+    p
+      | Easy-to-use interface and simple configuration means, that a store can be up and running with a MeterMan product assortment in only 4 steps.
+  .col
+    img.frame(alt='Rack layout, preview and auto-fill', src='#{ cdn }portfolio/sandberg/meterman-2.png', width='280', height='208')
+    br
+    br
+    h5 Rack layout preview
+    p
+      | Preview of the racks is "on-the-fly" generated PNG's for portability and printing purposes. Several racks can be shown side by side, and more details will be added on high-res displays.
+      br
+      | Using AJAX the previews can be zoomed and the layout position of the products changed instantly.
+    h5 Automatic fill
+    p
+      | The "Fill" function automates the placement of the selected products on the number of racks. The C# algorithm completes in less than 2 sec. for 20 racks, which was well below the targeted max response time for a "real-time" web request.
+  .col
+    img.frame(alt='Labels and print options', src='#{ cdn }portfolio/sandberg/meterman-3.png', width='280', height='208')
+    br
+    br
+    h5 Print options
+    p
+      | Instructions for unboxing deliveries and physically placing the products on racks can be printed out.
+      br
+      | Labels can also be made on special paper for the front of the spikes and shelves on the racks. An ActiveX component is used, so to be able to print on special paper with millimeters precision.
+    h5 Customizable labels
+    p
+      | The labels are highly customizable, with a live preview of the result. You can scroll through the products in the range to see how a specific product label will look.

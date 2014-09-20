@@ -1,0 +1,113 @@
+#message {
+    font: bold 40pt/350% 'Century Gothic', Verdana;
+    color: #333;
+    text-shadow: 0 1px 2px #999;
+}
+
+#countdown {
+    position: relative;
+    margin: 0 auto; padding: 40px;
+    width: 650px; height: 90px;
+
+    background: #000;
+    background: -webkit-linear-gradient(#222 75px, #2A2A2A 75px);
+    background: -moz-linear-gradient(#222 75px, #2A2A2A 75px);
+    background: -ms-linear-gradient(#222 75px, #2A2A2A 75px);
+    background: -o-linear-gradient(#222 75px, #2A2A2A 75px);
+    background: linear-gradient(#222 75px, #2A2A2A 75px);
+    -pie-background: linear-gradient(#222 80px, #2A2A2A 80px);
+
+    border: 4px inset #EEE;
+    border-radius: 10px;
+    -webkit-box-shadow: #666 0 0 10px;
+    -moz-box-shadow: #666 0 0 10px;
+    box-shadow: #666 0 0 10px;
+    behavior: url(/scripts/PIE-1.0b5.htc);
+}
+
+.line {
+    position: absolute; top: 75px; left: 0;
+    height: 1px; width: 100%;
+    background: #000;
+    border-bottom: 1px solid #333;
+    z-index: 1000;
+}
+
+.dash {
+    position: relative;
+    width: 110px; height: 100px;
+    float: left;
+    margin-left: 20px;
+}
+
+.dash .digit {
+    position: relative;
+    float: left;
+    width: 55px; height: 90px;
+    font: bold 55pt/55pt 'Times New Roman';
+    color: #EEE;
+}
+
+.dash_title {
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    right: 6px;
+    font-size: 9pt;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 1px #222;
+}
+
+#config {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 580px; height: 180px;
+}
+
+#setup {
+    position: absolute;
+    top: 0; left: 0;
+    width: 265px;
+}
+
+#info-create, #info-save {
+    position: absolute;
+    top: 0; left: 315px;
+    width: 265px; height: 165px;
+}
+
+#info-save { display: none; }
+
+#copy2clipboard {
+    position: absolute;
+    bottom: 0; right: 0;
+    height: 15px; width: 265px;
+}
+
+#doneCopy {
+    display: none; color: green;
+}
+
+.vline {
+    position: absolute;
+    top: 0; left: 286px;
+    width: 2px; height: 150px;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0,#FFF),color-stop(0.2,#666),color-stop(0.8,#666),color-stop(1,#FFF));
+    background: -webkit-linear-gradient(#FFF 10%, #666, #666 80%, #FFF);
+    background: -moz-linear-gradient(#FFF 20%, #666, #666 80%, #FFF);
+    background: linear-gradient(#FFF 20%, #666, #666 80%, #FFF);
+    -pie-background: linear-gradient(#FFF 20%, #666, #666 80%, #FFF);
+    behavior: url(/scripts/PIE-1.0b5.htc);
+}
+.vline div {
+    width: 1px; height: 150px;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0,#FFF),color-stop(0.2,#DDD),color-stop(0.8,#DDD),color-stop(1,#FFF));
+    background: -webkit-linear-gradient(#FFF 20%, #DDD, #DDD 80%, #FFF);
+    background: -moz-linear-gradient(#FFF 20%, #DDD, #DDD 80%, #FFF);
+    background: linear-gradient(#FFF 20%, #DDD, #DDD 80%, #FFF);
+    -pie-background: linear-gradient(#FFF 20%, #DDD, #DDD 80%, #FFF);
+    behavior: url(/scripts/PIE-1.0b5.htc);
+}
