@@ -1,4 +1,11 @@
 {
+    "eet": {
+        "title": "EET Group A/S",
+        "description": "Presenting my work for EET creating a multinational webshop platform integrated with Navision, deployed to 16 countries in 11 languages to &gt;50000 users.",
+        "keywords": "Project Management · Design · Programming: C#, T-SQL, ASP.NET MVC, HTML5",
+        "created": "2006-2012",
+        "date": "2014-06-14"
+    },
     "regexcrossword": {
         "title": "Regex Crossword",
         "description": "A crossword puzzle game using regular expressions. Solve a set of crossword challenges to earn acheivements you can share with your friends.",
