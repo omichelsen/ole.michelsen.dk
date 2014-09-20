@@ -1,0 +1,110 @@
+style.
+  @-webkit-keyframes background {
+    from { background: #fff; }
+      to   { background: #000; }
+  }
+  @keyframes background {
+    from { background: #fff; }
+      to   { background: #000; }
+  }
+  .bg-anim {
+    background: #000;
+    -webkit-animation: background 1s linear;
+    animation: background 1s linear;
+  }
+  @-webkit-keyframes fadein {
+    0%, 5% { opacity: 0; margin-top: -950px; }
+      100%   { opacity: 1; margin-top: -475px; }
+  }
+  @keyframes fadein {
+    0%, 5% { opacity: 0; margin-top: -950px; }
+      100%   { opacity: 1; margin-top: -475px; }
+  }
+  @-webkit-keyframes rotate {
+    from { -webkit-transform: rotate(0deg); }
+      to   { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes rotate {
+    from { -moz-transform: rotate(0deg); }
+      to   { -moz-transform: rotate(360deg); }
+  }
+  .moon-anim {
+    -webkit-animation: fadein 15s ease-out, rotate 120s infinite linear;
+    animation: fadein 15s ease-out, rotate 120s infinite linear;
+  }
+  #moon {
+    margin-top: -475px;
+  }
+  #control {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    width: 64px;
+    height: 64px;
+    background: url(http://cdn.ole.michelsen.dk/demos/html5-animation/controls.png) no-repeat;
+    opacity: .3;
+    transition: opacity .3s linear;
+  }
+  #control:hover {
+    opacity: .5;
+  }
+  #control.playing {
+    background-position: -64px 0;
+  }
+  #moon, #control {
+    display: none;
+  }
+  #loading {
+    position: absolute;
+    top: 300px; left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    background: rgba(0,0,0,.5);
+    border-radius: 8px;
+    font-size: 150%;
+    font-weight: bold;
+    text-align: center;
+  }
+  #loading a {
+    display: block;
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+img#moon(alt='', src='#{ cdn }demos/html5-animation/moon.jpg', width='950', height='950')
+audio#audio(loop='', preload='')
+  source(src='#{ cdn }demos/html5-animation/Nocturne.ogg', type='audio/ogg')
+  source(src='#{ cdn }demos/html5-animation/Nocturne.mp3', type='audio/mpeg')
+  | Your browser does not support the audio element.
+a#control(href='#')
+#loading
+  a#doStart(href='#') START ANIMATION
+
+script(src="#{ libs.jquery }")
+script.
+  $(function() {
+    var audio = this.getElementById('audio');
+    var $control = $('#control');
+
+    $(audio)
+      .bind('play',  function() { $control.addClass('playing'); })
+      .bind('pause', function() { $control.removeClass('playing'); })
+      .bind('ended', function() { audio.currentTime = 0; audio.play(); });
+
+    $control.click(function() {
+      (!audio.paused)
+        ? audio.pause()
+        : audio.play();
+      return false;
+    });
+
+    $('#doStart').click(function() {
+      $('#loading').fadeOut('fast');
+      $('#container').addClass('bg-anim');
+      $('#moon').addClass('moon-anim').show();
+      $control.fadeIn();
+      audio.play();
+      return false;
+    });
+  });
