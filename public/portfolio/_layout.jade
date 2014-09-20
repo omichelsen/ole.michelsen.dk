@@ -8,7 +8,8 @@ block content
     h1 Portfolio
     if current.source === 'index'
       p.tags
-        | Design and Programming from 1999-2013
+        | Programming and design from 1999-
+        != new Date().getFullYear()
     else
       h2(itemprop='name')= title
       p.tags(itemprop='keywords')

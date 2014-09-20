@@ -12,7 +12,8 @@ html(lang="#{ language }")
     block link
     link(rel="shortcut icon", href="http://static.michelsen.dk/favicon.png")
     link(rel="alternate", href="#{ url }feed.xml", type="application/rss+xml", title="Ole Michelsen Latest Updates")
-
+    != partial("_shared/analytics.jade")
+    <!--[if lt IE 9]><script src="http://static.michelsen.dk/scripts/html5shiv.min.js"></script><![endif]-->
   body(itemscope, itemtype="http://schema.org/WebPage")
 
     #container

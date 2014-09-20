@@ -41,12 +41,12 @@ section.column-left
     | In 2010 I achieved a bachelor's degree in Computer Science at the University of Copenhagen (
     a(href='http://www.diku.dk/', rel='external') DIKU
     span.diku-small
-    | ), and concurrently I have worked both part and full time as a web developer. This website is intended to show off some of
+    | ), and concurrently I have worked both part and full time as a web developer. This website is intended to show off some of&nbsp;
     a(href='/portfolio/') my work and projects
     | .
   h3 Current projects
   p
-    | Right now I'm looking into the many new features of HTML5 and CSS3, and especially how these can help to
+    | Right now I'm looking into the many new features of HTML5 and CSS3, and especially how these can help to&nbsp;
     a(href='/portfolio/site-optimization.html') optimize website design and performance
     | .
     br
@@ -97,9 +97,11 @@ section.column-right
         td
           span 1
 #vcard-dialog(title='Mail vCard')
-form#vcard-form(action='profile.html', name='vcard-form')
-  label(for='email') Your mobile can only read vCards when sent in an email:
-  input#email.text(type='email', name='email', placeholder='E-mail address', required='required')
-  #tips
+  form#vcard-form(action='profile.html', name='vcard-form')
+    label(for='email') Your mobile can only read vCards when sent in an email:
+    input#email.text(type='email', name='email', placeholder='E-mail address', required='required')
+    #tips
 
+script(src='#{ libs.jquery }')
+script(src='#{ libs.jqueryui }')
 script(src="scripts/profile.js")

@@ -15,4 +15,4 @@ mixin breadcrumb(url, title)
 each item in current.path.slice(0, -1)
   +breadcrumb(item, capitalize(item))
   +separator
-span.current= capitalize(current.source)
+span.current= title

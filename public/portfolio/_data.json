@@ -6,6 +6,13 @@
         "created": "2013",
         "date": "2014-06-14"
     },
+    "dentatoveredeenke": {
+        "title": "Den Tatoverede Enke",
+        "description": "Website for the restaurant Den Tatoverede Enke using a pure AJAX interface and hash fragment based SEO with MVC on the backend.",
+        "keywords": "Programming: ASP.NET MVC, HTML5, CSS3, jQuery",
+        "created": "2011",
+        "date": "2011-10-07"
+    },
     "ernitec": {
         "title": "Ernitec",
         "description": "Website for surveillance company Ernitec using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",

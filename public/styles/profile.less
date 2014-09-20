@@ -13,32 +13,29 @@
     background:         linear-gradient(#f4f4f4 70%, #ececec);
     -pie-background:    linear-gradient(#f4f4f4 70%, #ececec);
     behavior: url(/scripts/PIE-1.0b5.htc);
+
+    .frame
+    {
+        float: left;
+        position: relative;
+        margin: 0 80px 0 40px;
+        padding: 0;
+        border: 12px solid #fff;
+        line-height: 0;
+        box-shadow: 0 0 5px #aaa;
+    }
+    .innerframe
+    {
+        position: absolute;
+        top: 0; left: 0;
+        width: 190px; height: 190px;
+        border: 5px solid rgba(70,70,70,.5);
+    }
+    table { margin-top: 20px }
+    th, td { padding: 0 10px }
+    th { color: #333; font-weight: 300; }
+    a { color: #999; text-decoration: none; }
 }
-#card .frame
-{
-    float: left;
-    position: relative;
-    margin: 0 80px 0 40px;
-    padding: 0;
-    border: 12px solid #fff;
-    line-height: 0;
-    -webkit-box-shadow: 0 0 5px #aaa;
-       -moz-box-shadow: 0 0 5px #aaa;
-        -ms-box-shadow: 0 0 5px #aaa;
-         -o-box-shadow: 0 0 5px #aaa;
-            box-shadow: 0 0 5px #aaa;
-}
-#card .innerframe
-{
-    position: absolute;
-    top: 0; left: 0;
-    width: 190px; height: 190px;
-    border: 5px solid rgba(70,70,70,.5);
-}
-#card table { margin-top: 20px }
-#card th, #card td { padding: 0 10px }
-#card th { color: #333; font-weight: 300; }
-#card a { color: #999; text-decoration: none; }
 
 .ui-dialog
 {
@@ -46,11 +43,7 @@
     background: #fff;
     border: 10px solid rgba(128,128,128,.5);
     border-radius: 8px;
-    -webkit-box-shadow: 0 0 8px #555;
-       -moz-box-shadow: 0 0 8px #555;
-        -ms-box-shadow: 0 0 8px #555;
-         -o-box-shadow: 0 0 8px #555;
-            box-shadow: 0 0 8px #555;
+    box-shadow: 0 0 8px #555;
     color: #fff;
 }
 .ui-dialog-titlebar
@@ -78,10 +71,8 @@
     line-height: 200%;
     text-align: center;
     text-shadow: 0px 1px 1px #333;
-    background: -webkit-radial-gradient(center top , ellipse farthest-side, #494949, rgba(49, 49, 49, 0) 75%) repeat scroll 0 0%,
-                -webkit-linear-gradient(#282828, #494949) repeat scroll 0 0 transparent;
-    background: -moz-radial-gradient(center top , ellipse farthest-side, #494949, rgba(49, 49, 49, 0) 75%) repeat scroll 0 0%,
-                -moz-linear-gradient(#282828, #494949) repeat scroll 0 0 transparent;
+    background: radial-gradient(center top , ellipse farthest-side, #494949, rgba(49, 49, 49, 0) 75%) repeat scroll 0 0%,
+                linear-gradient(#282828, #494949) repeat scroll 0 0 transparent;
 }
 .ui-state-error
 {

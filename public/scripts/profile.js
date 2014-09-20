@@ -2,14 +2,10 @@
 
     // Custom 'showdelay' plug-in
     $.fn.showdelay = function () {
-
         var delay = 0;
-
         return this.each(function () {
-
             $(this).delay(delay).fadeIn(1000);
             delay += 200;
-
         });
     };
 
