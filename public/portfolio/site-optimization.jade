@@ -1,0 +1,111 @@
+p
+  | This is a presentation of the techniques and optimizations I have used on this site. The goal has been to create a website using all the latest standards, like HTML5 and CSS3, and exploring performance optimization techniques to reduce HTTP requests and compressing scripts etc.
+.column-left
+  section
+    h3 HTTP requests
+    p
+      | Yahoo! recently did a report, finding that 80% of their page loading time was spent on the front-end, primarily downloading files like images, stylesheets etc. Thus it becomes relevant to reduce the number of these files, especially considering your browser will usually only download between 2-8 files simultaneously.
+    h4 Sprites and base64 encoding
+    .floatright
+      span.linkedin
+      span.facebook
+      span.twitter
+    p
+      | To reduce the number of image files used on the page, I am using CSS3 gradients for backgrounds, and where&nbsp;
+      abbr(title='User Interface') UI
+      | &nbsp;images like icons are required, I have placed them in sprites. Sprites remove the overhead of the file format by placing all the images in one file, and then shifting the visible part of the image.
+    p
+      | Furthermore, to remove the HTTP requests of downloading the sprites, I have&nbsp;
+      a(href='/tools/base64.html', title='Tools: Base64 Encoder') base64 encoded
+      | &nbsp;them directly into the stylesheet. Base64 encoding has some downsides though: it doesn't work in IE6 and IE7, and generally increases size by 1/3. This must be considered against the benefit of the reduced HTTP requests.
+    p.c
+      img.frame(src='http://cdn.ole.michelsen.dk/portfolio/site-optimization/yslow-smallsite.png', alt='YSlow Grade A - performance score 100/100', width='435', height='200')
+  section#minify
+    h3 Minification and compression
+    p
+      | Compression like
+      abbr(title='GNU zip') gzip
+      | is always good, but for stylesheets and especially JavaScript, we can go one step further with&nbsp;
+      a(href='/tools/minifier.html', title='Tools: Script Minifier')
+        i minification
+      | . Because the computer doesn't need the code to be humanly readable, we can remove all comments, line-breaks, spaces etc. For JavaScript we can even change variable names to "a, b, c...", since we can safely determine the scope of the variables.
+    p
+      | For my site, minifying the stylesheet reduced size by 16%, and my JavaScripts by a whopping 46%!
+      br
+      | The overall reduction in file size using these compression techniques amounts to 57% for CSS, 78% for JS, and 60% for HTML, as shown in the chart below:
+    p
+      img.frame(src='http://cdn.ole.michelsen.dk/portfolio/site-optimization/compression.png', alt='Compression results of 57% for CSS, 78% for JS and 60% for HTML', width='435', height='250')
+    p
+      i
+        | It's also possible to minify the HTML, but this require more control over the output/rendering process than I currently have implemented on my website.
+section.column-right
+  section
+    h3 Caching
+    p
+      | No UI content should be downloaded twice, so my static files like CSS and JS have an expiration date of 1 year. Cache-control and doing away with query strings also ensures that proxies will cache your content, allowed by setting the "public" parameter:
+    p
+      code Cache-Control: max-age=31557600, public
+    p
+      | To update these files, a rename is now necessary (versioning), but this is well worth the extended caching.
+  section
+    h3 Performance
+    p
+      | Measuring the performance and effect of these optimizations, can be done with a variety of tools. We can measure the use of best practice techniques described here with Google Page Speed. As you can see, my efforts have paid off, landing a solid score of 99/100
+      sup
+        a(href='#footnote1') 1
+      | :
+    p
+      img.frame(src='http://cdn.ole.michelsen.dk/portfolio/site-optimization/page-speed.png', alt='Page Speed Score 99/100', width='435', height='200')
+  section
+    h3 Search Engine Optimization
+    p
+      | High visibility on Google, Yahoo etc. is pretty important for everyone making websites, and it's key to find the right keywords for your content. If your keywords does not represent your actual content, your Page Rank will suffer.
+      br
+      | Optimizing the code can help give you the extra edge, and I have focused on the following aspects:
+    ul.list
+      li
+        b Meta tags
+        br
+        | Author, Keywords and Description are nessecities which will also help present your page nicely in search results.
+      li
+        b No dynamic URLs
+        br
+        | This is not difficult on my small site, but doing away with query string-served content is a boon for both&nbsp;
+        abbr(title='Search Engine Optimization') SEO
+        | &nbsp;and proxy caching.
+      li
+        b Quality content
+        br
+        | I think I've nailed this one pretty well ;-)
+      li
+        b Unique content
+        br
+        | Ensuring content and especially title and meta tags are not duplicated on several pages is a big priority. In this regard it's important that a page has only&nbsp;
+        i one
+        | &nbsp;unique URL, which can be a problem on larger sites with heavy use of query strings.
+    h4 Lynx text browser
+    p
+      img.floatright.frame(src='http://cdn.ole.michelsen.dk/portfolio/site-optimization/lynx.png', alt='This page when viewed through the Lynx web browser', width='100', height='80')
+      | To really test your mettle, you can run your site through a text browser like Lynx. This can give you an idea how the web crawlers (as well as text-to-speak browsers for the handicapped) see your site, and how your content is actually structured when you cut away the design layer.
+  section
+    h3 Content Delivery Network
+    p
+      | For major sites, using&nbsp;
+      abbr(title='Content Delivery Network') CDN
+      | s makes sure users will receive your content from the server nearest to them. My site is too small for this to be feasible for&nbsp;
+      i all
+      | &nbsp;my content, but I'm using it in one important aspect, the&nbsp;
+      b jQuery
+      | &nbsp;library.
+      br
+      | Since jQuery is hosted on Google's API CDN, pointing to their version of the jQuery script means there's good chance visitors will already have this script cached.
+section
+  p
+    | This is a cursory glance of the main optimization techniques I have used on this site. Since my site is very small, these techniques have largely been straightfoward to implement, but for bigger sites some of these approaches can be difficult to adapt to an existing system structure.
+  p
+    | In coming articles I will dive a little deeper into some of these subjects, and explore ways of implementing them on a larger scale.
+section#footnotes
+  ol
+    li#footnote1
+      span
+        | Ironically, I'm not achieving the top score due to the cache setting of Google's own Analytics tracking script.

@@ -41,6 +41,13 @@
         "created": "2011",
         "date": "2011-10-07"
     },
+    "site-optimization": {
+        "title": "Website optimization techniques",
+        "description": "Techniques for optimizing websites and how to improve performance by reducing HTTP requests and minifying scripts.",
+        "keywords": "Blog",
+        "created": "2011",
+        "date": "2011-10-07"
+    },
     "cortex": {
         "title": "Cortex Facaderens ApS",
         "description": "Cortex Facaderens ApS website design screenshots. Featuring a Flash menu and ASP 3.0 with MS Access, using HTML frames and CSS 2.0.",
