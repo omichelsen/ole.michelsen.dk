@@ -34,6 +34,13 @@
         "created": "2013",
 		"date": "2013-11-13"
 	},
+    "herluftrollesgade": {
+        "title": "Herluf Trolles Gade",
+        "description": "My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.",
+        "keywords": "Design · Programming: HTML5, CSS3, SVG, jQuery",
+        "created": "2012",
+        "date": "2011-10-07"
+    },
     "business-card": {
         "title": "Business Card",
         "description": "My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.",
@@ -42,7 +49,7 @@
         "date": "2011-10-07"
     },
     "site-optimization": {
-        "title": "Website optimization techniques",
+        "title": "Website optimization",
         "description": "Techniques for optimizing websites and how to improve performance by reducing HTTP requests and minifying scripts.",
         "keywords": "Blog",
         "created": "2011",
