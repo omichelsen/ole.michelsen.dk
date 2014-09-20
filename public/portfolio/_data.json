@@ -48,6 +48,13 @@
         "created": "2011",
         "date": "2011-10-07"
     },
+    "safevision": {
+        "title": "SafeVision",
+        "description": "Created a website for surveillance company SafeVision using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
+        "keywords": "Programming: ASP.NET, HTML5",
+        "created": "2009",
+        "date": "2013-10-07"
+    },
     "meterman": {
         "title": "MeterMan",
         "description": "MeterMan.it is a website offering interactive management of product placement on racks in stores which I created for Sandberg A/S.",
