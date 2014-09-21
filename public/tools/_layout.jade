@@ -1,0 +1,12 @@
+extends ../_layout.jade
+
+block link
+  link(rel="image_src", href="#{ cdn + 'images/tools-' + current.source + '.png' }")
+
+block content
+  section#tools
+    h1 Tools
+    if current.source !== 'index'
+      h2= title
+
+    != yield
