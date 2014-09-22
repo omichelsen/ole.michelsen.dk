@@ -1,3 +1,5 @@
+link(rel="stylesheet", href="#{ libs.jqueryuicss }")
+
 section
   .c
     h1#message Yet Another Countdown Clock
@@ -37,7 +39,7 @@ section.config
       label(for='datepicker')
         b Message:
       br
-      input#messageinput.text(maxlength='30', style='width:250px', type='text', value='<?php echo $msg ?>')
+      input#messageinput.text(maxlength='30', style='width:250px')
       br
       br
       table
@@ -47,12 +49,12 @@ section.config
               label(for='datepicker')
                 b Date:
               br
-              input#datepicker.text(maxlength='12', required='', style='width:173px', type='text', value='<?php echo date("M j, Y", $date) ?>')
+              input#datepicker.text(maxlength='12', required='', style='width:173px')
             td
               label(for='time')
                 b Time:
               br
-              input#time.text(type='time', style='width:60px', value='<?php echo date("H:i", $date) ?>')
+              input#time.text(style='width:60px')
           tr
             td.r(colspan='2')
               br
@@ -70,5 +72,8 @@ section.config
       p
         textarea#link.text(readonly='readonly', style='height:40px;width:255px;font-size:smaller')
 
-script(src="../scripts/jquery.countdown-1.0.min.js")
+script(src="#{ libs.jquery }")
+script(src="#{ libs.jqueryui }")
+script(src="#{ libs.moment }")
+script(src="../libs/jquery.countdown-1.0.min.js")
 script(src="../scripts/countdown.js")

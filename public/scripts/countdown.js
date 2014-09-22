@@ -4,6 +4,33 @@ var valDate = /^[a-zA-Z]{3} [0-3]?[0-9], [2-9][0-9]{3}$/;
 var valTime = /^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/;
 var maxMsgLen = 30;
 
+function init() {
+    var now = moment();
+
+    // Next upcoming workstart, except on Monday (mod) where we need to keep date to know time
+    // Formula: weekdays - day no. + target day no. Ex: 7 - 6 + 1 for finding Mon 1 from Sat 6
+    var workstart = moment([now.year(), now.month(), now.date() + (7 - now.isoWeekday() + 1) % 7, 8, 30]);
+
+    // Next upcoming workend, except on Friday where we need to keep date to know time
+    // Formula: target day no. - day no. Ex: 5 - 3 for finding Fri 5 from Wed 3
+    var workend = moment([now.year(), now.month(), now.date() + 5 - now.isoWeekday() % 7, 16, 30]);
+
+    var msg;
+
+    if ((now > workend && now < workstart) // Weekend
+        || (now.isoWeekday() == 1 && now < workstart)) { // Monday, new week lurks :'-(
+        now = workstart;
+        msg = 'A new week lurks in:';
+    } else {
+        now = workend;
+        msg = 'Weekend coming up in:';
+    }
+
+    $('#messageinput').val(msg);
+    $('#datepicker').val(now.format('MMM D, YYYY'));
+    $('#time').val(now.format('HH:mm'));
+}
+
 // Pads input with given char up to a given length
 function pad(num,char,count)
 {
@@ -52,6 +79,8 @@ function setConfig() {
 }
 
 $(document).ready(function() {
+    init();
+
     // Initiate countdown
     $('#countdown').countDown({
         targetOffset: {
