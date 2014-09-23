@@ -1,5 +1,3 @@
-@import "mixins.less";
-
 /* Document settings */
 /*-------------------*/
 /* HTML reset */
@@ -79,7 +77,7 @@ header>.title, header>nav>ul, #content, footer section
 
 header
 {
-    .linear-gradient(#FFF 40%, #EEE 100%);
+    linear-gradient: #FFF 40%, #EEE 100%;
 
     .title {
         padding: 10px 0;
@@ -103,7 +101,7 @@ header
     border-bottom: 3px solid #b00;
 
     background: #000;
-    .linear-gradient(#333, #000);
+    linear-gradient: #333, #000;
 
     a {
         color: #fafafa;
@@ -131,7 +129,6 @@ header
 {
     overflow: hidden;
     padding-bottom: 70px;
-    /*background: #f5f5f5;*/
 }
 
 footer
@@ -147,7 +144,7 @@ footer
     border-top: 2px solid #444;
 
     background-color: #000;
-    .linear-gradient(#000 20%, #333 100%);
+    linear-gradient: #000 20%, #333 100%;
 
     a,
     time {
@@ -172,9 +169,9 @@ input.text, select, textarea
     vertical-align:middle;
     padding: 4px;
     font-size: 1em;
-    .linear-gradient(#FFF, #F5F5F5); // includes PIE
+    linear-gradient: #FFF, #F5F5F5; // includes PIE
     border: 1px solid #CCC;
-    .border-radius(3px);
+    border-radius: 3px;
     .box-sizing;
 }
 input[disabled],
@@ -210,8 +207,8 @@ select { padding: 2px; }
 
     border: 1px solid #757575;
 
-    .border-radius(3px);
-    .linear-gradient(#FAFAFA, #DDD);
+    border-radius: 3px;
+    linear-gradient: #FAFAFA, #DDD;
 
     .button:hover {
         color: #000;
@@ -225,7 +222,7 @@ select { padding: 2px; }
     .button[disabled]:hover {
         color: #999;
         border-color: #DDD;
-        .linear-gradient(#FAFAFA, #DDD);
+        linear-gradient: #FAFAFA, #DDD;
     }
 }
 
@@ -240,7 +237,7 @@ select { padding: 2px; }
         background-color: Maroon;
         border-bottom: 2px solid #333;
         text-align: left;
-        .border-radius(2px 2px 0 0);
+        border-radius: 2px 2px 0 0;
         behavior: url(/scripts/PIE-1.0.0.htc);
     }
     td {
@@ -253,8 +250,8 @@ select { padding: 2px; }
 
 .tableFigure {
     border: 1px solid #CCC;
-    .border-radius(3px);
-    .box-shadow(#CCC 0 0 .25em);
+    border-radius: 3px;
+    box-shadow: #CCC 0 0 .25em;
     behavior: url(/scripts/PIE-1.0.0.htc);
     caption {
         padding-bottom: .7em;
@@ -266,7 +263,7 @@ select { padding: 2px; }
     }
     th {
         background: #eae8d9;
-        .linear-gradient(#eae8d9, #e3e2d0);
+        linear-gradient: #eae8d9, #e3e2d0;
     }
     .alt td {
         background: #F3F3EB;
@@ -308,14 +305,14 @@ p > .floatright { margin-top: 2px; }
     display: inline-block;
     width: 10px; height: 10px;
 
-    .border-radius(5px);
+    border-radius: 5px;
 
-    .linear-gradient(#008000, #006400);
+    linear-gradient: #008000, #006400;
 }
 .dot-half
 {
     width: 5px;
-    .border-radius(5px 0 0 5px);
+    border-radius: 5px 0 0 5px;
 }
 
 #sitemappath .current { color: #ccc }
@@ -415,8 +412,8 @@ sup a { font-size: inherit; text-decoration: none; }
     float: left;
     margin: 5px 0 5px 22px;
     border: 1px solid #CCC;
-    .border-radius(8px);
-    .linear-gradient(#FFF, #FAFAFA);
+    border-radius: 8px;
+    linear-gradient: #FFF, #FAFAFA;
     &:first-child {
         margin-left: 0;
     }
@@ -430,7 +427,7 @@ sup a { font-size: inherit; text-decoration: none; }
         font-size: small;
         color: #333;
         background-color: #EEE;
-        .border-radius(0 0 8px 8px);
+        border-radius: 0 0 8px 8px;
         behavior: url(/scripts/PIE-1.0.0.htc);
     }
 }
@@ -481,7 +478,7 @@ ul.screenshots {
         background-color: rgba(0,0,0,0.8);
         -pie-background: rgba(0,0,0,0.8);
 
-        .border-radius(8px);
+        border-radius: 8px;
         behavior: url(/scripts/PIE-1.0.0.htc);
     }
     .number {
@@ -492,7 +489,7 @@ ul.screenshots {
         color: #FFF; font-size: larger; font-weight: bold;
         background-color: #b00;
 
-        .border-radius(12px);
+        border-radius: 12px;
         behavior: url(/scripts/PIE-1.0.0.htc);
     }
     h4 { margin: 0; color: #FFF }
