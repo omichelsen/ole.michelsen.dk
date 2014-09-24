@@ -49,6 +49,6 @@ html(lang="#{ language }")
               | Created by&nbsp;
               a(href='/profile.html', rel='author')= author
               | &nbsp;updated&nbsp;
-              time(datetime="#{ date }")= date
+              != partial('../_shared/date')
             p#sitemappath
               != partial('../_shared/breadcrumbs')
