@@ -27,6 +27,13 @@
         "created": "2011",
         "date": "2011-10-07"
     },
+    "safevision": {
+        "title": "SafeVision",
+        "description": "Created a website for surveillance company SafeVision using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
+        "keywords": "Programming: ASP.NET, HTML5",
+        "created": "2009",
+        "date": "2013-10-07"
+    },
 	"kuranz": {
 		"title": "Kuranz",
 		"description": "Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.",
@@ -41,20 +48,6 @@
         "created": "2011",
         "date": "2011-10-07"
     },
-    "site-optimization": {
-        "title": "Website optimization",
-        "description": "Techniques for optimizing websites and how to improve performance by reducing HTTP requests and minifying scripts.",
-        "keywords": "Blog",
-        "created": "2011",
-        "date": "2011-10-07"
-    },
-    "safevision": {
-        "title": "SafeVision",
-        "description": "Created a website for surveillance company SafeVision using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
-        "keywords": "Programming: ASP.NET, HTML5",
-        "created": "2009",
-        "date": "2013-10-07"
-    },
     "meterman": {
         "title": "MeterMan",
         "description": "MeterMan.it is a website offering interactive management of product placement on racks in stores which I created for Sandberg A/S.",
@@ -68,6 +61,13 @@
         "keywords": "Design · Programming",
         "created": "2001-2006",
         "date": "2013-10-07"
+    },
+    "site-optimization": {
+        "title": "Website optimization",
+        "description": "Techniques for optimizing websites and how to improve performance by reducing HTTP requests and minifying scripts.",
+        "keywords": "Blog",
+        "created": "2011",
+        "date": "2011-10-07"
     },
     "intonet": {
         "title": "IntoNet ApS",
