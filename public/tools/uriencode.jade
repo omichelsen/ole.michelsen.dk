@@ -24,7 +24,7 @@ section
         td
           input#unencoded.text(autofocus, style='width:500px', tabindex='1', value='"Ole\'s bil kører hundred km/t, derudaf"')
           | &nbsp;
-          input.button(value='Encode', onclick='return uriencode("unencoded","encoded");', tabindex='2', type='submit')
+          input.button(value='Encode', onclick='return process("unencoded","encoded",true);', tabindex='2', type='submit')
       tr
         td
           label(for='encoded')
@@ -32,7 +32,7 @@ section
         td
           input#encoded.text(style='width:500px', tabindex='3', value='%22Ole\'s%20bil%20k%C3%B8rer%20hundred%20km%2Ft%2C%20derudaf%22')
           | &nbsp;
-          input.button(value='Decode', onclick='return uridecode("encoded","unencoded");', tabindex='4', type='submit')
+          input.button(value='Decode', onclick='return process("encoded","unencoded",false);', tabindex='4', type='submit')
 section
   h3 JavaScript functions
   p
@@ -97,22 +97,12 @@ section#footnotes
         a(href='http://www.w3.org/TR/uri-clarification/#contemporary', rel='external') deprecated
         | .
 
-script(src="#{ libs.jquery }")
 script.
-  function uriencode(inputField, outputField) {
-    try {
-      $('#'+outputField).val(encodeURIComponent($('#'+inputField).val())).select();
-    } catch (error) {
-      alert(error);
-      }
+  function process(inputField, outputField, encode) {
+    var elmInput = document.getElementById(inputField);
+    var elmOutput = document.getElementById(outputField);
+    elmOutput.value = encode ? encodeURIComponent(elmInput.value) : decodeURIComponent(elmInput.value);
+    elmOutput.select();
     return false;
   }
 
-  function uridecode(inputField, outputField) {
-    try {
-      $('#'+outputField).val(decodeURIComponent($('#'+inputField).val())).select();
-    } catch (error) {
-      alert(error);
-    }
-    return false;
-  }
