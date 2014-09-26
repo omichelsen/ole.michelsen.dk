@@ -9,6 +9,11 @@
         "description": "Encode your images to Base64 for inline HTML embedding, use in style sheets, XML etc. Upload a file to convert it into its Base64-encoded string.",
         "date": "2014-09-26"
     },
+    "validator": {
+        "title": "HTML Batch Validator",
+        "description": "Batch validate multiple pages on your website from a sitemap file using the official W3C Markup Validator API. Supports HTML5, XHTML, HTML3-4 and SGML.",
+        "date": "2013-10-11"
+    },
     "countdown": {
         "title": "Yet Another Countdown Clock",
         "description": "Create your own Countdown Clock to any date and time and bookmark and share the link with your friends and family.",

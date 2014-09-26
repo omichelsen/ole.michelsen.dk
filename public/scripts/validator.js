@@ -8,11 +8,11 @@ $(document).ready(function() {
 
 		// Disable the submit button
 		$('input[type=submit]').prop('disabled', true);
-		
+
 		// Insert sitemap status message (overwrite previous results)
 		$("#results").html('<tr><td class="c" colspan="3">Processing sitemap...<br /><img src="http://cdn.ole.michelsen.dk/images/ajax-loader.gif" height="11" width="16" /></td></tr>');
-		
-		$.getJSON("validator-sitemap.php", {"uri":$("#sitemapuri").val()}, function(data) {
+
+		$.getJSON("/api/validator-sitemap.php", {"uri":$("#sitemapuri").val()}, function(data) {
 				if (data.length > 0) {
 					var delay = 2000;
 					var out = '';
@@ -55,7 +55,7 @@ $(document).ready(function() {
 function validate(index,uri) {
 
 	$.getJSON(
-		  "validator-proxy.php"
+		  "/api/validator-proxy.php"
 		, { "uri": uri }
 		, function(data) {
 
@@ -65,7 +65,7 @@ function validate(index,uri) {
 				(data.valid || data.error) +
 				'</a>'
 			);
-			
+
 			// Update timer count and check if there are still remaining
 			activeTimers--;
 			checkTimers();
