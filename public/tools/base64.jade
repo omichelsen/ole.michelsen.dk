@@ -18,15 +18,8 @@ section
       label(for='fileToUpload')
         b Input file:
       br
-      input#fileToUpload.text(name='fileToUpload', type='file')
-      span.floatright
-        label(for='mimetype')
-          | Include&nbsp;
-          abbr(title='Multipurpose Internet Mail Extensions') MIME
-          | -type prefix:&nbsp;
-        input#mimetype(name='mimetype', checked='checked', type='checkbox')
-      input.button(type='submit', value='Encode', onclick='return ajaxFileUpload()')
-      img#loading(alt='Loading...', height='11', width='16', src='http://cdn.ole.michelsen.dk/images/ajax-loader.gif', style='display:none;')
+      input#fileToUpload.text(name='fileToUpload', type='file', onchange="handleFiles(this.files)")
+      img#loading(alt='Loading...', height='11', width='16', src='/images/loading.gif', style='display:none;')
     p
       label(for='output')
         b Output:
@@ -76,3 +69,5 @@ section#footnotes
         | Character sequence is in&nbsp;
         a(href='regex.html') regular expression
         | &nbsp;notation.
+
+script(src="/scripts/base64.js")

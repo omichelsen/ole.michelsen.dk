@@ -6,8 +6,8 @@
     },
     "base64": {
         "title": "Base64 Encoder",
-        "description": "Encode or decode query string parameters using encodeURIComponent() vs. escape() ensuring that all characters are encoded and decoded correctly.",
-        "date": "2012-10-23"
+        "description": "Encode your images to Base64 for inline HTML embedding, use in style sheets, XML etc. Upload a file to convert it into its Base64-encoded string.",
+        "date": "2014-09-26"
     },
     "countdown": {
         "title": "Yet Another Countdown Clock",
