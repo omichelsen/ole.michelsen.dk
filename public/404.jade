@@ -14,11 +14,7 @@ style.
 section#photo-header
   .caption
     h1 Are you lost?
-
-  if (new Date().getMonth()) > 9 || (new Date().getMonth()) < 5
-    img(src='#{ cdn }images/404-swans.jpg', alt='Can\'t find what you are looking for?', width='950', height='300')
-  else
-    img(src='#{ cdn }images/404-turtle.jpg', alt='Don\'t know where to go from here?', width='950', height='300')
+  #imgframe
 
 section(style='padding: 0 1em;')
   h3 Page Not Found
@@ -31,3 +27,20 @@ section(style='padding: 0 1em;')
     li
       | »&nbsp;
       a(href='javascript:window.history.go(-1)') Go to the page from whence you came
+
+script.
+  var images = [{
+      url: '/images/404-swans.jpg',
+      alt: 'Can\'t find what you are looking for?'
+    }, {
+      url: '/images/404-turtle.jpg',
+      alt: 'Don\'t know where to go from here?'
+    }
+  ];
+  var image = images[Math.round(Math.random())];
+  var img = document.createElement('img');
+  img.style.width = '950px';
+  img.style.height = '300px';
+  img.src = image.url;
+  img.alt = image.alt;
+  document.getElementById('imgframe').appendChild(img);
