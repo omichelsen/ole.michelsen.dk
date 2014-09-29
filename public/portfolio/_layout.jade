@@ -1,7 +1,7 @@
 extends ../_layout.jade
 
 block link
-  link(rel="image_src", href="#{ cdn + 'portfolio/' + current.source + '/thumb.png' }")
+  link(rel="image_src", href="/images/portfolio/#{ current.source }/thumb.png")
 
 block content
   section#portfolio(itemscope, itemtype="http://schema.org/CreativeWork")
