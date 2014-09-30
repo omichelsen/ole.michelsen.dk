@@ -1,21 +1,9 @@
 section#photos
   ul.slideshow(style='height:600px')
-    li
-      img(src='#{ cdn }photos/images/mirror-lake.jpg', title='Mirror Lake, California', alt='Composite of 4 images combined for higher resolution', width='950', height='600')
-    li
-      img(src='#{ cdn }photos/images/eagle.jpg', title='Sea Eagle, Malaysia', alt='Caught flying quite close with a tele lens', width='950', height='600')
-    li
-      img(src='#{ cdn }photos/images/joshua-tree.jpg', title='Joshua Tree, California', alt='Casual shot lying comfortably in the middle of the road', width='950', height='600')
-    li
-      img(src='#{ cdn }photos/images/white-flower.jpg', title='Flower, Singapore', alt='Taken in Fort Canning Park', width='950', height='600')
-    li
-      img(src='#{ cdn }photos/images/skuespilhuset.jpg', title='Skuespilhuset, Copenhagen', alt='Shot by night with 1s shutter', width='950', height='600')
-    li
-      img(src='#{ cdn }photos/images/posters.jpg', title='Posters, Berlin', alt='A wall on the rail tracks caught my eye', width='950', height='600')
-    li
-      img(src='#{ cdn }photos/images/elizabeth-bridge.jpg', title='Elizabeth Bridge, Budapest', alt='Shot in high contrast black and white', width='950', height='600')
-    li
-      img(src='#{ cdn }photos/images/istanbul.jpg', title='Istanbul', alt='Shots from the historic markets', width='950', height='600')
+    for image in public.photos._data.index.slideshow
+      li
+        img(src='/images/photos/slideshow/#{ image.url }', title='#{ image.title }', alt='#{ image.alt }', width='950', height='600')
+
 section
   h2 Photography
   .columns
@@ -25,7 +13,7 @@ section
       p
         | Since then I have learned a lot about composure and the different techniques to create alternate interpretations of the subject. Places you pass every day can change dramatically when viewed through the viewfinder, and walking around Copenhagen discovering details other people might miss is still one of my favorite pastimes.
       p(style='float:left')
-        span.flickr-small
+        i.icon-flickr
         | &nbsp;
         a(href='http://www.flickr.com/photos/olemichelsen', rel='external') My photostream
         | &nbsp;on Flickr

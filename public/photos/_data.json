@@ -2,7 +2,40 @@
     "index": {
         "title": "Photos",
         "description": "Photographs i have taken both home and abroad on my travels. Photography is an inspiration to look at the world in a fresh and creative way.",
-        "date": "2014-09-18"
+        "date": "2014-09-18",
+        "slideshow": [{
+            "url": "mirror-lake.jpg",
+            "title": "Mirror Lake, California",
+            "alt": "Composite of 4 images combined for higher resolution"
+        }, {
+            "url": "eagle.jpg",
+            "title": "Sea Eagle, Malaysia",
+            "alt": "Caught flying quite close with a tele lens"
+        }, {
+            "url": "joshua-tree.jpg",
+            "title": "Joshua Tree, California",
+            "alt": "Casual shot lying comfortably in the middle of the road"
+        }, {
+            "url": "white-flower.jpg",
+            "title": "Flower, Singapore",
+            "alt": "Taken in Fort Canning Park"
+        }, {
+            "url": "skuespilhuset.jpg",
+            "title": "Skuespilhuset, Copenhagen",
+            "alt": "Shot by night with 1s shutter"
+        }, {
+            "url": "posters.jpg",
+            "title": "Posters, Berlin",
+            "alt": "A wall on the rail tracks caught my eye"
+        }, {
+            "url": "elizabeth-bridge.jpg",
+            "title": "Elizabeth Bridge, Budapest",
+            "alt": "Shot in high contrast black and white"
+        }, {
+            "url": "istanbul.jpg",
+            "title": "Istanbul",
+            "alt": "Shots from the historic markets"
+        }]
     },
     "travel-map": {
         "title": "World Travel Map",
