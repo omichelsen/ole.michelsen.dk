@@ -15,26 +15,34 @@
     .feed.col
       h4 Things I do
       ul
-        | ?php echo $col1 ?
+        for item, slug in public.portfolio._data
+          li
+            a.feedType(href='/portfolio/#{ slug }.html')
+              span.blog-small
+            | &nbsp;
+            a(href='/portfolio/#{ slug }.html')= item.title
+            br
+            != partial('_shared/date', {date: item.date})
+
     .feed.col
       h4 Things I say
       ul
         | ?php echo $col2 ?
     .col.last
       h4 Things I connect to
-      ul
+      ul.social
         li
           a(href='https://www.linkedin.com/in/olebjornmichelsen', rel='external', title='LinkedIn')
-            span.linkedin
+            i.icon-linkedin
         li
           a(href='https://twitter.com/omichelsen', rel='external', title='Twitter')
-            span.twitter
+            i.icon-twitter
         li
           a(href='https://www.facebook.com/olemichelsen', rel='external', title='Facebook')
-            span.facebook
+            i.icon-facebook
         li
           a(href='https://www.flickr.com/photos/olemichelsen', rel='external', title='Flickr')
-            span.flickr
+            i.icon-flickr
       #postit
         span
           | You can also&nbsp;
