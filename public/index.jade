@@ -12,22 +12,27 @@
           img(src='/images/olemichelsen-3.jpg', title='Photos', alt='Shots from my travels around the world', width='950', height='400')
 
   section.columns
-    .feed.col
-      h4 Things I do
-      ul
-        for item, slug in public.portfolio._data
+    .col
+      h4 Things I say
+      ul.feed
+        each item in public._data.index.blog
           li
-            a.feedType(href='/portfolio/#{ slug }.html')
-              span.blog-small
-            | &nbsp;
-            a(href='/portfolio/#{ slug }.html')= item.title
+            a.type(href='/blog/#{ item.url }/')
+              span.icon-blog
+            a.title(href='/blog/#{ item.url }/')= item.title
             br
             != partial('_shared/date', {date: item.date})
 
-    .feed.col
-      h4 Things I say
-      ul
-        | ?php echo $col2 ?
+    .col
+      h4 Things I do
+      ul.feed
+        each item in public._data.index.updates
+          li
+            a.type(href='#{ item.url }')
+              span(class="icon-#{ item.type || 'michelsen' }")
+            a.title(href='#{ item.url }')= item.title
+            br
+            != partial('_shared/date', {date: item.date})
     .col.last
       h4 Things I connect to
       ul.social
