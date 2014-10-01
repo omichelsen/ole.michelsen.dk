@@ -45,6 +45,11 @@
 			"date": "2014-08-01",
 			"type": "flickr"
 		}, {
+			"title": "Published angular-steps module",
+			"url": "https://github.com/omichelsen/angular-steps",
+			"date": "2014-07-09",
+			"type": "github"
+		}, {
 			"title": "Regex Crossword",
 			"url": "/portfolio/regexcrossword.html",
 			"date": "2014-06-14"
@@ -53,6 +58,11 @@
 			"url": "https://www.flickr.com/photos/olemichelsen/sets/72157635319688634/",
 			"date": "2014-04-15",
 			"type": "flickr"
+		}, {
+			"title": "Published FormNavigation jQuery plug-in",
+			"url": "https://github.com/omichelsen/FormNavigation",
+			"date": "2013-11-13",
+			"type": "github"
 		}]
 	},
 	"profile": {
