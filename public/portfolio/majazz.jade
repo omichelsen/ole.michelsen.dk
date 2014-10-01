@@ -5,4 +5,4 @@ p
 ul.screenshots
   each image in public.images.portfolio.majazz._contents.slice(0, -1)
     li
-      img.frame(src='/images/portfolio/majazz/#{ image }', alt='#{ image }', width='400', height='334')
+      img.frame(src='/images/portfolio/majazz/#{ image }', alt='#{ image.replace(/\d ([\w\s]+)\.png/, "$1") }', width='400', height='334')

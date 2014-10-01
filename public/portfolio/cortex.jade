@@ -4,7 +4,7 @@ p
   abbr(title='IE flavor of non-standard JavaScript') DHTML
   | , which of course, by todays standards, should be replaced by proper JavaScript. Menu also relies on HTML frames which would be completely unacceptable by modern standards.
 ul.screenshots
-  for image in public.images.portfolio.cortex._contents.slice(0, -1)
+  each image in public.images.portfolio.cortex._contents.slice(0, -1)
     li
       h4= image.replace('.png', '')
       img.frame(src='/images/portfolio/cortex/#{ image }', alt='#{ image }', width='400', height='259')
