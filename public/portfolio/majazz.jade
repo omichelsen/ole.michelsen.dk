@@ -1,17 +1,8 @@
 p
-  | A page for the amateur choir,&nbsp;
+  | A page for the amateur choir&nbsp;
   a(href='http://www.majazz.dk', hreflang='da', rel='external') MaJazz
   | . Site was made in PHP and featured a back end text editing interface for updates and calendar events, and a login system to an internal section for members.
 ul.screenshots
-  li
-    img.frame(src='majazz/1.png', alt='Front', width='400', height='334')
-  li
-    img.frame(src='majazz/2.png', alt='Calendar', width='400', height='334')
-  li
-    img.frame(src='majazz/3.png', alt='Pictures', width='400', height='334')
-  li
-    img.frame(src='#{ cdn }portfolio/projects/majazz/4.png', alt='Sound clips', width='400', height='334')
-  li
-    img.frame(src='#{ cdn }portfolio/projects/majazz/5.png', alt='Contact', width='400', height='334')
-  li
-    img.frame(src='#{ cdn }portfolio/projects/majazz/6.png', alt='Links', width='400', height='334')
+  each image in public.images.portfolio.majazz._contents.slice(0, -1)
+    li
+      img.frame(src='/images/portfolio/majazz/#{ image }', alt='#{ image }', width='400', height='334')
