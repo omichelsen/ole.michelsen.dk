@@ -10,9 +10,12 @@ mixin breadcrumb(url, title)
     a(href='#{ url }', itemprop='url')
       span(itemprop='title')= title
 
+- var isIndex = current.source === 'index'
+
 +breadcrumb('/', 'Home')
-+separator
-each item in current.path.slice(0, -1)
-  +breadcrumb(item, capitalize(item))
+if !isIndex || current.path.length > 1
+  each item in current.path.slice(0, isIndex ? -2 : -1)
+    +separator
+    +breadcrumb('/' + item + '/', capitalize(item))
   +separator
-span.current= title
+  span.current= isIndex ? capitalize(current.path[0]) : title
