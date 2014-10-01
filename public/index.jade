@@ -1,3 +1,11 @@
+mixin feed(item)
+  li
+    a.type(href='#{ item.url }/')
+      span(class="icon-#{ item.type || 'michelsen' }")
+    a.title(href='#{ item.url }/')= item.title
+    br
+    != partial('_shared/date', {date: item.date})
+
 .landingpage
   section
     ul.slideshow
@@ -16,23 +24,12 @@
       h4 Things I say
       ul.feed
         each item in public._data.index.blog
-          li
-            a.type(href='/blog/#{ item.url }/')
-              span.icon-blog
-            a.title(href='/blog/#{ item.url }/')= item.title
-            br
-            != partial('_shared/date', {date: item.date})
-
+          +feed(item)
     .col
       h4 Things I do
       ul.feed
         each item in public._data.index.updates
-          li
-            a.type(href='#{ item.url }')
-              span(class="icon-#{ item.type || 'michelsen' }")
-            a.title(href='#{ item.url }')= item.title
-            br
-            != partial('_shared/date', {date: item.date})
+          +feed(item)
     .col.last
       h4 Things I connect to
       ul.social
