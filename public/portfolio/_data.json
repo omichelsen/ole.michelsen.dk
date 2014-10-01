@@ -34,6 +34,12 @@
         "created": "2009",
         "date": "2013-10-07"
     },
+    "html5-animation": {
+        "layout": "../_layout",
+        "title": "HTML5 animation",
+        "description": "Animation using CSS3 transformations and HTML5 &lt;audio&gt; controls compatible with both Chrome, Safari and Firefox.",
+        "date": "2012-10-23"
+    },
 	"kuranz": {
 		"title": "Kuranz",
 		"description": "Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.",
