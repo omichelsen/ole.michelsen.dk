@@ -14,7 +14,7 @@
 $(document).ready(function () {
 
     var email = $('#email'),
-        tips = $('#tips');
+        $tips = $('#tips');
 
     function isiOS() {
         return (
@@ -34,11 +34,11 @@ $(document).ready(function () {
     }
 
     function updateTips(t) {
-        tips
+        $tips
             .text(t)
             .addClass("ui-state-highlight");
         setTimeout(function () {
-            tips.removeClass("ui-state-highlight", 1500);
+            $tips.removeClass("ui-state-highlight", 1500);
         }, 500);
     }
 

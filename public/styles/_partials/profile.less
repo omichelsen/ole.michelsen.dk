@@ -40,6 +40,16 @@
     }
 }
 
+.ui-widget-overlay
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(100,100,100,.5);
+    z-index: 99;
+}
 .ui-dialog
 {
     font-size: 130%;
@@ -48,55 +58,56 @@
     border-radius: 8px;
     box-shadow: 0 0 8px #555;
     color: #fff;
+    z-index: 100;
+
+    .ui-dialog-titlebar
+    {
+        padding: 10px;
+        border-bottom: 2px solid #b00;
+        background: #000;
+    }
+
+    .ui-dialog-titlebar-close
+    {
+        float: right;
+        color: #999 !important;
+        background: none;
+        border: none;
+        font-size: 80%;
+        text-decoration: none;
+    }
+    .ui-dialog-content
+    {
+        padding: 20px;
+        line-height: 200%;
+        text-align: center;
+        text-shadow: 0px 1px 1px #333;
+        background: radial-gradient(center top , ellipse farthest-side, #494949, rgba(49, 49, 49, 0) 75%) repeat scroll 0 0%,
+                    linear-gradient(#282828, #494949) repeat scroll 0 0 transparent;
+    }
+    .ui-state-error
+    {
+        border: 1px solid red !important;
+    }
+    .ui-dialog-buttonset
+    {
+        padding: 5px
+    }
+    .ui-button
+    {
+        font-size: 80%;
+    }
+    input[type=email]
+    {
+        margin: 20px 0 10px 0;
+        padding: 10px;
+        width: 300px;
+    }
 }
-.ui-dialog-titlebar
-{
-    padding: 10px;
-    border-bottom: 2px solid #b00;
-    background: #000;
-}
-.ui-widget-overlay
-{
-    position: absolute;
-    top: 0; left: 0;
-    background: rgba(100,100,100,.5);
-}
-.ui-dialog-titlebar-close
-{
-    float: right;
-    color: #999 !important;
-    font-size: 80%;
-    text-decoration: none;
-}
-.ui-dialog-content
-{
-    padding: 20px;
-    line-height: 200%;
-    text-align: center;
-    text-shadow: 0px 1px 1px #333;
-    background: radial-gradient(center top , ellipse farthest-side, #494949, rgba(49, 49, 49, 0) 75%) repeat scroll 0 0%,
-                linear-gradient(#282828, #494949) repeat scroll 0 0 transparent;
-}
-.ui-state-error
-{
-    border: 1px solid red !important;
-}
-.ui-dialog-buttonset
-{
-    padding: 5px
-}
-.ui-button
-{
-    font-size: 80%;
-}
-input[type=email]
-{
-    margin: 20px 0;
-    padding: 10px;
-    width: 300px;
-}
+
 #tips
 {
+    color: #ccc;
     font-size: 80%;
     font-style: italic;
 }
