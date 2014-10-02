@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /test/
 Disallow: /viewsource/
 
 Sitemap: http://ole.michelsen.dk/sitemap.xml
-Sitemap: http://ole.michelsen.dk/portfolio/projects/mmt/web/sitemap.xml
