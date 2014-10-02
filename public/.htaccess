@@ -37,3 +37,9 @@ AddType text/cache-manifest .manifest
 
 #RedirectPermanent /index.php http://ole.michelsen.dk/
 RedirectPermanent /demos/html5-animation.html /portfolio/html5-animation.html
+RedirectPermanent /portfolio/projects/alsted.html /portfolio/alsted.html
+RedirectPermanent /portfolio/projects/cortex.html /portfolio/cortex.html
+RedirectPermanent /portfolio/projects/intonet.html /portfolio/intonet.html
+RedirectPermanent /portfolio/projects/lejdirect.html /portfolio/lejdirect.html
+RedirectPermanent /portfolio/projects/majazz.html /portfolio/majazz.html
+RedirectPermanent /portfolio/projects/mmt.html /portfolio/mmt.html
