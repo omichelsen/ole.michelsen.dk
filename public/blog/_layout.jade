@@ -1,0 +1,16 @@
+extends ../_layout.jade
+
+block content
+  section#blog(itemscope, itemtype="http://schema.org/Blog")
+    article(itemprop="blogPosts", itemscope, itemtype="http://schema.org/BlogPosting")
+      h1= title
+      div.meta
+        span Article by
+        | &nbsp;
+        span.author= author
+        | &nbsp;
+        span posted on
+        | &nbsp;
+        include ../_shared/date
+
+      != yield
