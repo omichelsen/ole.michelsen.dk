@@ -1,8 +1,8 @@
 mixin feed(item)
   li
-    a.type(href='#{ item.url }/')
+    a.type(href='#{ item.url }')
       span(class="icon-#{ item.type || 'michelsen' }")
-    a.title(href='#{ item.url }/')= item.title
+    a.title(href='#{ item.url }')= item.title
     br
     != partial('_shared/date', {date: item.date})
 
