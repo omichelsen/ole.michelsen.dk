@@ -1,0 +1,11 @@
+p
+  a(href='http://www.facaderens.dk/', hreflang='da', rel='external') Cortex Facaderens ApS
+  | &nbsp;is a company which cleans/restores facades on buildings. Features a Flash intro. Flash menu is a bit unorthodox, but was a requirement from the customer. Site used some&nbsp;
+  abbr(title='IE flavor of non-standard JavaScript') DHTML
+  | , which of course, by todays standards, should be replaced by proper JavaScript. Menu also relies on HTML frames which would be completely unacceptable by modern standards.
+// more
+ul.screenshots
+  each image in public.images.portfolio.cortex._contents.slice(0, -1)
+    li
+      h4= image.replace('.png', '')
+      img.frame(src='/images/portfolio/cortex/#{ image }', alt='#{ image }', width='400', height='259')

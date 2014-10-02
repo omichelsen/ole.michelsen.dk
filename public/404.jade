@@ -1,0 +1,46 @@
+style.
+  #photo-header { position: relative; }
+  #photo-header .caption
+  {
+    position: absolute;
+    left: 0; bottom: 20px;
+    width: 100%;
+    color: #FFF;
+    z-index: 500;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  #photo-header h1 { margin: 0.1em 0.3em;  }
+  menu { list-style: none }
+section#photo-header
+  .caption
+    h1 Are you lost?
+  #imgframe
+
+section(style='padding: 0 1em;')
+  h3 Page Not Found
+  p
+    | Oops! Looks like the file you were trying to access could not be found on this server. Please check that you have the right link and/or bookmark, and try to find the correct address from my front page.
+  menu
+    li
+      | »&nbsp;
+      a(href='/') Go to the front page
+    li
+      | »&nbsp;
+      a(href='javascript:window.history.go(-1)') Go to the page from whence you came
+
+script.
+  var images = [{
+      url: '/images/404-swans.jpg',
+      alt: 'Can\'t find what you are looking for?'
+    }, {
+      url: '/images/404-turtle.jpg',
+      alt: 'Don\'t know where to go from here?'
+    }
+  ];
+  var image = images[Math.round(Math.random())];
+  var img = document.createElement('img');
+  img.style.width = '950px';
+  img.style.height = '300px';
+  img.src = image.url;
+  img.alt = image.alt;
+  document.getElementById('imgframe').appendChild(img);

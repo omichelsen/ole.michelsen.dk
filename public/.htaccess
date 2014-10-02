@@ -1,0 +1,39 @@
+## Set cache expire headers ##
+<IfModule mod_headers.c>
+	Header unset ETag
+	FileETag None
+
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|htc)$">
+		Header set Cache-Control "max-age=31557600, public"
+	</FilesMatch>
+
+	<FilesMatch "\.(txt|xml)$">
+		Header set Cache-Control "max-age=7200, public"
+	</FilesMatch>
+
+	<FilesMatch "\.manifest$">
+		Header set Cache-Control ""
+	</FilesMatch>
+</IfModule>
+
+## Enable gzip compression ##
+<IfModule mod_deflate.c>
+	<FilesMatch "\.(css|html|js|json|mustache|txt|xml)$">
+		SetOutputFilter DEFLATE
+	</FilesMatch>
+</IfModule>
+
+## Serve content as UTF8 ##
+AddDefaultCharset UTF-8
+
+## Custom error documents ##
+ErrorDocument 404 /404.html
+
+## Ensure correct MIME types ##
+AddType text/x-vcard .vcf
+
+## Enable .manifest files for HTML5 offline caching ##
+AddType text/cache-manifest .manifest
+
+#RedirectPermanent /index.php http://ole.michelsen.dk/
+RedirectPermanent /demos/html5-animation.html /portfolio/html5-animation.html

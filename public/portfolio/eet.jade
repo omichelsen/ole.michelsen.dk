@@ -1,0 +1,81 @@
+p
+  | I worked for EET Group A/S for 6 years as the lead web developer of their website platform, serving sales entities in 16 countries across Europe, as well as separate businesses and brands under the EET Group, such as&nbsp;
+  a(href='sandberg.html') Sandberg
+  | . EET is an IT distributor that specializes in spare parts and accessories, and maintains over 350.000 products with more than 35.000 buying customers across Europe.
+// more
+p
+  | A major project was to create a completely new website platform, highly integrated into EET's finance systems and able to be configured independently to serve all operating countries. The website is an e-commerce platform, focusing on shopping functionality and customer care - such as order status, returns management and customer service - and offers web services for direct integration with partners.
+section#website
+  h3
+    | Website platform and backend&nbsp;
+    abbr(title='Enterprise Resource Planning') ERP
+  .columns
+    .col
+      p
+        | The website is based on ASP.NET, utilizing both&nbsp;
+        abbr(title='Asynchronous JavaScript and XML') AJAX
+        | &nbsp;and&nbsp;
+        abbr(title='Language Integrated Query') LINQ
+        | , and runs on a Microsoft SQL database. Custom functionality is added with&nbsp;
+        abbr(title='SQL Common Language Runtime') SQL CLR
+        | , used for example to create a custom translation module between Navision&nbsp;
+        abbr(title='Client/Server Integrated Development Environment') C/SIDE
+        | &nbsp;language filters and SQL.
+        br
+        | All major browsers are supported - even IE6-7 seen as many large businesses have still not upgraded.
+      h4
+        abbr(title='Enterprise Resource Planning') ERP
+        | &nbsp;synchronization
+      p
+        img.floatright(src='/images/portfolio/eet/msdyn-nav.png', alt='Logo for Microsoft Dynamics NAV', width='100', height='30')
+        | All data is being drawn live from the&nbsp;
+        abbr(title='Microsoft Dynamics NAV') Navision
+        | &nbsp;ERP system and it's 400+ GB database of products, customers and order transactions. This is served by a custom built synchronization system, and every day we are pre-caching more than 136 million product prices worldwide, tailored for each customer based on local currency, VAT, freight charges, purchase agreements etc.
+    .col.colspan.c
+      img(src='/images/portfolio/eet/screenflip.jpg', alt='Screenshots of eetnordic.com shown in a 3D fan', width='600', height='350')
+  .columns
+    .col
+      h4 Scalability
+      p
+        | When designing a multinational commerce system, you must account for extended "peak hours" across multiple time zones, and sudden increases in transactions, traffic etc.
+      p
+        | A scalable server farm and flexible load-balancing is important, but huge improvements can also be gained by examining page content and&nbsp;
+        a(href='site-optimization.html') optimizing each request
+        | . If you can shave even 10-30% kilobytes off each request, it will greatly reduce the need for server upgrades as your traffic increases.
+      figure
+        figcaption Web traffic
+        p
+          | During my employment with EET, the number of unique visitors has increased by more than 400%!
+        p.c
+          img(src='/images/portfolio/eet/visitors.png', alt='Graph of the increase in unique visitors from 2007-2010', height='165', width='290')
+    .col
+      h4 Statistics and tracking
+      p
+        | It is no easy task to gather and parse (meaningful) statistics, especially when the&nbsp;
+        i daily
+        | &nbsp;logs can surpass 1.5 mill. lines, but it's vital for any business when evaluating success and tracking usage and performance.
+      p
+        | To match the logs with our internal business logic, I have built a custom log parsing program to track registered customers and in-page clicks, and we are using Google Analytics and AWStats as well for performance- and general monitoring.
+      h5 Campaign advertising
+      p
+        | A flexible system enables marketing in each EET country, to add special "Ads" on product- and brand pages. The system has click tracking, so popularity and relevance can be measured, which also allows for data-driven design and adapting the focus of the sales campaigns to reflect user trends.
+      p
+        | As an added benefit, the custom log parsing gives us a range of security features, enabling tracking and blocking of malicious access to our sites. This has both helped os eliminate&nbsp;
+        abbr(title='Denial of Serivce') DoS
+        | &nbsp;attacks, as well as unauthorized crawling of our
+        abbr(title='Intelligent Property') IP
+        | &nbsp;data.
+    .col
+      h4 CRN Image analysis 2010
+      p
+        | In a big image analysis by&nbsp;
+        abbr(title='Computer Reseller News') CRN
+        | , we ranked second among Danish IT distributors in the category "Electronic Communication/Website":
+      p.c
+        img(src='/images/portfolio/eet/CRN-Image-2010.jpg', alt='Second place in the CRN Image analysis 2010 for IT distributors', height='345', width='270')
+section#guide
+  h3 Product Guide
+  p
+    | A special component of the eetnordic.com site is the Product Guide, which helps customers find spare parts or accessories for their existing IT equipment. If you have a laptop and is looking for a replacement battery or new peripherals like e.g. a FireWire PC Card, the Guide will list compatible solutions from a database counting over 60.000 known models.
+  p
+    | The Guide is also offered for partners and can be embedded directly in other websites through an iframe. It supports customization - like different color schemes - and integration with the shopping basket on the hosting website.

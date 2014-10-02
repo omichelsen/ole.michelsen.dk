@@ -1,0 +1,105 @@
+#card(itemscope, itemtype='http://schema.org/Person')
+  .frame
+    .innerframe
+    img(alt='Ole Bjørn Michelsen', itemprop='image', src='#{ cdn }/images/olemichelsen-contact.jpg', width='200', height='200')
+  table
+    tbody
+      tr(style='display:none')
+        th Name
+        td(itemprop='name') Ole Bjørn Michelsen
+      tr
+        th.r Birthday
+        td(itemprop='birthDate') 18 December 1982
+      tr
+        th.r Location
+        td(itemprop='homeLocation') Copenhagen, Denmark
+      tr
+        th.r Mail
+        td
+          a(href='mailto:#{ email }', itemprop='email')= email
+      tr
+        th.r Social
+        td
+          a(href='http://www.linkedin.com/in/olebjornmichelsen', rel='external', hreflang='en', title='LinkedIn') LinkedIn&nbsp;
+          a(href='http://www.twitter.com/omichelsen', rel='external', hreflang='en', title='Twitter') Twitter&nbsp;
+          a(href='https://plus.google.com/110191857554280492173?rel=author', rel='me', hreflang='en', title='Google Plus') Google+&nbsp;
+          a(href='http://www.facebook.com/olemichelsen', rel='external', hreflang='en', title='Facebook') Facebook&nbsp;
+          a(href='http://www.flickr.com/photos/olemichelsen', rel='external', hreflang='en') Flickr
+      tr
+        th.r vCard
+        td
+          a#vcard-link(href='olemichelsen.vcf', title='Download my vCard')
+            i.icon-vcard
+
+section.column-left
+  h2 About me
+  p
+    | My full name is Ole Bjørn Michelsen. I'm a software developer based in Copenhagen, and in recent years I have primarily been developing large scale websites and back end database solutions.
+  p
+    | In 2010 I achieved a bachelor's degree in Computer Science at the University of Copenhagen (
+    a(href='http://www.diku.dk/', rel='external') DIKU
+    i.icon-diku
+    | ), and concurrently I have worked both part and full time as a web developer. This website is intended to show off some of&nbsp;
+    a(href='/portfolio/') my work and projects
+    | .
+  h3 Current projects
+  p
+    | Right now I'm looking into the many new features of HTML5 and CSS3, and especially how these can help to&nbsp;
+    a(href='/portfolio/site-optimization.html') optimize website design and performance
+    | .
+    br
+    | A friend and I are also trying out the more advanced aspects, such as WebSockets and the canvas element. We have so far created a rudimentary multiplayer Tetris game, where two players can battle against each other, using special blocks for attack and defense. I hope to get a working version online sometime this year.
+section.column-right
+  h2 Experience
+  p
+    | I'm mainly using ASP.NET, C#, LINQ, HTML5, CSS3, JavaScript, Microsoft SQL Server and Transact-SQL in my daily work, but I'm always exploring other languages and techniques. Below is a simple diagram of my experience with the most commonly used languages.
+  p
+    | I have also developed for several different platforms. At the university we were using Linux, but in my work I have almost exclusively been developing on and for Windows. For this website and my private projects, I am primarily using Mac OS.
+    br
+    | In my mind there is no&nbsp;
+    i one
+    | &nbsp;solution that fits all, rather it's a matter of selecting the right tool for the job, thus getting experience with as many technologies as possible, is paramount when choosing the best solution.
+  table#experience.tableFigure(style='width:100%')
+    caption Programming languages
+    tbody
+      tr
+        td HTML and CSS
+        td
+          span 12
+      tr.alt
+        td Transact-SQL
+        td
+          span 10
+      tr
+        td C# and ASP.NET
+        td
+          span 9
+      tr.alt
+        td JavaScript
+        td
+          span 4.5
+      tr
+        td Java
+        td
+          span 3
+      tr.alt
+        td PHP
+        td
+          span 3
+      tr
+        td C and C++
+        td
+          span 1.5
+      tr.alt
+        td Python
+        td
+          span 1
+#vcard-dialog(title='Mail vCard')
+  form#vcard-form(action='profile.html', name='vcard-form')
+    label(for='email') Your mobile can only read vCards when sent in an email:
+    input#email.text(type='email', name='email', placeholder='E-mail address', required='required')
+    #tips
+
+script(src='#{ libs.jquery }')
+script(src='#{ libs.jqueryui }')
+script(src="scripts/profile.js")

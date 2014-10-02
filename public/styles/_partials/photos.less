@@ -1,0 +1,38 @@
+#photos
+{
+    padding-bottom: 5px;
+    border-bottom: 1px solid #EEE;
+}
+
+#travelmap {
+    position:relative;
+    display: block;
+    width:280px;
+    height:151px;
+
+    img {
+        position:absolute;
+        left:5px;
+        transition: opacity 1s;
+        &:last-child:hover {
+            opacity:0;
+        }
+    }
+}
+
+#travel-map {
+    .thumbs {
+        position: relative;
+        overflow: hidden;
+        margin: 0 -3px;
+        img {
+            float:left;
+            margin: 3px;
+            &:hover {
+                margin-bottom: 1px;
+                border-bottom: 2px solid #BB0000;
+                cursor: pointer;
+            }
+        }
+    }
+}

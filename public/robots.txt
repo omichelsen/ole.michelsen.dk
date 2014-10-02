@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /viewsource/
+
+Sitemap: http://ole.michelsen.dk/sitemap.xml

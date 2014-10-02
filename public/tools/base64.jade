@@ -1,0 +1,73 @@
+p
+  | This tool encodes a file to Base64, which can e.g. be used to embed images in HTML, CSS or XML to&nbsp;
+  a(href='/portfolio/site-optimization.html') reduce HTTP requests
+  | . Base64 encoding is designed to transport data through transport layers that are not 8-bit clean, such as mail bodies and the 7-bit&nbsp;
+  abbr(title='Simple Mail Transfer Protocol') SMTP
+  | &nbsp;protocol. Every 6-bit block is mapped to the characters&nbsp;
+  code [a-zA-Z0-9+/]
+  sup
+    a(href='#footnote1') 1
+  | &nbsp;and a sequence ends with&nbsp;
+  code =
+  | , as defined in&nbsp;
+  a(href='http://tools.ietf.org/html/rfc3548', rel='external', target='_blank') RFC3548
+  | . Base64-encoded data takes about 33% more space than the original data.
+section
+  form#uploadform
+    p
+      label(for='fileToUpload')
+        b Input file:
+      br
+      input#fileToUpload.text(name='fileToUpload', type='file', onchange="handleFiles(this.files)")
+      img#loading(alt='Loading...', height='11', width='16', src='/images/loading.gif', style='display:none;')
+    p
+      label(for='output')
+        b Output:
+      br
+      textarea#output.text(name='output', style='width:940px;height:120px;font-size:smaller;', readonly='readonly')
+      span#resultstats.floatright  
+section
+  h3 Embedding Base64 content
+  p You can embed the Base64 output into various documents using the following code:
+  dl
+    dt HTML embedded PNG image
+    dd
+      code.code-block
+        | &lt;img alt="Base64 Image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA..." /&gt;
+      br
+    dt HTML embedded CSS
+    dd
+      code.code-block
+        | &lt;link rel="stylesheet" type="text/css" href="data:text/css;base64,LyogKioqKiogVGVtcGxhdGUgKioq..." /&gt;
+      br
+    dt HTML embedded JavaScript
+    dd
+      code.code-block
+        | &lt;script type="text/javascript" src="data:text/javascript;base64,dmFyIHNjT2JqMSA9IG5ldyBzY3Jv..."&gt;&lt;/script&gt;
+      br
+    dt CSS embedded PNG image
+    dd
+      code.code-block
+        | .image {
+        |   width:100px;
+        |   height:100px;
+        |   background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA...);
+        | }
+      br
+    dt XML embedded PNG image
+    dd
+      code.code-block
+        | &lt;image&gt;
+        |   &lt;title&gt;Some Image&lt;/title&gt;
+        |   &lt;link&gt;http://www.host.domain&lt;/link&gt;
+        |   &lt;url&gt;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA...&lt;/url&gt;
+        | &lt;/image&gt;
+section#footnotes
+  ol
+    li#footnote1
+      span
+        | Character sequence is in&nbsp;
+        a(href='regex.html') regular expression
+        | &nbsp;notation.
+
+script(src="/scripts/base64.js")

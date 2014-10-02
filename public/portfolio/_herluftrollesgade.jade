@@ -1,0 +1,42 @@
+
+    "herluftrollesgade": {
+        "title": "Herluf Trolles Gade",
+        "description": "My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.",
+        "keywords": "Design · Programming: HTML5, CSS3, SVG, jQuery",
+        "created": "2012",
+        "date": "2011-10-07"
+    },
+
+.column-left
+  ul
+    li
+      img.frame(src='#{ cdn }portfolio/herluftrollesgade/front.jpg', alt='Front page', width='450', height='306')
+    li
+      img.frame(src='#{ cdn }portfolio/herluftrollesgade/pictures.jpg', alt='Picture gallery', width='450', height='306')
+.column-right
+  p
+    b Website:&nbsp;
+    a(href='http://herluftrollesgade16.dk') herluftrollesgade16.dk
+  p
+    a(href='http://herluftrollesgade16.dk', target='_blank') A/B Herluf Trolles Gade 16-16a
+    | &nbsp;is the housing coorporative where I live. As a member of the board I developed this small website as a brief presentation of the building, and resource for public documents such as budgets and summaries from the yearly general assembly.
+  p
+    | Since the page is very simple and doesn't have a lot of textual content, I decided to implement it as&nbsp;
+    b side scrolling website
+    | . This means that all content is actually loaded in a single page, where the viewpoint is fixed so you only see a single section at the time. Scrolling/shifting is actually done on both axes, as the sections of the page are arranged vertically, and the gallery section will scroll horizontally for pictures.
+  p
+    | The design is 100% scalable so regardless of screen size and orientation, the images and menus will automatically scale and reposition appropriately. The format is tailored to mobile devices, but also have to look good on the desktop. By using&nbsp;
+    b CSS3 media queries
+    | , all pictures are loaded based on the device resolution. Mobile devices will receive smaller images that load faster, and high-res desktops will be sent large images in 1080p+.
+  p
+    | Menu icons are in&nbsp;
+    b SVG format
+    | , which ensures that they can scale without any quality loss or pixelation.
+  p
+    | Navigation can be done by clicking and scrolling, but&nbsp;
+    b swiping
+    | &nbsp;(touch) is also supported as well as&nbsp;
+    b keyboard shortcuts
+    | &nbsp;(arrow keys and page up/down). Smooth animations adds a native application feel to the page.
+  p
+    a(href='/portfolio/') ← Back to Portfolio

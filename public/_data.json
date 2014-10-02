@@ -1,0 +1,73 @@
+{
+	"404": {
+		"title": "Page Not Found",
+		"description": "The page you were trying to access could not be found, please check your links and/or bookmarks, and try to find the correct address from my front page."
+	},
+	"feed": {
+		"layout": false
+	},
+	"sitemap": {
+		"layout": false
+	},
+	"index": {
+		"title": "Web Development and Computer Science",
+		"description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
+		"date": "2014-10-01",
+		"blog": [{
+			"title": "Breadcrumb trail with Harp and Jade",
+			"url": "/blog/breadcrumb-trail-harp-jade/",
+			"date": "2014-09-17",
+			"type": "blog"
+		}, {
+			"title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
+			"url": "/blog/add-custom-hostname-to-apache-osx-mavericks/",
+			"date": "2014-05-07",
+			"type": "blog"
+		}, {
+			"title": "Syntax highlight files in MacOS Terminal with less",
+			"url": "/blog/syntax-highlight-files-macos-terminal-less/",
+			"date": "2014-03-25",
+			"type": "blog"
+		}, {
+			"title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
+			"url": "/blog/setup-local-web-server-apache-php-macos-x-mavericks/",
+			"date": "2013-12-30",
+			"type": "blog"
+		}, {
+			"title": "Navigate form fields with arrow keys",
+			"url": "/blog/navigate-form-fields-with-arrow-keys/",
+			"date": "2013-11-13",
+			"type": "blog"
+		}],
+		"updates": [{
+			"title": "New photo album “Rome”",
+			"url": "https://www.flickr.com/photos/olemichelsen/sets/72157645098358881/",
+			"date": "2014-08-01",
+			"type": "flickr"
+		}, {
+			"title": "Published angular-steps module",
+			"url": "https://github.com/omichelsen/angular-steps",
+			"date": "2014-07-09",
+			"type": "github"
+		}, {
+			"title": "Regex Crossword",
+			"url": "/portfolio/regexcrossword.html",
+			"date": "2014-06-14"
+		}, {
+			"title": "Updated photo album “Artsy”",
+			"url": "https://www.flickr.com/photos/olemichelsen/sets/72157635319688634/",
+			"date": "2014-04-15",
+			"type": "flickr"
+		}, {
+			"title": "Published FormNavigation jQuery plug-in",
+			"url": "https://github.com/omichelsen/FormNavigation",
+			"date": "2013-11-13",
+			"type": "github"
+		}]
+	},
+	"profile": {
+		"title": "Profile",
+		"description": "Education and experience of Ole Bjørn Michelsen: my degrees, my work, computer science and programming.",
+		"date": "2014-08-10"
+	}
+}

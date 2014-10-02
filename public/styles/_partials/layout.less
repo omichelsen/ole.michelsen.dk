@@ -1,0 +1,403 @@
+/* Document settings */
+/*-------------------*/
+/* HTML reset */
+html, body, ul, menu, h1, h2, h3, h4, h5, h6, p, a, img, figure
+{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    list-style: none;
+}
+/* HTML5 reset */
+article, aside, figure, footer, header, menu, nav, section, figcaption
+{
+    display: block;
+}
+
+/* LAYOUT AND POSITIONING */
+/*------------------------*/
+html, body
+{
+    height: 100%; /* needed for #footer placement */
+    font-family: Tahoma, Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    /*background: #f9f9f9;*/
+    color: #333;
+}
+
+
+/* FONTS
+-------------------------- */
+#topnav a,
+footer a
+{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: @link;
+}
+a:hover {
+    color: @link-hover;
+}
+a:active {
+    color: @link-active;
+}
+
+.a { color: SteelBlue; }
+
+table.c { margin: 0 auto; text-align: left; }
+
+nav ul  { list-style: none; }
+
+h1 { margin: 20px 0 10px 0; font-size: 24pt; }
+h2 { margin: 15px 0 10px 0; font-size: 18pt; color: @secondary; font-weight: normal; }
+h3 { margin: 1em 0 0.3em 0; font-size: 15pt; color: #000; font-weight: normal; }
+h4 { margin: 10px 0 5px 0; font-size: 13pt; color: #444; font-weight: normal; }
+h5, figcaption {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+section p  {
+    margin: 0.5em 0 1em 0;
+    font-size: 105%;
+    line-height: 150%;
+}
+
+#container
+{
+    position:relative; /* needed for footer positioning*/
+    height:auto !important; /* real browsers */
+    height:100%; /* IE6: treated as min-height*/
+    min-height:100%; /* real browsers */
+    z-index: 1;
+}
+
+header>.title, header>nav>ul, #content, footer section
+{
+    clear: both;
+    margin: 0 auto;
+    width: 950px;
+}
+
+header
+{
+    background: linear-gradient(#FFF 40%, #EEE 100%);
+
+    .title {
+        padding: 10px 0;
+    }
+    h1 {
+        margin: 0;
+        font: normal 35pt 'Century Gothic', Optima, Verdana;
+    }
+    h2 {
+        margin: 0;
+        color: #666;
+        font: normal 12pt Helvetica;
+    }
+}
+
+#topnav {
+    overflow: hidden;
+    line-height: 130%;
+
+    border-top: 2px solid #aaa;
+    border-bottom: 3px solid #b00;
+
+    background: #000;
+    background: linear-gradient(#333, #000);
+
+    a {
+        color: #fafafa;
+        font-size: 16px;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #B00;
+    }
+    li {
+        float: left;
+        padding: 10px 20px;
+    }
+    .subtitle {
+        display: block;
+        padding-top: 5px;
+        line-height: 14px;
+        color: #bbb;
+        font-size: 85%;
+        text-transform: lowercase;
+    }
+}
+
+#content
+{
+    overflow: hidden;
+    padding-bottom: 70px;
+}
+
+footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1em 0;
+    color: #999;
+    font-size:small;
+    text-shadow: 0px 1px 1px #000;
+
+    border-top: 2px solid #444;
+
+    background-color: #000;
+    background: linear-gradient(#000 20%, #333 100%);
+
+    a,
+    time {
+        color: Gray;
+        font-size: inherit;
+        text-decoration: none
+    }
+    a:hover {
+        color: #ccc
+    }
+    p {
+        margin: 0 !important;
+        padding: 0;
+    }
+}
+
+/*  Tables  */
+/*----------*/
+.datasheet {
+    width: 100%;
+    th {
+        padding: 0.3em;
+        color: #FFF;
+        background-color: Maroon;
+        border-bottom: 2px solid #333;
+        text-align: left;
+        border-radius: 2px 2px 0 0;
+        .pie;
+    }
+    td {
+        padding: .1em .2em;
+    }
+    tbody tr:nth-child(odd) {
+        background-color: #EEE;
+    }
+}
+
+.tableFigure {
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    box-shadow: #CCC 0 0 .25em;
+    .pie;
+    caption {
+        padding-bottom: .7em;
+        text-align: left;
+        font-size: larger;
+    }
+    th, td {
+        padding: 0.5em;
+    }
+    th {
+        background: #eae8d9;
+        background: linear-gradient(#eae8d9, #e3e2d0);
+    }
+    .alt td {
+        background: #F3F3EB;
+    }
+}
+
+
+/* DESIGN CLASSES */
+/*----------------*/
+time { font-size: smaller; color: #999; }
+
+.floatleft { float: left; margin: 10px 10px 10px 0; }
+.floatright { float: right; margin: 10px 0 10px 2em; }
+p > .floatright { margin-top: 2px; }
+
+.c { text-align: center; }
+.l { text-align: left; }
+.r { text-align: right; }
+
+.page-break { page-break-before: always }
+
+.code-block {
+    display: block;
+    margin: .5em 0; padding: .5em;
+    border: 1px dashed #CCC;
+    background-color: #EEE;
+    white-space: pre;
+}
+
+.tags {
+    color: #888;
+    font: normal 12px Georgia;
+    letter-spacing: .15em;
+    text-shadow: 1px 1px #fff;
+}
+
+.dot, .dot-half
+{
+    display: inline-block;
+    width: 10px; height: 10px;
+
+    border-radius: 5px;
+
+    background: linear-gradient(#008000, #006400);
+}
+.dot-half
+{
+    width: 5px;
+    border-radius: 5px 0 0 5px;
+}
+
+#sitemappath .current { color: #ccc }
+
+#content ul.list { margin-left: 1.5em; }
+#content section { clear: both; }
+
+/* Two-Column Article Layout */
+.column-left, .column-right
+{
+    float: left;
+    width: 47.5%;
+    clear: none !important;
+}
+.column-left
+{
+    margin-right: 5%;
+}
+.column-left section:first-child h3:first-child, .column-right section:first-child h3:first-child
+{
+    margin-top: 0.5em;
+}
+
+/* Three-Column Presentation Layout */
+.columns
+{
+    overflow: hidden;
+    position: relative;
+}
+.columns .col
+{
+    float: left;
+    width: 31.33%;
+    margin-left: 3%;
+}
+.columns .col:first-child { margin-left: 0; }
+.columns .colspan { width: auto; }
+
+sup a { font-size: inherit; text-decoration: none; }
+
+#footnotes { margin-top: 2em; color: #666; border-top: 1px solid #999; }
+#footnotes li { margin-bottom: 0.5em; font-size:xx-small; vertical-align: super; }
+#footnotes li:target { background-color: #def; }
+#footnotes span { font-size: 10pt; vertical-align: sub; }
+
+
+/* Projects
+   --------------------------------- */
+.projects
+{
+    clear: both;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.project
+{
+    float: left;
+    margin: 5px 0 5px 22px;
+    border: 1px solid #CCC;
+    border-radius: 8px;
+    background: linear-gradient(#FFF, #FAFAFA);
+    &:first-child {
+        margin-left: 0;
+    }
+    .image {
+        padding: 10px;
+    }
+    h3 {
+        clear: both;
+        margin: 0;
+        padding: .5em;
+        font-size: small;
+        color: #333;
+        background-color: #EEE;
+        border-radius: 0 0 8px 8px;
+        .pie;
+    }
+}
+
+
+/* Screenshot presentations
+   --------------------------------- */
+.screenshots
+{
+    position: relative;
+    text-align: center;
+}
+
+ul.screenshots {
+    overflow: hidden;
+    list-style: none;
+    padding: 10px 30px;
+    li {
+        float: left;
+        margin: 0 15px 25px 15px;
+    }
+    h4 {
+        margin: 0 0 5px 0;
+        text-align: left;
+    }
+}
+
+.frame
+{
+    padding: 5px;
+    border: 2px solid #CCC;
+}
+
+.screenshots .comments
+{
+    position: absolute;
+    top: 0; left: 0;
+    list-style: none;
+    background-color: Red;
+    li {
+        position: absolute;
+        padding: 10px;
+        width: 180px;
+        color:#EEE;
+        font-size: 9pt;
+        text-align: justify;
+
+        background-color: rgba(0,0,0,0.8);
+        -pie-background: rgba(0,0,0,0.8);
+
+        border-radius: 8px;
+        .pie;
+    }
+    .number {
+        position: absolute;
+        top: -12px; left: -12px;
+        padding: 3px 0; width: 25px;
+        text-align: center;
+        color: #FFF; font-size: larger; font-weight: bold;
+        background-color: #b00;
+
+        border-radius: 12px;
+        .pie;
+    }
+    h4 { margin: 0; color: #FFF }
+}
+
+
+/* IPHONE LAYOUT
+   --------------------------------- */
+#topnav {
+    -webkit-text-size-adjust: 120%;
+}
