@@ -3,7 +3,7 @@
 	Header unset ETag
 	FileETag None
 
-	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|htc)$">
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|htc|svg)$">
 		Header set Cache-Control "max-age=31557600, public"
 	</FilesMatch>
 
