@@ -1,23 +1,25 @@
+link(rel="stylesheet", href="#{ libs.prismcss }")
+
 p
-  | For kicks I"ve designed a business card for myself, mostly because I wanted to try out a real world application of QR codes. Whenever you receive a card from anybody you would actually like to contact again, you have to arduously enter his/her information. With a QR code you can scan the card and immediately send the
+  | For kicks I"ve designed a business card for myself, mostly because I wanted to try out a real world application of QR codes. Whenever you receive a card from anybody you would actually like to contact again, you have to arduously enter his/her information. With a QR code you can scan the card and immediately send the&nbsp;
   a(href="http://en.wikipedia.org/wiki/VCard", target="_blank") vCard
   | &nbsp;to your phone address book.
 p
   .column-left.c
     a(href="business-card/card-front.svg")
-      img(alt="Front", src="images/business-card/card-front.svg", width="400", height="240")
+      img(alt="Front", src="/images/portfolio/business-card/card-front.svg", width="400", height="240")
     br
     i Front
   .column-right.c
     a(href="business-card/card-back.svg")
-      img(alt="Back", src="images/business-card/card-back.svg", width="400", height="240")
+      img(alt="Back", src="/images/portfolio/business-card/card-back.svg", width="400", height="240")
     br
     i Back
 p
-  | For my further amusement I also decided to create the cards using SVG. With no decent editor on hand, and since I wanted to familiarize myself with the standard, I decided to write them by hand (not withstanding the QR code, which was
+  | For my further amusement I also decided to create the cards using SVG. With no decent editor on hand, and since I wanted to familiarize myself with the standard, I decided to write them by hand (not withstanding the QR code, which was&nbsp;
   a(href="http://www.quickmark.cn/en/qrcode-datamatrix-generator/?qrVCard", target="_blank") created with a tool
   | ). The result is fairly simple, but very scalable and portable.
 
-pre
-  code.language-svg
-    //- include images/business-card/card-front.svg
+pre(data-src="/images/portfolio/business-card/card-front.svg")
+
+script(src='#{ libs.prism }')
