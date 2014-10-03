@@ -1,0 +1,22 @@
+{
+  "name": "ole.michelsen.dk",
+  "version": "2.0.0",
+  "description": "Portfolio and profile website.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:olemichelsen/ole.michelsen.dk.git"
+  },
+  "author": "Ole Bjørn Michelsen",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-ftp": "^1.0.1",
+    "gulp-shell": "^0.2.9"
+  }
+}
