@@ -27,10 +27,38 @@
             "sql"
         ]
     },
+    "firefox-auto-login-with-windows-authentication-and-ad": {
+        "title": "Firefox auto login with Windows Authentication and AD",
+        "description": "Get Firefox to login automatically on your intranet websites with Windows Authentication and Active Directory with a simple change in about:config.",
+        "date": "2011-07-28",
+        "tags": [
+            "ios",
+            "ipad",
+            "iphone"
+        ]
+    },
     "view-source-on-the-ipad-and-iphone": {
         "title": "View source on the iPad and iPhone",
         "description": "View source on the iPad using a bookmarklet to see the source code with syntax highlighting, selectable text and clickable links for URIs.",
         "date": "2011-07-28",
+        "tags": [
+            "ios",
+            "ipad",
+            "iphone"
+        ]
+    },
+    "gmail-plus-your-email-to-filter-maillists-and-catch-spam": {
+        "title": "Gmail+ your email – filter maillists and catch spam",
+        "description": "Filter your Gmail by creating unique email addresses for each service you subscribe to by suffixing your username with a + and any text.",
+        "date": "2011-07-14",
+        "tags": [
+            "gmail"
+        ]
+    },
+    "using-uri-hash-instead-of-query-strings": {
+        "title": "Using URI hash instead of query strings",
+        "description": "Using URI location hash instead of query strings for bookmarkable JavaScript/AJAX pages with dynamic content.",
+        "date": "2011-06-17",
         "tags": [
             "ios",
             "ipad",
