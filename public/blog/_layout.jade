@@ -7,17 +7,12 @@ block content
   .masthead
     img(src="/images/blog/header.jpg", width="950", height="200")
   section.blog(itemscope, itemtype="http://schema.org/Blog")
-    article(itemprop="blogPosts", itemscope, itemtype="http://schema.org/BlogPosting")
-      h1.entry-title= title
-      div.entry-meta
-        span Article by
-        | &nbsp;
-        span.author= author
-        | &nbsp;
-        span posted on
-        | &nbsp;
-        include ../_shared/date
-
+    if current.source !== 'index'
+      article(itemprop="blogPosts", itemscope, itemtype="http://schema.org/BlogPosting")
+        h1.entry-title= title
+        != partial('../_shared/entry-meta')
+        != yield
+    else
       != yield
 
 block scripts

@@ -1,5 +1,7 @@
 When creating intranet websites, Windows Authentication will take care of all your user identification needs. Both Internet Explorer and Chrome will automatically pass your NTLM (Active Directory) user credentials to the server, but Firefox will not and instead presents the user with an ugly login prompt. Fortunately it’s quite easy to enable this in Firefox with a simple configuration change.
 
+<!-- more-->
+
 Go to the address bar, and enter the following:
 
 > about:config

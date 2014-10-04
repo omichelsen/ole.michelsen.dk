@@ -14,7 +14,7 @@
     h1, h2, h3, h4, h5, h6 {
         clear: both;
         margin: 0 0 15px 0;
-        color: #000;
+        color: @primary;
         font-weight: normal;
         line-height: 1.5em;
     }
@@ -66,10 +66,19 @@
 
     .entry-title {
         margin-bottom: 0;
+        color: @primary;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size: 25px;
         font-weight: 200;
         line-height: 1.3em;
+
+        a {
+            color: @primary;
+            text-decoration: none;
+            &:hover {
+                color: @secondary;
+            }
+        }
     }
 
     .entry-meta {

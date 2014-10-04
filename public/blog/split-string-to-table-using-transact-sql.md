@@ -1,4 +1,5 @@
 There is no built-in function to split a delimited string in Microsoft SQL Server, but it is very easy to create your own. The following Table-Valued Function (TVF) will split a string with a custom delimiter, and return the results as a table. This means you can easily use the output directly in a join with some other data.
+
 <!-- more-->
 
     CREATE FUNCTION [dbo].[Split]

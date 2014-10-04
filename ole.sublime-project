@@ -5,7 +5,7 @@
             "folder_exclude_patterns":
             [
                 "bower_components",
-                "blog",
+                "wp-*",
                 "public/viewsource/geshi",
                 "www"
             ],
