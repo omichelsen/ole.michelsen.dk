@@ -1,5 +1,7 @@
 <img class="floatleft" title="Running total" src="/images/blog/calculate-a-running-total-in-sql-server-2012/running-total.png" alt="" width="180" height="107"> In the previous versions of SQL Server, calculating a running total for say, a bank account ledger, has been a frustratingly complex task. Fortunately [SQL Server 2012](http://www.microsoft.com/sql/) makes this a breeze with new support for windowed aggregate functions.
+
 <!-- more-->
+
 In this test example we’ll be creating a running total for an imaginary ledger using the OVER clause with SUM (you can get the entire [test script here](/images/blog/calculate-a-running-total-in-sql-server-2012/running-total-sql-server-2012.txt)):
 
     SELECT a.id, a.account, a.deposit, SUM(a.deposit) OVER (ORDER BY a.id) AS 'total'
