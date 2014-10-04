@@ -18,7 +18,10 @@ blockquote
     | A microdata breadcrumb trail is metadata markup of a series of links, which is read by Google and presented in the search results.
 
 p
-  | So let’s start coding. Our breadcrumbs will be implemented as a partial, so let’s make a file called /public/_shared/breadcrumbs.jade.
+  | So let’s start coding. Our breadcrumbs will be implemented as a partial, so let’s make a file called&nbsp;
+  code
+    /public/_shared/breadcrumbs.jade
+  | .
 p
   | First we add a&nbsp;
   a(href='http://jade-lang.com/reference/mixins/', target='_blank') mixin
@@ -27,9 +30,9 @@ p
 pre
   code.
     mixin breadcrumb(url, title)
-     span(itemscope, itemtype='http://data-vocabulary.org/Breadcrumb')
-     a(href='#{ url }', itemprop='url')
-     span(itemprop='title')= title
+       span(itemscope, itemtype='http://data-vocabulary.org/Breadcrumb')
+       a(href='#{ url }', itemprop='url')
+       span(itemprop='title')= title
 p
   | Now we can use this mixin to loop through the current path, which is made available for us by Harp in a global variable&nbsp;
   a(href='http://harpjs.com/docs/development/current', target='_blank') current
@@ -37,11 +40,11 @@ p
 pre
   code.
     +breadcrumb('/', 'Home')
-    | &rsaquo;&nbsp;
-    each item in current.path.slice(0, -1)
-     +breadcrumb(item, item)
-     | &rsaquo;&nbsp;
-    span.current= current.source
+      | &amp;rsaquo;&amp;nbsp;
+      each item in current.path.slice(0, -1)
+         +breadcrumb(item, item)
+         | &amp;rsaquo;&amp;nbsp;
+      span.current= current.source
 p
   | You will notice that we use .slice() on the path, and that is to remove the current page, as we want to print this in plain text. This will create a breadcrumb trail that looks like this:
 p.indent
@@ -54,26 +57,26 @@ p
 pre
   code.jade.
     - function capitalize(string) {
-     - return string.charAt(0).toUpperCase() + string.slice(1);
+      - return string.charAt(0).toUpperCase() + string.slice(1);
     - }
 p
   | Now we are done, so let’s look at the final result:
 pre
   code.
     - function capitalize(string) {
-     - return string.charAt(0).toUpperCase() + string.slice(1);
+      - return string.charAt(0).toUpperCase() + string.slice(1);
     - }
 
     mixin breadcrumb(url, title)
-     span(itemscope, itemtype='http://data-vocabulary.org/Breadcrumb')
-     a(href='#{ url }', itemprop='url')
-     span(itemprop='title')= title
+       span(itemscope, itemtype='http://data-vocabulary.org/Breadcrumb')
+       a(href='#{ url }', itemprop='url')
+       span(itemprop='title')= title
 
     +breadcrumb('/', 'Home')
-    +separator
+    | &amp;rsaquo;&amp;nbsp;
     each item in current.path.slice(0, -1)
-     +breadcrumb(item, capitalize(item))
-     +separator
+       +breadcrumb(item, capitalize(item))
+       | &amp;rsaquo;&amp;nbsp;
     span.current= capitalize(current.source)
 p
   | Now our breadcrumbs should look like this:
@@ -83,10 +86,13 @@ p.indent
   span(style='color: #00f; text-decoration: underline;') Articles
   | &nbsp;› Harp
 p
-  | So now our partial is done, we can use it anywhere in our code. So let’s add it somewhere in our /public/_layout.jade file:
+  | So now our partial is done, we can use it anywhere in our code. So let’s add it somewhere in our&nbsp;
+  code
+    /public/_layout.jade
+  | &nbsp;file:
 pre
   code.
     p#sitemappath
-     != partial('../_shared/breadcrumbs')
+      != partial('../_shared/breadcrumbs')
 p
   | Thanks for reading. This was my first peek into Harp, but I think the project looks promising, and looking forward to seeing the platform mature.
