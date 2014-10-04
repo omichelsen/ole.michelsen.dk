@@ -1,10 +1,15 @@
 extends ../_layout.jade
 
+block head
+  link(rel="stylesheet", href="#{ libs.highlightcss }")
+
 block content
-  section#blog(itemscope, itemtype="http://schema.org/Blog")
+  .masthead
+    img(src="/images/blog/header.jpg", width="950", height="200")
+  section.blog(itemscope, itemtype="http://schema.org/Blog")
     article(itemprop="blogPosts", itemscope, itemtype="http://schema.org/BlogPosting")
-      h1= title
-      div.meta
+      h1.entry-title= title
+      div.entry-meta
         span Article by
         | &nbsp;
         span.author= author
@@ -14,3 +19,8 @@ block content
         include ../_shared/date
 
       != yield
+
+block scripts
+  script(src='#{ libs.highlight }')
+  script.
+    hljs.initHighlightingOnLoad();

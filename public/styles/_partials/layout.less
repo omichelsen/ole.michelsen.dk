@@ -1,7 +1,7 @@
 /* Document settings */
 /*-------------------*/
 /* HTML reset */
-html, body, ul, menu, h1, h2, h3, h4, h5, h6, p, a, img, figure
+html, body, ul, ol, menu, h1, h2, h3, h4, h5, h6, p, a, img, figure
 {
     margin: 0px;
     padding: 0px;
@@ -20,14 +20,16 @@ html, body
 {
     height: 100%; /* needed for #footer placement */
     font-family: Tahoma, Helvetica, Arial, sans-serif;
-    font-size: 10pt;
+    font-size: 14px;
     /*background: #f9f9f9;*/
     color: #333;
+    line-height: 150%;
 }
 
 
 /* FONTS
 -------------------------- */
+
 #topnav a,
 footer a
 {
@@ -50,6 +52,10 @@ table.c { margin: 0 auto; text-align: left; }
 
 nav ul  { list-style: none; }
 
+h1, h2, h3, h4, h5, h6 {
+    line-height: initial;
+}
+
 h1 { margin: 20px 0 10px 0; font-size: 24pt; }
 h2 { margin: 15px 0 10px 0; font-size: 18pt; color: @secondary; font-weight: normal; }
 h3 { margin: 1em 0 0.3em 0; font-size: 15pt; color: #000; font-weight: normal; }
@@ -61,8 +67,6 @@ h5, figcaption {
 
 section p  {
     margin: 0.5em 0 1em 0;
-    font-size: 105%;
-    line-height: 150%;
 }
 
 #container
