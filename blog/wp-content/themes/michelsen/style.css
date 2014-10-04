@@ -8,9 +8,9 @@ Tags: black, red, white, html5, css3, two-columns, fixed-width, custom-header, c
 */
 
 /* HTML5 reset */
-article, aside, figure, footer, header, hgroup, menu, nav, section, figcaption 
-{ 
-	display: block; 
+article, aside, figure, footer, header, hgroup, menu, nav, section, figcaption
+{
+	display: block;
 }
 
 /* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
@@ -120,7 +120,7 @@ textarea,
 .pingback a.url {
 	font-family: Georgia, "Bitstream Charter", serif;
 }
-#access a:link, 
+#access a:link,
 #access a:visited,
 #access .menu,
 #access div.menu ul,
@@ -176,7 +176,7 @@ footer section,
 	margin: 0 auto;
 	width: 950px;
 }
-#wrapper 
+#wrapper
 {
 	position:relative; /* needed for footer positioning*/
 	margin: 0;
@@ -338,7 +338,7 @@ textarea {
     -moz-border-radius: 3px;
     border-radius: 3px;
 
-    behavior: url(/scripts/PIE-1.0b4.htc);
+    behavior: url(//cdnjs.cloudflare.com/ajax/libs/css3pie/1.0.0/PIE.js);
 }
 a:link, a:visited {
 	color: SteelBlue;
@@ -361,7 +361,7 @@ a:hover {
 -------------------------------------------------------------- */
 
 header {
-	padding: 10px 0 0; 
+	padding: 10px 0 0;
 }
 #site-title {
 	color: #333;
@@ -383,7 +383,7 @@ header>img {
 	clear: both;
 	display: block;
 	padding-bottom: 5px;
-	border-bottom: 1px solid #EEE; 
+	border-bottom: 1px solid #EEE;
 }
 
 
@@ -394,7 +394,7 @@ header>img {
 {
 	overflow: hidden;
 	line-height: 130%;
-	
+
 	border-top: 2px solid #AAA;
 	border-bottom: 3px solid #BB0000;
 
@@ -403,11 +403,11 @@ header>img {
     background: -moz-linear-gradient(#333, #000 100%);
     background: linear-gradient(#333, #000 100%);
     -pie-background: linear-gradient(#333, #000 100%);
-    behavior: url(/scripts/PIE-1.0b4.htc);
+    behavior: url(//cdnjs.cloudflare.com/ajax/libs/css3pie/1.0.0/PIE.js);
 }
-#access a:link, #access a:visited 
-{ 
-	color: #FAFAFA; 
+#access a:link, #access a:visited
+{
+	color: #FAFAFA;
 	font-size: 16px;
 	text-decoration: none;
 }
@@ -424,14 +424,14 @@ header>img {
 	float: left;
 	padding: 10px 20px;
 }
-#access li>ul>li { 
-	padding: 5px 5px 0 5px; 
-	line-height: 14px; 
+#access li>ul>li {
+	padding: 5px 5px 0 5px;
+	line-height: 14px;
 }
 #access li>ul>li:first-child { padding-left: 0; }
-#access li>ul>li a:link, #access li>ul>li a:visited 
-{ 
-	color: #BBB; 
+#access li>ul>li a:link, #access li>ul>li a:visited
+{
+	color: #BBB;
 	font-size: small;
 	text-decoration: none;
 }
@@ -1038,10 +1038,10 @@ input[type=submit],
     text-decoration: none;
     text-align: center;
     color: #333;
-    
+
     cursor: pointer;
     overflow: visible;
-    
+
     border: 1px solid #757575;
 
     -moz-border-radius: 3px;
@@ -1051,7 +1051,7 @@ input[type=submit],
     background: -moz-linear-gradient(#FAFAFA, #DDD 100%);
     background: linear-gradient(#FAFAFA, #DDD 100%);
     -pie-background: linear-gradient(#FAFAFA, #DDD 100%);
-    behavior: url(/scripts/PIE-1.0b4.htc);
+    behavior: url(//cdnjs.cloudflare.com/ajax/libs/css3pie/1.0.0/PIE.js);
 }
 input[type=submit]:hover,
 .button:hover
@@ -1241,26 +1241,26 @@ aside .widget_recent_entries li {
 footer {
 	margin-top: 20px;
 	width: 100%;
-	padding: 1em 0; 
-	color: #999; 
+	padding: 1em 0;
+	color: #999;
 	font-size:small;
 	text-shadow: 0px 1px 1px #000;
-	
+
 	border-top: 2px solid #444;
-	
+
 	background-color: #000;
     background: -webkit-gradient(linear, 0 20%, 0 100%, from(#000), to(#333));
     background: -moz-linear-gradient(#000 20%, #333 100%);
     background: linear-gradient(#000 20%, #333 100%);
     -pie-background: linear-gradient(#000 20%, #333 100%);
-    behavior: url(/scripts/PIE-1.0b5-dev.htc);
+    behavior: url(//cdnjs.cloudflare.com/ajax/libs/css3pie/1.0.0/PIE.js);
 }
 footer a:link, footer a:visited,
 footer time
-{ 
-	color: Gray; 
+{
+	color: Gray;
 	font-size: inherit;
-	text-decoration: none 
+	text-decoration: none
 }
 footer a:hover { color: #ccc }
 footer p { margin: 0; padding: 0; }

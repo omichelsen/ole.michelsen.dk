@@ -6,6 +6,7 @@
             [
                 "bower_components",
                 "blog",
+                "node_modules",
                 "public/viewsource/geshi",
                 "www"
             ],
