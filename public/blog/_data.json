@@ -1,4 +1,10 @@
 {
+    "breadcrumb-trail-harp-jade": {
+        "title": "Breadcrumb trail with Harp and Jade",
+        "description": "How to create a microdata breadcrumb trail with Harp and Jade using the current navigation path.",
+        "created": "2006-2012",
+        "date": "2014-09-17"
+    },
     "view-source-on-the-ipad-and-iphone": {
         "title": "View source on the iPad and iPhone",
         "description": "View source on the iPad using a bookmarklet to see the source code with syntax highlighting, selectable text and clickable links for URIs.",
