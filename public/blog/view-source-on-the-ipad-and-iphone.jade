@@ -1,5 +1,3 @@
-link(rel="stylesheet", href="#{ libs.prismcss }")
-
 p As a web developer I'm frequently looking at the source code of various websites. Lately my new iPad has become my primary tool for surfing and reading documentation, but alas it completely lacks a view source feature.
 
 p A fine solution is to create a bookmarklet, which is a piece of JavaScript saved as a bookmark. When you want to see the source of a web page, just click the bookmark and the source of the page is displayed. I was inspired by <a title="iPad View Source Bookmarklet" href="http://www.ravelrumba.com/blog/ipad-view-source-bookmarklet/" target="_blank">this bookmarklet by Rob Flaherty</a>, but it has a few shortcomings. To improve upon the bookmarklet concept, I created my own version with a few more bells and whistles:
@@ -13,9 +11,15 @@ ul
 
 <div>
 
-[caption id="attachment_183" align="aligncenter" width="640"]<a href="http://ole.michelsen.dk/blog/wp-content/uploads/2011/07/Bookmark.png"><img class="size-large wp-image-183" title="View Source Bookmarklet" src="http://ole.michelsen.dk/blog/wp-content/uploads/2011/07/Bookmark-1024x544.png" alt="Clicking the bookmarklet will display the source of the web page" width="640" height="340" /></a> View Source Bookmarklet[/caption]
-
-</div>
+.image-attachment
+  a(href="/images/blog/view-source-on-the-ipad-and-iphone/Bookmark.png")
+    img(
+      title="View Source Bookmarklet"
+      alt="Clicking the bookmarklet will display the source of the web page"
+      src="/images/blog/view-source-on-the-ipad-and-iphone/Bookmark.png"
+      width="564"
+      height="300"
+    )
 
 h2 The code
 
@@ -42,7 +46,7 @@ h2 How to install it
 
 p To add it on your computer and sync it to your iPad, just drag this link to your bookmarks:
 
-p(style="padding-left: 30px;")
+p.indent
   a(
     href="javascript:(function(){var d=window.open('about:blank'),a=d.document;a.write('<!DOCTYPE html><html><head><title>Loading Source</title></head><body></body></html>');a.close();var b=a.body.appendChild(a.createElement('form'));b.setAttribute('method','post');b.setAttribute('action','http%3A%2F%2Fole.michelsen.dk%2Fviewsource%2F%3Furi%3D'+location.href);var c=b.appendChild(a.createElement('input'));c.setAttribute('type','hidden');c.setAttribute('name','DOM');c.setAttribute('value',encodeURIComponent(document.documentElement.innerHTML));b.submit()})()"
     title="View Source Bookmarklet"
@@ -64,5 +68,3 @@ p Note that the source shown is the generated <abbr title="Document Object Model
 h3 Update April 5, 2012
 
 p By popular demand, I have <a title="Bookmarklet server-side source code (PHP)" href="https://github.com/bufferunderrun/View-Source" target="_blank">published the server-side PHP code to GitHub</a>, so you can modify or host your own version of the bookmarklet. Remember that <a title="GeSHi - Generic Syntax Highlighter" href="http://qbnz.com/highlighter/" target="_blank">GeSHi</a> is required.
-
-script(src='#{ libs.prism }')
