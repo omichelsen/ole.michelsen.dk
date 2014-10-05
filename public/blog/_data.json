@@ -27,6 +27,42 @@
             "sql"
         ]
     },
+    "grouping-data-with-linq-and-mvc": {
+        "title": "Grouping data with LINQ and MVC",
+        "description": "Show a list or table of data grouped by category or group header using LINQ with a reusable generic class.",
+        "date": "2011-11-20",
+        "tags": [
+            ".net",
+            "c#",
+            "linq",
+            "mvc",
+            "sql"
+        ]
+    },
+    "mapping-relational-table-data-to-a-tree-structure-in-mvc": {
+        "title": "Mapping relational table data to a tree structure in MVC",
+        "description": "How to map SQL table data into a tree structure and display it as a nested list using recursive Razor display templates.",
+        "date": "2011-10-03",
+        "tags": [
+            ".net",
+            "c#",
+            "linq",
+            "mvc",
+            "sql"
+        ]
+    },
+    "localization-with-fallback-using-linq": {
+        "title": "Localization with fallback using LINQ",
+        "description": "How to get localization in MVC with fallback using a single LINQ statement, translated texts will be selected if available or fallback to a default.",
+        "date": "2011-08-17",
+        "tags": [
+            ".net",
+            "c#",
+            "l18i",
+            "linq",
+            "mvc"
+        ]
+    },
     "firefox-auto-login-with-windows-authentication-and-ad": {
         "title": "Firefox auto login with Windows Authentication and AD",
         "description": "Get Firefox to login automatically on your intranet websites with Windows Authentication and Active Directory with a simple change in about:config.",
