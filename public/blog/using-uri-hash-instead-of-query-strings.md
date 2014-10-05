@@ -4,7 +4,7 @@ A URI hash is a great way to make JavaScript/AJAX pages with dynamic content boo
 
 For the uninitiated, a URI location hash is everything after the # sign in the URI:
 
-    http://domain.com/page.html#i-am-a-hash
+`http://domain.com/page.html#i-am-a-hash`
 
 A side note: URI hashes are not transferred back to the server, you can only access them client-side.
 
