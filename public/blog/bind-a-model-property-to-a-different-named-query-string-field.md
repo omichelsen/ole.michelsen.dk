@@ -1,10 +1,10 @@
 The ASP MVC model binder automatically maps a query string to an object model by matching each field to a property name. This is very handy, but things can quickly get quite verbose:
 
-> `http://domain/products?CategoryId=42&SortBy=Name&SortAscending=True`
+`http://domain/products?CategoryId=42&SortBy=Name&SortAscending=True`
 
 Ideally I want to give my class properties an abbreviated alias for use in the query string. Thus, I should be able to use the following URI instead, and still have the input values mapped automatically to the model:
 
-> `http://domain/products?c=42&s=Name&asc=True`
+`http://domain/products?c=42&s=Name&asc=True`
 
 Fortunately there is an elegant solution, which I must admit I’m blatantly writing up based on an [answer given on Stack Overflow](http://stackoverflow.com/questions/4316301/asp-net-mvc-2-bind-a-models-property-to-a-different-named-value#answer-4316327). My solution does however fix a bug to make multiple aliases on a single property work as intended.
 

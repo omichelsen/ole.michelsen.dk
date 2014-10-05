@@ -10,4 +10,5 @@ for item, slug in public.blog._data
     != partial('../_shared/entry-meta', item)
     .entry-excerpt
       != excerpt(partial(slug))
-      a(href='/blog/#{ slug }.html') Continue reading →
+      .entry-link
+        a(href='/blog/#{ slug }.html') Continue reading →
