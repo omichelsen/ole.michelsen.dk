@@ -19,12 +19,34 @@
             "sql"
         ]
     },
+    "serialize-object-into-a-query-string-with-reflection": {
+        "title": "Serialize object into a query string with Reflection",
+        "description": "Serialize any object in C# to a query string with the .ToQueryString() extension method. Supports primitives, strings, arrays and collections.",
+        "date": "2012-09-13",
+        "tags": [
+            ".net",
+            "c#",
+            "linq",
+            "mvc"
+        ]
+    },
     "calculate-a-running-total-in-sql-server-2012": {
         "title": "Calculate a running total in SQL Server 2012",
         "description": "How to calculate a running total in SQL Server 2012 with alternative solution for SQL Server 2005 and 2008 using Common Table Expressions.",
         "date": "2012-04-06",
         "tags": [
             "sql"
+        ]
+    },
+    "bind-a-model-property-to-a-different-named-query-string-field": {
+        "title": "Bind a model property to a different named query string field",
+        "description": "How to bind a model property to a different named query string field with a custom alias attribute and model binder in MVC3.",
+        "date": "2012-03-21",
+        "tags": [
+            ".net",
+            "c#",
+            "linq",
+            "mvc"
         ]
     },
     "grouping-data-with-linq-and-mvc": {
