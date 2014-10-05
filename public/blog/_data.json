@@ -10,6 +10,16 @@
             "microdata"
         ]
     },
+    "setup-local-web-server-apache-php-macos-x-mavericks": {
+        "title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
+        "description": "How to setup a local web server on MacOS X Mavericks with Apache and PHP and link projects directly from Dropbox to Apache.",
+        "date": "2013-12-30",
+        "tags": [
+            "apache",
+            "macos",
+            "php"
+        ]
+    },
     "navigate-form-fields-with-arrow-keys": {
         "title": "Navigate form fields with arrow keys",
         "description": "A simple jQuery plugin to navigate form fields using the arrow keys, code freely available on GitHub.",
