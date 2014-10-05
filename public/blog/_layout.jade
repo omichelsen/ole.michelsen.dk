@@ -12,6 +12,7 @@ block content
         h1.entry-title= title
         != partial('../_shared/entry-meta')
         != yield
+        != partial('../_shared/blog-navigation', public.blog)
     else
       != yield
 
