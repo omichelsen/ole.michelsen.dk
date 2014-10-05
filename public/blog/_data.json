@@ -10,6 +10,17 @@
             "microdata"
         ]
     },
+    "syntax-highlight-files-macos-terminal-less": {
+        "title": "Syntax highlight files in MacOS Terminal with less",
+        "description": "Display files in Terminal using less and GNU source-highlight. Install with Homebrew and setup with only three lines in .bash_profile.",
+        "date": "2014-03-25",
+        "tags": [
+            "bash",
+            "less",
+            "macos",
+            "terminal"
+        ]
+    },
     "setup-local-web-server-apache-php-macos-x-mavericks": {
         "title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
         "description": "How to setup a local web server on MacOS X Mavericks with Apache and PHP and link projects directly from Dropbox to Apache.",
