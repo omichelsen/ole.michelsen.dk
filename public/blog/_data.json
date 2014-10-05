@@ -154,6 +154,15 @@
             "gmail"
         ]
     },
+    "custom-membershipprovider-principal-and-identity": {
+        "title": "Custom MembershipProvider, Principal and Identity",
+        "description": "Implementing a custom MembershipProvider, IPrincipal and IIdentity. How to cache the objects accross page requests and access the objects through a wrapper.",
+        "date": "2011-07-01",
+        "tags": [
+            ".net",
+            "security"
+        ]
+    },
     "using-uri-hash-instead-of-query-strings": {
         "title": "Using URI hash instead of query strings",
         "description": "Using URI location hash instead of query strings for bookmarkable JavaScript/AJAX pages with dynamic content.",
