@@ -10,10 +10,19 @@
             "microdata"
         ]
     },
+    "navigate-form-fields-with-arrow-keys": {
+        "title": "Navigate form fields with arrow keys",
+        "description": "A simple jQuery plugin to navigate form fields using the arrow keys, code freely available on GitHub.",
+        "date": "2013-11-13",
+        "tags": [
+            "javascript",
+            "jquery"
+        ]
+    },
     "split-string-to-table-using-transact-sql": {
         "title": "Split a string to a table using T-SQL",
         "description": "Split a delimited string (e.g. comma-separated) to a table using Transact-SQL using a table-valued function and common table expressions.",
-        "date": "2014-09-17",
+        "date": "2013-03-26",
         "tags": [
             "csv",
             "sql"
