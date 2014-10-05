@@ -10,6 +10,17 @@
             "microdata"
         ]
     },
+    "add-custom-hostname-to-apache-osx-mavericks": {
+        "title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
+        "description": "How to use a custom hostname/domain with your local Apache web server on OSX Mavericks using Virtual Hosts and Dropbox.",
+        "date": "2014-05-07",
+        "tags": [
+            "apache",
+            "bash",
+            "macos",
+            "terminal"
+        ]
+    },
     "syntax-highlight-files-macos-terminal-less": {
         "title": "Syntax highlight files in MacOS Terminal with less",
         "description": "Display files in Terminal using less and GNU source-highlight. Install with Homebrew and setup with only three lines in .bash_profile.",
