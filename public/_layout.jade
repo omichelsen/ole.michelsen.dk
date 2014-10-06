@@ -1,5 +1,5 @@
 doctype
-html(lang="#{ language }")
+html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] : '' }")
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=1024')

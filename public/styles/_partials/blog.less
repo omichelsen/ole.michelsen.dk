@@ -1,158 +1,160 @@
-.masthead {
-    margin-bottom: 1.4em;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #EEE;
-    line-height: 0;
-}
-
 .blog {
-    color: #333;
-    font-family: Georgia, "Bitstream Charter", serif;
-    font-size: 15px;
-    line-height: 24px;
-
-    h1, h2, h3, h4, h5, h6 {
-        clear: both;
-        margin: 0 0 15px 0;
-        color: @primary;
-        font-weight: normal;
-        line-height: 1.5em;
-    }
-
-    p, ul, ol, dd, pre, hr {
-        margin-bottom: 24px;
-    }
-
-    ul, ol {
-        margin-left: 2em;
-        list-style: square;
-    }
-
-    ol {
-        list-style: decimal;
-    }
-
-    blockquote {
-        font-style: italic;
-    }
-
-    pre code {
-        font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-        font-size: 12px;
-        line-height: 16px;
-    }
-
-    :not(pre) {
-        > code,
-        > tt {
-            padding: 0;
-            padding-top: 0.2em;
-            padding-bottom: 0.2em;
-            margin: 0;
-            font-size: 85%;
-            background-color: rgba(0,0,0,0.04);
-            border-radius: 3px;
-
-            &:before, &:after {
-                letter-spacing: -0.2em;
-                content: "\00a0";
-            }
-        }
-    }
-
-    .entry-title {
-        margin-bottom: 0;
-        color: @primary;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-size: 25px;
-        font-weight: 200;
-        line-height: 1.3em;
-
-        a {
-            color: @primary;
-            text-decoration: none;
-            &:hover {
-                color: @secondary;
-            }
-        }
-    }
-
-    .entry-meta {
-        padding: 1em 0 .3em 0;
+    .masthead {
+        margin-bottom: 1.4em;
+        padding-bottom: 5px;
         border-bottom: 1px solid #EEE;
-        color: #888;
-        font: normal 12px Georgia;
-        font-style: italic;
-        letter-spacing: .15em;
+        line-height: 0;
+    }
 
-        .author, time {
-            color: #666;
+    #content {
+        color: #333;
+        font-family: Georgia, "Bitstream Charter", serif;
+        font-size: 15px;
+        line-height: 24px;
+
+        h1, h2, h3, h4, h5, h6 {
+            clear: both;
+            margin: 0 0 15px 0;
+            color: @primary;
+            font-weight: normal;
+            line-height: 1.5em;
+        }
+
+        p, ul, ol, dd, pre, hr {
+            margin-bottom: 24px;
+        }
+
+        ul, ol {
+            margin-left: 2em;
+            list-style: square;
+        }
+
+        ol {
+            list-style: decimal;
+        }
+
+        blockquote {
+            font-style: italic;
+        }
+
+        pre code {
+            font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
             font-size: 12px;
-            font-style: normal;
-        }
-    }
-
-    .entry-link {
-        margin-top: -1em;
-    }
-
-    .entry-comments {
-        margin-top: 2em;
-    }
-
-    .image-attachment {
-        margin-bottom: 1em;
-        text-align: center;
-    }
-
-    .indent {
-        text-indent: 2em;
-    }
-
-    .navigation {
-        font-size: 12px;
-        line-height: 18px;
-        overflow: hidden;
-
-        a:link, a:visited {
-            color: #888;
-            text-decoration: none;
+            line-height: 16px;
         }
 
-        .nav-previous {
-            float: left;
-            width: 50%;
-        }
-        .nav-next {
-            float: right;
-            text-align: right;
-            width: 50%;
-        }
-    }
+        :not(pre) {
+            > code,
+            > tt {
+                padding: 0;
+                padding-top: 0.2em;
+                padding-bottom: 0.2em;
+                margin: 0;
+                font-size: 85%;
+                background-color: rgba(0,0,0,0.04);
+                border-radius: 3px;
 
-    article {
-        margin-bottom: 2em;
-    }
-
-    aside {
-        font-family: Georgia, Helvetica, Arial, sans-serif;
-
-        a {
-            color: #5B5B58;
-            text-decoration: none;
-            &:hover {
-                text-decoration: underline;
+                &:before, &:after {
+                    letter-spacing: -0.2em;
+                    content: "\00a0";
+                }
             }
         }
 
-        .title {
-            margin-bottom: 5px;
-            padding-bottom: 3px;
-            border-bottom: 3px double #ccc;
-            color: #333;
-            font-size: 13pt;
-            font-variant: small-caps;
-            text-shadow: #fff 1px 1px;
+        .entry-title {
+            margin-bottom: 0;
+            color: @primary;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 25px;
+            font-weight: 200;
+            line-height: 1.3em;
+
+            a {
+                color: @primary;
+                text-decoration: none;
+                &:hover {
+                    color: @secondary;
+                }
+            }
+        }
+
+        .entry-meta {
+            padding: 1em 0 .3em 0;
+            border-bottom: 1px solid #EEE;
+            color: #888;
+            font: normal 12px Georgia;
+            font-style: italic;
+            letter-spacing: .15em;
+
+            .author, time {
+                color: #666;
+                font-size: 12px;
+                font-style: normal;
+            }
+        }
+
+        .entry-link {
+            margin-top: -1em;
+        }
+
+        .entry-comments {
+            margin-top: 2em;
+        }
+
+        .image-attachment {
+            margin-bottom: 1em;
+            text-align: center;
+        }
+
+        .indent {
+            text-indent: 2em;
+        }
+
+        .navigation {
+            font-size: 12px;
+            line-height: 18px;
+            overflow: hidden;
+
+            a:link, a:visited {
+                color: #888;
+                text-decoration: none;
+            }
+
+            .nav-previous {
+                float: left;
+                width: 50%;
+            }
+            .nav-next {
+                float: right;
+                text-align: right;
+                width: 50%;
+            }
+        }
+
+        article {
+            margin-bottom: 2em;
+        }
+
+        aside {
+            font-family: Georgia, Helvetica, Arial, sans-serif;
+
+            a {
+                color: #5B5B58;
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .title {
+                margin-bottom: 5px;
+                padding-bottom: 3px;
+                border-bottom: 3px double #ccc;
+                color: #333;
+                font-size: 13pt;
+                font-variant: small-caps;
+                text-shadow: #fff 1px 1px;
+            }
         }
     }
 }
