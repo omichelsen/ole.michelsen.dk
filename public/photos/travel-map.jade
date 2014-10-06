@@ -10,7 +10,7 @@
   p#map_canvas(style='width:100%;height:400px')
   p.thumbs
     for image, index in public.photos.map._contents
-      img(src="map/t/#{ image }", alt="#{ index }")
+      img(src="map/t/#{ encodeURIComponent(image) }", alt="#{ index }")
 
 script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqiUhRvSy2m5N__6fIvANVRq2j-q7w2A&sensor=false")
 script(src='#{ libs.jquery }')
