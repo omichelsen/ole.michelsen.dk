@@ -14,6 +14,6 @@
   ],
   "dependencies": {
     "jquery-slideshow": "omichelsen/jquery-slideshow#latest",
-    "jquery.animate-enhanced": "~1.1.0",
+    "jquery.animate-enhanced": "~1.1.0"
   }
 }
