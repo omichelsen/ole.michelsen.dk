@@ -37,3 +37,9 @@ AddType text/cache-manifest .manifest
 
 #RedirectPermanent /index.php http://ole.michelsen.dk/
 RedirectPermanent /demos/html5-animation.html /portfolio/html5-animation.html
+
+## Enable url rewrite ##
+<IfModule mod_rewrite.c>
+    RewriteEngine  on
+    RewriteRule    blog/(.+)/$  /blog/$1.html  [R=301]
+</IfModule>
