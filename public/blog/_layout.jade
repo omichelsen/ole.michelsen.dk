@@ -16,15 +16,16 @@ block content
         != yield
         != partial('../_shared/blog-navigation', public.blog)
         #disqus_thread.entry-comments
-        include ../scripts/disqus.js
         noscript
-            | Please enable JavaScript to view the
-            a(href='http://disqus.com/?ref_noscript') comments powered by Disqus.
-            a.dsq-brlink(href='http://disqus.com')
-              | comments powered by
-              span.logo-disqus Disqus
+          | Please enable JavaScript to view the
+          a(href='http://disqus.com/?ref_noscript') comments powered by Disqus.
+          a.dsq-brlink(href='http://disqus.com')
+            | comments powered by
+            span.logo-disqus Disqus
 
 block scripts
   script(src='#{ libs.highlight }')
   script.
     hljs.initHighlightingOnLoad();
+  include ../scripts/disqus.js
+  script(src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5083bb375ec21ccc", async)
