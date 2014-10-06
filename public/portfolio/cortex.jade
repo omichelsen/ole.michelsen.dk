@@ -8,4 +8,4 @@ ul.screenshots
   each image in public.images.portfolio.cortex._contents.slice(0, -1)
     li
       h4= image.replace('.png', '')
-      img.frame(src='/images/portfolio/cortex/#{ image }', alt='#{ image }', width='400', height='259')
+      img.frame(src='/images/portfolio/cortex/#{ encodeURIComponent(image) }', alt='#{ image }', width='400', height='259')
