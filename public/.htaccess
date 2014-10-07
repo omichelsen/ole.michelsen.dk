@@ -43,3 +43,9 @@ RedirectPermanent /portfolio/projects/intonet.html /portfolio/intonet.html
 RedirectPermanent /portfolio/projects/lejdirect.html /portfolio/lejdirect.html
 RedirectPermanent /portfolio/projects/majazz.html /portfolio/majazz.html
 RedirectPermanent /portfolio/projects/mmt.html /portfolio/mmt.html
+
+## Enable url rewrite ##
+<IfModule mod_rewrite.c>
+    RewriteEngine  on
+    RewriteRule    blog/(.+)/$  /blog/$1.html  [R=301]
+</IfModule>

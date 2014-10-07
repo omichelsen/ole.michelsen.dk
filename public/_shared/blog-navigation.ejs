@@ -1,0 +1,21 @@
+<%
+
+var pos, prevLink, nextLink;
+var items = Object.keys(_data);
+
+if(items[0] != current.source) {
+    pos = items.indexOf(current.source);
+    nextLink = "<a href='" + items[pos-1] + ".html'>" + _data[items[pos-1]].title + " <span class='meta-nav'>→</span></a>";
+}
+
+if(items[items.length-1] != current.source) {
+    pos = items.indexOf(current.source);
+    prevLink = "<a href='" + items[pos+1] + ".html'><span class='meta-nav'>←</span> " + _data[items[pos+1]].title + "</a>";
+}
+
+%>
+
+<div class="navigation">
+    <div class="nav-previous"><%- prevLink %></div>
+    <div class="nav-next"><%- nextLink %></div>
+</div>

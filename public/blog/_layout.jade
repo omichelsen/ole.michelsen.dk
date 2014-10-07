@@ -1,0 +1,30 @@
+extends ../_layout.jade
+
+block head
+  link(rel="stylesheet", href="#{ libs.highlightcss }")
+
+block content
+  .masthead
+  section.blog(itemscope, itemtype="http://schema.org/Blog")
+    if current.source === 'index'
+      != yield
+    else
+      article(itemprop="blogPosts", itemscope, itemtype="http://schema.org/BlogPosting")
+        h1.entry-title= title
+        != partial('../_shared/entry-meta')
+        != yield
+        != partial('../_shared/blog-navigation', public.blog)
+        #disqus_thread.entry-comments
+        noscript
+          | Please enable JavaScript to view the
+          a(href='http://disqus.com/?ref_noscript') comments powered by Disqus.
+          a.dsq-brlink(href='http://disqus.com')
+            | comments powered by
+            span.logo-disqus Disqus
+
+block scripts
+  script(src='#{ libs.highlight }')
+  script.
+    hljs.initHighlightingOnLoad();
+  include ../scripts/disqus.js
+  script(src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5083bb375ec21ccc", async)

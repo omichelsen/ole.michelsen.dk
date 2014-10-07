@@ -10,6 +10,8 @@
 		"author_full": "Ole Bjørn Michelsen",
 		"email": "ole@michelsen.dk",
 		"libs": {
+			"highlight": "//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js",
+			"highlightcss": "//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css",
 			"html5shiv": "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js",
 			"jquery": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js",
 			"jqueryui": "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js",

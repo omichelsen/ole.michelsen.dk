@@ -1,15 +1,15 @@
 doctype
-html(lang="#{ language }")
+html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] : '' }")
   head
     meta(charset='utf-8')
-    meta(name='viewport', content='width=1024')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     title= 'Ole Michelsen | '  + title
     meta(name="description", content="#{ description }")
     meta(name="author", content="#{ author }")
     link(rel="stylesheet", href="/styles/main.css")
     link(rel="shortcut icon", href="http://static.michelsen.dk/favicon.png")
     link(rel="alternate", href="#{ url }feed.xml", type="application/rss+xml", title="Ole Michelsen Latest Updates")
-    block link
+    block head
     include _shared/analytics.jade
     <!--[if lt IE 9]><script src="#{ libs.html5shiv }"></script><![endif]-->
 
@@ -46,10 +46,12 @@ html(lang="#{ language }")
 
       footer#footer
         section
-            p#colophon.floatright
+            p.colophon
               | Created by&nbsp;
               a(href='/profile.html', rel='author')= author
               | &nbsp;updated&nbsp;
               include _shared/date
-            p#sitemappath
+            p.sitemappath
               include _shared/breadcrumbs
+
+    block scripts
