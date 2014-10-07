@@ -1,7 +1,8 @@
 extends ../_layout.jade
 
 block head
-  link(rel="stylesheet", href="#{ libs.highlightcss }")
+  if current.source !== 'index'
+    link(rel="stylesheet", href="#{ libs.highlightcss }")
 
 block content
   .masthead
@@ -23,8 +24,9 @@ block content
             span.logo-disqus Disqus
 
 block scripts
-  script(src='#{ libs.highlight }')
-  script.
-    hljs.initHighlightingOnLoad();
-  include ../scripts/disqus.js
-  script(src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5083bb375ec21ccc", async)
+  if current.source !== 'index'
+    script(src='#{ libs.highlight }')
+    script.
+      hljs.initHighlightingOnLoad();
+    include ../scripts/disqus.js
+    script(src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5083bb375ec21ccc", async)
