@@ -1,18 +1,7 @@
-/* Document settings */
-/*-------------------*/
-/* HTML reset */
-html, body, ul, ol, menu, h1, h2, h3, h4, h5, h6, p, a, img, figure
-{
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    list-style: none;
-}
-/* HTML5 reset */
-article, aside, figure, footer, header, menu, nav, section, figcaption
-{
-    display: block;
-}
+/* Variables
+ ------------------------------------------ */
+@page-width: 950px;
+
 
 /* LAYOUT AND POSITIONING */
 /*------------------------*/
@@ -82,7 +71,7 @@ header>.title, header>nav>ul, #content, footer section
 {
     clear: both;
     margin: 0 auto;
-    width: 950px;
+    max-width: @page-width;
 }
 
 header
@@ -91,15 +80,26 @@ header
 
     .title {
         padding: 10px 0;
-    }
-    h1 {
-        margin: 0;
-        font: normal 35pt 'Century Gothic', Optima, Verdana;
-    }
-    h2 {
-        margin: 0;
-        color: #666;
-        font: normal 12pt Helvetica;
+
+        h1 {
+            margin: 0;
+            font: normal 35pt 'Century Gothic', Optima, Verdana;
+        }
+        h2 {
+            margin: 0;
+            color: #666;
+            font: normal 12pt Helvetica;
+        }
+
+        @media (max-width: @page-width) {
+            h1 {
+                font-size: 20pt;
+                text-align: center;
+            }
+            h2 {
+                display: none;
+            }
+        }
     }
 }
 
@@ -133,12 +133,24 @@ header
         font-size: 85%;
         text-transform: lowercase;
     }
+
+    @media (max-width: @page-width) {
+        .subtitle {
+            display: none;
+        }
+    }
 }
 
 #content
 {
     overflow: hidden;
     padding-bottom: 70px;
+
+    @media (max-width: @page-width) {
+        &> section {
+            padding: 0 5%;
+        }
+    }
 }
 
 footer
@@ -148,7 +160,8 @@ footer
     width: 100%;
     padding: 1em 0;
     color: #999;
-    font-size:small;
+    font-size: 13px;
+    line-height: 20px;
     text-shadow: 0px 1px 1px #000;
 
     border-top: 2px solid #444;
@@ -168,6 +181,20 @@ footer
     p {
         margin: 0 !important;
         padding: 0;
+    }
+
+    .colophon {
+        float: right;
+    }
+    .sitemappath {
+        float: left;
+    }
+
+    @media (max-width: @page-width) {
+        .colophon, .sitemappath {
+            float: none;
+            text-align: center;
+        }
     }
 }
 
@@ -259,7 +286,7 @@ p > .floatright { margin-top: 2px; }
     border-radius: 5px 0 0 5px;
 }
 
-#sitemappath .current { color: #ccc }
+.sitemappath .current { color: #ccc }
 
 #content ul.list { margin-left: 1.5em; }
 #content section { clear: both; }

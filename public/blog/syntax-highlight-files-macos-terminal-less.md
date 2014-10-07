@@ -17,7 +17,7 @@ This will make [less](https://developer.apple.com/library/mac/documentation/Darw
 As you can see we now have pretty syntax highlighting of our HTML-file directly inside the Terminal!
 
 <p>
-    <img alt="Opening HTML file with less and syntax-highlight" src="/images/blog/syntax-highlight-files-macos-terminal-less/less.png" srcset="/images/blog/syntax-highlight-files-macos-terminal-less/less-2x.png 2x" width="509" height="354">
+    <img alt="Opening HTML file with less and syntax-highlight" src="/images/blog/syntax-highlight-files-macos-terminal-less/less.png" srcset="/images/blog/syntax-highlight-files-macos-terminal-less/less-2x.png 2x" width="509">
 </p>
 
 In the last line of .bash_profile, we are adding some switches to less, which you can modify to your preference:

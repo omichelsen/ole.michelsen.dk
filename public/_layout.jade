@@ -2,7 +2,7 @@ doctype
 html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] : '' }")
   head
     meta(charset='utf-8')
-    meta(name='viewport', content='width=1024')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     title= 'Ole Michelsen | '  + title
     meta(name="description", content="#{ description }")
     meta(name="author", content="#{ author }")
@@ -46,12 +46,12 @@ html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] :
 
       footer#footer
         section
-            p#colophon.floatright
+            p.colophon
               | Created by&nbsp;
               a(href='/profile.html', rel='author')= author
               | &nbsp;updated&nbsp;
               include _shared/date
-            p#sitemappath
+            p.sitemappath
               include _shared/breadcrumbs
 
     block scripts
