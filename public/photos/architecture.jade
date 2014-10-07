@@ -1,0 +1,20 @@
+link(rel="stylesheet", href="#{ libs.flexslidercss }")
+
+ul.slideshow
+  each img in public.images.photos.architecture._contents
+    li
+      img(
+        src="/images/photos/architecture/#{ encodeURIComponent(img) }"
+        alt="by Ole Michelsen"
+        title="#{ img.replace('.jpg', '') }"
+        width="950"
+        height="600"
+      )
+
+script(src='#{ libs.jquery }')
+include ../../bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js
+include ../../bower_components/jquery-slideshow/jquery.slideshow.min.js
+script.
+  $(function() {
+      $('.slideshow').slideshow({ timeout: 5000, speed: 2000 });
+  });
