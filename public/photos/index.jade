@@ -18,14 +18,6 @@ section
           | &nbsp;
           a(href='http://www.flickr.com/photos/olemichelsen', rel='external') My photostream
           | &nbsp;on Flickr
-        li
-          i.icon-rss
-          | &nbsp;
-          a(href='architecture.html') Gallery of Architecture
-        li
-          i.icon-rss
-          | &nbsp;
-          a(href='copenhagen.html') Gallery from Copenhagen
     .col
       a#travelmap.frame(href='travel-map.html')
         img(alt='World Travel Map', src='/images/photos/travel-map.jpg', width='280', height='151')
@@ -39,6 +31,22 @@ section
           | Saturday, December 31
           sup th
           | 2011
+
+.stripe
+  a(href="architecture.html")
+    img(src="/images/photos/architecture-thumb.jpg", width="150", height="150")
+    .stripe-title
+      | Architecture
+    .stripe-text
+      | Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+
+.stripe
+  a(href="copenhagen.html")
+    img(src="/images/photos/copenhagen-thumb.jpg", width="150", height="150")
+    .stripe-title
+      | Copenhagen
+    .stripe-text
+      | Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 
 script(src='#{ libs.jquery }')
 include ../../bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js
