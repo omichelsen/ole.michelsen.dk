@@ -41,13 +41,23 @@ gulp.task('exif', function () {
                     width: file.exif.exif.ExifImageWidth,
                     height: file.exif.exif.ExifImageHeight
                 },
-                data = {};
-            data[filename] = img;
+                data = {
+                    'travel-map': {
+                        'images': {}
+                    }
+                };
+            data['travel-map'].images[filename] = img;
             file.contents = new Buffer(JSON.stringify(data));
         }))
-        .pipe(extend('exif.json'))
+        .pipe(extend('_exif.json', true, '    '))
+        .pipe(gulp.dest('./public/photos'));
+});
+
+gulp.task('data', ['exif'], function () {
+    return gulp.src('./public/photos/_*.json')
+        .pipe(extend('_data.json', true, '    '))
         .pipe(gulp.dest('./public/photos'));
 });
 
 // gulp.task('default', ['harp', 'ftp']);
-gulp.task('default', ['exif']);
+gulp.task('default', ['exif', 'data']);
