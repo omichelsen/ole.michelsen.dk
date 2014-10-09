@@ -11,7 +11,7 @@
   p.thumbs
     for image, slug in public.photos._data['travel-map'].images
       img(
-        src="map/t/#{ encodeURIComponent(slug) }"
+        src="map/#{ encodeURIComponent(slug) }"
         alt=""
         width="#{ image.width }"
         height="#{ image.height }"
