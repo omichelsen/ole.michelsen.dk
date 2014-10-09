@@ -6,47 +6,39 @@
 
 section
   h2 Photography
-  .columns
-    .col(style='width:65.67%')
-      p
-        | These are photographs I have taken on holiday and in my spare time. My interest for photography began with my first travels to China in 2005, where the scenery was simply breathtaking, and the culture so different that only pictures could clearly describe the many impressions.
-      p
-        | Since then I have learned a lot about composure and the different techniques to create alternate interpretations of the subject. Places you pass every day can change dramatically when viewed through the viewfinder, and walking around Copenhagen discovering details other people might miss is still one of my favorite pastimes.
-      ul.list
-        li
-          i.icon-flickr
-          | &nbsp;
-          a(href='http://www.flickr.com/photos/olemichelsen', rel='external') My photostream
-          | &nbsp;on Flickr
-    .col
-      a#travelmap.frame(href='travel-map.html')
-        img(alt='World Travel Map', src='/images/photos/travel-map.jpg', width='280', height='151')
-        img(alt='World Travel Map', src='/images/photos/travel-map-desaturated.jpg', width='280', height='151')
-      p
-        | Created a&nbsp;
-        a(href='travel-map.html') World Travel Map
-        | &nbsp;from GPS data
-        br
-        time(datetime='2011-12-31')
-          | Saturday, December 31
-          sup th
-          | 2011
-
-.stripe
-  a(href="architecture.html")
-    img(src="/images/photos/architecture-thumb.jpg", width="150", height="150")
-    .stripe-title
-      | Architecture
-    .stripe-text
-      | Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-
-.stripe
-  a(href="copenhagen.html")
-    img(src="/images/photos/copenhagen-thumb.jpg", width="150", height="150")
-    .stripe-title
-      | Copenhagen
-    .stripe-text
-      | Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+  p
+    | These are photographs I have taken on holiday and in my spare time. My interest for photography began with my first travels to China in 2005, where the scenery was simply breathtaking, and the culture so different that only pictures could clearly describe the many impressions.
+  p
+    | Since then I have learned a lot about composure and the different techniques to create alternate interpretations of the subject. Places you pass every day can change dramatically when viewed through the viewfinder, and walking around Copenhagen discovering details other people might miss is still one of my favorite pastimes.
+  .stripes
+    .stripe
+      a(href="travel-map.html")
+        img(src="/images/photos/travel-map-thumb.jpg", width="150", height="150")
+        .stripe-title
+          | World Travel Map
+        .stripe-text
+          | Map of where I have been in the world generated from image GPS EXIF data.
+    .stripe
+      a(href="architecture.html")
+        img(src="/images/photos/architecture-thumb.jpg", width="150", height="150")
+        .stripe-title
+          | Architecture
+        .stripe-text
+          | Images of buildings and architecture.
+    .stripe
+      a(href="copenhagen.html")
+        img(src="/images/photos/copenhagen-thumb.jpg", width="150", height="150")
+        .stripe-title
+          | Copenhagen
+        .stripe-text
+          | Favorite shots from my home town of Copenhagen.
+    .stripe
+      a(href="https://www.flickr.com/photos/olemichelsen/sets/")
+        img(src="/images/photos/albums-thumb.jpg", width="150", height="150")
+        .stripe-title
+          | My Flickr albums
+        .stripe-text
+          | All my photos and albums.
 
 script(src='#{ libs.jquery }')
 include ../../bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js
