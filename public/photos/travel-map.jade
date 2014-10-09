@@ -9,14 +9,19 @@
     | &nbsp;for photo layout.
   p#map_canvas(style='width:100%;height:400px')
   p.thumbs
-    for image, index in public.photos.map._contents
-      img(src="map/t/#{ encodeURIComponent(image) }", alt="#{ index }")
+    for image, slug in public.photos._data['travel-map'].images
+      img(
+        src="map/t/#{ encodeURIComponent(slug) }"
+        alt=""
+        width="#{ image.width }"
+        height="#{ image.height }"
+      )
 
 script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqiUhRvSy2m5N__6fIvANVRq2j-q7w2A&sensor=false")
 script(src='#{ libs.jquery }')
 script(src='#{ libs.masonry }')
+!= '<script>'
+!= 'var locations = ' + JSON.stringify(public.photos._data['travel-map'].images)
+!= '</script>'
 include ../scripts/markerclusterer-1.0.min.js
 include ../scripts/travel-map.js
-
-//- http://www.quietless.com/kitchen/extract-exif-data-using-php-to-display-gps-tagged-images-in-google-maps/
-//- http://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
