@@ -4,7 +4,7 @@ function initialize() {
         center: new google.maps.LatLng(40.416698, -3.700354),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map_canvas"), opt);
+    var map = new google.maps.Map(document.getElementById("map-canvas"), opt);
 
     var marker, pos;
     for (var img in locations) {
@@ -23,10 +23,10 @@ function initialize() {
     });
     var mc = new MarkerClusterer(map, locationsArr, { gridSize: 20, maxZoom: 4, styles: [markerStyle,markerStyle] });
 
-    var canvasOffset = $('#map_canvas').offset().top - 5;
+    var canvasOffset = $('#map-canvas').offset().top - 5;
 
 
-    $('.thumbs').masonry({
+    $('.images').masonry({
         itemSelector: 'img',
         columnWidth: 106,
         resizable: false
