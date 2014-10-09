@@ -42,40 +42,32 @@
         height: 600px;
     }
 
-    .stripe {
-        overflow: hidden;
-        padding: 30px 50px;
-        color: #fff;
-        font-size: 14pt;
+    .stripes {
+        padding-top: 20px;
 
-        &:nth-child(1) {
-            background: DarkSeaGreen;
-        }
-        &:nth-child(2) {
-            background: LightBlue;
-        }
-        &:nth-child(3) {
-            background: Tan;
-        }
-        &:nth-child(4) {
-            background: #999;
-        }
-
-        a {
+        .stripe {
+            overflow: hidden;
+            padding: 30px 50px;
             color: #fff;
-            text-decoration: none;
-        }
+            font-size: 12pt;
 
-        img {
-            float: left;
-            margin: 0 50px 0 0;
-            border-radius: 75px;
-        }
+            a {
+                color: #999;
+                text-decoration: none;
+            }
 
-        .stripe-title {
-            margin: 45px 0 20px 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 30pt;
+            img {
+                float: left;
+                margin: 0 50px 0 0;
+                border-radius: 75px;
+            }
+
+            .stripe-title {
+                margin: 45px 0 20px 0;
+                color: @secondary;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 25pt;
+            }
         }
     }
 }
