@@ -29,5 +29,10 @@
         "description": "Create your own Countdown Clock to any date and time and bookmark and share the link with your friends and family.",
         "date": "2012-06-14",
         "layout": "../_layout"
+    },
+    "index": {
+        "title": "Tools",
+        "description": "Tools for web development and optimization including common tasks as minifying, base64 encoding and HTML batch validation.",
+        "date": "2014-10-09"
     }
 }

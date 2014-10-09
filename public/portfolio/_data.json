@@ -123,5 +123,10 @@
         "keywords": "Organizer · Event planning · Design · Programming",
         "created": "1999-2001",
         "date": "2011-10-07"
+    },
+    "index": {
+        "title": "Portfolio",
+        "description": "Presentation of my work and projects, as well as freely available tools for web development.",
+        "date": "2014-10-09"
     }
 }
