@@ -29,7 +29,7 @@ gulp.task('ftp', ['harp'], function () {
 });
 
 gulp.task('exif', function () {
-    return gulp.src('./public/photos/_map/*.jpg')
+    return gulp.src('./public/images/photos/_map/*.jpg')
         .pipe(exif())
         .pipe(data(function (file) {
             var filename = file.path.substring(file.path.lastIndexOf('/') + 1),
