@@ -1,4 +1,15 @@
 {
+    "showing-photo-gps-location-on-google-maps-with-gulp": {
+        "title": "Showing photo GPS location on Google Maps with gulp",
+        "description": "How to read the GPS data from photo EXIF data using gulp, and mark the coordinates on Google Maps.",
+        "date": "2014-10-11",
+        "tags": [
+            "exif",
+            "gulp",
+            "javascript",
+            "maps"
+        ]
+    },
     "breadcrumb-trail-harp-jade": {
         "title": "Breadcrumb trail with Harp and Jade",
         "description": "How to create a microdata breadcrumb trail with Harp and Jade using the current navigation path.",
