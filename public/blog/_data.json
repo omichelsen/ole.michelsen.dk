@@ -12,7 +12,7 @@
     },
     "breadcrumb-trail-harp-jade": {
         "title": "Breadcrumb trail with Harp and Jade",
-        "description": "How to create a microdata breadcrumb trail with Harp and Jade using the current navigation path.",
+        "description": "How to create a microdata breadcrumb trail with Harp and Jade using the current page navigation path.",
         "date": "2014-09-17",
         "tags": [
             "harp",
