@@ -14,29 +14,29 @@
 		"description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
 		"date": "2014-10-01",
 		"blog": [{
+			"title": "Showing photo GPS location on Google Maps with gulp",
+			"url": "/blog/showing-photo-gps-location-on-google-maps-with-gulp.html",
+			"date": "2014-10-11",
+			"type": "blog"
+		}, {
 			"title": "Breadcrumb trail with Harp and Jade",
-			"url": "/blog/breadcrumb-trail-harp-jade/",
+			"url": "/blog/breadcrumb-trail-harp-jade.html",
 			"date": "2014-09-17",
 			"type": "blog"
 		}, {
 			"title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
-			"url": "/blog/add-custom-hostname-to-apache-osx-mavericks/",
+			"url": "/blog/add-custom-hostname-to-apache-osx-mavericks.html",
 			"date": "2014-05-07",
 			"type": "blog"
 		}, {
 			"title": "Syntax highlight files in MacOS Terminal with less",
-			"url": "/blog/syntax-highlight-files-macos-terminal-less/",
+			"url": "/blog/syntax-highlight-files-macos-terminal-less.html",
 			"date": "2014-03-25",
 			"type": "blog"
 		}, {
 			"title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
-			"url": "/blog/setup-local-web-server-apache-php-macos-x-mavericks/",
+			"url": "/blog/setup-local-web-server-apache-php-macos-x-mavericks.html",
 			"date": "2013-12-30",
-			"type": "blog"
-		}, {
-			"title": "Navigate form fields with arrow keys",
-			"url": "/blog/navigate-form-fields-with-arrow-keys/",
-			"date": "2013-11-13",
 			"type": "blog"
 		}],
 		"updates": [{
