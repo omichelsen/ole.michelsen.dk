@@ -28,5 +28,13 @@ block scripts
     script(src='#{ libs.highlight }')
     script.
       hljs.initHighlightingOnLoad();
-    include ../scripts/disqus.js
+    script.
+      var disqus_shortname = 'olemichelsen';
+      var disqus_identifier = '#{ current.source }';
+      var disqus_url = '#{ url + 'blog/' + current.source + '.html' }';
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
     script(src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5083bb375ec21ccc", async)
