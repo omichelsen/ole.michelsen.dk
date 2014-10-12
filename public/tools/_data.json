@@ -28,7 +28,15 @@
         "title": "Yet Another Countdown Clock",
         "description": "Create your own Countdown Clock to any date and time and bookmark and share the link with your friends and family.",
         "date": "2012-06-14",
-        "layout": "../_layout"
+        "layout": "../_layout",
+        "stylesheets": ["//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/css/jquery-ui.min.css"],
+        "javascripts": [
+            "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js",
+            "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js",
+            "//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js",
+            "/scripts/jquery.countdown-1.0.min.js",
+            "/scripts/countdown.js"
+        ]
     },
     "index": {
         "title": "Tools",

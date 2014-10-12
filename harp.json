@@ -23,6 +23,8 @@
 		},
 		"services": {
 			"analytics": "UA-19571265-2"
-		}
+		},
+		"stylesheets": [],
+		"javascripts": []
 	}
 }

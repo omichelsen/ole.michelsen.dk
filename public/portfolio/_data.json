@@ -38,7 +38,8 @@
         "layout": "../_layout",
         "title": "HTML5 animation",
         "description": "Animation using CSS3 transformations and HTML5 &lt;audio&gt; controls compatible with both Chrome, Safari and Firefox.",
-        "date": "2012-10-23"
+        "date": "2012-10-23",
+        "stylesheets": ["/images/portfolio/html5-animation/styles.css"]
     },
 	"kuranz": {
 		"title": "Kuranz",
@@ -52,7 +53,9 @@
         "description": "My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.",
         "keywords": "Design · Programming: SVG",
         "created": "2011",
-        "date": "2011-10-07"
+        "date": "2011-10-07",
+        "stylesheets": ["//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css"],
+        "javascripts": ["//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"]
     },
     "meterman": {
         "title": "MeterMan",
