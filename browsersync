@@ -1,2 +1,2 @@
 #!/bin/bash
-browser-sync start --proxy 'localhost:9000' --files 'public/**/*.jade, public/**/*.less'
+browser-sync start --proxy 'localhost:9000' --files 'public/**/*.jade, public/**/*.md, public/**/*.less'
