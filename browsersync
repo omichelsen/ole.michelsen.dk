@@ -1,2 +1,3 @@
 #!/bin/bash
+harp server &
 browser-sync start --proxy 'localhost:9000' --files 'public/**/*.jade, public/**/*.md, public/**/*.less'
