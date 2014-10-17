@@ -1,4 +1,15 @@
 {
+    "using-browser-sync-with-harp": {
+        "title": "Using BrowserSync with Harp",
+        "description": "Automatically refresh your browser when you update content or styles in Harp using BrowserSync.",
+        "date": "2014-10-17",
+        "tags": [
+            "bash",
+            "browsersync",
+            "harp",
+            "javascript"
+        ]
+    },
     "showing-photo-gps-location-on-google-maps-with-gulp": {
         "title": "Showing photo GPS location on Google Maps with gulp",
         "description": "How to read the GPS data from photo EXIF data using gulp, and mark the coordinates on Google Maps.",
