@@ -15,7 +15,7 @@ Now we just have to run the Harp server, and then start BrowserSync as proxy in 
 
 As you can see, we are now watching for changes to the jade, markdown and less files in our `public` folder, and BrowserSync will automatically refresh your browser when any of these files change.
 
-## Batch script
+## Bash script
 
 It can be a bit difficult to remember that long command, so let's create a small batch script to do this. In the root of your project folder create a file called `browsersync`, and paste the following into that file:
 
