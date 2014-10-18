@@ -17,7 +17,7 @@ There is no built-in function to split a delimited string in Microsoft SQL Serve
             UNION ALL
             SELECT endpos+1, CHARINDEX(@Delimiter,@String,endpos+1)
                 FROM Split
-                WHERE endpos &gt; 0
+                WHERE endpos > 0
         )
         SELECT 'Id' = ROW_NUMBER() OVER (ORDER BY (SELECT 1)),
             'Data' = SUBSTRING(@String,stpos,COALESCE(NULLIF(endpos,0),LEN(@String)+1)-stpos)
