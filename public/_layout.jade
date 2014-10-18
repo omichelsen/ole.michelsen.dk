@@ -40,6 +40,9 @@ html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] :
             li
               a(href="/photos/") Photos
                 span.subtitle Things I see
+            li.feed
+              a(href="/feed.xml") Feed
+                span.subtitle Latest things
 
       section#content
         block content
