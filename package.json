@@ -20,6 +20,7 @@
     "gulp-exif": "^0.10.0",
     "gulp-extend": "^0.2.0",
     "gulp-ftp": "^1.0.1",
-    "gulp-shell": "^0.2.9"
+    "gulp-shell": "^0.2.9",
+    "request": "^2.45.0"
   }
 }

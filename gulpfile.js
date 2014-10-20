@@ -3,6 +3,8 @@ var gulp = require('gulp'),
     exif = require('gulp-exif'),
     extend = require('gulp-extend'),
     ftp = require('gulp-ftp'),
+    fs = require('fs'),
+    request = require('request'),
     shell = require('gulp-shell');
 
 function gpsDecimal(direction, degrees, minutes, seconds) {
@@ -59,5 +61,16 @@ gulp.task('data', ['exif'], function () {
         .pipe(gulp.dest('./public/photos'));
 });
 
+gulp.task('github', function () {
+    var options = {
+        url: 'https://api.github.com/users/omichelsen/repos',
+        headers: {
+            'User-Agent': 'request'
+        }
+    };
+    return request(options)
+        .pipe(fs.createWriteStream('./public/_github.json'));
+});
+
 // gulp.task('default', ['harp', 'ftp']);
-gulp.task('default', ['exif', 'data']);
+gulp.task('default', ['exif', 'data', 'github']);
