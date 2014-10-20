@@ -1,36 +1,3 @@
-/* Two-Column Article Layout */
-.column-left, .column-right
-{
-    float: left;
-    width: 47.5%;
-    clear: none !important;
-}
-.column-left
-{
-    margin-right: 5%;
-}
-.column-left section:first-child h3:first-child, .column-right section:first-child h3:first-child
-{
-    margin-top: 0.5em;
-}
-
-/* Three-Column Presentation Layout */
-.columns
-{
-    overflow: hidden;
-    position: relative;
-}
-.columns .col
-{
-    float: left;
-    width: 31.33%;
-    margin-left: 3%;
-}
-.columns .col:first-child { margin-left: 0; }
-.columns .colspan { width: auto; }
-
-/* Rows
- ------------------------------------------ */
 .row {
     overflow: hidden;
     &:before,
@@ -42,24 +9,27 @@
     }
     [class *= "col"] {
         float: left;
-        padding-left: 3%;
+        margin-left: @row-col-spacing;
 
         &:first-child {
-            padding-left: 0;
+            margin-left: 0;
         }
+    }
+    .col-8 {
+        width: 62.66%;
     }
     .col,
     .col-6 {
-        width: 48.5%;
+        width: (100 - @row-col-spacing) / 2;
     }
     .col-4 {
-        width: 31.33%;
+        width: (100 - @row-col-spacing * 2) / 3;
     }
 
     @media (max-width: @page-width) {
         [class *= "col"] {
             float: none;
-            padding: 0;
+            margin: 0;
             width: 100% !important;
         }
     }

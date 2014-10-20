@@ -3,57 +3,59 @@ The implementation is based on JavaScript's <a href="http://www.w3schools.com/js
 
 <section>
   <form id="regex">
-  <div class="column-left">
-    <p>
-    <label for="pattern"><b>Regex pattern:</b></label><br />
-    <textarea autofocus="autofocus" class="text" id="pattern" name="pattern" style="width:440px;height:33px" tabindex="1" required="required"></textarea>
-    </p>
+  <div class="row">
+    <div class="col">
+      <p>
+      <label for="pattern"><b>Regex pattern:</b></label><br />
+      <textarea autofocus="autofocus" class="text" id="pattern" name="pattern" style="width:440px;height:33px" tabindex="1" required="required"></textarea>
+      </p>
+    </div>
+
+    <div class="col">
+      <p>
+      <label for="replace"><b>Replace:</b></label><br />
+      <textarea class="text" id="replace" name="replace" style="width:440px;height:33px" tabindex="3"></textarea>
+      </p>
+    </div>
   </div>
 
-  <div class="column-right">
-    <p>
-    <label for="replace"><b>Replace:</b></label><br />
-    <textarea class="text" id="replace" name="replace" style="width:440px;height:33px" tabindex="3"></textarea>
-    </p>
+  <div class="row">
+    <div class="col">
+      <p>
+      <label for="input"><b>Test input:</b></label><br />
+      <textarea class="text" id="input" name="input" style="width:440px;height:80px" tabindex="2" required="required"></textarea>
+      </p>
+    </div>
+
+    <div class="col">
+      <p>
+      <label for="matches"><b>Matches:</b></label><br />
+      <textarea autofocus="autofocus" class="text" id="matches" name="matches" style="width:440px;height:80px" readonly="readonly" tabindex="10"></textarea>
+      </p>
+    </div>
   </div>
 
-  <div class="column-left">
-    <p>
-    <label for="input"><b>Test input:</b></label><br />
-    <textarea class="text" id="input" name="input" style="width:440px;height:80px" tabindex="2" required="required"></textarea>
-    </p>
-  </div>
+  <p class="floatleft">
+    <b>Engine:</b><br />
+    <select id="engine" name="engine" tabindex="6">
+      <option value="js">JavaScript</option>
+      <option value="php">PHP</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;
+  </p>
 
-  <div class="column-right">
-    <p>
-    <label for="matches"><b>Matches:</b></label><br />
-    <textarea autofocus="autofocus" class="text" id="matches" name="matches" style="width:440px;height:80px" readonly="readonly" tabindex="10"></textarea>
-    </p>
-  </div>
+  <p class="floatleft">
+    <b>Switches:</b><br />
+    <label for="nocase">Case-insensitive</label><input id="nocase" name="nocase" type="checkbox" value="i" tabindex="7" />&nbsp;
+    <label for="global">Global match</label><input id="global" name="global" type="checkbox" value="g" tabindex="8" />&nbsp;
+    <label for="multiline">Multiline</label><input id="multiline" name="multiline" type="checkbox" value="m" tabindex="9" />&nbsp;
+  </p>
 
-  <div style="clear:both">
-    <p class="floatleft">
-      <b>Engine:</b><br />
-      <select id="engine" name="engine" tabindex="6">
-        <option value="js">JavaScript</option>
-        <option value="php">PHP</option>
-      </select>
-      &nbsp;&nbsp;&nbsp;
-    </p>
-
-    <p class="floatleft">
-      <b>Switches:</b><br />
-      <label for="nocase">Case-insensitive</label><input id="nocase" name="nocase" type="checkbox" value="i" tabindex="7" />&nbsp;
-      <label for="global">Global match</label><input id="global" name="global" type="checkbox" value="g" tabindex="8" />&nbsp;
-      <label for="multiline">Multiline</label><input id="multiline" name="multiline" type="checkbox" value="m" tabindex="9" />&nbsp;
-    </p>
-
-    <p class="floatright" style="padding-top:1em">
-      <input class="button" id="doValidate" type="submit" value="Validate" tabindex="4" />
-      &nbsp;&nbsp;&nbsp;
-      <input class="button" id="doReplace" type="button" value="Replace" tabindex="5" />
-    </p>
-  </div>
+  <p class="floatright" style="padding-top:1em">
+    <input class="button" id="doValidate" type="submit" value="Validate" tabindex="4" />
+    &nbsp;&nbsp;&nbsp;
+    <input class="button" id="doReplace" type="button" value="Replace" tabindex="5" />
+  </p>
 
   </form>
 </section>
@@ -87,8 +89,8 @@ The implementation is based on JavaScript's <a href="http://www.w3schools.com/js
 
 <br />
 
-<section class="columns" style="font-size:0.9em;">
-  <div class="col">
+<section class="row" style="font-size:0.9em;">
+  <div class="col-4">
     <table class="datasheet">
       <tr><th colspan="2">Special Characters</th></tr>
       <tr><td>\</td><td>Escape Character</td></tr>
@@ -120,7 +122,7 @@ The implementation is based on JavaScript's <a href="http://www.w3schools.com/js
       <tr><td>\n</td><td>New line</td></tr>
     </table>
   </div>
-  <div class="col">
+  <div class="col-4">
     <table class="datasheet">
       <tr><th colspan="2">Quantifiers</th></tr>
       <tr><td><i>n</i>*</td><td>0 or more <i>n</i></td></tr>
@@ -149,7 +151,7 @@ The implementation is based on JavaScript's <a href="http://www.w3schools.com/js
       <tr><td>(?&lt;!<i>o</i>)<i>n</i></td><td>Negative lookbehind<sup><a href="#footnote1">1</a></sup>, <i>o</i> not preceding <i>n</i></td></tr>
     </table>
   </div>
-  <div class="col">
+  <div class="col-4">
     <table class="datasheet">
       <tr><th colspan="2">Ranges</th></tr>
       <tr><td>.</td><td>Any character except new line (\n)</td></tr>

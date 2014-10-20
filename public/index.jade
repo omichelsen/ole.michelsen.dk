@@ -20,17 +20,17 @@ mixin feed(item)
           img(src='/images/olemichelsen-3.jpg', title='Photos', alt='Shots from my travels around the world', width='950', height='400')
 
   .row
-    .col
+    .col-4
       h4 Things I say
       ul.feed
         each item in public._data.index.blog
           +feed(item)
-    .col
+    .col-4
       h4 Things I do
       ul.feed
         each item in public._data.index.updates
           +feed(item)
-    .col
+    .col-4
       h4 Things I connect to
       ul.social
         li

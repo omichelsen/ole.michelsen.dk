@@ -28,28 +28,29 @@ p
 
 section
   form#minifier
-    .column-left
+    .row
+      .col
+        p
+          label(for='input')
+            b Input:
+          br
+          textarea#input.text(autofocus='autofocus', name='input', style='width:440px;height:120px;font-size:smaller;', tabindex='1', required='required')
+      .col
+        p
+          label(for='output')
+            b Output:
+          br
+          textarea#output.text(name='output', style='width:440px;height:120px;font-size:smaller;', readonly='readonly', tabindex='5')
       p
-        label(for='input')
-          b Input:
-        br
-        textarea#input.text(autofocus='autofocus', name='input', style='width:440px;height:120px;font-size:smaller;', tabindex='1', required='required')
-    .column-right
-      p
-        label(for='output')
-          b Output:
-        br
-        textarea#output.text(name='output', style='width:440px;height:120px;font-size:smaller;', readonly='readonly', tabindex='5')
-    p
-      span#resultstats.floatright
-      select#datatype(name='datatype', tabindex='2')
-        option(value='css') CSS
-        option(value='js') JavaScript
-      select#engine(name='engine', tabindex='3')
-        option(value='ms') Microsoft AJAX Minifier
-        option(value='yui') YUI Compressor
-      input.button(type='submit', value='Compress', tabindex='4')
-      img#loader(style='display:none;', src='/images/loading.gif', alt='Loading...', height='11', width='16')
+        span#resultstats.floatright
+        select#datatype(name='datatype', tabindex='2')
+          option(value='css') CSS
+          option(value='js') JavaScript
+        select#engine(name='engine', tabindex='3')
+          option(value='ms') Microsoft AJAX Minifier
+          option(value='yui') YUI Compressor
+        input.button(type='submit', value='Compress', tabindex='4')
+        img#loader(style='display:none;', src='/images/loading.gif', alt='Loading...', height='11', width='16')
 
 section
   h3 Implementation with AJAX and cURL
