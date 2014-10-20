@@ -35,8 +35,8 @@ AddType text/x-vcard .vcf
 ## Enable .manifest files for HTML5 offline caching ##
 AddType text/cache-manifest .manifest
 
-#RedirectPermanent /index.php http://ole.michelsen.dk/
 RedirectPermanent /blog/feed.html /feed.xml
+RedirectPermanent /blog/breadcrumb-trail-harp-jade /blog/breadcrumb-trail-harp-jade.html
 RedirectPermanent /blog/split-string-to-table-using-transact-sql/) /blog/split-string-to-table-using-transact-sql.html
 RedirectPermanent /demos/html5-animation.html /portfolio/html5-animation.html
 RedirectPermanent /portfolio/projects/alsted.html /portfolio/alsted.html
