@@ -39,33 +39,32 @@ section.column-left
     | In 2010 I achieved a bachelor's degree in Computer Science at the University of Copenhagen (
     a(href='http://www.diku.dk/', rel='external') DIKU
     i.icon-diku
-    | ), and concurrently I have worked both part and full time as a web developer. This website is intended to show off some of&nbsp;
-    a(href='/portfolio/') my work and projects
-    | .
-  h3 Current projects
-  p
-    | Right now I'm looking into the many new features of HTML5 and CSS3, and especially how these can help to&nbsp;
-    a(href='/portfolio/site-optimization.html') optimize website design and performance
-    | .
-    br
-    | A friend and I are also trying out the more advanced aspects, such as WebSockets and the canvas element. We have so far created a rudimentary multiplayer Tetris game, where two players can battle against each other, using special blocks for attack and defense. I hope to get a working version online sometime this year.
+    | ), and since then I have been working on a lot of&nbsp;
+    a(href='/portfolio/') exciting projects
+    | . This website is dedicated to showcase these projects, and generally be a place where I can experiment with new technologies.
+  h3 Recent projects
+  #github-projects
 section.column-right
   h2 Experience
   p
-    | I'm mainly using ASP.NET, C#, LINQ, HTML5, CSS3, JavaScript, Microsoft SQL Server and Transact-SQL in my daily work, but I'm always exploring other languages and techniques. Below is a simple diagram of my experience with the most commonly used languages.
+    | I'm mainly using JavaScript, Node, HTML5, CSS3, ASP.NET, C#, LINQ, Microsoft SQL Server and Transact-SQL in my daily work, but I'm always exploring other languages and techniques.
   p
-    | I have also developed for several different platforms. At the university we were using Linux, but in my work I have almost exclusively been developing on and for Windows. For this website and my private projects, I am primarily using Mac OS.
-    br
+    | I have also developed for several different platforms. Currently I am working on the MacOS platform, building websites using Node and similiar open source projects. Previously I have been developing for more than 10 years on the Microsoft platform, mainly with Visual Studio and SQL Server.
+  p
     | In my mind there is no&nbsp;
     i one
     | &nbsp;solution that fits all, rather it's a matter of selecting the right tool for the job, thus getting experience with as many technologies as possible, is paramount when choosing the best solution.
   table#experience.tableFigure(style='width:100%')
     caption Programming languages
     tbody
+      tr.alt
+        td JavaScript
+        td
+          span 10
       tr
         td HTML and CSS
         td
-          span 12
+          span 10
       tr.alt
         td Transact-SQL
         td
@@ -74,10 +73,6 @@ section.column-right
         td C# and ASP.NET
         td
           span 9
-      tr.alt
-        td JavaScript
-        td
-          span 4.5
       tr
         td Java
         td
@@ -102,4 +97,5 @@ section.column-right
 
 script(src='#{ libs.jquery }')
 script(src='#{ libs.jqueryui }')
+include ../bower_components/jquery-github/dist/jquery.github.min.js
 script(src="scripts/profile.js")
