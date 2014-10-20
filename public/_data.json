@@ -12,7 +12,7 @@
 	"index": {
 		"title": "Web Development and Computer Science",
 		"description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
-		"date": "2014-10-01",
+		"date": "2014-10-20",
 		"blog": [{
 			"title": "Using BrowserSync with Harp",
 			"url": "/blog/using-browser-sync-with-harp.html",

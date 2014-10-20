@@ -19,7 +19,7 @@ mixin feed(item)
         a(href='/photos/')
           img(src='/images/olemichelsen-3.jpg', title='Photos', alt='Shots from my travels around the world', width='950', height='400')
 
-  section.columns
+  .row
     .col
       h4 Things I say
       ul.feed
@@ -30,7 +30,7 @@ mixin feed(item)
       ul.feed
         each item in public._data.index.updates
           +feed(item)
-    .col.last
+    .col
       h4 Things I connect to
       ul.social
         li
@@ -45,10 +45,11 @@ mixin feed(item)
         li
           a(href='https://www.flickr.com/photos/olemichelsen', rel='external', title='Flickr')
             i.icon-flickr
-      #postit
-        span
-          | You can also&nbsp;
-          a(href='mailto:#{ email }') drop me a line
+      .c
+        .postit
+          span
+            | You can also&nbsp;
+            a(href='mailto:#{ email }') drop me a line
 
 script(src='#{ libs.jquery }')
 include ../bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js

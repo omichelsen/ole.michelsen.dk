@@ -1,12 +1,13 @@
 .landingpage {
-    .columns {
-        margin-top: 15px;
+    .row {
+        margin-top: 10px;
         font: 200 14px 'Helvetica Neue', Arial, Helvetica, Norasi, sans-serif;
         .col {
             width: 37%;
-        }
-        .last {
-            width: 20%;
+
+            &:last-child {
+                width: 26%;
+            }
         }
         a:link, a:visited {
             color: #333;
@@ -60,22 +61,23 @@
         }
     }
 
-    .last li {
-        float: left;
-        margin: 3%;
-    }
-
     .social {
+        text-align: center;
+        li {
+            display: inline-block;
+            margin: 3%;
+        }
         [class^="icon-"], [class*=" icon-"] {
             font-size: 32px;
         }
     }
 
-    #postit {
+    .postit {
+        display: inline-block;
         width: 115px;
         height: 90px;
         padding: 60px 20px 20px 15px;
-        margin: 20px;
+        margin: 20px 0;
         background:url(/images/post-it-note.jpg);
 
         span {

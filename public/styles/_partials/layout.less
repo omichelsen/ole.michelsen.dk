@@ -1,8 +1,3 @@
-/* Variables
- ------------------------------------------ */
-@page-width: 950px;
-
-
 /* LAYOUT AND POSITIONING */
 /*------------------------*/
 html, body
@@ -10,7 +5,6 @@ html, body
     height: 100%; /* needed for #footer placement */
     font-family: Tahoma, Helvetica, Arial, sans-serif;
     font-size: 14px;
-    /*background: #f9f9f9;*/
     color: #333;
     line-height: 150%;
 }
@@ -310,46 +304,34 @@ p > .floatright { margin-top: 2px; }
 
 .sitemappath .current { color: #ccc }
 
-#content ul.list { margin-left: 1.5em; }
-#content section { clear: both; }
-
-/* Two-Column Article Layout */
-.column-left, .column-right
-{
-    float: left;
-    width: 47.5%;
-    clear: none !important;
+#content {
+    ul.list {
+        margin-left: 1.5em;
+    }
+    section {
+        clear: both;
+    }
 }
-.column-left
-{
-    margin-right: 5%;
-}
-.column-left section:first-child h3:first-child, .column-right section:first-child h3:first-child
-{
-    margin-top: 0.5em;
-}
-
-/* Three-Column Presentation Layout */
-.columns
-{
-    overflow: hidden;
-    position: relative;
-}
-.columns .col
-{
-    float: left;
-    width: 31.33%;
-    margin-left: 3%;
-}
-.columns .col:first-child { margin-left: 0; }
-.columns .colspan { width: auto; }
 
 sup a { font-size: inherit; text-decoration: none; }
 
-#footnotes { margin-top: 2em; color: #666; border-top: 1px solid #999; }
-#footnotes li { margin-bottom: 0.5em; font-size:xx-small; vertical-align: super; }
-#footnotes li:target { background-color: #def; }
-#footnotes span { font-size: 10pt; vertical-align: sub; }
+#footnotes {
+    margin-top: 2em;
+    color: #666;
+    border-top: 1px solid #999;
+    li {
+        margin-bottom: 0.5em;
+        font-size:xx-small;
+        vertical-align: super;
+    }
+    li:target {
+        background-color: #def;
+    }
+    span {
+        font-size: 10pt;
+        vertical-align: sub;
+    }
+}
 
 
 /* Projects

@@ -1,0 +1,66 @@
+/* Two-Column Article Layout */
+.column-left, .column-right
+{
+    float: left;
+    width: 47.5%;
+    clear: none !important;
+}
+.column-left
+{
+    margin-right: 5%;
+}
+.column-left section:first-child h3:first-child, .column-right section:first-child h3:first-child
+{
+    margin-top: 0.5em;
+}
+
+/* Three-Column Presentation Layout */
+.columns
+{
+    overflow: hidden;
+    position: relative;
+}
+.columns .col
+{
+    float: left;
+    width: 31.33%;
+    margin-left: 3%;
+}
+.columns .col:first-child { margin-left: 0; }
+.columns .colspan { width: auto; }
+
+/* Rows
+ ------------------------------------------ */
+.row {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+    [class *= "col"] {
+        box-sizing: border-box;
+        display: inline-block;
+        float: left;
+        padding: 1em;
+    }
+    .col,
+    .col-6 {
+        width: 50%;
+    }
+    .col-4 {
+        width: 33.33%;
+    }
+    .col-3 {
+        width: 25%;
+    }
+
+    @media (max-width: @page-width) {
+        [class *= "col"] {
+            float: none;
+            width: 100% !important;
+        }
+    }
+}
