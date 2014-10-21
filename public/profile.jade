@@ -47,7 +47,7 @@
     dl
       each repo in public._data.profile.repositories
         dt
-          i.icon-github &emsp;
+          i.icon-github &nbsp;
           a(href="#{ repo.html_url }")= repo.name
           if repo.language
             em= ' (' + repo.language + ')'
