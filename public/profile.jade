@@ -44,7 +44,13 @@
       a(href='/portfolio/') exciting projects
       | . This website is dedicated to showcase these projects, and generally be a place where I can experiment with new technologies.
     h3 Recent projects
-    #github-projects
+    dl
+      each repo in public._data.profile.repositories
+        dt
+          a(href="#{ repo.html_url }")= repo.name
+          if repo.language
+            em= ' (' + repo.language + ')'
+        dd= repo.description
   .col
     h2 Experience
     p

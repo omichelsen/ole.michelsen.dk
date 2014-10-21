@@ -11,22 +11,7 @@
 
 })(jQuery);
 
-jQuery.fn.loadRepositories = function () {
-    this.html('<span>Querying GitHub for repositories...</span>');
-    var target = this;
-    $.getJSON('https://api.github.com/users/omichelsen/repos', function (data) {
-        var list = $('<dl />');
-        $(data).each(function () {
-            list.append('<dt><a href="' + (this.homepage ? this.homepage : this.html_url) + '">' + this.name + '</a> <em>' + (this.language ? ('(' + this.language + ')') : '') + '</em></dt>');
-            list.append('<dd>' + this.description + '</dd>');
-        });
-        target.empty().append(list);
-    });
-};
-
 $(document).ready(function () {
-    $('#github-projects').loadRepositories();
-
     var email = $('#email'),
         $tips = $('#tips');
 
