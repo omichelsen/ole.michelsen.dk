@@ -2,34 +2,25 @@
   .frame
     .innerframe
     img(alt='Ole Bjørn Michelsen', itemprop='image', src='/images/olemichelsen-contact.jpg', width='200', height='200')
-  table
-    tbody
-      tr(style='display:none')
-        th Name
-        td(itemprop='name') Ole Bjørn Michelsen
-      tr
-        th.r Birthday
-        td(itemprop='birthDate') 18 December 1982
-      tr
-        th.r Location
-        td(itemprop='homeLocation') Copenhagen, Denmark
-      tr
-        th.r Mail
-        td
-          a(href='mailto:#{ email }', itemprop='email')= email
-      tr
-        th.r Social
-        td
-          a(href='http://www.linkedin.com/in/olebjornmichelsen', rel='external', hreflang='en', title='LinkedIn') LinkedIn&nbsp;
-          a(href='http://www.twitter.com/omichelsen', rel='external', hreflang='en', title='Twitter') Twitter&nbsp;
-          a(href='https://plus.google.com/110191857554280492173?rel=author', rel='me', hreflang='en', title='Google Plus') Google+&nbsp;
-          a(href='http://www.facebook.com/olemichelsen', rel='external', hreflang='en', title='Facebook') Facebook&nbsp;
-          a(href='http://www.flickr.com/photos/olemichelsen', rel='external', hreflang='en') Flickr
-      tr
-        th.r vCard
-        td
-          a#vcard-link(href='olemichelsen.vcf', title='Download my vCard')
-            i.icon-vcard
+  dl
+    dt Birthday
+    dd(itemprop='birthDate') 18 December 1982
+    dt Location
+    dd(itemprop='homeLocation') Copenhagen, Denmark
+    dt Mail
+    dd
+      a(href='mailto:#{ email }', itemprop='email')= email
+    dt Social
+    dd
+      a(href='http://www.linkedin.com/in/olebjornmichelsen', rel='external', hreflang='en', title='LinkedIn') LinkedIn&nbsp;
+      a(href='http://www.twitter.com/omichelsen', rel='external', hreflang='en', title='Twitter') Twitter&nbsp;
+      a(href='https://plus.google.com/110191857554280492173?rel=author', rel='me', hreflang='en', title='Google Plus') Google+&nbsp;
+      a(href='http://www.facebook.com/olemichelsen', rel='external', hreflang='en', title='Facebook') Facebook&nbsp;
+      a(href='http://www.flickr.com/photos/olemichelsen', rel='external', hreflang='en') Flickr
+    dt vCard
+    dd
+      a#vcard-link(href='olemichelsen.vcf', title='Download my vCard')
+        i.icon-vcard
 
 .row.profile
   .col
@@ -43,7 +34,7 @@
       | ), and since then I have been working on a lot of&nbsp;
       a(href='/portfolio/') exciting projects
       | . This website is dedicated to showcase these projects, and generally be a place where I can experiment with new technologies.
-    h3 Recent projects
+    h3 Recent open source projects
     dl
       each repo in public._data.profile.repositories
         dt

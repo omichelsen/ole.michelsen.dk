@@ -34,15 +34,58 @@
         }
     }
 
-    table { margin-top: 20px }
-    th, td { padding: 0 10px }
-    th { color: #333; font-weight: 300; }
-    a { color: #999; text-decoration: none; }
+    dl {
+        overflow: hidden;
+        margin: 20px 0 0 0;
+        dt {
+            display: inline-block;
+            margin-top: 2px;
+            padding-right: 20px;
+            width: 90px;
+            color: #333;
+            font-weight: 300;
+            text-align: right;
+        }
+        dd {
+            display: inline;
+            &:after {
+                content: "\A";
+                white-space: pre;
+            }
+        }
+    }
+
+    a {
+        color: #999;
+        text-decoration: none;
+    }
 
     .icon-vcard {
         color: @primary;
         font-size: 30px;
-        vertical-align: sub;
+        vertical-align: text-bottom;
+    }
+
+    @media (max-width: @page-width) {
+        font-size: 14pt;
+
+        .frame {
+            margin-left: 0;
+        }
+
+        dl {
+            clear: both;
+            &:before {
+                content: "\A";
+                white-space: pre;
+            }
+            dt, dd {
+                display: inherit;
+                padding: 0;
+                width: auto;
+                text-align: left;
+            }
+        }
     }
 }
 
