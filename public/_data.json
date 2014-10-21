@@ -1,78 +1,189 @@
 {
-	"404": {
-		"title": "Page Not Found",
-		"description": "The page you were trying to access could not be found, please check your links and/or bookmarks, and try to find the correct address from my front page."
-	},
-	"feed": {
-		"layout": false
-	},
-	"sitemap": {
-		"layout": false
-	},
-	"index": {
-		"title": "Web Development and Computer Science",
-		"description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
-		"date": "2014-10-20",
-		"blog": [{
-			"title": "Using BrowserSync with Harp",
-			"url": "/blog/using-browser-sync-with-harp.html",
-			"date": "2014-10-17",
-			"type": "blog"
-		}, {
-			"title": "Showing photo GPS location on Google Maps with gulp",
-			"url": "/blog/showing-photo-gps-location-on-google-maps-with-gulp.html",
-			"date": "2014-10-11",
-			"type": "blog"
-		}, {
-			"title": "Breadcrumb trail with Harp and Jade",
-			"url": "/blog/breadcrumb-trail-harp-jade.html",
-			"date": "2014-09-17",
-			"type": "blog"
-		}, {
-			"title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
-			"url": "/blog/add-custom-hostname-to-apache-osx-mavericks.html",
-			"date": "2014-05-07",
-			"type": "blog"
-		}, {
-			"title": "Syntax highlight files in MacOS Terminal with less",
-			"url": "/blog/syntax-highlight-files-macos-terminal-less.html",
-			"date": "2014-03-25",
-			"type": "blog"
-		}, {
-			"title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
-			"url": "/blog/setup-local-web-server-apache-php-macos-x-mavericks.html",
-			"date": "2013-12-30",
-			"type": "blog"
-		}],
-		"updates": [{
-			"title": "New photo album “Rome”",
-			"url": "https://www.flickr.com/photos/olemichelsen/sets/72157645098358881/",
-			"date": "2014-08-01",
-			"type": "flickr"
-		}, {
-			"title": "Published angular-steps module",
-			"url": "https://github.com/omichelsen/angular-steps",
-			"date": "2014-07-09",
-			"type": "github"
-		}, {
-			"title": "Regex Crossword",
-			"url": "/portfolio/regexcrossword.html",
-			"date": "2014-06-14"
-		}, {
-			"title": "Updated photo album “Artsy”",
-			"url": "https://www.flickr.com/photos/olemichelsen/sets/72157635319688634/",
-			"date": "2014-04-15",
-			"type": "flickr"
-		}, {
-			"title": "Published FormNavigation jQuery plug-in",
-			"url": "https://github.com/omichelsen/FormNavigation",
-			"date": "2013-11-13",
-			"type": "github"
-		}]
-	},
-	"profile": {
-		"title": "Profile",
-		"description": "Education and experience of Ole Bjørn Michelsen: my degrees, my work, computer science and programming.",
-		"date": "2014-10-20"
-	}
+    "404": {
+        "title": "Page Not Found",
+        "description": "The page you were trying to access could not be found, please check your links and/or bookmarks, and try to find the correct address from my front page."
+    },
+    "feed": {
+        "layout": false
+    },
+    "sitemap": {
+        "layout": false
+    },
+    "index": {
+        "title": "Web Development and Computer Science",
+        "description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
+        "date": "2014-10-20",
+        "blog": [
+            {
+                "title": "Using BrowserSync with Harp",
+                "url": "/blog/using-browser-sync-with-harp.html",
+                "date": "2014-10-17",
+                "type": "blog"
+            },
+            {
+                "title": "Showing photo GPS location on Google Maps with gulp",
+                "url": "/blog/showing-photo-gps-location-on-google-maps-with-gulp.html",
+                "date": "2014-10-11",
+                "type": "blog"
+            },
+            {
+                "title": "Breadcrumb trail with Harp and Jade",
+                "url": "/blog/breadcrumb-trail-harp-jade.html",
+                "date": "2014-09-17",
+                "type": "blog"
+            },
+            {
+                "title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
+                "url": "/blog/add-custom-hostname-to-apache-osx-mavericks.html",
+                "date": "2014-05-07",
+                "type": "blog"
+            },
+            {
+                "title": "Syntax highlight files in MacOS Terminal with less",
+                "url": "/blog/syntax-highlight-files-macos-terminal-less.html",
+                "date": "2014-03-25",
+                "type": "blog"
+            },
+            {
+                "title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
+                "url": "/blog/setup-local-web-server-apache-php-macos-x-mavericks.html",
+                "date": "2013-12-30",
+                "type": "blog"
+            }
+        ],
+        "updates": [
+            {
+                "title": "New photo album “Rome”",
+                "url": "https://www.flickr.com/photos/olemichelsen/sets/72157645098358881/",
+                "date": "2014-08-01",
+                "type": "flickr"
+            },
+            {
+                "title": "Published angular-steps module",
+                "url": "https://github.com/omichelsen/angular-steps",
+                "date": "2014-07-09",
+                "type": "github"
+            },
+            {
+                "title": "Regex Crossword",
+                "url": "/portfolio/regexcrossword.html",
+                "date": "2014-06-14"
+            },
+            {
+                "title": "Updated photo album “Artsy”",
+                "url": "https://www.flickr.com/photos/olemichelsen/sets/72157635319688634/",
+                "date": "2014-04-15",
+                "type": "flickr"
+            },
+            {
+                "title": "Published FormNavigation jQuery plug-in",
+                "url": "https://github.com/omichelsen/FormNavigation",
+                "date": "2013-11-13",
+                "type": "github"
+            }
+        ]
+    },
+    "profile": {
+        "title": "Profile",
+        "description": "Education and experience of Ole Bjørn Michelsen: my degrees, my work, computer science and programming.",
+        "date": "2014-10-20",
+        "repositories": [
+            {
+                "html_url": "https://github.com/omichelsen/angular-loggly-logger",
+                "name": "angular-loggly-logger",
+                "language": "JavaScript",
+                "description": "An AngularJS module which sends your $log message to loggly, and provides a service for manually sending messages to loggly."
+            },
+            {
+                "html_url": "https://github.com/omichelsen/angular-steps",
+                "name": "angular-steps",
+                "language": "JavaScript",
+                "description": "Split your UI into (wizard-like) steps in AngularJS."
+            },
+            {
+                "html_url": "https://github.com/omichelsen/AngularJS-Facebook-Login",
+                "name": "AngularJS-Facebook-Login",
+                "language": "JavaScript",
+                "description": "A system for logining in using facebook."
+            },
+            {
+                "html_url": "https://github.com/omichelsen/exif-gps-to-json-example",
+                "name": "exif-gps-to-json-example",
+                "language": "JavaScript",
+                "description": ""
+            },
+            {
+                "html_url": "https://github.com/omichelsen/Firefox-OS-Boilerplate-App",
+                "name": "Firefox-OS-Boilerplate-App",
+                "language": "JavaScript",
+                "description": "Creating Firefox OS apps"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/FormNavigation",
+                "name": "FormNavigation",
+                "language": "JavaScript",
+                "description": "jQuery plugin which lets you navigate form fields with arrow keys."
+            },
+            {
+                "html_url": "https://github.com/omichelsen/gulp-exif",
+                "name": "gulp-exif",
+                "language": null,
+                "description": "Extract EXIF data from photographs"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/harp-less-compile",
+                "name": "harp-less-compile",
+                "language": "CSS",
+                "description": "Testing @include \"mixins\" with harp compile"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/hutt-alfred",
+                "name": "hutt-alfred",
+                "language": null,
+                "description": ""
+            },
+            {
+                "html_url": "https://github.com/omichelsen/jquery-slideshow",
+                "name": "jquery-slideshow",
+                "language": "JavaScript",
+                "description": "The simplest jQuery slideshow plugin. Evar."
+            },
+            {
+                "html_url": "https://github.com/omichelsen/ngImgCrop",
+                "name": "ngImgCrop",
+                "language": "JavaScript",
+                "description": "Image Crop directive for AngularJS"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/ngTotemTicker",
+                "name": "ngTotemTicker",
+                "language": "JavaScript",
+                "description": "A vertical list scroller for AngularJS"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/node-benchmark",
+                "name": "node-benchmark",
+                "language": "JavaScript",
+                "description": "Benchmarking scripts for comparing I/O handling in node.js vs Apache"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/node-geckoboard",
+                "name": "node-geckoboard",
+                "language": "JavaScript",
+                "description": "Easily create geckoboard widgets"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/View-Source",
+                "name": "View-Source",
+                "language": "PHP",
+                "description": "Server-side PHP script which displays the source of a webside with syntax highlighting for viewing on an iPad"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/world.geo.json",
+                "name": "world.geo.json",
+                "language": null,
+                "description": "Annotated geo-json geometry files for the world"
+            }
+        ]
+    }
 }

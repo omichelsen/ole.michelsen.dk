@@ -55,7 +55,7 @@ gulp.task('exif', function () {
         .pipe(gulp.dest('./public/photos'));
 });
 
-gulp.task('data', ['exif'], function () {
+gulp.task('exif-data', ['exif'], function () {
     return gulp.src('./public/photos/_*.json')
         .pipe(extend('_data.json', true, '    '))
         .pipe(gulp.dest('./public/photos'));
@@ -72,5 +72,32 @@ gulp.task('github', function () {
         .pipe(fs.createWriteStream('./public/_github.json'));
 });
 
-// gulp.task('default', ['harp', 'ftp']);
-gulp.task('default', ['exif', 'data', 'github']);
+gulp.task('github-format', ['github'], function () {
+    return gulp.src('./public/_github.json')
+        .pipe(data(function (file) {
+            var data = {
+                'profile': {
+                    'repositories': []
+                }
+            };
+            var repositories = JSON.parse(file.contents);
+            repositories.forEach(function (repo) {
+                data.profile.repositories.push({
+                    html_url: repo.html_url,
+                    name: repo.name,
+                    language: repo.language,
+                    description: repo.description
+                });
+            });
+            file.contents = new Buffer(JSON.stringify(data));
+        }))
+        .pipe(gulp.dest('./public'));
+});
+
+gulp.task('github-data', ['github-format'], function () {
+    return gulp.src('./public/_*.json')
+        .pipe(extend('_data.json', true, '    '))
+        .pipe(gulp.dest('./public'));
+});
+
+gulp.task('default', ['exif', 'exif-data', 'github', 'github-format', 'github-data']);
