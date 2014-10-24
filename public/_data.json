@@ -53,6 +53,12 @@
         ],
         "updates": [
             {
+                "title": "Published express-ab module",
+                "url": "https://github.com/omichelsen/express-ab",
+                "date": "2014-10-23",
+                "type": "github"
+            },
+            {
                 "title": "New photo album “Rome”",
                 "url": "https://www.flickr.com/photos/olemichelsen/sets/72157645098358881/",
                 "date": "2014-08-01",
@@ -110,7 +116,19 @@
                 "html_url": "https://github.com/omichelsen/exif-gps-to-json-example",
                 "name": "exif-gps-to-json-example",
                 "language": "JavaScript",
-                "description": ""
+                "description": "Example code on how to save EXIF data from photos to a JSON file."
+            },
+            {
+                "html_url": "https://github.com/omichelsen/express-ab",
+                "name": "express-ab",
+                "language": "JavaScript",
+                "description": "Middleware for AB testing in ExpressJS"
+            },
+            {
+                "html_url": "https://github.com/omichelsen/express-gettext",
+                "name": "express-gettext",
+                "language": "JavaScript",
+                "description": "Translation module for express.js using Gettext and PO files"
             },
             {
                 "html_url": "https://github.com/omichelsen/Firefox-OS-Boilerplate-App",
