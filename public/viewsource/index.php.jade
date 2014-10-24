@@ -1,0 +1,19 @@
+include _index.php
+doctype
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width')
+    title
+      | Source of
+      | <?php echo htmlspecialchars($uri); ?>
+    style.
+      pre {
+        overflow: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      <?php echo $stylesheet; ?>
+    include ../_shared/analytics.jade
+  body
+    | <?php echo $htmlenc; ?>
