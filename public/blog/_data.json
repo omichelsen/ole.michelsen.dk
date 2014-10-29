@@ -195,5 +195,10 @@
             "ipad",
             "iphone"
         ]
+    },
+    "index": {
+        "title": "Blog",
+        "description": "Ole Bjørn Michelsen is a programmer, speaker and photo hobbyist. I've been coding for a score of years and blogging on programming all the while.",
+        "date": "2014-10-28"
     }
 }

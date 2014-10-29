@@ -4,11 +4,12 @@
 - }
 
 for item, slug in public.blog._data
-  article
-    h2.entry-title
-      a(href='/blog/#{ slug }.html')= item.title
-    != partial('../_shared/entry-meta', item)
-    .entry-excerpt
-      != excerpt(partial(slug))
-      .entry-link
-        a(href='/blog/#{ slug }.html') Continue reading →
+  if slug !== 'index'
+    article
+      h2.entry-title
+        a(href='/blog/#{ slug }.html')= item.title
+      != partial('../_shared/entry-meta', item)
+      .entry-excerpt
+        != excerpt(partial(slug))
+        .entry-link
+          a(href='/blog/#{ slug }.html') Continue reading →
