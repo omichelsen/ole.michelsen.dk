@@ -54,6 +54,85 @@
                 "title": "Istanbul",
                 "alt": "Shots from the historic markets"
             }
+        ],
+        "flickr": [
+            {
+                "id": "72157646536438053",
+                "name": "København",
+                "photos": "27",
+                "thumbnail": {
+                    "url": "https://farm4.staticflickr.com/3947/15578285092_048dc89983_m.jpg",
+                    "width": "240",
+                    "height": "159"
+                },
+                "title": "København"
+            },
+            {
+                "id": "72157648401104340",
+                "name": "Nature",
+                "photos": "46",
+                "thumbnail": {
+                    "url": "https://farm4.staticflickr.com/3947/15367754689_0cd37cf26f_m.jpg",
+                    "width": "160",
+                    "height": "240"
+                },
+                "title": "Nature"
+            },
+            {
+                "id": "72157648283641419",
+                "name": "Fyn",
+                "photos": "60",
+                "thumbnail": {
+                    "url": "https://farm3.staticflickr.com/2945/15495758076_276bf14d2b_m.jpg",
+                    "width": "240",
+                    "height": "159"
+                },
+                "title": "Fyn"
+            },
+            {
+                "id": "72157648523617616",
+                "name": "Balkan 2013",
+                "photos": "17",
+                "thumbnail": {
+                    "url": "https://farm6.staticflickr.com/5609/15303331800_9c2b5e92d9_m.jpg",
+                    "width": "240",
+                    "height": "102"
+                },
+                "title": "Balkan 2013"
+            },
+            {
+                "id": "72157645098358881",
+                "name": "Rome",
+                "photos": "16",
+                "thumbnail": {
+                    "url": "https://farm3.staticflickr.com/2899/14388790631_cd84a5a27b_m.jpg",
+                    "width": "159",
+                    "height": "240"
+                },
+                "title": "Rome"
+            },
+            {
+                "id": "72157635343844178",
+                "name": "Tyskland 2013",
+                "photos": "763",
+                "thumbnail": {
+                    "url": "https://farm4.staticflickr.com/3732/9646996583_c92b1aa451_m.jpg",
+                    "width": "177",
+                    "height": "240"
+                },
+                "title": "Tyskland 2013"
+            },
+            {
+                "id": "72157635319688634",
+                "name": "Artsy",
+                "photos": "18",
+                "thumbnail": {
+                    "url": "https://farm3.staticflickr.com/2882/9639693734_8e6e4bd324_m.jpg",
+                    "width": "240",
+                    "height": "160"
+                },
+                "title": "Artsy"
+            }
         ]
     },
     "travel-map": {

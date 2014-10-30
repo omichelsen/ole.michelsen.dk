@@ -55,7 +55,43 @@ gulp.task('exif', function () {
         .pipe(gulp.dest('./public/photos'));
 });
 
-gulp.task('exif-data', ['exif'], function () {
+gulp.task('flickr', function () {
+    var options = {
+        url: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=62b36a8cf6e44b19d379f36b51bb4535&format=json&nojsoncallback=1&user_id=16324363@N07&primary_photo_extras=url_s',
+        headers: {
+            'User-Agent': 'request'
+        }
+    };
+    return request(options)
+        .pipe(fs.createWriteStream('./public/photos/_flickr.json'));
+});
+
+gulp.task('flickr-format', ['flickr'], function () {
+    return gulp.src('./public/photos/_flickr.json')
+        .pipe(data(function (file) {
+            var data = {
+                'index': {
+                    'flickr': []
+                }
+            };
+            var json = JSON.parse(file.contents);
+            json.photosets.photoset.forEach(function (set) {
+                data.index.flickr.push({
+                    id: set.id,
+                    title: set.title._content,
+                    thumbnail: {
+                        url: set.primary_photo_extras.url_s,
+                        width: set.primary_photo_extras.width_s,
+                        height: set.primary_photo_extras.height_s
+                    }
+                });
+            });
+            file.contents = new Buffer(JSON.stringify(data));
+        }))
+        .pipe(gulp.dest('./public/photos'));
+});
+
+gulp.task('photos-data', ['exif', 'flickr-format'], function () {
     return gulp.src('./public/photos/_*.json')
         .pipe(extend('_data.json', true, '    '))
         .pipe(gulp.dest('./public/photos'));
@@ -100,4 +136,4 @@ gulp.task('github-data', ['github-format'], function () {
         .pipe(gulp.dest('./public'));
 });
 
-gulp.task('default', ['exif', 'exif-data', 'github', 'github-format', 'github-data']);
+gulp.task('default', ['exif', 'flickr', 'flickr-format', 'photos-data', 'github', 'github-format', 'github-data']);
