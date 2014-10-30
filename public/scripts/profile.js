@@ -1,16 +1,3 @@
-(function ($) {
-
-    // Custom 'showdelay' plug-in
-    $.fn.showdelay = function () {
-        var delay = 0;
-        return this.each(function () {
-            $(this).delay(delay).fadeIn(1000);
-            delay += 200;
-        });
-    };
-
-})(jQuery);
-
 $(document).ready(function () {
     var email = $('#email'),
         $tips = $('#tips');
@@ -113,26 +100,4 @@ $(document).ready(function () {
             }
         );
     });
-
-    // Get all skill level cell values and transform them into spans
-    $('#experience td>span').html(function (index, oldhtml) {
-
-        $(this).attr('title', oldhtml + '+ years experience');
-        var skillLevel = oldhtml;
-        var htmlout = '';
-
-        while (skillLevel > 0) {
-
-            // Check for decimal values < 1
-            if (skillLevel >= 1)
-                htmlout += '<span class="dot"></span>&nbsp;&nbsp;';
-            else
-                htmlout += '<span class="dot-half"></span>';
-
-            skillLevel--;
-        }
-
-        return htmlout;
-    }).hide().showdelay();
-
 });

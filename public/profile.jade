@@ -37,17 +37,7 @@
       | ), and since then I have been working on a lot of&nbsp;
       a(href='/portfolio/') exciting projects
       | . This website is dedicated to showcase these projects, and generally be a place where I can experiment with new technologies.
-    h3 Recent open source projects
-    dl
-      each repo in public._data.profile.repositories
-        dt
-          i.icon-github &nbsp;
-          a(href="#{ repo.html_url }")= repo.name
-          if repo.language
-            em= ' (' + repo.language + ')'
-        dd= repo.description
-  .col
-    h2 Experience
+    h3 Experience
     p
       | I'm mainly using JavaScript, Node, HTML5, CSS3, ASP.NET, C#, LINQ, Microsoft SQL Server and Transact-SQL in my daily work, but I'm always exploring other languages and techniques.
     p
@@ -56,47 +46,19 @@
       | In my mind there is no&nbsp;
       i one
       | &nbsp;solution that fits all, rather it's a matter of selecting the right tool for the job, thus getting experience with as many technologies as possible, is paramount when choosing the best solution.
-    table#experience.tableFigure(style='width:100%')
-      caption Programming languages
-      tbody
-        tr.alt
-          td JavaScript
-          td
-            span 10
-        tr
-          td HTML and CSS
-          td
-            span 10
-        tr.alt
-          td Transact-SQL
-          td
-            span 10
-        tr
-          td C# and ASP.NET
-          td
-            span 9
-        tr
-          td Java
-          td
-            span 3
-        tr.alt
-          td PHP
-          td
-            span 3
-        tr
-          td C and C++
-          td
-            span 1.5
-        tr.alt
-          td Python
-          td
-            span 1
+  .col
+    h2 Recent open source projects
+    dl
+      each repo in public._data.profile.repositories
+        dt
+          i.icon-github &nbsp;
+          a(href="#{ repo.html_url }")= repo.name
+          if repo.language
+            em= ' (' + repo.language + ')'
+        dd= repo.description
+
 #vcard-dialog(title='Mail vCard')
   form#vcard-form(action='profile.html', name='vcard-form')
     label(for='email') Your mobile can only read vCards when sent in an email:
     input#email.text(type='email', name='email', placeholder='E-mail address', required='required')
     #tips
-
-script(src='#{ libs.jquery }')
-script(src='#{ libs.jqueryui }')
-script(src="scripts/profile.js")
