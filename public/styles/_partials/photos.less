@@ -1,15 +1,45 @@
-#travelmap {
-    position:relative;
-    display: block;
-    width:280px;
-    height:151px;
+.photos {
+    .slideshow {
+        height: 600px;
+    }
 
-    img {
-        position:absolute;
-        left:5px;
-        transition: opacity 1s;
-        &:last-child:hover {
-            opacity:0;
+    .albums {
+        @album-size: 180px;
+        @album-margin: 6px;
+
+        overflow: hidden;
+        margin: 0 -@album-margin;
+
+        .album {
+            position: relative;
+            float: left;
+            margin: @album-margin;
+            line-height: 0;
+
+            .thumbnail {
+                overflow: hidden;
+                width: @album-size;
+                height: @album-size;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .title {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 0 8px;
+                height: 1em;
+                color: #fff;
+                font-size: larger;
+                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
+
+                &.large {
+                    font-size: x-large;
+                }
+            }
         }
     }
 }
@@ -32,41 +62,6 @@
                 margin-bottom: 1px;
                 border-bottom: 2px solid @secondary;
                 cursor: pointer;
-            }
-        }
-    }
-}
-
-.photos {
-    .slideshow {
-        height: 600px;
-    }
-
-    .stripes {
-        padding-top: 20px;
-
-        .stripe {
-            overflow: hidden;
-            padding: 30px 50px;
-            color: #fff;
-            font-size: 12pt;
-
-            a {
-                color: #999;
-                text-decoration: none;
-            }
-
-            img {
-                float: left;
-                margin: 0 50px 0 0;
-                border-radius: 75px;
-            }
-
-            .stripe-title {
-                margin: 45px 0 20px 0;
-                color: @secondary;
-                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                font-size: 25pt;
             }
         }
     }
