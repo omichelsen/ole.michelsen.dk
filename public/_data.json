@@ -130,12 +130,6 @@
                 "description": "Middleware for AB testing in ExpressJS"
             },
             {
-                "html_url": "https://github.com/omichelsen/express-gettext",
-                "name": "express-gettext",
-                "language": "JavaScript",
-                "description": "Translation module for express.js using Gettext and PO files"
-            },
-            {
                 "html_url": "https://github.com/omichelsen/Firefox-OS-Boilerplate-App",
                 "name": "Firefox-OS-Boilerplate-App",
                 "language": "JavaScript",
@@ -170,6 +164,12 @@
                 "name": "jquery-slideshow",
                 "language": "JavaScript",
                 "description": "The simplest jQuery slideshow plugin. Evar."
+            },
+            {
+                "html_url": "https://github.com/omichelsen/ng-clip",
+                "name": "ng-clip",
+                "language": "JavaScript",
+                "description": "Copy to clipboard using AngularJS"
             },
             {
                 "html_url": "https://github.com/omichelsen/ngImgCrop",
