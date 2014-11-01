@@ -14,7 +14,7 @@ section.albums
   each album in public.photos._data.index.flickr
     a.album(href="https://www.flickr.com/photos/olemichelsen/sets/#{ album.id }/")
       .thumbnail(data-url="#{ album.thumbnail.url }")
-      .title= album.name
+      .title= album.title
 
 section.albums.travel-map
   a.album(href="travel-map.html")
