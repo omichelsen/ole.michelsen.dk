@@ -10,21 +10,17 @@
           height='600'
         )
 
-section.albums
+section.albums.flickr
   each album in public.photos._data.index.flickr
-    a.album(href="https://www.flickr.com/photos/olemichelsen/sets/#{ album.id }/")
-      .thumbnail(data-url="#{ album.thumbnail.url }")
+    a.album(
+      href="https://www.flickr.com/photos/olemichelsen/sets/#{ album.id }/"
+      data-url="#{ album.thumbnail.url }"
+    )
       .title= album.title
 
-section.albums.travel-map
-  a.album(href="travel-map.html")
-    img(
-      src="/images/photos/travel-map.jpg"
-      srcset="/images/photos/travel-map-2x.jpg"
-      width="950"
-      height="200"
-    )
-    .title.large World Travel Map
+section.albums
+  a.album.travel-map(href="travel-map.html")
+    .title World Travel Map
 
 script(src='#{ libs.jquery }')
 include ../../bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js
@@ -32,9 +28,7 @@ include ../../bower_components/jquery-slideshow/jquery.slideshow.min.js
 script.
   $(function() {
     $('.slideshow').slideshow({ timeout: 5000, speed: 2000 });
-    $('.albums .album').each(function () {
-      $('.thumbnail', this).css('background-image', function () {
-        return 'url(' + $(this).data('url') + ')';
-      });
+    $('.flickr.albums .album').css('background-image', function () {
+      return 'url(' + $(this).data('url') + ')';
     });
   });

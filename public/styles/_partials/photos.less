@@ -15,15 +15,11 @@
             float: left;
             margin: @album-margin;
             line-height: 0;
-
-            .thumbnail {
-                overflow: hidden;
-                width: @album-size;
-                height: @album-size;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
+            width: @album-size;
+            height: @album-size;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
 
             .title {
                 position: absolute;
@@ -31,14 +27,31 @@
                 left: 0;
                 right: 0;
                 padding: 0 8px;
-                height: 1em;
-                color: #fff;
+                height: 2em;
+                color: #f4f4f4;
                 font-size: larger;
-                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
+                line-height: 2em;
+                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+                background: rgba(0, 0, 0, 0.5);
+            }
 
-                &.large {
+            &.travel-map {
+                width: 100%;
+                height: 200px;
+                background-image: url(/images/photos/travel-map.jpg);
+
+                @media (min-resolution: 2dppx) {
+                    background-image: url(/images/photos/travel-map-2x.jpg);
+                }
+
+                .title {
                     font-size: x-large;
                 }
+            }
+
+            @media (max-width: @page-width) {
+                width: 135px;
+                height: 135px;
             }
         }
     }
