@@ -1,4 +1,14 @@
 {
+    "download-and-edit-json-files-with-gulp": {
+        "title": "Download and edit JSON files with gulp",
+        "description": "How to download JSON files, e.g. from REST services, and edit/format/manipulate them with gulp.",
+        "date": "2014-11-05",
+        "tags": [
+            "gulp",
+            "javascript",
+            "json"
+        ]
+    },
     "using-browser-sync-with-harp": {
         "title": "Using BrowserSync with Harp",
         "description": "Automatically refresh your browser when you update content or styles in Harp using BrowserSync.",

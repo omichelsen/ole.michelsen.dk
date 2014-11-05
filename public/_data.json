@@ -15,6 +15,12 @@
         "date": "2014-10-20",
         "blog": [
             {
+                "title": "Download and edit JSON files with gulp",
+                "url": "/blog/download-and-edit-json-files-with-gulp.html",
+                "date": "2014-11-05",
+                "type": "blog"
+            },
+            {
                 "title": "Using BrowserSync with Harp",
                 "url": "/blog/using-browser-sync-with-harp.html",
                 "date": "2014-10-17",
@@ -42,12 +48,6 @@
                 "title": "Syntax highlight files in MacOS Terminal with less",
                 "url": "/blog/syntax-highlight-files-macos-terminal-less.html",
                 "date": "2014-03-25",
-                "type": "blog"
-            },
-            {
-                "title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
-                "url": "/blog/setup-local-web-server-apache-php-macos-x-mavericks.html",
-                "date": "2013-12-30",
                 "type": "blog"
             }
         ],
