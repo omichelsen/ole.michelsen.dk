@@ -16,6 +16,16 @@
       "language": "JavaScript",
       "description": "A system for logining in using facebook."
     }, {
+      "html_url": "https://github.com/omichelsen/es6-promise",
+      "name": "es6-promise",
+      "language": "JavaScript",
+      "description": "A polyfill for ES6-style Promises"
+    }, {
+      "html_url": "https://github.com/omichelsen/es6-promise-bower",
+      "name": "es6-promise-bower",
+      "language": "JavaScript",
+      "description": ""
+    }, {
       "html_url": "https://github.com/omichelsen/exif-gps-to-json-example",
       "name": "exif-gps-to-json-example",
       "language": "JavaScript",

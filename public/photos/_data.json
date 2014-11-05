@@ -60,9 +60,9 @@
                 "id": "72157648401104340",
                 "title": "Nature",
                 "thumbnail": {
-                    "url": "https://farm4.staticflickr.com/3947/15367754689_0cd37cf26f_m.jpg",
-                    "width": "160",
-                    "height": "240"
+                    "url": "https://farm4.staticflickr.com/3941/15555225022_38ca81e63c_m.jpg",
+                    "width": "240",
+                    "height": "160"
                 }
             },
             {
@@ -87,9 +87,9 @@
                 "id": "72157648283641419",
                 "title": "Fyn",
                 "thumbnail": {
-                    "url": "https://farm3.staticflickr.com/2945/15518982595_bc22ec18e2_m.jpg",
+                    "url": "https://farm6.staticflickr.com/5604/15527638570_317aa01025_m.jpg",
                     "width": "240",
-                    "height": "159"
+                    "height": "180"
                 }
             },
             {
@@ -98,6 +98,15 @@
                 "thumbnail": {
                     "url": "https://farm3.staticflickr.com/2899/14388790631_cd84a5a27b_m.jpg",
                     "width": "159",
+                    "height": "240"
+                }
+            },
+            {
+                "id": "72157648728540788",
+                "title": "New York",
+                "thumbnail": {
+                    "url": "https://farm6.staticflickr.com/5611/15712428035_fc8a297062_m.jpg",
+                    "width": "160",
                     "height": "240"
                 }
             },
@@ -120,6 +129,15 @@
                 }
             },
             {
+                "id": "72157648719246397",
+                "title": "Spain",
+                "thumbnail": {
+                    "url": "https://farm4.staticflickr.com/3952/15688693176_e10d18b0f4_m.jpg",
+                    "width": "240",
+                    "height": "160"
+                }
+            },
+            {
                 "id": "72157648680084199",
                 "title": "Istanbul",
                 "thumbnail": {
@@ -132,9 +150,9 @@
                 "id": "72157648523617616",
                 "title": "Balkan",
                 "thumbnail": {
-                    "url": "https://farm6.staticflickr.com/5609/15303331800_092aa3b531_m.jpg",
+                    "url": "https://farm4.staticflickr.com/3931/15466926746_8570295433_m.jpg",
                     "width": "240",
-                    "height": "102"
+                    "height": "160"
                 }
             },
             {
@@ -144,6 +162,33 @@
                     "url": "https://farm4.staticflickr.com/3952/15500829440_6948ea5728_m.jpg",
                     "width": "240",
                     "height": "160"
+                }
+            },
+            {
+                "id": "72157648719003727",
+                "title": "Portugal",
+                "thumbnail": {
+                    "url": "https://farm4.staticflickr.com/3943/15688572876_5285aeae42_m.jpg",
+                    "width": "240",
+                    "height": "180"
+                }
+            },
+            {
+                "id": "72157649126144331",
+                "title": "Peru",
+                "thumbnail": {
+                    "url": "https://farm4.staticflickr.com/3944/15527206987_43706db65d_m.jpg",
+                    "width": "180",
+                    "height": "240"
+                }
+            },
+            {
+                "id": "72157648719058637",
+                "title": "China",
+                "thumbnail": {
+                    "url": "https://farm6.staticflickr.com/5601/15527081377_f91f6a1cac_m.jpg",
+                    "width": "240",
+                    "height": "180"
                 }
             }
         ]
