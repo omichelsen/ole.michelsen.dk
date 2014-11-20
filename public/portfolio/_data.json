@@ -1,4 +1,12 @@
 {
+    "glry": {
+        "title": "glry",
+        "description": "Image gallery with mobile/touch support and no dependencies.",
+        "keywords": "Programming: JavaScript",
+        "created": "2014",
+        "date": "2014-11-22",
+        "layout": "../_layout"
+    },
     "eet": {
         "title": "EET Group A/S",
         "description": "Presenting my work for EET creating a multinational webshop platform integrated with Navision, deployed to 16 countries in 11 languages to &gt;50000 users.",
