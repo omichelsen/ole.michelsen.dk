@@ -2,7 +2,6 @@ var gulp = require('gulp'),
     data = require('gulp-data'),
     exif = require('gulp-exif'),
     extend = require('gulp-extend'),
-    ftp = require('gulp-ftp'),
     jeditor = require('gulp-json-editor'),
     request = require('request'),
     shell = require('gulp-shell'),
@@ -21,16 +20,6 @@ function roundDecimal(dec) {
 gulp.task('harp', shell.task([
     'harp compile'
 ]));
-
-gulp.task('ftp', ['harp'], function () {
-    return gulp.src('www/**/*')
-        .pipe(ftp({
-            host: 'ftp.michelsen.dk',
-            user: 'michelsen.dk',
-            pass: '45aber0gud',
-            remotePath: '/ole/test'
-        }));
-});
 
 gulp.task('exif', function () {
     return gulp.src('./public/images/photos/_map/*.jpg')
