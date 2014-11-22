@@ -4,7 +4,7 @@ block head
   link(rel="image_src", href="/images/portfolio/#{ current.source }/thumb.png")
 
 block content
-  section#portfolio(itemscope, itemtype="http://schema.org/CreativeWork")
+  section(itemscope, itemtype="http://schema.org/CreativeWork")
     h1 Portfolio
     if current.source === 'index'
       p.tags

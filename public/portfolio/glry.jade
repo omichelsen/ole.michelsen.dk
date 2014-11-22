@@ -1,0 +1,27 @@
+section(itemscope, itemtype="http://schema.org/CreativeWork")
+
+  .masthead
+    iframe(src="http://rawgit.com/omichelsen/glry/master/demo/index.html")
+    .copyright Comics by&nbsp;
+      a(href="http://xkcd.com") xkcd.com
+
+  h1 Portfolio
+  h2(itemprop='name')= title
+   | &nbsp;- mobile first image gallery
+  p.tags(itemprop='keywords')
+    b(itemprop='dateCreated')= created
+    | &nbsp;·&nbsp;
+    != keywords
+
+  :markdown
+    [glry](https://github.com/omichelsen/glry) is an open source image gallery plug-in. I needed a gallery that was mobile-first and could load the images given a function. But every plug-in I looked at required the images to be known/loaded beforehand, which is not optimal for large galleries on a slow or metered connection.
+
+    So I created glry which support touch events on mobile, where you can swipe and drag the image to go to the next/previous, and tap the screen to see a navigation menu. On the desktop keyboard navigation is supported with the arrow keys.
+
+    You can try the demo above, or open the [demo in full screen](http://rawgit.com/omichelsen/glry/master/demo/index.html).
+
+    ### daily-glry
+
+    I have also made the [daily-glry](https://github.com/omichelsen/daily-glry) extension, which is intended for daily comic galleries, e.g. a daily Dilbert or Calvin & Hobbes cartoon. It extends glry and can also go to today's date and jump to a random comic if you shake your device.
+
+    Both plug-ins are available on [GitHub](https://github.com/omichelsen/glry) and [Bower](http://bower.io/search/?q=glry).
