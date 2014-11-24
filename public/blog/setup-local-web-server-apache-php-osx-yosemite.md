@@ -36,7 +36,7 @@ Paste the following config into the Terminal editor:
       Require all granted
     </Directory>
 
-Press <kbd>CTRL<kbd>+<kbd>O<kbd> and then <kbd>CTRL<kbd>+<kbd>X<kbd> to save and exit.
+Press <kbd>CTRL</kbd>+<kbd>O</kbd> and then <kbd>CTRL</kbd>+<kbd>X</kbd> to save and exit.
 
 Now we have to enable using our own user directory to serve files:
 
@@ -54,7 +54,7 @@ Yosemite comes with PHP 5.5.14, and we can enable it by uncommenting this line (
 
     LoadModule php5_module libexec/apache2/libphp5.so
 
-Press <kbd>CTRL<kbd>+<kbd>O<kbd> and then <kbd>CTRL<kbd>+<kbd>X<kbd> to save and exit. Then we need to make a final change:
+Press <kbd>CTRL</kbd>+<kbd>O</kbd> and then <kbd>CTRL</kbd>+<kbd>X</kbd> to save and exit. Then we need to make a final change:
 
     sudo nano /etc/apache2/extra/httpd-userdir.conf  
 
@@ -62,7 +62,7 @@ Uncomment the following line:
 
     Include /private/etc/apache2/users/*.conf
 
-Press <kbd>CTRL<kbd>+<kbd>O<kbd> and then <kbd>CTRL<kbd>+<kbd>X<kbd> to save and exit. Restart Apache for the change to kick in:
+Press <kbd>CTRL</kbd>+<kbd>O</kbd> and then <kbd>CTRL</kbd>+<kbd>X</kbd> to save and exit. Restart Apache for the changes to kick in:
 
     sudo apachectl restart
 
