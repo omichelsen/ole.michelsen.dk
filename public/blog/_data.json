@@ -1,4 +1,14 @@
 {
+    "setup-local-web-server-apache-php-osx-yosemite": {
+        "title": "Setup local web server with Apache and PHP on OS X Yosemite",
+        "description": "How to setup a local web server on OS X Yosemite with Apache and PHP and link projects directly from Dropbox to Apache.",
+        "date": "2014-11-25",
+        "tags": [
+            "apache",
+            "macos",
+            "php"
+        ]
+    },
     "download-and-edit-json-files-with-gulp": {
         "title": "Download and edit JSON files with gulp",
         "description": "How to download JSON files, e.g. from REST services, and edit/format/manipulate them with gulp.",

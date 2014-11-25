@@ -18,7 +18,7 @@ This will show you the installed version of Apache, which is Apache/2.4.9 on Yos
 
 Now you can test that Apache is running by opening `http://localhost` in a browser. You should see the text “It works!”.
 
-![Apache localhost works](/images/blog/setup-local-web-server-apache-php-macos-x-mavericks/apacheworks.png)
+<img src="/images/blog/setup-local-web-server-apache-php-osx-yosemite/localhost.png" alt="Apache localhost works" srcset="/images/blog/setup-local-web-server-apache-php-osx-yosemite/localhost-2x.png 2x">
 
 The document you are seeing is served from the system level web root, located in /Library/WebServer/Documents. We want to create a user level web root for our own projects, and we’ll do it all from the Terminal:
 
@@ -62,6 +62,10 @@ Uncomment the following line:
 
     Include /private/etc/apache2/users/*.conf
 
+You config should now look something like this:
+
+<img src="/images/blog/setup-local-web-server-apache-php-osx-yosemite/httpd.conf.png" alt="Uncommented lines in httpd.conf" srcset="/images/blog/setup-local-web-server-apache-php-osx-yosemite/httpd.conf-2x.png 2x">
+
 Press <kbd>CTRL</kbd>+<kbd>O</kbd> and then <kbd>CTRL</kbd>+<kbd>X</kbd> to save and exit. Restart Apache for the changes to kick in:
 
     sudo apachectl restart
@@ -72,7 +76,7 @@ To test that PHP is now working, create a PHP test file in your new user level w
 
 Test it by opening `http://localhost/~USERNAME/phpinfo.php` in a browser.
 
-![PHP works](/images/blog/setup-local-web-server-apache-php-macos-x-mavericks/phpinfo.png)
+<img src="/images/blog/setup-local-web-server-apache-php-osx-yosemite/phpinfo.png" alt="PHP works!" srcset="/images/blog/setup-local-web-server-apache-php-osx-yosemite/phpinfo-2x.png 2x">
 
 ## Run sites from Dropbox
 
