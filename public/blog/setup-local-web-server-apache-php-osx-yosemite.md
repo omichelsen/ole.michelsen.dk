@@ -2,7 +2,7 @@ This a quick writeup of how to get a local web development server up and running
 
 After this tutorial you will have a working local Apache server with PHP, and I will show you how to create sub sites for each of your web projects directly from Dropbox.
 
-This is an updated version of [my previous article](setup-local-web-server-apache-php-macos-x-mavericks.html), as a few things have changed with OS X Yosemite and the upgraded Apache 2.4.
+This is an updated version of [my article on Mavericks](setup-local-web-server-apache-php-macos-x-mavericks.html), as a few things have changed with OS X Yosemite and the upgraded Apache 2.4.
 
 <!-- more-->
 
