@@ -15,6 +15,12 @@
         "date": "2014-10-20",
         "blog": [
             {
+                "title": "Setup local web server with Apache and PHP on OS X Yosemite",
+                "url": "/blog/setup-local-web-server-apache-php-osx-yosemite.html",
+                "date": "2014-11-25",
+                "type": "blog"
+            },
+            {
                 "title": "Download and edit JSON files with gulp",
                 "url": "/blog/download-and-edit-json-files-with-gulp.html",
                 "date": "2014-11-05",
@@ -42,12 +48,6 @@
                 "title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
                 "url": "/blog/add-custom-hostname-to-apache-osx-mavericks.html",
                 "date": "2014-05-07",
-                "type": "blog"
-            },
-            {
-                "title": "Syntax highlight files in MacOS Terminal with less",
-                "url": "/blog/syntax-highlight-files-macos-terminal-less.html",
-                "date": "2014-03-25",
                 "type": "blog"
             }
         ],
