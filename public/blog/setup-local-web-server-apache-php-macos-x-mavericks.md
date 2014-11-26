@@ -1,3 +1,5 @@
+__Update 2014-11-25__: I have created an updated article on how to [setup Apache and PHP in OS X Yosemite](setup-local-web-server-apache-php-osx-yosemite.html).
+
 This a quick writeup of how to get a local web development server up and running on your Mac. Everything you need is preinstalled, and just needs to be configured. Some familiarity with the Terminal is presumed (e.g. how to start it).
 
 After this tutorial you will have a working local Apache server with PHP, and I will show you how to create sub sites for each of your web projects directly from Dropbox.
