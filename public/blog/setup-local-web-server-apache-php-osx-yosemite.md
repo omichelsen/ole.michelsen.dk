@@ -46,11 +46,15 @@ Use <kbd>CTRL</kbd>+<kbd>W</kbd> to search within nano and search for “userdir
 
     LoadModule userdir_module libexec/apache2/mod_userdir.so
 
+Do the same search for “userdir“ again, and also uncomment the following line:
+
+    Include /private/etc/apache2/extra/httpd-userdir.conf
+
 Don't exit the file yet, as we also want to enable PHP.
 
 ## PHP
 
-Yosemite comes with PHP 5.5.14, and we can enable it by uncommenting this line (just a couple of lines below the previous):
+Yosemite comes with PHP 5.5.14, and we can enable it by uncommenting this line in the same file:
 
     LoadModule php5_module libexec/apache2/libphp5.so
 
