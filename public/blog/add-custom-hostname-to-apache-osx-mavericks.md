@@ -40,6 +40,10 @@ You can use this and modify to your own needs. The important elements are:
 * `DocumentRoot`: the folder of your site, e.g. a folder in Dropbox (drag and drop the folder into Terminal to get the full path)
 * `<Directory>`: the same as DocumentRoot, here we allow for .htaccess to overwrite/customize Apache (whole section can be skipped if not needed)
 
+__Update 2014-11-25__: If you are using OS X Yosemite, you need to change the last two lines in `<Directory>` to:
+
+`Require all granted`
+
 Press ctrl+o and then ctrl+x to save and exit. As always you have to restart Apache for the changes to kick in:
 
 `sudo apachectl restart`
