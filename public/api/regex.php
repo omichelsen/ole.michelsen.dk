@@ -1,27 +1,31 @@
 <?php
-// Run on PostBack
-if($_POST) 
+
+if($_POST)
 {
 	$pattern = str_replace('/','\/',stripslashes($_POST['pattern']));
-	$modifiers = $_POST['modifiers'];
+	$modifiers = filter_input(INPUT_POST, 'modifiers');
 	$replace = stripslashes($_POST['replace']);
 	$input = stripslashes($_POST['input']);
-	
+
+	// Remove deprecated e (PREG_REPLACE_EVAL) modifier
+	// http://php.net/manual/en/reference.pcre.pattern.modifiers.php
+	$modifiers = str_replace('e','',$modifiers);
+
 	$out = "";
 
-	if (strlen($replace) > 0) 
+	if (strlen($replace) > 0)
 	{
 		// Run replace
 		$matches = preg_replace("/$pattern/$modifiers",$replace,$input);
-		
+
 		foreach($matches as $key=>$value)
 		{
 			$out .= "$key: $value\n";
 		}
-	} 
-	else 
+	}
+	else
 	{
-		if (strpos($modifiers,'g') >= 0) 
+		if (strpos($modifiers,'g') >= 0)
 		{
 			// Remove unknown modifier 'g'
 			$modifiers = str_replace('g','',$modifiers);
@@ -38,11 +42,11 @@ if($_POST)
 						$out .= "$key: $value\n";
 				}
 			}
-		} 
-		else 
+		}
+		else
 		{
 			@preg_match("/$pattern/$modifiers",$input,$matches);
-			
+
 			$error = error_get_last();
 
 			if (count($matches) > 0)
@@ -54,11 +58,11 @@ if($_POST)
 			}
 		}
 	}
-	
-	if ($error) 
+
+	if ($error)
 	{
 		$msg = $error["message"];
-		
+
 		// Remove the initial part of the message containing the PHP function name
 		echo substr($msg, strpos($msg, ': ') + 2);
 	}
@@ -66,7 +70,7 @@ if($_POST)
 	{
 		echo $out;
 	}
-	else 
+	else
 	{
 		echo 'No match';
 	}
