@@ -2,9 +2,19 @@
   .col
     ul
       li
-        img.frame(src='/images/portfolio/regexcrossword/front.jpg', alt='Challenges in the Regex Crossword puzzle game', width='450', height='300')
+        img.frame(
+          src='/images/portfolio/regexcrossword/front.jpg'
+          alt='Challenges in the Regex Crossword puzzle game'
+          width='450'
+          height='300'
+        )
       li
-        img.frame(src='/images/portfolio/regexcrossword/puzzle.jpg', alt='Puzzle challenge Bat Man from the Double Cross challenge', width='450', height='305')
+        img.frame(
+          src='/images/portfolio/regexcrossword/puzzle.jpg'
+          alt='Puzzle challenge Bat Man from the Double Cross challenge'
+          width='450'
+          height='305'
+        )
   .col
     p
       a(href='http://regexcrossword.com', target='_blank') RegexCrossword.com
@@ -12,23 +22,23 @@
     // more
     p
       | The idea to make Regex Crossword came from the MIT Mystery Hunt, which featured a very difficult&nbsp;
-      a(href='http://www.coinheist.com/rubik/a_regular_crossword/grid.pdf', target='_blank') multi-dimensional regular expression crossword
+      a(href='http://web.mit.edu/puzzle/www/2013/coinheist.com/rubik/a_regular_crossword/grid.pdf', target='_blank') multi-dimensional regular expression crossword
       | .&nbsp;
-      a(href='http://hpcomic.wordpress.com') Maria Hagsten Pedersen
+      a(href='http://hp-comic.com/') Maria Hagsten Pedersen
       | &nbsp;and I thought this was a really fun variation on the normal crossword and soduku-like puzzles, so we decided to create a game with more puzzles and easier difficulty levels, so newcomers could also have a fun way to learn regular expressions.
     p
-      | The site is developed in JavaScript as a single-page app, using some great libraries like&nbsp;
-      a(href='http://jquery.com') jQuery
-      | &nbsp;and the MVC framework&nbsp;
+      | The site is developed in JavaScript as a single-page app using &nbsp;
       a(href='http://angularjs.org/') AngularJS
-      | &nbsp;which also handles templating and routing with HTML5 pushState. I decided to use&nbsp;
+      | &nbsp;using&nbsp;
       a(href='http://twitter.github.com/bootstrap/index.html') Twitter Bootstrap
       | &nbsp;(and&nbsp;
       a(href='http://lesscss.org/') LESS
-      | ) to implement a responsive design, where the interface will automatically adapt to different resolutions, like on the iPad and iPhone.
+      | ).
     p
-      | Players can log into Facebook to save their progress and post achievements to their wall when completing a set of crossword puzzles. To save the players progress I created a simple&nbsp;
+      | Players can login with their social accounts (Facebook, Twitter, Google and Microsoft Live), to save their progress and earn achievements when completing a set of crossword puzzles.
+    p
+      | The backend is implemented as a simple&nbsp;
       a(href='http://en.wikipedia.org/wiki/Representational_state_transfer') REST
-      | -based key-value storage using PHP and MySQL.
+      | -based API using PHP and MySQL. The backend handles player scores and achievements, as well as puzzles created and curated by the community.
     p
       a(href='/portfolio/') ← Back to Portfolio
