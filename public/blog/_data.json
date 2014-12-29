@@ -1,4 +1,13 @@
 {
+    "testing-your-api-with-phpunit": {
+        "title": "Testing your API with PHPUnit",
+        "description": "How to test your RESTful API with PHPUnit and Guzzle and avoid regressions when developing your API.",
+        "date": "2014-12-30",
+        "tags": [
+            "php",
+            "test"
+        ]
+    },
     "setup-local-web-server-apache-php-osx-yosemite": {
         "title": "Setup local web server with Apache and PHP on OS X Yosemite",
         "description": "How to setup a local web server on OS X Yosemite with Apache and PHP and link projects directly from Dropbox to Apache.",
