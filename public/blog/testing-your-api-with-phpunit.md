@@ -49,14 +49,15 @@ We'll add our first test file called `BooksTest.php`:
             $this->assertArrayHasKey('author', $data);
             $this->assertEquals(42, $data['price']);
         }
+    }
 
 There's a few going on here. First we include Guzzle and PHPUnit. If you installed them using Composer, you just have to require the `autoload.php`.
 
 Then we create a test class for our `/books` endpoint called `BooksTest`. You can name this whatever you like, but I prefer to have tests for each endpoint in separate files/classes.
 
-Using the special `setUp()` function, we can instantiate a new Guzzle client before each test. This saves us some lines of code if we have more than one test. The option `'exceptions' => false` makes sure Guzzle don't throw an error if our API returns an error code.
+Using the special `setUp()` function, we can instantiate a new Guzzle client before each test. This saves us some lines of code if we have more than one test. The option `'exceptions' => false` makes sure Guzzle don't throw an exception if our API returns an error code.
 
-The last function is our actual test, which in this case tests that we can GET a single book from our API. We then assert that this book has the properties that we are expecting.
+The last function `testGet_ValidInput_BookObject` is our actual test, which verifies that we can GET a single book from our API. We then assert that this book has the properties we are expecting.
 
 ### Testing POST and DELETE
 
@@ -93,8 +94,8 @@ Now we have some tests for the "happy path", but we should also check that our A
 
 ## Running the tests
 
-Now you should be able to run our tests by starting PHPUnit. If you installed it using composer, it should be in your `vendor` folder:
+Now you should be able to run our tests by starting PHPUnit. If you installed it using Composer, it should be in your `vendor` folder:
 
     $ php vendor/bin/phpunit BooksTest.php
 
-Remember it's as important to test failing/edge cases as testing when things go well. Also you should run these tests against an isolated testing environment if they modify your data.
+Remember it's just as important to test failing/edge cases as testing when things go well. Also you should run these tests against an isolated testing environment if they modify your data.
