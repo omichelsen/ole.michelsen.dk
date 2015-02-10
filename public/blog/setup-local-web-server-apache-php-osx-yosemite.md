@@ -79,6 +79,10 @@ Test it by opening `http://localhost/~USERNAME/phpinfo.php` in a browser.
 
 <img src="/images/blog/setup-local-web-server-apache-php-osx-yosemite/phpinfo.png" alt="PHP works!" srcset="/images/blog/setup-local-web-server-apache-php-osx-yosemite/phpinfo-2x.png 2x" width="730" height="346">
 
+If you want Apache to start up automatically after a restart, you can run the following command in the Terminal:
+
+    sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+
 ## Run sites from Dropbox
 
 Now we actually want to develop and test some websites locally, and if you are like me, they are all located in Dropbox. It would be quite a pain to copy the project to ~/Sites every time we make a change, so why not just create a reference to it?
