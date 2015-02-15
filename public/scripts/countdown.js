@@ -42,7 +42,7 @@ function pad(num,char,count)
 }
 
 function activateCounter(date, message) {
-    $('#message').fadeOut('fast', function() {
+    $('.message').fadeOut('fast', function() {
         $(this).text(message).fadeIn('slow');
     });
 

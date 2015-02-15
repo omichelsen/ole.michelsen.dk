@@ -1,7 +1,64 @@
-#message {
-    font: bold 40pt/350% 'Century Gothic', Verdana;
-    color: #333;
-    text-shadow: 0 1px 2px #999;
+.countdown {
+    .message {
+        font: bold 40pt/350% 'Century Gothic', Verdana;
+        color: #333;
+        text-shadow: 0 1px 2px #999;
+    }
+
+    .dash {
+        position: relative;
+        width: 110px; height: 100px;
+        float: left;
+        margin-left: 20px;
+
+        .digit {
+            position: relative;
+            float: left;
+            width: 55px; height: 90px;
+            font: bold 55pt/55pt 'Times New Roman';
+            color: #EEE;
+        }
+
+        .dash_title {
+            position: absolute;
+            display: block;
+            bottom: 0px;
+            right: 6px;
+            font-size: 9pt;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 1px 1px #222;
+        }
+    }
+
+    .line {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #000;
+        border-bottom: 1px solid #333;
+        z-index: 1000;
+    }
+
+    .config {
+        margin-top: 145px;
+    }
+
+    #config {
+        position: relative;
+        margin: 0 auto;
+        overflow: hidden;
+        width: 580px; height: 180px;
+    }
+
+    #setup {
+        position: absolute;
+        top: 0; left: 0;
+        width: 265px;
+    }
 }
 
 #countdown {
@@ -17,54 +74,6 @@
     border-radius: 10px;
     box-shadow: #666 0 0 10px;
     .pie;
-}
-
-.line {
-    position: absolute; top: 75px; left: 0;
-    height: 1px; width: 100%;
-    background: #000;
-    border-bottom: 1px solid #333;
-    z-index: 1000;
-}
-
-.dash {
-    position: relative;
-    width: 110px; height: 100px;
-    float: left;
-    margin-left: 20px;
-}
-
-.dash .digit {
-    position: relative;
-    float: left;
-    width: 55px; height: 90px;
-    font: bold 55pt/55pt 'Times New Roman';
-    color: #EEE;
-}
-
-.dash_title {
-    position: absolute;
-    display: block;
-    bottom: 0px;
-    right: 6px;
-    font-size: 9pt;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 1px 1px #222;
-}
-
-#config {
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
-    width: 580px; height: 180px;
-}
-
-#setup {
-    position: absolute;
-    top: 0; left: 0;
-    width: 265px;
 }
 
 #info-create, #info-save {
@@ -92,10 +101,11 @@
     background: linear-gradient(#FFF 20%, #666, #666 80%, #FFF);
     -pie-background: linear-gradient(#FFF 20%, #666, #666 80%, #FFF);
     .pie;
-}
-.vline div {
-    width: 1px; height: 150px;
-    background: linear-gradient(#FFF 20%, #DDD, #DDD 80%, #FFF);
-    -pie-background: linear-gradient(#FFF 20%, #DDD, #DDD 80%, #FFF);
-    .pie;
+
+    div {
+        width: 1px; height: 150px;
+        background: linear-gradient(#FFF 20%, #DDD, #DDD 80%, #FFF);
+        -pie-background: linear-gradient(#FFF 20%, #DDD, #DDD 80%, #FFF);
+        .pie;
+    }
 }

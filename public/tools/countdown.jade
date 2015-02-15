@@ -1,71 +1,65 @@
-section
-  .c
-    h1#message Yet Another Countdown Clock
-    #countdown
-      .dash.weeks_dash
-        .digit 0
-        .digit 0
-        span.dash_title weeks
-      .dash.days_dash
-        .digit 0
-        .digit 0
-        span.dash_title days
-      .dash.hours_dash
-        .digit 0
-        .digit 0
-        span.dash_title hours
-      .dash.minutes_dash
-        .digit 0
-        .digit 0
-        span.dash_title minutes
-      .dash.seconds_dash
-        .digit 0
-        .digit 0
-        span.dash_title seconds
-      .line
+.countdown
+  section
+    .c
+      h1.message Yet Another Countdown Clock
+      #countdown
+        .dash.weeks_dash
+          .digit 0
+          .digit 0
+          span.dash_title weeks
+        .dash.days_dash
+          .digit 0
+          .digit 0
+          span.dash_title days
+        .dash.hours_dash
+          .digit 0
+          .digit 0
+          span.dash_title hours
+        .dash.minutes_dash
+          .digit 0
+          .digit 0
+          span.dash_title minutes
+        .dash.seconds_dash
+          .digit 0
+          .digit 0
+          span.dash_title seconds
+        .line
 
-section.config
-  br
-  br
-  br
-  br
-  br
-  br
-  br
-  form#config
-    #setup
-      label(for='datepicker')
-        b Message:
-      br
-      input#messageinput.text(maxlength='30', style='width:250px')
-      br
-      br
-      table
-        tbody
-          tr(style='vertical-align:top')
-            td
-              label(for='datepicker')
-                b Date:
-              br
-              input#datepicker.text(maxlength='12', required='', style='width:173px')
-            td
-              label(for='time')
-                b Time:
-              br
-              input#time.text(style='width:60px')
-          tr
-            td.r(colspan='2')
-              br
-              input.button(type='submit', value='Show Countdown')
-    .vline
-      div
-    #info-create
-      b Create counter
-      br
-      p To create a new counter, enter a message and the date and time to count down to.
-    #info-save
-      b Save counter
-      br
-      p To save this counter just bookmark the page, or copy the link from here:
-      p
-        textarea#link.text(readonly='readonly', style='height:40px;width:255px;font-size:smaller')
+  section.config
+    form#config
+      #setup
+        label(for='datepicker')
+          b Message:
+        br
+        input#messageinput.text(maxlength='30', style='width:250px')
+        br
+        br
+        table
+          tbody
+            tr(style='vertical-align:top')
+              td
+                label(for='datepicker')
+                  b Date:
+                br
+                input#datepicker.text(maxlength='12', required='', style='width:173px')
+              td
+                label(for='time')
+                  b Time:
+                br
+                input#time.text(style='width:60px')
+            tr
+              td.r(colspan='2')
+                br
+                input.button(type='submit', value='Show Countdown')
+      .vline
+        div
+      #info-create
+        b Create counter
+        br
+        p To create a new counter, enter a message and the date and time to count down to.
+      #info-save
+        b Save counter
+        br
+        p To save this counter just bookmark the page, or copy the link from here:
+        p
+          textarea#link.text(readonly='readonly', style='height:40px;width:255px;font-size:smaller')
