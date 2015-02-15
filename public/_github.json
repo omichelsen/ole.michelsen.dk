@@ -96,6 +96,11 @@
       "language": "PHP",
       "description": "Server-side PHP script which displays the source of a webside with syntax highlighting for viewing on an iPad"
     }, {
+      "html_url": "https://github.com/omichelsen/volume-meter",
+      "name": "volume-meter",
+      "language": "JavaScript",
+      "description": "Simple example of implementing a clip-detecting volume meter in Web Audio."
+    }, {
       "html_url": "https://github.com/omichelsen/world.geo.json",
       "name": "world.geo.json",
       "language": null,
