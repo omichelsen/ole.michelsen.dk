@@ -19,20 +19,16 @@ section
     table
       tr
         td
-          label(for='unencoded')
+          label(for='decoded')
             b Plain:
         td
-          input#unencoded.text(autofocus, style='width:500px', tabindex='1', value='"Ole\'s bil kører hundred km/t, derudaf"')
-          | &nbsp;
-          input.button(value='Encode', onclick='return process("unencoded","encoded",true);', tabindex='2', type='submit')
+          input#decoded.text(autofocus, style='width:600px', tabindex='1', value='"Ole\'s bil kører hundred km/t, derudaf"')
       tr
         td
           label(for='encoded')
             b Encoded:
         td
-          input#encoded.text(style='width:500px', tabindex='3', value='%22Ole\'s%20bil%20k%C3%B8rer%20hundred%20km%2Ft%2C%20derudaf%22')
-          | &nbsp;
-          input.button(value='Decode', onclick='return process("encoded","unencoded",false);', tabindex='4', type='submit')
+          input#encoded.text(style='width:600px', tabindex='2', value='%22Ole\'s%20bil%20k%C3%B8rer%20hundred%20km%2Ft%2C%20derudaf%22')
 section
   h3 JavaScript functions
   p
@@ -94,11 +90,12 @@ section#footnotes
         | .
 
 script.
-  function process(inputField, outputField, encode) {
-    var elmInput = document.getElementById(inputField);
-    var elmOutput = document.getElementById(outputField);
-    elmOutput.value = encode ? encodeURIComponent(elmInput.value) : decodeURIComponent(elmInput.value);
-    elmOutput.select();
-    return false;
-  }
+  var elmDecoded = document.getElementById('decoded');
+  var elmEncoded = document.getElementById('encoded');
+  elmDecoded.addEventListener('input', function (e) {
+    elmEncoded.value = encodeURIComponent(e.target.value);
+  });
+  elmEncoded.addEventListener('input', function (e) {
+    elmDecoded.value = decodeURIComponent(e.target.value);
+  });
 
