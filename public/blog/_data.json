@@ -1,4 +1,13 @@
 {
+    "schedule-jobs-with-crontab-on-osx-yosemite": {
+        "title": "Schedule jobs with crontab on OS X Yosemite",
+        "description": "",
+        "date": "2015-02-22",
+        "tags": [
+            "bash",
+            "macos"
+        ]
+    },
     "testing-your-api-with-phpunit": {
         "title": "Testing your API with PHPUnit",
         "description": "How to test your RESTful API with PHPUnit and Guzzle and avoid regressions when developing your API.",
