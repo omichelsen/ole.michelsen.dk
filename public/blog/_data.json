@@ -1,7 +1,7 @@
 {
     "schedule-jobs-with-crontab-on-osx-yosemite": {
         "title": "Schedule jobs with crontab on OS X Yosemite",
-        "description": "",
+        "description": "Schedule jobs to run daily with crontab on OS X Yosemite to e.g. backup your MySQL database.",
         "date": "2015-02-22",
         "tags": [
             "bash",
