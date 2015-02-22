@@ -7,18 +7,18 @@ Running scripts on your computer is great. Running them automatically is even gr
 You add a job to crontab by editing the job list. A job is specified in the following format (first line):
 
 ```js
-# * * * * *  command to execute
-# │ │ │ │ │
-# │ │ │ │ └─── day of week (0 - 6) (0 to 6 are Sunday to Saturday, or use names; 7 is Sunday, the same as 0)
-# │ │ │ └──────── month (1 - 12)
-# │ │ └───────────── day of month (1 - 31)
-# │ └────────────────── hour (0 - 23)
-# └─────────────────────── min (0 - 59)
+* * * * *  command to execute
+│ │ │ │ │
+│ │ │ │ └─── day of week (0 - 6) (0 to 6 are Sunday to Saturday, or use names; 7 is Sunday, the same as 0)
+│ │ │ └──────── month (1 - 12)
+│ │ └───────────── day of month (1 - 31)
+│ └────────────────── hour (0 - 23)
+└─────────────────────── min (0 - 59)
 ```
 
 ## Example
 
-Let's make and example job. I personally use cronjobs to make regular backups of my MySQL databases, so I will show how to set this up to run every day at 12 o'clock.
+Let's make and example job. I personally use cronjobs to make regular backups of my MySQL databases, so I will show how to set this up to run once a day.
 
 My script is called [`backup.sh`](https://gist.github.com/omichelsen/8968ea562fe646b78780), and will dump my MySQL database to a zip file. We will set it to run as a cronjob by editing the job list (with the `nano` editor):
 
@@ -58,7 +58,7 @@ PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 So after you've set up your scripts and everything is honky dory, you might notice that the Terminal suddenly have started sending you e-mails.
 
-    <insert illustration>
+![](/images/blog/schedule-jobs-with-crontab-on-osx-yosemite/you-have-mail.png)
 
 If being pen pals with your Terminal isn't your thing, you can disable this behaviour by inserting this line at the very top of your crontab file:
 
@@ -68,7 +68,7 @@ Presto. Now your jobs will run silent.
 
 ## Tips
 
-Here is a few small snippets which might come in handy:
+Here's a few small snippets which might come in handy:
 
 #### Execute on workdays 1AM
 
