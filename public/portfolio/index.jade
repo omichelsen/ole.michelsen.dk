@@ -2,8 +2,13 @@ ul.projects
   for item, slug in public.portfolio._data
     if (slug !== 'index')
       li
-        a(href='/portfolio/#{ slug }.html')
-          span.image
-            img(src='/images/portfolio/#{ slug }/thumb.png', alt='#{ item.title }')
+        a(
+          href='/portfolio/#{ slug }.html'
+          style='background-image: url(/images/portfolio/#{ slug }/thumb.png)'
+        )
           span.text
             span.title= item.title
+            span.tags
+              b= item.created
+              | &nbsp;·&nbsp;
+              != item.keywords

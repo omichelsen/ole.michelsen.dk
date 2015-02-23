@@ -1,10 +1,17 @@
 {
-    "eet": {
-        "title": "EET Group A/S",
-        "description": "Presenting my work for EET creating a multinational webshop platform integrated with Navision, deployed to 16 countries in 11 languages to &gt;50000 users.",
-        "keywords": "Project Management · Design · Programming: C#, T-SQL, ASP.NET MVC, HTML5",
-        "created": "2006-2012",
-        "date": "2014-06-14"
+    "regexcrossword": {
+        "title": "Regex Crossword",
+        "description": "A crossword puzzle game using regular expressions. Solve a set of crossword challenges to earn acheivements you can share with your friends.",
+        "keywords": "Design · Programming: PHP, AngularJS, LESS",
+        "created": "2013-2015",
+        "date": "2014-12-11"
+    },
+    "kuranz": {
+        "title": "Kuranz",
+        "description": "Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.",
+        "keywords": "Design · Programming: Knockout, localStorage, geolocation",
+        "created": "2013-2015",
+        "date": "2013-11-13"
     },
     "glry": {
         "title": "glry",
@@ -14,12 +21,12 @@
         "date": "2014-11-22",
         "layout": "../_layout"
     },
-    "regexcrossword": {
-        "title": "Regex Crossword",
-        "description": "A crossword puzzle game using regular expressions. Solve a set of crossword challenges to earn acheivements you can share with your friends.",
-        "keywords": "Design · Programming: AngularJS, jQuery, Bootstrap, LESS, PHP",
-        "created": "2013",
-        "date": "2014-12-11"
+    "eet": {
+        "title": "EET Group A/S",
+        "description": "Presenting my work for EET creating a multinational webshop platform integrated with Navision, deployed to 16 countries in 11 languages to &gt;50000 users.",
+        "keywords": "Project Management · Design · Programming: C#, T-SQL, ASP.NET MVC, HTML5",
+        "created": "2006-2012",
+        "date": "2014-06-14"
     },
     "ernitec": {
         "title": "Ernitec",
@@ -49,13 +56,6 @@
         "date": "2012-10-23",
         "stylesheets": ["/images/portfolio/html5-animation/styles.css"]
     },
-	"kuranz": {
-		"title": "Kuranz",
-		"description": "Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.",
-        "keywords": "Design · Programming: JavaScript, RequireJS, Knockout, HTML5 (offline cache, localStorage, geolocation)",
-        "created": "2013",
-		"date": "2013-11-13"
-	},
     "business-card": {
         "title": "Business Card",
         "description": "My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.",
