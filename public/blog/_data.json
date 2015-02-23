@@ -234,6 +234,11 @@
             "iphone"
         ]
     },
+    "site-optimization": {
+        "title": "Website optimization",
+        "description": "Techniques for optimizing websites and how to improve performance by reducing HTTP requests and minifying scripts.",
+        "date": "2011-02-07"
+    },
     "index": {
         "title": "Blog",
         "description": "Ole Bjørn Michelsen is a programmer, speaker and photo hobbyist. I've been coding for a score of years and blogging on programming all the while.",
