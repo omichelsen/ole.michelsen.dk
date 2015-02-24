@@ -6,4 +6,9 @@ p
 ul.screenshots
   each image in public.images.portfolio.majazz._contents.slice(0, -1)
     li
-      img.frame(src='/images/portfolio/majazz/#{ encodeURIComponent(image) }', alt='#{ image.replace(/\d ([\w\s]+)\.png/, "$1") }', width='400', height='334')
+      img(
+        src='/images/portfolio/majazz/#{ encodeURIComponent(image) }'
+        alt='#{ image.replace(/\d ([\w\s]+)\.png/, "$1") }'
+        width='400'
+        height='334'
+      )

@@ -61,4 +61,27 @@
 			-webkit-text-size-adjust: 100%; /* prevent iPhone from mixing up font sizes */
 		}
 	}
+
+	.screenshots {
+		@spacing: 10px;
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+
+		li {
+			margin: @spacing 0;
+
+			h4 {
+				margin: 0 0 5px 0;
+				text-align: left;
+			}
+
+			img {
+				padding: 5px;
+				border: 2px solid #CCC;
+				max-width: calc(~"100% -" @spacing);
+			}
+		}
+	}
 }
