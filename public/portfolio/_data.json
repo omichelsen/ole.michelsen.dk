@@ -2,21 +2,21 @@
     "regexcrossword": {
         "title": "Regex Crossword",
         "description": "A crossword puzzle game using regular expressions. Solve a set of crossword challenges to earn acheivements you can share with your friends.",
-        "keywords": "Design · Programming: PHP, AngularJS, LESS",
+        "keywords": "JavaScript, AngularJS, PHP",
         "created": "2013-2015",
         "date": "2014-12-11"
     },
     "kuranz": {
         "title": "Kuranz",
         "description": "Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.",
-        "keywords": "Design · Programming: Knockout, localStorage, geolocation",
+        "keywords": "JavaScript, Knockout, localStorage, geolocation",
         "created": "2013-2015",
         "date": "2013-11-13"
     },
     "glry": {
         "title": "glry",
         "description": "Image gallery with mobile/touch support and no dependencies.",
-        "keywords": "Programming: JavaScript",
+        "keywords": "JavaScript, touch gestures",
         "created": "2014",
         "date": "2014-11-22",
         "layout": "../_layout"
@@ -24,28 +24,28 @@
     "eet": {
         "title": "EET Group A/S",
         "description": "Presenting my work for EET creating a multinational webshop platform integrated with Navision, deployed to 16 countries in 11 languages to &gt;50000 users.",
-        "keywords": "Project Management · Design · Programming: C#, T-SQL, ASP.NET MVC, HTML5",
+        "keywords": "Project Management · C#, T-SQL, ASP.NET MVC, HTML5",
         "created": "2006-2012",
         "date": "2014-06-14"
-    },
-    "ernitec": {
-        "title": "Ernitec",
-        "description": "Website for surveillance company Ernitec using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
-        "keywords": "Programming: ASP.NET MVC, HTML5, jQuery",
-        "created": "2011",
-        "date": "2011-10-07"
     },
     "dentatoveredeenke": {
         "title": "Den Tatoverede Enke",
         "description": "Website for the restaurant Den Tatoverede Enke using a pure AJAX interface and hash fragment based SEO with MVC on the backend.",
-        "keywords": "Programming: ASP.NET MVC, HTML5, CSS3, jQuery",
+        "keywords": "ASP.NET MVC, HTML5, jQuery",
+        "created": "2011",
+        "date": "2011-10-07"
+    },
+    "ernitec": {
+        "title": "Ernitec",
+        "description": "Website for surveillance company Ernitec using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
+        "keywords": "ASP.NET MVC, HTML5, jQuery",
         "created": "2011",
         "date": "2011-10-07"
     },
     "safevision": {
         "title": "SafeVision",
         "description": "Created a website for surveillance company SafeVision using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
-        "keywords": "Programming: ASP.NET, HTML5",
+        "keywords": "ASP.NET, HTML5, jQuery",
         "created": "2009",
         "date": "2013-10-07"
     },
@@ -53,13 +53,15 @@
         "layout": "../_layout",
         "title": "HTML5 animation",
         "description": "Animation using CSS3 transformations and HTML5 &lt;audio&gt; controls compatible with both Chrome, Safari and Firefox.",
+        "keywords": "JavaScript, CSS3",
+        "created": "2012",
         "date": "2012-10-23",
         "stylesheets": ["/images/portfolio/html5-animation/styles.css"]
     },
     "business-card": {
         "title": "Business Card",
         "description": "My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.",
-        "keywords": "Design · Programming: SVG",
+        "keywords": "SVG",
         "created": "2011",
         "date": "2011-10-07",
         "stylesheets": ["//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css"],
