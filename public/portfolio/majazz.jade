@@ -6,7 +6,7 @@ p
 ul.screenshots
   each image in public.images.portfolio.majazz._contents.slice(0, -1)
     li
-      img(
+      img.frame(
         src='/images/portfolio/majazz/#{ encodeURIComponent(image) }'
         alt='#{ image.replace(/\d ([\w\s]+)\.png/, "$1") }'
         width='400'
