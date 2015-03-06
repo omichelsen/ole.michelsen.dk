@@ -12,45 +12,7 @@
     "index": {
         "title": "Web Development and Computer Science",
         "description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
-        "date": "2014-10-20",
-        "blog": [
-            {
-                "title": "Setup local web server with Apache and PHP on OS X Yosemite",
-                "url": "/blog/setup-local-web-server-apache-php-osx-yosemite.html",
-                "date": "2014-11-25",
-                "type": "blog"
-            },
-            {
-                "title": "Download and edit JSON files with gulp",
-                "url": "/blog/download-and-edit-json-files-with-gulp.html",
-                "date": "2014-11-05",
-                "type": "blog"
-            },
-            {
-                "title": "Using BrowserSync with Harp",
-                "url": "/blog/using-browser-sync-with-harp.html",
-                "date": "2014-10-17",
-                "type": "blog"
-            },
-            {
-                "title": "Showing photo GPS location on Google Maps with gulp",
-                "url": "/blog/showing-photo-gps-location-on-google-maps-with-gulp.html",
-                "date": "2014-10-11",
-                "type": "blog"
-            },
-            {
-                "title": "Breadcrumb trail with Harp and Jade",
-                "url": "/blog/breadcrumb-trail-harp-jade.html",
-                "date": "2014-09-17",
-                "type": "blog"
-            },
-            {
-                "title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
-                "url": "/blog/add-custom-hostname-to-apache-osx-mavericks.html",
-                "date": "2014-05-07",
-                "type": "blog"
-            }
-        ],
+        "date": "2015-03-06",
         "updates": [
             {
                 "title": "Published daily-glry comic gallery",

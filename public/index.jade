@@ -1,8 +1,8 @@
-mixin feed(item)
+mixin feed(item, url, defaultType)
   li
-    a.type(href='#{ item.url }')
-      span(class="icon-#{ item.type || 'michelsen' }")
-    a.title(href='#{ item.url }')= item.title
+    a.type(href='#{ url }')
+      span(class="icon-#{ item.type || defaultType || 'michelsen' }")
+    a.title(href='#{ url }')= item.title
     br
     != partial('_shared/date', {date: item.date})
 
@@ -23,13 +23,16 @@ mixin feed(item)
     .col-4
       h4 Things I say
       ul.feed
-        each item in public._data.index.blog
-          +feed(item)
+        - var i = 0;
+        each item, slug in public.blog._data
+          if i < 6
+            +feed(item, '/blog/' + slug + '.html', 'blog')
+            - i++
     .col-4
       h4 Things I do
       ul.feed
         each item in public._data.index.updates
-          +feed(item)
+          +feed(item, item.url)
     .col-4
       h4 Things I connect to
       ul.social
