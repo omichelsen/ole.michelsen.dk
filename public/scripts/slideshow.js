@@ -38,16 +38,23 @@
         elm.appendChild(elm.firstChild).classList.add('fade-in');
 
         setInterval(function () {
-            var elmNext = elm.firstChild;
-
+            // Fade out the current sldie
             elm.lastChild.classList.remove('fade-in');
 
+            // Move next slide up and delay for animation to run
+            var elmNext = elm.firstChild;
             elm.appendChild(elmNext);
-            window.requestAnimationFrame(function () {
+            elmNext.classList.add('fade-in-setup');
+            setTimeout(function () {
                 elmNext.classList.add('fade-in');
-            });
+            }, 10);
+
+            // Clean up animations
+            setTimeout(function () {
+                elmNext.classList.remove('fade-in-setup');
+            }, this.options.timeout);
         }.bind(this), this.options.timeout);
-    };
+    }
 
     return SlideShow;
 
