@@ -39,7 +39,7 @@
       "html_url": "https://github.com/omichelsen/express-ab",
       "name": "express-ab",
       "language": "JavaScript",
-      "description": "Middleware for AB testing in ExpressJS"
+      "description": "Middleware for AB testing in Express"
     }, {
       "html_url": "https://github.com/omichelsen/FormNavigation",
       "name": "FormNavigation",
