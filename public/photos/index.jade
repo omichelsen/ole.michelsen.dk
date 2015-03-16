@@ -23,11 +23,10 @@ section.albums
     .title World Travel Map
 
 script(src='#{ libs.jquery }')
-include ../scripts/slideshow.js
 script.
   $(function() {
-    new SlideShow('.slideshow', { timeout: 5000, speed: 2000 });
     $('.flickr.albums .album').css('background-image', function () {
       return 'url(' + $(this).data('url') + ')';
     });
   });
+  window.onload = function () { new SlideShow('.slideshow'); };

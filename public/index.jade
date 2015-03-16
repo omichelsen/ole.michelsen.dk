@@ -54,7 +54,5 @@ mixin feed(item, url, defaultType)
             | You can also&nbsp;
             a(href='mailto:#{ email }') drop me a line
 
-script(src='#{ libs.jquery }')
-include scripts/slideshow.js
 script.
-  new SlideShow('.slideshow', { timeout: 5000, speed: 2000 });
+  window.onload = function () { new SlideShow('.slideshow'); };

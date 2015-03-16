@@ -3,6 +3,9 @@
         "title": "Photos",
         "description": "Photographs i have taken both home and abroad on my travels. Photography is an inspiration to look at the world in a fresh and creative way.",
         "date": "2014-10-31",
+        "javascripts": [
+            "/scripts/slideshow.js"
+        ],
         "slideshow": [
             {
                 "url": "mirror-lake.jpg",

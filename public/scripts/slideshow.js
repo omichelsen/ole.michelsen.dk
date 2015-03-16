@@ -16,8 +16,8 @@
     function SlideShow(selector, options) {
         options = options || {};
         this.options = {
-            timeout: options.timeout || 3000,
-            speed:   options.speed   || 400
+            timeout: options.timeout || 5000,
+            speed:   options.speed   || 2000
         };
 
         var elm = document.querySelector(selector);
