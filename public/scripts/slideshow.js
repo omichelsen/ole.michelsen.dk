@@ -47,7 +47,7 @@
             elmNext.classList.add('fade-in-setup');
             setTimeout(function () {
                 elmNext.classList.add('fade-in');
-            }, 10);
+            }, 100);
 
             // Clean up animations
             setTimeout(function () {
