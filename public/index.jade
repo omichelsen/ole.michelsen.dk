@@ -55,4 +55,4 @@ mixin feed(item, url, defaultType)
             a(href='mailto:#{ email }') drop me a line
 
 script.
-  window.onload = function () { new SlideShow('.slideshow'); };
+  window.addEventListener('load', function () { new SlideShow('.slideshow'); });
