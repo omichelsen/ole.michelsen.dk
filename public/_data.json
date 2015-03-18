@@ -68,40 +68,22 @@
         ],
         "repositories": [
             {
-                "html_url": "https://github.com/omichelsen/angular-loggly-logger",
-                "name": "angular-loggly-logger",
-                "language": "JavaScript",
-                "description": "An AngularJS module which sends your $log message to loggly, and provides a service for manually sending messages to loggly."
-            },
-            {
                 "html_url": "https://github.com/omichelsen/angular-steps",
                 "name": "angular-steps",
                 "language": "JavaScript",
                 "description": "Split your UI into (wizard-like) steps in AngularJS."
             },
             {
-                "html_url": "https://github.com/omichelsen/AngularJS-Facebook-Login",
-                "name": "AngularJS-Facebook-Login",
+                "html_url": "https://github.com/omichelsen/compare-versions",
+                "name": "compare-versions",
                 "language": "JavaScript",
-                "description": "A system for logining in using facebook."
+                "description": "Compare semver version strings to find which is greater, equal or lesser."
             },
             {
                 "html_url": "https://github.com/omichelsen/daily-glry",
                 "name": "daily-glry",
                 "language": "JavaScript",
                 "description": "Daily comic strip gallery with mobile/touch support."
-            },
-            {
-                "html_url": "https://github.com/omichelsen/es6-promise",
-                "name": "es6-promise",
-                "language": "JavaScript",
-                "description": "A polyfill for ES6-style Promises"
-            },
-            {
-                "html_url": "https://github.com/omichelsen/es6-promise-bower",
-                "name": "es6-promise-bower",
-                "language": "JavaScript",
-                "description": ""
             },
             {
                 "html_url": "https://github.com/omichelsen/exif-gps-to-json-example",
@@ -113,7 +95,7 @@
                 "html_url": "https://github.com/omichelsen/express-ab",
                 "name": "express-ab",
                 "language": "JavaScript",
-                "description": "Middleware for AB testing in ExpressJS"
+                "description": "Middleware for AB testing in Express"
             },
             {
                 "html_url": "https://github.com/omichelsen/FormNavigation",
@@ -140,24 +122,6 @@
                 "description": ""
             },
             {
-                "html_url": "https://github.com/omichelsen/jquery-slideshow",
-                "name": "jquery-slideshow",
-                "language": "JavaScript",
-                "description": "The simplest jQuery slideshow plugin. Evar."
-            },
-            {
-                "html_url": "https://github.com/omichelsen/ng-clip",
-                "name": "ng-clip",
-                "language": "JavaScript",
-                "description": "Copy to clipboard using AngularJS"
-            },
-            {
-                "html_url": "https://github.com/omichelsen/ngImgCrop",
-                "name": "ngImgCrop",
-                "language": "JavaScript",
-                "description": "Image Crop directive for AngularJS"
-            },
-            {
                 "html_url": "https://github.com/omichelsen/ngTotemTicker",
                 "name": "ngTotemTicker",
                 "language": "JavaScript",
@@ -170,28 +134,10 @@
                 "description": "Benchmarking scripts for comparing I/O handling in node.js vs Apache"
             },
             {
-                "html_url": "https://github.com/omichelsen/node-geckoboard",
-                "name": "node-geckoboard",
-                "language": "JavaScript",
-                "description": "Easily create geckoboard widgets"
-            },
-            {
                 "html_url": "https://github.com/omichelsen/View-Source",
                 "name": "View-Source",
                 "language": "PHP",
                 "description": "Server-side PHP script which displays the source of a webside with syntax highlighting for viewing on an iPad"
-            },
-            {
-                "html_url": "https://github.com/omichelsen/volume-meter",
-                "name": "volume-meter",
-                "language": "JavaScript",
-                "description": "Simple example of implementing a clip-detecting volume meter in Web Audio."
-            },
-            {
-                "html_url": "https://github.com/omichelsen/world.geo.json",
-                "name": "world.geo.json",
-                "language": null,
-                "description": "Annotated geo-json geometry files for the world"
             }
         ]
     }

@@ -92,6 +92,7 @@ gulp.task('github', function () {
                 }
             };
             repositories.forEach(function (repo) {
+                if (repo.fork) return;
                 data.profile.repositories.push({
                     html_url: repo.html_url,
                     name: repo.name,
