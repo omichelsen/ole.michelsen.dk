@@ -20,6 +20,7 @@
 
         var index = 0;
             elm = document.querySelector(selector);
+            elm.classList.add('slideshow');
             elm.classList.add('preload');
 
         // Create caption elements from image properties
