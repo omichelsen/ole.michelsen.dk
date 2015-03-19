@@ -24,15 +24,13 @@
         // Create caption elements from image properties
         for (var i = 0; i < elm.childNodes.length; i++) {
             var elmChild = elm.childNodes[i],
-                elmImg = elmChild.querySelector('img'),
-                elmCaption = createElement('div', 'caption'),
-                elmTitle = createElement('span', 'title', elmImg.title),
-                elmAlt = createElement('span', 'alt', elmImg.alt);
-
-            elmCaption.appendChild(elmTitle);
-            elmCaption.appendChild(elmAlt);
-
-            elmChild.insertBefore(elmCaption, elmChild.firstChild);
+                elmImg = elmChild.querySelector('img')
+            if (elmImg.title) {
+                var elmCaption = createElement('div', 'caption');
+                elmCaption.appendChild(createElement('span', 'title', elmImg.title));
+                elmCaption.appendChild(createElement('span', 'alt', elmImg.alt));
+                elmChild.insertBefore(elmCaption, elmChild.firstChild);
+            }
         }
 
         // Show the first slide
