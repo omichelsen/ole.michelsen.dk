@@ -14,8 +14,9 @@
     }
 
     function SlideShow(selector, options) {
-        options = options || {};
-        options.timeout = options.timeout || 5000;
+        options = {
+            timeout: options && options.timeout || 5000
+        };
 
         var index = 0;
             elm = document.querySelector(selector);
@@ -29,7 +30,7 @@
                 var elmCaption = createElement('div', 'caption');
                 elmCaption.appendChild(createElement('span', 'title', elmImg.title));
                 elmCaption.appendChild(createElement('span', 'alt', elmImg.alt));
-                elmChild.insertBefore(elmCaption, elmChild.firstChild);
+                elmChild.appendChild(elmCaption);
             }
         }
 
@@ -39,14 +40,14 @@
         // Remove preload class to enable transition animations
         setTimeout(function () {
             elm.classList.remove('preload');
-        }, 0);
+        });
 
         // Start the slidehshow
         setInterval(function () {
             elm.childNodes[index].classList.remove('show-animation');
             index = (index + 1) % elm.childNodes.length;
             elm.childNodes[index].classList.add('show-animation');
-        }.bind(this), options.timeout);
+        }, options.timeout);
     }
 
     return SlideShow;
