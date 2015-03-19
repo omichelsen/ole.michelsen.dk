@@ -49,6 +49,8 @@
             index = (index + 1) % elm.childNodes.length;
             elm.childNodes[index].classList.add('show-animation');
         }, options.timeout);
+
+        return elm;
     }
 
     return SlideShow;
