@@ -6,30 +6,18 @@
     width: 950px;
     height: 400px;
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
     li {
-        list-style: none;
         position: absolute; left: 0; top: 0;
+        list-style: none;
+        opacity: 0;
+        transition: opacity 2s;
 
-        &.fade-in-setup {
-            opacity: 0;
-
-            .caption {
-                transition-delay: 1s;
-            }
-        }
-
-        &.fade-in {
-            opacity: 0;
-            animation: fadeIn 2s;
-            animation-fill-mode: forwards;
+        &.show-animation {
+            opacity: 1;
 
             .caption {
                 transform: translateY(0);
+                transition-delay: 1s;
             }
         }
 
