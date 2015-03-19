@@ -26,7 +26,7 @@
         // Create caption elements from image properties
         for (var i = 0; i < elm.childNodes.length; i++) {
             var elmChild = elm.childNodes[i],
-                elmImg = elmChild.querySelector('img')
+                elmImg = elmChild.querySelector('img');
             if (elmImg.title) {
                 var elmCaption = createElement('div', 'caption');
                 elmCaption.appendChild(createElement('span', 'title', elmImg.title));
