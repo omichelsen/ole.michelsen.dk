@@ -22,13 +22,11 @@ section.albums
   a.album.travel-map(href="travel-map.html")
     .title World Travel Map
 
-script(src='#{ libs.jquery }')
-include ../../bower_components/jquery.animate-enhanced/jquery.animate-enhanced.min.js
-include ../../bower_components/jquery-slideshow/jquery.slideshow.min.js
 script.
-  $(function() {
-    $('.slideshow').slideshow({ timeout: 5000, speed: 2000 });
-    $('.flickr.albums .album').css('background-image', function () {
-      return 'url(' + $(this).data('url') + ')';
-    });
+  window.addEventListener('load', function () {
+    var albums = document.querySelectorAll('.flickr.albums .album');
+    for (var i = 0; i < albums.length; i++) {
+      albums[i].style.backgroundImage = 'url(' + albums[i].getAttribute('data-url') + ')';
+    }
+    new SlideShow('.slideshow');
   });

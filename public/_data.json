@@ -13,6 +13,9 @@
         "title": "Web Development and Computer Science",
         "description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
         "date": "2015-03-06",
+        "javascripts": [
+            "/scripts/slideshow.js"
+        ],
         "updates": [
             {
                 "title": "Published daily-glry comic gallery",
