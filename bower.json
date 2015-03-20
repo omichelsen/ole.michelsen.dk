@@ -13,7 +13,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-slideshow": "omichelsen/jquery-slideshow#latest",
-    "jquery.animate-enhanced": "~1.1.0"
+    "simple-slideshow": "omichelsen/simple-slideshow#~1.1.0"
   }
 }
