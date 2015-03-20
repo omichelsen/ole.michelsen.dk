@@ -56,6 +56,11 @@
       "language": "JavaScript",
       "description": "Benchmarking scripts for comparing I/O handling in node.js vs Apache"
     }, {
+      "html_url": "https://github.com/omichelsen/simple-slideshow",
+      "name": "simple-slideshow",
+      "language": "JavaScript",
+      "description": "Simple slideshow library with no dependencies like jQuery."
+    }, {
       "html_url": "https://github.com/omichelsen/View-Source",
       "name": "View-Source",
       "language": "PHP",
