@@ -1,6 +1,10 @@
 .photos {
-    .slideshow {
-        height: 600px;
+    @media (max-width: @page-width) {
+        .slideshow .caption {
+            .title {
+                font-size: large;
+            }
+        }
     }
 
     .albums {

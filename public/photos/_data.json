@@ -4,7 +4,7 @@
         "description": "Photographs i have taken both home and abroad on my travels. Photography is an inspiration to look at the world in a fresh and creative way.",
         "date": "2014-10-31",
         "javascripts": [
-            "https://cdn.rawgit.com/omichelsen/simple-slideshow/master/src/slideshow.js"
+            "https://cdn.rawgit.com/omichelsen/simple-slideshow/e3960dd3adbb17a1ec8f29c73451368ee2ded6ad/src/slideshow.js"
         ],
         "slideshow": [
             {

@@ -1,7 +1,8 @@
 .landingpage {
-    .slideshow {
-        width: 950px;
-        height: 400px;
+    @media (max-width: @page-width) {
+        .slideshow .caption {
+            display: none;
+        }
     }
 
     .row {
