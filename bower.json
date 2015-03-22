@@ -13,6 +13,6 @@
     "tests"
   ],
   "dependencies": {
-    "simple-slideshow": "omichelsen/simple-slideshow#~1.2.1"
+    "simple-slideshow": "omichelsen/simple-slideshow#~1.2.2"
   }
 }

@@ -14,7 +14,7 @@
         "description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
         "date": "2015-03-06",
         "javascripts": [
-            "https://cdn.rawgit.com/omichelsen/simple-slideshow/e3960dd3adbb17a1ec8f29c73451368ee2ded6ad/src/slideshow.js"
+            "https://cdn.rawgit.com/omichelsen/simple-slideshow/317a6d1d2dfd7e80d78daafceac3c08d44079e12/src/slideshow.js"
         ],
         "updates": [
             {
