@@ -24,6 +24,12 @@
                 "type": "github"
             },
             {
+                "title": "Published compare-versions module",
+                "url": "https://github.com/omichelsen/compare-versions",
+                "date": "2015-03-18",
+                "type": "github"
+            },
+            {
                 "title": "Published daily-glry comic gallery",
                 "url": "https://github.com/omichelsen/daily-glry",
                 "date": "2014-11-22",
@@ -52,11 +58,6 @@
                 "url": "https://github.com/omichelsen/angular-steps",
                 "date": "2014-07-09",
                 "type": "github"
-            },
-            {
-                "title": "Regex Crossword",
-                "url": "/portfolio/regexcrossword.html",
-                "date": "2014-06-14"
             }
         ]
     },
