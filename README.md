@@ -14,9 +14,9 @@ Before running the project make sure to get all dependencies:
 
 Start the local development server with this command:
 
-    harp server
+    npm run dev
 
-You can now access the server from `http://localhost:9000`.
+You can now access the server from `http://localhost:9000` or `http://localhost:3000` if you like browser-sync.
 
 ## Build
 

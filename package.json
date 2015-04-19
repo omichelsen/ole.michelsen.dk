@@ -5,6 +5,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
+    "dev": "harp server & browser-sync start --proxy 'localhost:9000' --files 'public/**/*.jade, public/**/*.md, public/**/*.less, public/**/_data.json'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
