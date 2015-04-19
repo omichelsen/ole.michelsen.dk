@@ -1,6 +1,14 @@
 {
   "index": {
     "flickr": [{
+      "id": "72157651642374639",
+      "title": "Vietnam",
+      "thumbnail": {
+        "url": "https://farm8.staticflickr.com/7667/17015171420_bd17881d18_m.jpg",
+        "width": "240",
+        "height": "159"
+      }
+    }, {
       "id": "72157635319688634",
       "title": "Artsy",
       "thumbnail": {
