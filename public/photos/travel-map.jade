@@ -20,8 +20,9 @@
 script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqiUhRvSy2m5N__6fIvANVRq2j-q7w2A&sensor=false")
 script(src='#{ libs.jquery }')
 script(src='#{ libs.masonry }')
-!= '<script>'
-!= 'var locations = ' + JSON.stringify(public.photos._data['travel-map'].images)
-!= '</script>'
-include ../scripts/markerclusterer-1.0.min.js
-include ../scripts/travel-map.js
+script
+  != 'var locations = ' + JSON.stringify(public.photos._data['travel-map'].images)
+script
+  include ../scripts/markerclusterer-1.0.min.js
+script
+  include ../scripts/travel-map.js
