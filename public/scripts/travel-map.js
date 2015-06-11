@@ -52,7 +52,8 @@ function initialize() {
         if (marker) marker.setAnimation(null);
 
         // Activate new pin
-        var filename = this.dataset.image;
+        var path = this.dataset.echo;
+        var filename = decodeURIComponent(path.substring(path.lastIndexOf('/') + 1));
         marker = locations[filename];
         marker.setAnimation(google.maps.Animation.BOUNCE);
         map.panTo(marker.getPosition());
