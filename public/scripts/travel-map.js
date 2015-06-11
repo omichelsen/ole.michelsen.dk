@@ -32,11 +32,6 @@ function initialize() {
         maxZoom: 4,
         styles: [markerStyle, markerStyle]
     });
-    var msnry = new Masonry('.images', {
-        itemSelector: '.image',
-        columnWidth: 106,
-        resizable: false
-    });
 
     function scrollTo(element, to, duration) {
         if (duration < 0) return;
@@ -76,3 +71,10 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+// Init Masonry
+var msnry = new Masonry('.images', {
+    itemSelector: '.image',
+    columnWidth: 106,
+    resizable: false
+});
