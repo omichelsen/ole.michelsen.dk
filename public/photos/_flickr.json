@@ -1,6 +1,14 @@
 {
   "index": {
     "flickr": [{
+      "id": "72157653925442300",
+      "title": "Sweden",
+      "thumbnail": {
+        "url": "https://farm1.staticflickr.com/517/18478392770_bf5fde9270_m.jpg",
+        "width": "159",
+        "height": "240"
+      }
+    }, {
       "id": "72157651642374639",
       "title": "Vietnam",
       "thumbnail": {
