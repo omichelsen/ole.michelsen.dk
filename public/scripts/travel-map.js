@@ -51,7 +51,9 @@ function initialize() {
         }, 10);
     }
 
-    function imageClickHandler() {
+    function imageClickHandler(event) {
+        event.preventDefault();
+
         // Cancel any active animations
         if (marker) marker.setAnimation(null);
 
@@ -66,8 +68,6 @@ function initialize() {
             map.setZoom(5);
 
         scrollTo(document.body, mapOffset, 1000);
-
-        return false;
     }
 
     var elmImages = document.querySelectorAll('.images img');
