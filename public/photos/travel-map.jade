@@ -6,10 +6,8 @@
         class='image'
         data-echo='/images/photos/map/#{ encodeURIComponent(slug) }'
         src='/images/0.png'
-        style={
-          width: image.width + 'px',
-          height: image.height + 'px'
-        }
+        width=image.width
+        height=image.height
       )
 
 script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqiUhRvSy2m5N__6fIvANVRq2j-q7w2A&sensor=false')
