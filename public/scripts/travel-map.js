@@ -4,7 +4,9 @@ function initialize() {
         center: new google.maps.LatLng(40.416698, -3.700354),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), opt);
+    var elmMap = document.getElementById('map-canvas');
+    var mapOffset = elmMap.offsetTop - 5;
+    var map = new google.maps.Map(elmMap, opt);
 
     var marker, pos;
     for (var img in locations) {
@@ -23,20 +25,30 @@ function initialize() {
     });
     var mc = new MarkerClusterer(map, locationsArr, { gridSize: 20, maxZoom: 4, styles: [markerStyle,markerStyle] });
 
-    var canvasOffset = $('#map-canvas').offset().top - 5;
-
     var msnry = new Masonry('.images', {
         itemSelector: 'img',
         columnWidth: 106,
         resizable: false
     });
 
-    $('.images img').click(function () {
+    function scrollTo(element, to, duration) {
+        if (duration < 0) return;
+        var difference = to - element.scrollTop;
+        var perTick = difference / duration * 10;
+
+        setTimeout(function() {
+            element.scrollTop = element.scrollTop + perTick;
+            if (element.scrollTop === to) return;
+            scrollTo(element, to, duration - 10);
+        }, 10);
+    }
+
+    function imageClickHandler() {
         // Cancel any active animations
         if (marker) marker.setAnimation(null);
 
         // Activate new pin
-        var filename = decodeURIComponent($(this).attr('src').substring($(this).attr('src').lastIndexOf('/') + 1));
+        var filename = decodeURIComponent(this.src.substring(this.src.lastIndexOf('/') + 1));
         marker = locations[filename];
         marker.setAnimation(google.maps.Animation.BOUNCE);
         map.panTo(marker.getPosition());
@@ -45,12 +57,15 @@ function initialize() {
         if (map.getZoom() < 5 || map.getZoom() > 15)
             map.setZoom(5);
 
-        $('html,body').animate({
-            scrollTop: canvasOffset
-        }, 1000);
+        scrollTo(document.body, mapOffset, 1000);
 
         return false;
-    });
+    }
+
+    var elmImages = document.querySelectorAll('.images img');
+    for (var i = 0; i < elmImages.length; i++) {
+        elmImages[i].addEventListener('click', imageClickHandler, false);
+    }
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
