@@ -8,7 +8,7 @@ function initialize() {
     var mapOffset = elmMap.offsetTop - 5;
     var map = new google.maps.Map(elmMap, opt);
 
-    var marker, pos;
+    var marker;
     for (var img in locations) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[img].lat, locations[img].lng),
@@ -34,7 +34,7 @@ function initialize() {
         styles: [markerStyle, markerStyle]
     });
     var msnry = new Masonry('.images', {
-        itemSelector: 'img',
+        itemSelector: '.image',
         columnWidth: 106,
         resizable: false
     });
@@ -58,7 +58,7 @@ function initialize() {
         if (marker) marker.setAnimation(null);
 
         // Activate new pin
-        var filename = decodeURIComponent(this.src.substring(this.src.lastIndexOf('/') + 1));
+        var filename = this.dataset.image;
         marker = locations[filename];
         marker.setAnimation(google.maps.Animation.BOUNCE);
         map.panTo(marker.getPosition());
@@ -70,7 +70,7 @@ function initialize() {
         scrollTo(document.body, mapOffset, 1000);
     }
 
-    var elmImages = document.querySelectorAll('.images img');
+    var elmImages = document.querySelectorAll('.images .image');
     for (var i = 0; i < elmImages.length; i++) {
         elmImages[i].addEventListener('click', imageClickHandler, false);
     }
