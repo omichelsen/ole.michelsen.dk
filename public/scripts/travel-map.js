@@ -4,7 +4,7 @@ function initialize() {
         center: new google.maps.LatLng(40.416698, -3.700354),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map-canvas"), opt);
+    var map = new google.maps.Map(document.getElementById('map-canvas'), opt);
 
     var marker, pos;
     for (var img in locations) {
@@ -25,32 +25,32 @@ function initialize() {
 
     var canvasOffset = $('#map-canvas').offset().top - 5;
 
-
-    $('.images').masonry({
+    var msnry = new Masonry('.images', {
         itemSelector: 'img',
         columnWidth: 106,
         resizable: false
-    })
-        .children('img').click(function () {
-            // Cancel any active animations
-            if (marker) marker.setAnimation(null);
+    });
 
-            // Activate new pin
-            var filename = decodeURIComponent($(this).attr('src').substring($(this).attr('src').lastIndexOf('/') + 1));
-            marker = locations[filename];
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-            map.panTo(marker.getPosition());
+    $('.images img').click(function () {
+        // Cancel any active animations
+        if (marker) marker.setAnimation(null);
 
-            // Set zoom level
-            if (map.getZoom() < 5 || map.getZoom() > 15)
-                map.setZoom(5);
+        // Activate new pin
+        var filename = decodeURIComponent($(this).attr('src').substring($(this).attr('src').lastIndexOf('/') + 1));
+        marker = locations[filename];
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        map.panTo(marker.getPosition());
 
-            $('html,body').animate({
-                scrollTop: canvasOffset
-            }, 1000);
+        // Set zoom level
+        if (map.getZoom() < 5 || map.getZoom() > 15)
+            map.setZoom(5);
 
-            return false;
-        });
+        $('html,body').animate({
+            scrollTop: canvasOffset
+        }, 1000);
+
+        return false;
+    });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
