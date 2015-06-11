@@ -1,3 +1,6 @@
+@travel-map-height: 400px;
+@travel-map-image-spacing: 3px;
+
 .photos {
     @media (max-width: @page-width) {
         .slideshow .caption {
@@ -65,16 +68,20 @@
 
 #travel-map {
     #map-canvas {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-top: -(@travel-map-height + @travel-map-image-spacing);
         width: 100%;
-        height: 400px;
+        height: @travel-map-height;
     }
     .images {
-        position: relative;
         overflow: hidden;
-        margin: 0 -3px;
+        margin: 0 -@travel-map-image-spacing;
+        margin-top: @travel-map-height + @travel-map-image-spacing;
         .image {
             float:left;
-            margin: 3px;
+            margin: @travel-map-image-spacing;
             min-height: 100px;
             min-width: 100px;
             &:hover {

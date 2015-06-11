@@ -1,14 +1,6 @@
 #travel-map
-  h1 Photos
-  h2 World Travel Map
-  p
-    | Selected photographic waypoints for all the places I have visited around the world. My implementation is reading the GPS EXIF data from my photos, and adding them as map markers using&nbsp;
-    a(href='http://code.google.com/apis/maps/documentation/javascript/', rel='external') Google Maps API
-    | &nbsp;and&nbsp;
-    a(href='http://masonry.desandro.com/', rel='external') Masonry
-    | &nbsp;for photo layout.
-  p#map-canvas
-  p.images
+  #map-canvas
+  .images
     for image, slug in public.photos._data['travel-map'].images
       span(
         class='image'
