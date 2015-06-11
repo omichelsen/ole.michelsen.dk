@@ -19,12 +19,20 @@ function initialize() {
     }
 
     // Cluster adjacent markers depending on zoom level
-    var markerStyle = {url:'/images/mapmarker.png',width:20,height:20,opt_textSize:9};
+    var markerStyle = {
+        url: '/images/mapmarker.png',
+        width: 20,
+        height: 20,
+        opt_textSize: 9
+    };
     var locationsArr = $.map(locations, function (value) {
         return value;
     });
-    var mc = new MarkerClusterer(map, locationsArr, { gridSize: 20, maxZoom: 4, styles: [markerStyle,markerStyle] });
-
+    var mc = new MarkerClusterer(map, locationsArr, {
+        gridSize: 20,
+        maxZoom: 4,
+        styles: [markerStyle, markerStyle]
+    });
     var msnry = new Masonry('.images', {
         itemSelector: 'img',
         columnWidth: 106,
