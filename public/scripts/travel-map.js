@@ -25,8 +25,8 @@ function initialize() {
         height: 20,
         opt_textSize: 9
     };
-    var locationsArr = $.map(locations, function (value) {
-        return value;
+    var locationsArr = Object.keys(locations).map(function (value) {
+        return locations[value];
     });
     var mc = new MarkerClusterer(map, locationsArr, {
         gridSize: 20,
