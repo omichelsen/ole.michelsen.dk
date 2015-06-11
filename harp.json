@@ -16,7 +16,7 @@
 			"jquery": "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js",
 			"jqueryui": "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js",
 			"jqueryuicss": "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/css/jquery-ui.min.css",
-			"masonry": "//cdnjs.cloudflare.com/ajax/libs/masonry/3.2.2/masonry.pkgd.min.js",
+			"masonry": "//cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js",
 			"moment": "//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js",
 			"prism": "//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js",
 			"prismcss": "//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css"
