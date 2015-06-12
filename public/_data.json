@@ -126,6 +126,12 @@
                 "description": ""
             },
             {
+                "html_url": "https://github.com/omichelsen/meetbox-chrome",
+                "name": "meetbox-chrome",
+                "language": "JavaScript",
+                "description": ""
+            },
+            {
                 "html_url": "https://github.com/omichelsen/ngTotemTicker",
                 "name": "ngTotemTicker",
                 "language": "JavaScript",
