@@ -62,7 +62,7 @@ function initialize() {
         if (map.getZoom() < 5 || map.getZoom() > 15)
             map.setZoom(5);
 
-        scrollTo(document.body, elmMap.offsetTop - 3, 1000);
+        scrollTo(document.documentElement.scrollTo ? document.documentElement : document.body, elmMap.offsetTop - 3, 1000);
     }
 
     var elmImages = document.querySelectorAll('.images .image');
