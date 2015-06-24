@@ -1,4 +1,13 @@
 {
+    "install-windows-on-mac-boot-camp-usb": {
+        "title": "Install Windows on Mac with Boot Camp",
+        "description": "How to install Windows on a older Mac with Boot Camp and a bootable USB image.",
+        "date": "2015-06-24",
+        "tags": [
+            "macos",
+            "windows"
+        ]
+    },
     "schedule-jobs-with-crontab-on-osx-yosemite": {
         "title": "Schedule jobs with crontab on OS X Yosemite",
         "description": "Schedule jobs to run daily with crontab on OS X Yosemite to e.g. backup your MySQL database.",
