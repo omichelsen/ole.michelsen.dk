@@ -4,21 +4,33 @@ If you have an older Mac, you might have some trouble using Boot Camp in the new
 
 <!-- more-->
 
-Of course be aware that this is not an offical Apple support guide. Use at your own discretion and do backups etc, etc.
+Of course beware that this is not an offical Apple support guide. Use at your own discretion and do backups etc, etc.
 
-## Make a bootable USB stick
+## Make a bootable USB flash drive
 
-First you need a USB stick of __8 GB__ or more. Then you need to start Boot Camp Assistant:
+First you need a USB flash drive of __8 GB__ or more. Then you need to start Boot Camp Assistant:
 
-<!-- Insert image -->
+![Boot Camp Assistant should give you the option to create a Windows install USB flash drive from an ISO image, by presenting you with the option 'Create a Windows 7 or later version install disk'.](/images/blog/install-windows-on-mac-boot-camp-usb/boot-camp-assistant.png)
 
 The first menu point should be "Create  a Windows 7 or later version install disk". If your screen _doesn't_ look like this, you have to do some ninja stuff. To convince Boot Camp Assistant that you are grown enough to use ISO images, follow these steps:
 
-- Go to Applications > Utilities > Boot Camp Assistant and right click to Show Package Contents
-- Edit the file `Info.plist` with XCode
-  - Under the key `USBBootSupportedModels` add your Mac model. You can find the model name in System Report (the first part of "Boot ROM Version") e.g. "MBP81".
+1. Go to Applications > Utilities > Boot Camp Assistant and right click to Show Package Contents
+2. Edit the file `Info.plist` with XCode
+3. Under the key `USBBootSupportedModels` add your Mac model.
+   - To see your model version open  > About This Mac > System Report and copy the first part of "Boot ROM Version" e.g. "MBP81".
 
-(source)[http://forums.atomicmpc.com.au/index.php/topic/51873-enable-create-a-windows-usb-install-disk-in-bootcamp-assistant-for-mountain-lion/]
+![Look up the 'Boot ROM Version' entry in System Report to find your Mac model version.](/images/blog/install-windows-on-mac-boot-camp-usb/system-report.png)
+
+Finally you have to codesign Boot Camp Assistant or it will crash on run. Open the terminal and run this command:
+
+```bash
+$ sudo codesign -fs - /Applications/Utilities/Boot\ Camp\ Assistant.app
+```
+
+You might be asked to download a developer tool from Apple, which is fine. You do not have to download all of XCode. After installation you might have to open a new Terminal windows and run the command again.
+
+(source 1) http://apple.stackexchange.com/questions/168808/install-windows-7-with-bootcamp-on-os-x-yosemite-with-usb-key
+(source 2) http://forums.atomicmpc.com.au/index.php/topic/51873-enable-create-a-windows-usb-install-disk-in-bootcamp-assistant-for-mountain-lion/
 
 ## Can't use Boot Camp partition
 
@@ -36,7 +48,7 @@ Now you have come all this way, but it might not be over just yet, if you are me
 8. Windows 8 installs!
 9. After installation, run the setup.exe inside the Bootcamp folder on the USB drive. This will install all the necessary device drivers.
 
-(source)[https://discussions.apple.com/thread/5474614?start=15]
+(source) https://discussions.apple.com/thread/5474614?start=15
 
 ## Final tip: fan control
 
