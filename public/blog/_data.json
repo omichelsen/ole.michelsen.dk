@@ -1,7 +1,7 @@
 {
-    "install-windows-on-mac-boot-camp-usb": {
-        "title": "Install Windows on Mac with Boot Camp",
-        "description": "How to install Windows 7, 8 or 8.1 on a older Mac with Boot Camp and a bootable USB image.",
+    "install-windows-8-with-boot-camp-on-osx-yosemite-with-usb-key": {
+        "title": "Install Windows 8 with Boot Camp on Yosemite with USB key",
+        "description": "How to install Windows 8 or 8.1 on MacOS X Yosemite with Boot Camp and a bootable USB key.",
         "date": "2015-06-24",
         "tags": [
             "macos",
