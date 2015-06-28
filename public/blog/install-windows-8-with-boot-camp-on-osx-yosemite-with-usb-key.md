@@ -1,10 +1,10 @@
 Intel Macs have always been able to run Windows in parallel, and it's is even officially supported by Apple by the grace of Boot Camp, which makes a partition and boot disc for you with the necessary drivers.
 
-If you have an older Mac (2011-2012), you might have some trouble using Boot Camp in the MacOS X Yosemite. For some reason Apple does not allow Macs with a SuperDrive to make a bootable USB stick with Windows from an image. Since the optical SuperDrive in my Mac recently quit on me (and because USB is much better), this has lead me around the murky corners of message boards in search for a solution, which I now share with you here.
+If you have an older Mac (2011-2012), you might have some trouble using Boot Camp in MacOS X Yosemite. For some reason Apple does not allow Macs with a SuperDrive to make a bootable USB stick with Windows from an image. Since the optical SuperDrive in my Mac recently quit on me (and because USB is much better), this has lead me around the murky corners of message boards in search for a solution, which I now share with you here.
 
 <!-- more-->
 
-Of course beware that this is not an offical Apple support guide. Use at your own discretion and do backups etc, etc.
+Of course beware that this is not an offical Apple support guide. Use at your own discretion and do backups etc.
 
 ## Make a bootable USB flash drive
 
@@ -17,11 +17,11 @@ The first menu point should be "Create a Windows 7 or later version install disk
 1. Go to Applications > Utilities > Boot Camp Assistant and right click to Show Package Contents
 2. Add Read & Write access to Administrators on the folder `Contents` and the file `Info.plist` 
 3. Edit the file `Info.plist` with Xcode
-4. Delete the `Pre` part from the key `USBBootSupportedModels` add your Mac model
+4. Delete the `Pre` part from the key `USBBootSupportedModels` and add your Mac model
 
 ![Add your computer model to the approved list of USB boot supported models.](/images/blog/install-windows-8-with-boot-camp-on-osx-yosemite-with-usb-key/info-plist.png)
 
-To see your model version open  > About This Mac > System Report > Model Identifier e.g. "MacBookPro6,2"
+To see your model version open  > About This Mac > System Report > Model Identifier e.g. "MacBookPro6,2".
 
 ![Look up the 'Model Identifier' entry in System Report to find your Mac model version.](/images/blog/install-windows-8-with-boot-camp-on-osx-yosemite-with-usb-key/system-report.png)
 
@@ -31,9 +31,9 @@ Finally you have to codesign Boot Camp Assistant or it will crash on run. Open t
 sudo codesign -fs - /Applications/Utilities/Boot\ Camp\ Assistant.app
 ```
 
-You might be asked to download a developer tool from Apple, which is fine. After installation you might have to open a new Terminal window and run the command again.
+You might be asked to download a developer tool from Apple. After installation open a new Terminal window and run the command again.
 
-After you have started Boot Camp Assistant again, it should look like the screenshot. Now just go through the steps, point it to your Windows installation ISO, and create a bootable flash drive.
+Start Boot Camp Assistant again, and it should look like the screenshot. Now just go through the steps, point it to your Windows installation ISO, and create a bootable flash drive.
 
 <!-- 
 (source 1) http://apple.stackexchange.com/questions/168808/install-windows-7-with-bootcamp-on-os-x-yosemite-with-usb-key
@@ -42,21 +42,21 @@ After you have started Boot Camp Assistant again, it should look like the screen
 
 ## Installing Windows
 
-Now restart your Mac and hold down the ⌥ (option) key. You should see some boot options. Select "EFI Boot" and you should boot into the Windows installation.
+Restart your Mac and hold down the ⌥ (option) key. You should see some boot options. Select "EFI Boot" and you should boot into the Windows installation.
 
-When you have entered the license key and clicked agree a half dozen times, you are presented with a list of partitions, one of them being your newly created Boot Camp (normally partition 4). 
+When you have entered the license key and clicked "next" a half dozen times, you are presented with a list of partitions, one of them being your newly created Boot Camp (usually partition 4). 
 If selecting this as install target works for you: great! Take it home. If this _doesn't_ work, and you get a GPT disk error, read on …
 
 ### Can't use Boot Camp partition
 
-Now you have come all this way, only to be met by this pesky error message:
+You have come all this way, only to be met by this pesky error message:
 
 > Windows cannot be installed to this disk. The selected disk has an MBR partition table. On EFI systems, Windows can only be installed GPT disks.
 
 But don't worry, there is a fix:
 
 1. Remove any Boot Camp partitions, restoring the partition table to one big Apple partitition
-2. Use Disk Utility in OS X to create empty space of the size you want the Windows partitition to be
+2. Use Disk Utility in OS X to create empty space of the size you want the Windows partitition to be (don't create a partition)
 3. Restart the Mac to the USB drive
 4. Using the Windows Advanced partition options, create a new partition in the empty space
 5. Proceed with installation onto the new partition
