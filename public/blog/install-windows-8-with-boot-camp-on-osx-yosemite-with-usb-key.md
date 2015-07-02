@@ -1,6 +1,6 @@
 Intel Macs have always been able to run Windows in parallel, and it's is even officially supported by Apple by the grace of Boot Camp, which makes a partition and boot disc for you with the necessary drivers.
 
-If you have an older Mac (2011-2012), you might have some trouble using Boot Camp in MacOS X Yosemite. For some reason Apple does not allow Macs with a SuperDrive to make a bootable USB stick with Windows from an image. Since the optical SuperDrive in my Mac recently quit on me (and because USB is much better), this has lead me around the murky corners of message boards in search for a solution, which I now share with you here.
+If you have an older Mac (2010-2012), you might have some trouble using Boot Camp in MacOS X Yosemite. For some reason Apple does not allow Macs with a SuperDrive to make a bootable USB stick with Windows from an image. Since the optical SuperDrive in my Mac recently quit on me (and because USB is much better), this has lead me around the murky corners of message boards in search for a solution, which I now share with you here.
 
 <!-- more-->
 
