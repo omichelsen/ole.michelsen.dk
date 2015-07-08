@@ -15,7 +15,7 @@
   "author": "Ole Bjørn Michelsen",
   "license": "ISC",
   "dependencies": {
-    "simple-slideshow": "^1.2.2"
+    "simple-slideshow": "^2.0.0"
   },
   "devDependencies": {
     "gulp": "^3.8.8",
