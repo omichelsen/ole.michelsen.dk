@@ -1,6 +1,11 @@
 {
   "profile": {
     "repositories": [{
+      "html_url": "https://github.com/omichelsen/angular-clipboard",
+      "name": "angular-clipboard",
+      "language": "JavaScript",
+      "description": "Copy to clipboard with AngularJS directive, without using Flash."
+    }, {
       "html_url": "https://github.com/omichelsen/angular-steps",
       "name": "angular-steps",
       "language": "JavaScript",
