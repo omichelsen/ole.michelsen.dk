@@ -49,6 +49,13 @@ RedirectPermanent /tools/regex.htm /tools/regex.html
 
 ## Enable url rewrite ##
 <IfModule mod_rewrite.c>
-    RewriteEngine  on
-    RewriteRule    blog/(.+)/$  /blog/$1.html  [R=301]
+	RewriteEngine  on
+	RewriteRule    blog/(.+)/$  /blog/$1.html  [R=301]
+</IfModule>
+
+## Enable CSP ##
+<IfModule mod_headers.c>
+	Header set Content-Security-Policy "default-src 'self' *.michelsen.dk; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.cloudflare.com *.googleapis.com *.gstatic.com *.rawgit.com www.google-analytics.com; img-src data: 'self' *.apache.org *.cloudflare.com *.googleapis.com *.gstatic.com *.michelsen.dk *.staticflickr.com www.google-analytics.com; font-src 'self' data: *.gstatic.com; frame-src disqus.com rawgit.com; style-src 'self' 'unsafe-inline' *.cloudflare.com *.googleapis.com"
+	Header set X-Content-Type-Options nosniff
+	Header set X-Frame-Options DENY
 </IfModule>
