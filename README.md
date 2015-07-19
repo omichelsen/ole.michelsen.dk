@@ -8,7 +8,7 @@ Portfolio and profile website for Ole Bjørn Michelsen.
 
 Before running the project make sure to get all dependencies:
 
-    bower install
+    npm install
 
 ## Develop
 
