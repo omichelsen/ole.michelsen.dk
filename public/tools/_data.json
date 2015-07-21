@@ -1,4 +1,12 @@
 {
+    "csp": {
+        "title": "CSP config generator",
+        "description": "Create a content security policy (CSP) config for your server to protect against cross-site scripting (XSS). Works with Apache, nginx and IIS.",
+        "date": "2015-07-17",
+        "javascripts": [
+            "https://cdn.rawgit.com/jackmoore/autosize/master/dist/autosize.js"
+        ]
+    },
     "uriencode": {
         "title": "URI Encoder/Decoder",
         "description": "Encode or decode query string parameters using encodeURIComponent() ensuring that all characters are encoded and decoded correctly.",

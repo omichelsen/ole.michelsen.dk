@@ -1,0 +1,30 @@
+- var fields = ['default-src', 'connect-src', 'font-src', 'img-src', 'media-src', 'object-src', 'script-src', 'style-src', 'frame-src'];
+
+p This tool is for generating a valid Content Security Policy configuraiton for your webserver. The Apache, nginx and IIS webserver is supported. For an explanation of the different fields and their purpose, please refer to the article <a href="/blog/secure-your-website-with-content-security-policy.html">some article</a>.
+
+p If you would like to edit your existing configuraiton, you can upload it and generate a new <abbr title="Content Security Policy">CSP</abbr> string.
+
+p
+  input.pre#csp-output
+
+form#upload-form
+  p
+    label(for="fileToUpload")
+      b Upload config file:
+    br
+    input#fileToUpload.text(name="fileToUpload" type="file" onchange="onFileChange(this.files)")
+
+form#csp-form
+  input#apache(type="radio" name="format" value="apache" onchange="onRadioChange(this)" checked)
+  label(for="apache") Apache
+  input#nginx(type="radio" name="format" value="nginx" onchange="onRadioChange(this)")
+  label(for="nginx") nginx
+  input#iis(type="radio" name="format" value="iis" onchange="onRadioChange(this)")
+  label(for="iis") IIS
+  dl#csp-list
+    each field in fields
+      dt= field
+      dd
+        textarea(name=field id=field rows="1")
+
+script(src="/scripts/csp.js")

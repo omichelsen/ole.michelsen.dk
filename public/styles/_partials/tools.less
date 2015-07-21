@@ -31,8 +31,34 @@
 		.title {
 			color: #000;
 			font: normal 100%/27px 'Helvetica Neue',Helvetica,Arial,sans-serif;
+			width: 170px;
+			overflow: hidden;
+			text-overflow: ellipsis;
 			text-shadow: 0 1px #fff;
 			-webkit-text-size-adjust: 100%; /* prevent iPhone from mixing up font sizes */
+			white-space: nowrap;
+		}
+	}
+
+	#csp-list {
+		overflow: hidden;
+		> * {
+			// display: inline-block;
+			float: left;
+			margin: 5px 0;
+		}
+		dt {
+			clear: both;
+			padding: 0;
+			width: 100px;
+
+			&:before {
+				content: '\A';
+			}
+		}
+		dd textarea {
+			width: 300px;
+			max-width: 95%;
 		}
 	}
 }
