@@ -28,16 +28,19 @@ function parseConfig(pattern, config) {
 function parseApache(config) {
 	var pattern = /^\s*Header\s(?:always\s)?(?:set|append|merge|add)\sContent-Security-Policy\s"(.+)"/mi;
 	fillInput(parseConfig(pattern, config));
+	setRadioChecked('apache');
 }
 
 function parseNginx(config) {
 	var pattern = /^\s*add_header\sContent-Security-Policy\s"(.+)"/mi;
 	fillInput(parseConfig(pattern, config));
+	setRadioChecked('nginx');
 }
 
 function parseIis(config) {
 	var pattern = /<add name="Content-Security-Policy" value="(.+)"/mi;
 	fillInput(parseConfig(pattern, config));
+	setRadioChecked('iis');
 }
 
 function parseFile(file, result) {
@@ -63,6 +66,11 @@ function onFileChange(files) {
 	};
 
 	reader.readAsDataURL(file);
+}
+
+function setRadioChecked(value) {
+	var elm = document.querySelector('input[value=' + value + ']');
+	elm.checked = true;
 }
 
 function formatInput(text) {
