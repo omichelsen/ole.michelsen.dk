@@ -7,20 +7,21 @@ p If you would like to edit your existing configuraiton, you can upload it and g
 p
   input.pre#csp-output
 
-form#upload-form
-  p
-    label(for="fileToUpload")
-      b Upload config file:
-    br
-    input#fileToUpload.text(name="fileToUpload" type="file" onchange="onFileChange(this.files)")
-
 form#csp-form
-  input#apache(type="radio" name="format" value="apache" onchange="onRadioChange(this)" checked)
-  label(for="apache") Apache
-  input#nginx(type="radio" name="format" value="nginx" onchange="onRadioChange(this)")
-  label(for="nginx") nginx
-  input#iis(type="radio" name="format" value="iis" onchange="onRadioChange(this)")
-  label(for="iis") IIS
+  .input-group
+    label
+      input(type="radio" name="format" value="apache" onchange="onRadioChange(this)" checked)
+      | Apache
+    label
+      input(type="radio" name="format" value="nginx" onchange="onRadioChange(this)")
+      | nginx
+    label
+      input#iis(type="radio" name="format" value="iis" onchange="onRadioChange(this)")
+      | IIS
+    label.upload-form-link.link
+      input(type="file" onchange="onFileChange(this.files)")
+      | Upload config file
+
   dl#csp-list
     each field in fields
       dt= field

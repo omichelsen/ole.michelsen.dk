@@ -9,23 +9,23 @@ html, body
     line-height: 150%;
 }
 
-
-/* FONTS
--------------------------- */
-
 #topnav a,
 footer a
 {
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Helvetica, Arial, sans-serif;
 }
 
-a {
+a,
+.link {
     color: @link;
 }
-a:hover {
+a:hover,
+.link:hover {
     color: @link-hover;
+    cursor: pointer;
 }
-a:active {
+a:active,
+.link:active {
     color: @link-active;
 }
 
@@ -345,6 +345,11 @@ footer
 }
 p > .floatright {
     margin-top: 2px;
+}
+
+.clear {
+    clear: both;
+    overflow: hidden;
 }
 
 .c { text-align: center; }
