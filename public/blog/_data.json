@@ -1,11 +1,12 @@
 {
     "secure-your-website-with-content-security-policy": {
         "title": "Secure your website with Content Security Policy",
-        "description": "Protect your website against cross-site scripting (XSS) with a content security Policy (CSP) with a custom header in Apache, nginx or IIS.",
+        "description": "Protect your website against cross-site scripting (XSS) with a content security policy (CSP) with a custom header in Apache, nginx or IIS.",
         "date": "2015-07-19",
         "tags": [
             "config",
             "security",
+            "webserver",
             "website"
         ]
     },

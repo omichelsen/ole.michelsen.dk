@@ -1,7 +1,7 @@
 {
     "csp": {
         "title": "CSP config generator",
-        "description": "Create a content security policy (CSP) config for your server to protect against cross-site scripting (XSS). Works with Apache, nginx and IIS.",
+        "description": "Create a content security policy (CSP) configuration for your webserver to protect against cross-site scripting (XSS). Supports Apache, nginx and IIS.",
         "date": "2015-07-17",
         "javascripts": [
             "https://cdn.rawgit.com/jackmoore/autosize/master/dist/autosize.js"
