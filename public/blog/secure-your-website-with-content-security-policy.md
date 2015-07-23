@@ -10,7 +10,7 @@ This sounds terrible! How do I protect my users?? Content Security Policy to the
 
 ## Headers
 
-The good news is that it's really easy to protect your website with CSP, you only have to add a single line to your server configuration.
+The good news is that it's really easy to protect your website with CSP, you only have to add a single line to your server configuration. If you already know about CSP, you can use [my CSP config generator](/tools/csp.html) to create a configuration for your webserver.
 
 If you are running Apache, you just need to add this single line to your `.htaccess` configuration file:
 
@@ -26,7 +26,7 @@ This line will configure your website to only load scripts, images etc. from it'
 
 You can set a policy for most types of resources a website can load, from scripts to images, style sheets and fonts. If you don't specifically define a header like `script-src` for scripts, the website will fallback to `default-src`.
 
-The supported directives are:
+### Supported directives
 
 * __default-src__: Define loading policy for all resources type in case of a resource type dedicated directive is not defined (fallback)
 * __script-src__: Define which scripts the protected resource can execute
@@ -37,12 +37,20 @@ The supported directives are:
 * __frame-src__: Define from where the protected resource can embed frames
 * __font-src__: Define from where the protected resource can load fonts
 * __connect-src__: Define which URIs the protected resource can load using script interfaces
-* __form-action__: Define which URIs can be used as the action of HTML form elements
-* __sandbox__: Specifies an HTML sandbox policy that the user agent applies to the protected resource
-* __script-nonce__: Define script execution by requiring the presence of the specified nonce on script elements
-* __plugin-types__: Define the set of plugins that can be invoked by the protected resource by limiting the types of resources that can be embedded
-* __reflected-xss__: Instructs a user agent to activate or deactivate any heuristics used to filter or block reflected cross-site scripting attacks equivalent to the effects of the non-standard X-XSS-Protection header
 * __report-uri__: Specifies a URI to which the user agent sends reports about policy violation
+* __sandbox__: Specifies an HTML sandbox policy that the user agent applies to the protected resource
+
+#### New in CSP2
+
+CSP version 2 introduces some new directives. You should [check out browser support](http://caniuse.com/#feat=contentsecuritypolicy2) first though, as it's kind of spotty right now.
+
+* __form-action__: Define which URIs can be used as the action of HTML form elements
+* __frame-ancestors__: Indicates whether the user agent should allow embedding the resource using a frame, iframe, object, embed or applet element, or equivalent functionality in non-HTML resources (replaces __frame-src__)
+* __plugin-types__: Define the set of plugins that can be invoked by the protected resource by limiting the types of resources that can be embedded
+* __base-uri__: Restricts the URLs that can be used to specify the document base URL 
+* __child-src__: Governs the creation of nested browsing contexts as well as Worker execution contexts
+
+### Keywords
 
 Each directive accepts domain patterns seperated by space, and domain patterns can contain both protocol and ports if you want to be specific: `http://*.mysite.com:8080`. Besides domain patterns there are some [special keywords](https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives#Keywords) you can use:
 
