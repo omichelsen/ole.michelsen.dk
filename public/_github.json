@@ -11,6 +11,11 @@
       "language": "JavaScript",
       "description": "Split your UI into (wizard-like) steps in AngularJS."
     }, {
+      "html_url": "https://github.com/omichelsen/clipboard-button",
+      "name": "clipboard-button",
+      "language": "JavaScript",
+      "description": "Copy text to clipboard by clicking a button, using only vanilla javascript without Flash."
+    }, {
       "html_url": "https://github.com/omichelsen/compare-versions",
       "name": "compare-versions",
       "language": "JavaScript",

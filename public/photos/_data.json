@@ -55,6 +55,15 @@
         ],
         "flickr": [
             {
+                "id": "72157657139531570",
+                "title": "Italy",
+                "thumbnail": {
+                    "url": "https://farm6.staticflickr.com/5624/20566510488_ae850fc2a7_m.jpg",
+                    "width": "240",
+                    "height": "159"
+                }
+            },
+            {
                 "id": "72157653925442300",
                 "title": "Sweden",
                 "thumbnail": {
