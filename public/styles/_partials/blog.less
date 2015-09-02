@@ -134,26 +134,19 @@
         article {
             margin-bottom: 2em;
         }
+    }
 
-        aside {
-            font-family: Georgia, Helvetica, Arial, sans-serif;
+    @media (max-width: @page-width) {
+        .masthead {
+            display: none;
+            background: none;
+        }
 
-            a {
-                color: #5B5B58;
-                text-decoration: none;
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
+        #content {
+            padding-top: 1.4em;
 
-            .title {
-                margin-bottom: 5px;
-                padding-bottom: 3px;
-                border-bottom: 3px double #ccc;
-                color: #333;
-                font-size: 13pt;
-                font-variant: small-caps;
-                text-shadow: #fff 1px 1px;
+            .entry-title {
+                font-size: 20pt;
             }
         }
     }
