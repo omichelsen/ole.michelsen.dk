@@ -2,17 +2,9 @@
 @travel-map-image-spacing: 3px;
 
 .photos {
-    @media (min-width: @page-width) {
-        .slideshow,
-        .slideshow img {
-            height: 600px;
-        }
-    }
     @media (max-width: @page-width) {
-        .slideshow .caption {
-            .title {
-                font-size: large;
-            }
+        .slideshow .caption .title {
+            font-size: large;
         }
     }
 
