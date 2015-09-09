@@ -10,9 +10,9 @@ Of course beware that this is not an offical Apple support guide. Use at your ow
 
 First you need a USB flash drive of __8 GB__ or more. Then you need to start Boot Camp Assistant:
 
-![Boot Camp Assistant should give you the option to create a Windows install USB flash drive from an ISO image, by presenting you with the option 'Create a Windows 7 or later version install disk'.](/images/blog/install-windows-8-with-boot-camp-on-osx-yosemite-with-usb-key/boot-camp-assistant.png)
+![Boot Camp Assistant should give you the option to create a Windows install USB flash drive from an ISO image, by presenting you with the option “Create a Windows 7 or later version install disk”.](/images/blog/install-windows-8-with-boot-camp-on-osx-yosemite-with-usb-key/boot-camp-assistant.png)
 
-The first menu point should be "Create a Windows 7 or later version install disk". If your screen _doesn't_ look like this, you have to do some ninja stuff. To convince Boot Camp Assistant that you are grown enough to use ISO images, follow these steps:
+The first menu point should be “Create a Windows 7 or later version install disk”. If your screen _doesn't_ look like this, you have to do some ninja stuff. To convince Boot Camp Assistant that you are grown enough to use ISO images, follow these steps:
 
 1. Go to Applications > Utilities > Boot Camp Assistant and right click to Show Package Contents
 2. Add Read & Write access to Administrators on the folder `Contents` and the file `Info.plist` 
