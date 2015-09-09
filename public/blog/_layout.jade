@@ -6,7 +6,7 @@ block head
 
 block content
   .masthead
-  .blog(itemscope, itemtype="http://schema.org/Blog")
+  .inner(itemscope, itemtype="http://schema.org/Blog")
     if current.source === 'index'
       != yield
     else

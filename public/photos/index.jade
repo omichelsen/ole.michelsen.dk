@@ -10,7 +10,7 @@
           height='600'
         )
 
-section.albums.flickr
+section.inner.albums.flickr
   each album in public.photos._data.index.flickr
     a.album(
       href="https://www.flickr.com/photos/olemichelsen/sets/#{ album.id }/"
@@ -18,7 +18,7 @@ section.albums.flickr
     )
       .title= album.title
 
-section.albums
+section.inner.albums
   a.album.travel-map(href="travel-map.html")
     .title World Travel Map
 

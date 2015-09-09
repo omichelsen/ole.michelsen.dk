@@ -1,7 +1,6 @@
 /* LAYOUT AND POSITIONING */
 /*------------------------*/
-html, body
-{
+html, body {
     height: 100%; /* needed for #footer placement */
     font-family: Tahoma, Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -10,8 +9,7 @@ html, body
 }
 
 #topnav a,
-#footer a
-{
+#footer a {
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Helvetica, Arial, sans-serif;
 }
 
@@ -32,7 +30,7 @@ a:active,
 
 .a { color: SteelBlue; }
 
-nav ul  { list-style: none; }
+nav ul { list-style: none; }
 
 h1, h2, h3, h4, h5, h6 {
     line-height: initial;
@@ -96,8 +94,7 @@ time {
     white-space: pre;
 }
 
-#container
-{
+#container {
     position:relative; /* needed for footer positioning*/
     height:auto !important; /* real browsers */
     height:100%; /* IE6: treated as min-height*/
@@ -108,15 +105,13 @@ time {
 #header > .title,
 #header > nav > ul,
 #content,
-#footer > .inner
-{
+#footer > .inner {
     clear: both;
     margin: 0 auto;
     max-width: @page-width;
 }
 
-#header
-{
+#header {
     background: linear-gradient(#FFF 40%, #EEE 100%);
 
     .title {
@@ -190,8 +185,7 @@ time {
     }
 }
 
-#content
-{
+#content {
     overflow: hidden;
     padding-bottom: 70px;
 
@@ -199,9 +193,21 @@ time {
         margin: 0.5em 0 1em 0;
     }
 
+    ul.list {
+        margin-left: 1.5em;
+    }
+
+    .inner {
+        clear: both;
+    }
+
     @media (max-width: @page-width) {
-        &> section {
+        h1,
+        .inner {
             padding: 0 5%;
+        }
+        h1 {
+            margin-bottom: 0;
         }
     }
 }
@@ -245,8 +251,7 @@ time {
     }
 }
 
-#footer
-{
+#footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -381,15 +386,6 @@ p > .floatright {
 }
 
 .sitemappath .current { color: #ccc }
-
-#content {
-    ul.list {
-        margin-left: 1.5em;
-    }
-    section {
-        clear: both;
-    }
-}
 
 sup a { font-size: inherit; text-decoration: none; }
 
