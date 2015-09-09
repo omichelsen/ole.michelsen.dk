@@ -9,10 +9,9 @@ function fetchUri($uri)
 
 	curl_setopt($ch, CURLOPT_USERAGENT, 'curl/7.9.8 (i686-pc-linux-gnu) libcurl 7.9.8 (OpenSSL 0.9.6b) (ipv6 enabled)');
 	curl_setopt($ch, CURLOPT_URL, $uri);
-	curl_setopt($ch, CURLOPT_HEADER, 1);
-	curl_setopt($ch, CURLOPT_NOBODY, 1);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	
+
 	$doc = curl_exec($ch);
 
 	if ($doc === FALSE) {
@@ -21,11 +20,11 @@ function fetchUri($uri)
 
 	// Close connection
 	curl_close($ch);
-	
+
 	return $doc;
 }
 
-function http_parse_headers( $header )
+function http_parse_headers($header)
 {
     $retVal = array();
     $fields = explode("\r\n", preg_replace('/\x0D\x0A[\x09\x20]+/', ' ', $header));
@@ -42,53 +41,22 @@ function http_parse_headers( $header )
     return $retVal;
 }
 
-$uri = $_GET['uri'];
-if($uri) 
+if ($_GET['uri'])
 {
-	// Create URI for W3C validation service
-	$validator = "http://validator.w3.org/check?uri=".urlencode($uri)."&output=json";
+	// Create URI for W3C validation service (https://github.com/validator/validator/wiki/Service:-Input:-GET)
+	$validator = "https://validator.w3.org/nu/?out=json&level=error&doc=".urlencode($_GET['uri']);
 
 	// Request a W3C validation of the given URI
 	$w3cresult = fetchUri($validator);
 
-	// Parse the header and return a json object
-	$headers = http_parse_headers($w3cresult);
-	$valid = $headers['X-W3c-Validator-Status'] == 'Valid' ? 'Passed' : 'Failed';
-	$error = $headers['X-W3c-Validator-Errors'] . ' error(s)';
-/*
-	// Parse the W3C validation response as XML
-	$doc = new DOMDocument();
-	$ret = @$doc->loadXML($w3cresult);
-	if($ret)
-	{
-		// Create an XPath query.
-		// Note: you must define the namespace if the XML document has defined namespaces.
-		$xpath = new DOMXPath($doc);
-		$xpath->registerNamespace('env', "http://www.w3.org/2003/05/soap-envelope");
-		$xpath->registerNamespace('m', "http://www.w3.org/2005/10/markup-validator");
-
-		// Locate the value for the (first) validity result field.
-		$query = "//env:Envelope/env:Body/m:markupvalidationresponse/m:validity";
-		$valid = $xpath->query($query)->item(0)->nodeValue;
-
-		if($valid)
-		{
-			// Convert to result string
-			if (strtolower($valid) == 'true')
-				$valid = "Passed";
-			else
-				$valid = "Failed";
-		}
-		else
-		{
-			// If our request failed (e.g. wrong URI), output error messag
-			$query = "//env:Envelope/env:Body/env:Fault/env:Reason/env:Text";
-			$error = $xpath->query($query)->item(0)->nodeValue;
-		}
-	}
-*/
+	// Parse the response json object
+	$json = json_decode($w3cresult);
+	$valid = count($json->messages) == 0 ? "Passed" : "Failed";
+	$error = count($json->messages) . " error(s)";
 }
 
 // Output JSON object (empty value if error)
-echo json_encode(array('valid' => $valid, 'error' => $error));
-?>
+echo json_encode([
+	'valid' => $valid,
+	'error' => $error
+]);
