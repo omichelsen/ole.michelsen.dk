@@ -25,12 +25,16 @@
         line-height: 0;
         box-shadow: 0 0 5px #aaa;
 
-        .innerframe
-        {
+        .image:after {
+            content: "";
             position: absolute;
-            top: 0; left: 0;
-            width: 190px; height: 190px;
+            top:0; bottom:0; left:0; right:0;
+            opacity: 0.5;
             border: 5px solid rgba(70,70,70,.5);
+        }
+
+        @media (max-width: @page-width) {
+            margin: 0;
         }
     }
 
@@ -68,10 +72,6 @@
 
     @media (max-width: @page-width) {
         font-size: 14pt;
-
-        .frame {
-            margin-left: 0;
-        }
 
         dl {
             clear: both;
