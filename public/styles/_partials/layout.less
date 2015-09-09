@@ -10,7 +10,7 @@ html, body
 }
 
 #topnav a,
-footer a
+#footer a
 {
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Helvetica, Arial, sans-serif;
 }
@@ -55,10 +55,6 @@ img {
 section {
     overflow: hidden;
     margin-bottom: 1.5em;
-
-    p {
-        margin: 0.5em 0 1em 0;
-    }
 }
 
 dl {
@@ -109,14 +105,17 @@ time {
     z-index: 1;
 }
 
-header>.title, header>nav>ul, #content, footer section
+#header > .title,
+#header > nav > ul,
+#content,
+#footer > .inner
 {
     clear: both;
     margin: 0 auto;
     max-width: @page-width;
 }
 
-header
+#header
 {
     background: linear-gradient(#FFF 40%, #EEE 100%);
 
@@ -196,6 +195,10 @@ header
     overflow: hidden;
     padding-bottom: 70px;
 
+    p {
+        margin: 0.5em 0 1em 0;
+    }
+
     @media (max-width: @page-width) {
         &> section {
             padding: 0 5%;
@@ -242,7 +245,7 @@ header
     }
 }
 
-footer
+#footer
 {
     position: absolute;
     bottom: 0;
@@ -264,9 +267,11 @@ footer
         font-size: inherit;
         text-decoration: none
     }
+
     a:hover {
         color: #ccc
     }
+
     p {
         margin: 0 !important;
         padding: 0;
