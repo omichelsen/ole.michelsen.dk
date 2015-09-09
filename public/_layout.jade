@@ -44,19 +44,19 @@ html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] :
               a(href="/feed.xml") Feed
                 span.subtitle Latest things
 
-      section#content
+      #content
         block content
           != yield
 
       footer#footer
-        section
-            p.colophon
-              | Created by&nbsp;
-              a(href='/profile.html', rel='author')= author
-              | &nbsp;updated&nbsp;
-              include _shared/date
-            p.sitemappath
-              include _shared/breadcrumbs
+        .inner
+          p.colophon
+            | Created by&nbsp;
+            a(href='/profile.html', rel='author')= author
+            | &nbsp;updated&nbsp;
+            include _shared/date
+          p.sitemappath
+            include _shared/breadcrumbs
 
     include _shared/javascripts
     block scripts
