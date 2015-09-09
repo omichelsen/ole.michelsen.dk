@@ -1,7 +1,9 @@
 So you need to support multiple languages in your website, and you need the system to fallback to a default language if no translation is available. Fortunately LINQ is here to help and can do it all within a single SQL statement.
 
 Since localization is a basic need for all international applications, I have made a simple structure, which can be applied in situations where an entity is required to have localizable values.
+
 <!-- more-->
+
 I have created a [sample project](#projectattachment) in ASP.NET MVC based on an example Article object. What you need is a two-table database layout for the “base” article entries and one table for the translations. I’ll go through the data structure and how the articles easily can be shown with LINQ handling localization.
 
 ## Data structure
