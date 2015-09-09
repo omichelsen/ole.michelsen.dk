@@ -30,7 +30,7 @@
     "validator": {
         "title": "HTML Batch Validator",
         "description": "Batch validate multiple pages on your website from a sitemap file using the official W3C Markup Validator API. Supports HTML5, XHTML, HTML3-4 and SGML.",
-        "date": "2013-10-11"
+        "date": "2015-09-09"
     },
     "countdown": {
         "title": "Yet Another Countdown Clock",

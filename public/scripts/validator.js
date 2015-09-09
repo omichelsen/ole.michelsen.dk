@@ -48,7 +48,7 @@ function validate(index, uri) {
 	$.getJSON('/api/validator-proxy.php', { 'uri': uri },
 		function (data) {
 			$('#loading' + index).html(
-				'<a href="http://validator.w3.org/check?uri=' + encodeURIComponent(uri) + '" target="_blank" style="color:' +
+				'<a href="https://validator.w3.org/nu/?doc=' + encodeURIComponent(uri) + '" target="_blank" style="color:' +
 				(data.valid == 'Passed' ? '#006400' : '#B00') + '">' +
 				(data.valid || data.error) +
 				'</a>'
