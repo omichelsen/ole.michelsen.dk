@@ -70,4 +70,4 @@ It seems that Boot Camp will mess up the partition table, but as long as you cre
 
 ## Final tip: fan control
 
-If you have installed an SSD in your old Mac, the heat sensors in the harddrive will no longer be what the system expects, and thus the fans are spinning at max to protect the hardware. Because it's nice to retain your hearing, you can install the wonderful [Macs Fan Control](https://www.dropbox.com/s/zdc40r7zch4mq4m/Screenshot%202015-06-24%2009.47.07.png?dl=0) app and set system to watch for another sensor, e.g. the S.M.A.R.T one in your SSD.
+If you have installed an SSD in your old Mac, the heat sensors in the harddrive will no longer be what the system expects, and thus the fans are spinning at max to protect the hardware. Because it's nice to retain your hearing, you can install the wonderful [Macs Fan Control](http://www.crystalidea.com/macs-fan-control) app and set the system to watch for another sensor, e.g. the S.M.A.R.T one in your SSD.
