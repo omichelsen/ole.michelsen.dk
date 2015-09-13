@@ -76,7 +76,7 @@ As soon as the service worker is successfully installed, the `activate` event wi
 
 Besides the core files which we can permanently cache, our app also uses data that is updated regularly. Countries and currencies doesn't change that often, but the exchange rates change every two hours. Therefore need a special cache strategy for this data, where we will default to the cache so we can deliver a result as fast as possible, but also check for a newer version and update the cache.
 
-<p class="c"><img alt="Cache then network handled by service worker" src="/images/blog/making-an-offline-webapp-with-service-workers/cache-then-network.png" srcset="/images/blog/making-an-offline-webapp-with-service-workers/cache-then-network-2x.png 2x" width="714" height="438"></p>
+<p class="c"><img alt="Cache then network handled by service worker" src="/images/blog/making-an-offline-webapp-with-service-workers/cache-then-network.png" srcset="/images/blog/making-an-offline-webapp-with-service-workers/cache-then-network-2x.png 2x" width="500" height="307"></p>
     
     self.addEventListener('fetch', function (event) {
         event.respondWith(
