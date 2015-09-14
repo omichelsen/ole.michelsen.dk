@@ -13,10 +13,7 @@ If you don't quite know what a Service Worker is, here's the elevator pitch: a S
 We'll start off by actually loading our service worker (called `service-worker.js`) on the page. This snippet should be one of the first things in your app:
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js', {
-            scope: './'
-        }).then(function () {
-            // Registration was successful. Now, check to see whether the service worker is controlling the page.
+        navigator.serviceWorker.register('/service-worker.js').then(function () {
             if (navigator.serviceWorker.controller) {
                 // If .controller is set, then this page is being actively controlled by the service worker.
                 console.log('In control!');
@@ -32,21 +29,27 @@ We'll start off by actually loading our service worker (called `service-worker.j
 
 ## Offline First
 
-In order for our app to even load offline, we obviously need to make sure that essentials like the main app script and style sheet is cached. We can do this by explicitly listing the resources the app needs to function:
+Now we will create our `service-worker.js`. In order for our app to even load offline, we obviously need to make sure that essentials like the main app script and style sheet is cached. We can do this by explicitly listing the resources the app needs to function:
+
+    var CACHE_VERSION = 'v1';
 
     this.addEventListener('install', function (event) {
         event.waitUntil(
-            caches.open('v1').then(function (cache) {
+            caches.open(CACHE_VERSION).then(function (cache) {
                 return cache.addAll([
                     'index.html',
-                    'scripts/app-v2.js',
-                    'styles/app-v5.css',
+                    'styles/app.css',
                     'data/countries.json',
-                    'data/countries_currencies.json'
-                ]);
+                    'data/countries_currencies.json',
+                    'https://openexchangerates.org/api/currencies.json',
+                    'https://openexchangerates.org/api/latest.json'
+                ]).catch(function (error) {
+                    console.error('Error in install handler:', error);
+                });
             })
         );
     });
+
 
 In the Kuranz app, the most important resources are the data for countries and currencies and the mapping thereof.
 
@@ -54,16 +57,12 @@ In the Kuranz app, the most important resources are the data for countries and c
 
 As soon as the service worker is successfully installed, the `activate` event will fire. This will happen every time your service worker starts, so it's a great time to do some house cleaning. Every time you update a file in your app, it should be cleared from the cache, so we will do this here:
     
-    self.addEventListener('activate', function (event) {
-        var expectedCacheNames = Object.keys(CURRENT_CACHES).map(function (key) {
-            return CURRENT_CACHES[key];
-        });
-
+    this.addEventListener('activate', function (event) {
         event.waitUntil(
             caches.keys().then(function (cacheNames) {
                 return Promise.all(
                     cacheNames.map(function (cacheName) {
-                        if (expectedCacheNames.indexOf(cacheName) == -1) {
+                        if (cacheName !== CACHE_VERSION) {
                             return caches.delete(cacheName);
                         }
                     })
@@ -72,37 +71,49 @@ As soon as the service worker is successfully installed, the `activate` event wi
         );
     });
 
+
 ## Cache then network
 
 Besides the core files which we can permanently cache, our app also uses data that is updated regularly. Countries and currencies doesn't change that often, but the exchange rates change every two hours. Therefore need a special cache strategy for this data, where we will default to the cache so we can deliver a result as fast as possible, but also check for a newer version and update the cache.
 
 <p class="c"><img alt="Cache then network handled by service worker" src="/images/blog/making-an-offline-webapp-with-service-workers/cache-then-network.png" srcset="/images/blog/making-an-offline-webapp-with-service-workers/cache-then-network-2x.png 2x" width="500" height="307"></p>
     
-    self.addEventListener('fetch', function (event) {
-        event.respondWith(
-            caches.open('font-v1').then(function (cache) {
-                return cache.match(event.request).then(function (response) {
-                    if (response) {
-                        return response;
-                    } else {
-                        return fetch(event.request.clone()).then(function (response) {
-                            if (response.status < 400 &&
-                                response.headers.has('content-type') &&
-                                response.headers.get('content-type').match(/json/i)) {
-                                // Put json files in the cache
-                                cache.put(event.request, response.clone());
-                            }
+    this.addEventListener('fetch', function (event) {
+        var requestUrl = new URL(event.request.url);
 
-                            // Return the original response object, which will be used to fulfill the resource request.
+        if (requestUrl.hostname === 'openexchangerates.org') {
+            event.respondWith(
+                caches.open(CACHE_VERSION).then(function (cache) {
+                    return cache.match(event.request).then(function (response) {
+                        if (response) {
+                            fetchAndCache(event, cache);
                             return response;
-                        });
-                    }
-                }).catch(function (error) {
-                    throw error;
-                });
-            })
-        );
+                        } else {
+                            return fetchAndCache(event, cache);
+                        }
+                    }).catch(function (error) {
+                        console.error('  Error in fetch handler:', error);
+                        throw error;
+                    });
+                })
+            );
+        } else {
+            event.respondWith(
+                caches.match(event.request).then(function (response) {
+                    return response || fetch(event.request);
+                })
+            );
+        }
     });
+
+    function fetchAndCache(event, cache) {
+        return fetch(event.request.clone()).then(function (response) {
+            if (response.status < 400) {
+                cache.put(event.request, response.clone());
+            }
+            return response;
+        });
+    }
 
 ## Background Sync (future)
 
@@ -125,7 +136,7 @@ An interesting supporting feature is in the works: [Background Sync](https://git
 
 ### Respond in the service worker
 
-    self.addEventListener('periodicsync', function (event) {
+    this.addEventListener('periodicsync', function (event) {
         if (event.registration.tag == 'get-latest-news') {
             event.waitUntil(fetchAndCacheLatestNews());
         } else {
