@@ -1,15 +1,21 @@
+- function sortFolder(root) {
+-   var folders = _.pick(root, (value, key) => key.indexOf('_') === -1);
+-   _.map(folders, (value, key) => _.merge(value, {key}));
+-   var sorted = _.sortByOrder(folders, '_data.index.date', 'desc');
+-   return sorted;
+- };
+
 ul.projects
-  for item, slug in public.portfolio._data
-    if (slug !== 'index')
-      - var img = slug + '/' + (item.image || 'thumb.png')
-      li
-        a(
-          href='/portfolio/#{ slug }.html'
-          style='background-image:url(/images/portfolio/#{ img })'
-        )
-          span.text
-            span.title= item.title
-            span.tags
-              b= item.created
-              | &nbsp;·&nbsp;
-              != item.keywords
+  each item in sortFolder(public.portfolio)
+    - var img = slug + '/' + (item.image || 'thumb.png')
+    li
+      a(
+        href='/portfolio/#{ item.key }/'
+        style='background-image: url(/portfolio/#{ key }/#{ img })'
+      )
+        span.text
+          span.title= item._data.index.title
+          span.tags
+            b= item._data.index.created
+            | &nbsp;·&nbsp;
+            != item._data.index.keywords
