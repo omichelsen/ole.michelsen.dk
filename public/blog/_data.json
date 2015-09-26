@@ -1,4 +1,13 @@
 {
+    "making-an-offline-webapp-with-service-workers": {
+        "title": "Making an offline web app with Service Workers",
+        "description": "Introduction to Service Workers: a hands on example of how to build an offline capable web app.",
+        "date": "2015-09-05",
+        "tags": [
+            "javascript",
+            "webapp"
+        ]
+    },
     "secure-your-website-with-content-security-policy": {
         "title": "Secure your website with Content Security Policy",
         "description": "Protect your website against cross-site scripting (XSS) with a content security policy (CSP) with a custom header in Apache, nginx or IIS.",
