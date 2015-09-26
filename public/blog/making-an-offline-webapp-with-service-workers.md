@@ -84,7 +84,7 @@ Besides the core files which we can permanently cache, our app also uses data th
 
 <p class="c"><img alt="Cache then network handled by service worker" src="/images/blog/making-an-offline-webapp-with-service-workers/cache-then-network.png" srcset="/images/blog/making-an-offline-webapp-with-service-workers/cache-then-network-2x.png 2x" width="500" height="307"></p>
 
-We do this by extending the `fetch` event handler, to check which resource we are getting. If it is from openexchangerates.org (the currency rates), we want to use our new cache strategy, otherwise use the normal one:
+We do this by extending the `fetch` event handler, to check which resource we are getting. If the request is to [openexchangerates.org](https://openexchangerates.org/), we want to use our new cache strategy, otherwise we use our normal one:
 
     this.addEventListener('fetch', function (event) {
         var requestUrl = new URL(event.request.url);
@@ -123,11 +123,11 @@ We do this by extending the `fetch` event handler, to check which resource we ar
         });
     }
 
-Now when our app requests the currency rates, they will be delivered immediately from the cache, and if there is network access, the cache will be updated with a new version in the background. However this means that our app will not get the updated rates until the page is refreshed. This is not optimal, but there are some options to improve this.
+Now when our app requests the currency rates, the data will be delivered immediately from the cache, and if there is network access, the cache will be updated with a new version in the background. However this means that our app will not get the updated rates until the page is refreshed. This is not optimal, but there are some options to improve this.
 
 ## Notify page of update with postMessage()
 
-With `postMessage()` we can send messages between the service worker and the page. We can use this to notify the page, that an update has been downloaded with the following code in the page:
+With `postMessage()` we can send messages between the service worker and the page. We can use this to notify the page, that an update has been downloaded:
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.addEventListener('message', function(event) {
@@ -140,7 +140,7 @@ With `postMessage()` we can send messages between the service worker and the pag
         });
     }
 
-Then in the service worker we send an update message when a new version have been downloaded (partial code from the `fetch` handler):
+In the service worker we send an update message when a new version have been downloaded (partial code from the `fetch` handler):
 
     ...
     if (response) {
@@ -162,11 +162,9 @@ Then in the service worker we send an update message when a new version have bee
         });
     }
 
-The update message includes a timestamp, so we can compare and see if it is newer than `currentTimestamp` (assuming this variable contains the timestamp of the currently loaded data). This example just checks if it is newer than 4 hours, but you could use a more intelligent base of comparison.
+The update message includes a timestamp, so we can compare and see if it is newer than `currentTimestamp` (assuming this variable contains the timestamp of the currently loaded data). This example just checks if it is newer than 4 hours, but you could use a more intelligent comparison method.
 
-Now our app is completely ready to work even in spotty network conditions. Everything will be super fast and served from the chache, and we will still recieve updates to our data if there is network connection. The best thing is that our app can remain largely agnostic to the presence of the service worker. We do not have to change any existing code, or change the way we request the data, it will just be provided to us in the fastest way possible - even offline!
-
-Service workers may become even more powerful in the future, as new features could improve the background updating of data even more.
+Now our app is completely ready to work even in spotty network conditions. Everything will be super fast and served from the chache, and we will still recieve updates to our data if there a newer version is available. The best thing is that our app can remain largely agnostic to the presence of the service worker. We do not have to change any existing code, or change the way we request the data, it will just be provided to us in the fastest way possible - even offline!
 
 ## Background Sync
 
