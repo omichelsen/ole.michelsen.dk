@@ -8,7 +8,7 @@ This example will be based on a web app I made a while ago, a currency convertio
 
 If you don't quite know what a service worker is, here's the elevator pitch: a service worker is a script that runs in the background and can control the page it's loaded by. In this script you can intercept, modify and cache requests made by the page. Everything runs in a separate process and is designed to be async, but you also have no access to the <abbr title="Document Object Model">DOM</abbr>. For quite sensible reasons, service workers only run over HTTPS.
 
-## Install your Service Worker
+## Install your service worker
 
 We'll start off by actually loading our service worker (called `service-worker.js`) on the page. This snippet should be one of the first things in your app:
 
@@ -131,7 +131,7 @@ With `postMessage()` we can send messages between the service worker and the pag
 
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.addEventListener('message', function(event) {
-            if (event.data.timestamp - currentTimestamp > 1000*60*60*4) {
+            if (event.data.timestamp - currentTimestamp > 4*60*60*1000) {
                 document.location.reload();
             }
         });
@@ -142,14 +142,15 @@ With `postMessage()` we can send messages between the service worker and the pag
 
 In the service worker we send an update message when a new version have been downloaded (partial code from the `fetch` handler):
 
-    ...
-    if (response) {
-        fetchAndCache(event, cache).then(sendUpdateNotification);
-        return response;
-    } else {
-        return fetchAndCache(event, cache);
-    }
-    ...
+    this.addEventListener('fetch', function (event) {
+        ...
+        if (response) {
+            fetchAndCache(event, cache).then(sendUpdateNotification);
+            return response;
+        } else {
+            return fetchAndCache(event, cache);
+        }
+        ...
     
     function sendUpdateNotification(response) {
         clients.matchAll().then(function (clients) {
@@ -168,13 +169,13 @@ Now our app is completely ready to work even in spotty network conditions. Every
 
 ## Background Sync
 
-An interesting supporting feature is in the works: [Background Sync](https://github.com/slightlyoff/BackgroundSync). This will potentially allow for us to schedule regular updates to parts of our cache, so we can show the latest news even though the user might not have refreshed the page recently. It is [not ready yet](https://jakearchibald.github.io/isserviceworkerready/#background-sync), but here's an example of the suggested syntax:
+An interesting supporting feature is in the works: [Background Sync](https://github.com/slightlyoff/BackgroundSync). This will potentially allow for us to schedule regular updates to parts of our cache, so we can show the latest rates even though the user might not have refreshed the page recently. It is [not ready yet](https://jakearchibald.github.io/isserviceworkerready/#background-sync), but here's an example of the suggested syntax:
 
 ### Request it from the page
 
     navigator.serviceWorker.ready.then(function (registration) {
         registration.periodicSync.register({
-            tag: 'get-latest-news', // default: ''
+            tag: 'get-latest-rates', // default: ''
             minPeriod: 12 * 60 * 60 * 1000, // default: 0
             powerState: 'avoid-draining', // default: 'auto'
             networkState: 'avoid-cellular' // default: 'online'
@@ -185,11 +186,11 @@ An interesting supporting feature is in the works: [Background Sync](https://git
         })
     });
 
-### Respond in the Service Worker
+### Respond in the service worker
 
     this.addEventListener('periodicsync', function (event) {
-        if (event.registration.tag == 'get-latest-news') {
-            event.waitUntil(fetchAndCacheLatestNews());
+        if (event.registration.tag == 'get-latest-rates') {
+            event.waitUntil(fetchAndCache());
         } else {
             // unknown sync, may be old, best to unregister
             event.registration.unregister();
