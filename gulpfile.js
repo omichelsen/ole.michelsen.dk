@@ -4,7 +4,6 @@ var gulp = require('gulp'),
     extend = require('gulp-extend'),
     jeditor = require('gulp-json-editor'),
     request = require('request'),
-    shell = require('gulp-shell'),
     source = require('vinyl-source-stream'),
     streamify = require('gulp-streamify');
 
@@ -16,10 +15,6 @@ function gpsDecimal(direction, degrees, minutes, seconds) {
 function roundDecimal(dec) {
     return parseFloat(dec.toFixed(4));
 }
-
-gulp.task('harp', shell.task([
-    'harp compile'
-]));
 
 gulp.task('exif', function () {
     return gulp.src('./public/images/photos/_map/*.jpg')
