@@ -55,7 +55,7 @@ RedirectPermanent /tools/regex.htm /tools/regex.html
 
 ## Enable CSP ##
 <IfModule mod_headers.c>
-	Header set Content-Security-Policy "default-src 'self' *.michelsen.dk; font-src 'self' data: https://*.gstatic.com; img-src 'self' *.apache.org *.cloudflare.com *.michelsen.dk data: https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com www.google-analytics.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.cloudflare.com *.disqus.com https://*.disquscdn.com https://*.googleapis.com https://*.gstatic.com https://*.rawgit.com www.google-analytics.com; style-src 'self' 'unsafe-inline' *.cloudflare.com https://*.googleapis.com; frame-src disqus.com rawgit.com"
+	Header set Content-Security-Policy "default-src 'self' *.michelsen.dk; font-src 'self' data: https://*.gstatic.com; img-src 'self' *.apache.org *.cloudflare.com *.michelsen.dk data: https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com www.google-analytics.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.cloudflare.com *.disqus.com https://*.disquscdn.com https://*.googleapis.com https://*.gstatic.com https://*.rawgit.com www.google-analytics.com; style-src 'self' 'unsafe-inline' *.cloudflare.com https://*.googleapis.com; frame-src disqus.com rawgit.com https://*.youtube.com"
 	Header set X-Content-Type-Options nosniff
 	Header set X-Frame-Options DENY
 </IfModule>
