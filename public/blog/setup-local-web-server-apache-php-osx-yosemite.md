@@ -6,6 +6,12 @@ This is an updated version of [my article on Mavericks](setup-local-web-server-a
 
 <!-- more-->
 
+<p class="c">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/J2lQky0r00A" frameborder="0" allowfullscreen></iframe>
+</p>
+
+Thanks to the people at Webucator this guide is now also available as a video, so check out their [Apache Web Server training](https://www.webucator.com/servers/apache.cfm) if you want to learn more.
+
 ## Apache and PHP
 
 As I said everything you need should already be installed on your new Yosemite machine, so go ahead and and write the following in a Terminal window:
