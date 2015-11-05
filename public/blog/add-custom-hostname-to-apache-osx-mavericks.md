@@ -10,11 +10,11 @@ Edit your Apache configuration by entering the following in a Terminal:
 
 `sudo nano /etc/apache2/httpd.conf`
 
-Use ctrl+w to search for “vhosts” and uncomment the following line (remove the #):
+Use <kbd>CTRL</kbd>+<kbd>W</kbd> to search for “vhosts” and uncomment the following line (remove the #):
 
 `Include /private/etc/apache2/extra/httpd-vhosts.conf`
 
-Press ctrl+o and then ctrl+x to save and exit. Now you can edit and add your own Virtual Hosts configuration:
+Press <kbd>CTRL</kbd>+<kbd>O</kbd> and then <kbd>CTRL</kbd>+<kbd>X</kbd> to save and exit. Now you can edit and add your own Virtual Hosts configuration:
 
 `sudo nano /etc/apache2/extra/httpd-vhosts.conf`
 
@@ -44,7 +44,7 @@ __Update 2014-11-25__: If you are using OS X Yosemite, you need to change the la
 
 `Require all granted`
 
-Press ctrl+o and then ctrl+x to save and exit. As always you have to restart Apache for the changes to kick in:
+Press <kbd>CTRL</kbd>+<kbd>O</kbd> and then <kbd>CTRL</kbd>+<kbd>X</kbd> to save and exit. As always you have to restart Apache for the changes to kick in:
 
 `sudo apachectl restart`
 
