@@ -37,7 +37,7 @@ Paste the following config into the Terminal editor:
       Allow from all
     </Directory>
 
-Press ctrl+o and then ctrl+x to save and exit.
+Press <kbd>CTRL</kbd>+<kbd>O</kbd> and then <kbd>CTRL</kbd>+<kbd>X</kbd> to save and exit.
 
 ## PHP
 
@@ -45,11 +45,11 @@ Now we want to enable PHP, so you can actually develop something. Mavericks come
 
 `sudo nano /etc/apache2/httpd.conf`
 
-Use ctrl+w to search within nano and search for “php”. Uncomment the first line you find (remove the #):
+Use <kbd>CTRL</kbd>+<kbd>W</kbd> to search within nano and search for “php”. Uncomment the first line you find (remove the #):
 
 `LoadModule php5_module libexec/apache2/libphp5.so`
 
-Press ctrl+o and then ctrl+x to save and exit. Restart Apache for the change to kick in:
+Press <kbd>CTRL</kbd>+<kbd>O</kbd> and then <kbd>CTRL</kbd>+<kbd>X</kbd> to save and exit. Restart Apache for the change to kick in:
 
 `sudo apachectl restart`
 
