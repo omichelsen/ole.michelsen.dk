@@ -4,6 +4,8 @@ After this tutorial you will have a working local Apache server with PHP, and I 
 
 This is an updated version of [my article on Mavericks](setup-local-web-server-apache-php-macos-x-mavericks.html), as a few things have changed with OS X Yosemite and the upgraded Apache 2.4.
 
+__Update 2015-10-15__: This guide will also work with MacOS 10.11 El Capitain.
+
 <!-- more-->
 
 <p class="c">
