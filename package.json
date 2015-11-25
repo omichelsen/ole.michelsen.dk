@@ -8,6 +8,9 @@
     "start": "harp server & browser-sync start --proxy 'localhost:9000' --files 'public/**/*.jade, public/**/*.md, public/**/*.less, public/**/_data.json'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "^4.2.2"
+  },
   "repository": {
     "type": "git",
     "url": "git@bitbucket.org:olemichelsen/ole.michelsen.dk.git"
