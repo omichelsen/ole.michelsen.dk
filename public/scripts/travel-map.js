@@ -75,7 +75,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 // Init Masonry
 var msnry = new Masonry('.images', {
-    itemSelector: '.image',
+    itemSelector: '.image-fixed',
     columnWidth: 106,
     resizable: false
 });

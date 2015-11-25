@@ -73,16 +73,19 @@
         width: 100%;
         height: @travel-map-height;
     }
+
     .images {
         overflow: hidden;
         margin: 0 -@travel-map-image-spacing;
         margin-top: @travel-map-height + @travel-map-image-spacing;
-        .image {
+
+        .image-fixed {
             float:left;
             margin: @travel-map-image-spacing;
             min-height: 100px;
             min-width: 100px;
             background: #f4f4f4;
+
             &:hover {
                 margin-bottom: 1px;
                 border-bottom: 2px solid @secondary;
