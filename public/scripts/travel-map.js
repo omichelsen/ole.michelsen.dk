@@ -65,7 +65,7 @@ function initialize() {
         scrollTo(document.documentElement.scrollTo ? document.documentElement : document.body, elmMap.offsetTop - 3, 1000);
     }
 
-    var elmImages = document.querySelectorAll('.images .image');
+    var elmImages = document.querySelectorAll('.images .image-fixed');
     for (var i = 0; i < elmImages.length; i++) {
         elmImages[i].addEventListener('click', imageClickHandler, false);
     }
