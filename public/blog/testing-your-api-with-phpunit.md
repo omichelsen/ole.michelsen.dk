@@ -2,7 +2,7 @@
 
 REST uses the standard [HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to indicate the success of a request, so we must ensure it returns the expected codes, especially in error scenarios.
 
-I recently implemented a simple REST API in PHP for [Regex Crossword](https://regexcrossword.com/), so in this article I will show how to write some API tests using PHPUnit (4.8) and Guzzle (6.1). Actually we can test _any_ API written in _any_ language using this, but if you are used to PHP this will be very easy.
+I recently implemented a simple REST API in PHP for [Regex Crossword](https://regexcrossword.com/), so in this article I will show how to write some API tests using PHPUnit 5.0 and Guzzle 6.1. Actually we can test _any_ API written in _any_ language using this, but if you are used to PHP this will be very easy.
 
 <!-- more-->
 
@@ -12,7 +12,7 @@ __Update 2015-11-30__: This article and examples have been updated to GuzzleHttp
 
 First we download [PHPUnit](https://phpunit.de/) which is the testing framework in which we will write our tests. Then we download [Guzzle](http://guzzle.readthedocs.org/en/latest/overview.html#installation), which is a library that helps us make requests to the API. You can install both using [Composer](https://getcomposer.org/) if you like:
 
-    $ composer require guzzlehttp/guzzle:^6.1 phpunit/phpunit:^4.8
+    $ composer require guzzlehttp/guzzle:^6.1 phpunit/phpunit:^5.0
 
 ## Testing the API
 
