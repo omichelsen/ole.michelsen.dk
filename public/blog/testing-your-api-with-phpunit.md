@@ -1,14 +1,18 @@
-<img class="floatright" src="/images/blog/testing-your-api-with-phpunit/phpunit.png" alt="Example output from PHPUnit" height="296" width="428"> It's always a good idea to have tests for your code, and your API is no exception. In addition to normal unit tests, API tests can test the full code stack, and ensure that the data from your database actually reaches the clients in the correct format.
+<img class="floatright" src="/images/blog/testing-your-api-with-phpunit/phpunit.png" srcset="/images/blog/testing-your-api-with-phpunit/phpunit@2x.png 2x" alt="Example output from PHPUnit" height="352" width="482"> It's always a good idea to have tests for your code, and your API is no exception. In addition to normal unit tests, API tests can test the full code stack, and ensure that the data from your database actually reaches the clients in the correct format.
 
 REST uses the standard [HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to indicate the success of a request, so we must ensure it returns the expected codes, especially in error scenarios.
 
-I recently implemented a simple REST API in PHP for [RegexCrossword.com](http://regexcrossword.com/), so in this article I will show how to write some API tests using PHPUnit and Guzzle. Actually we can test _any_ API written in _any_ language using this, but if you are used to PHP this will be very easy.
+I recently implemented a simple REST API in PHP for [Regex Crossword](https://regexcrossword.com/), so in this article I will show how to write some API tests using PHPUnit (4.8) and Guzzle (6.1). Actually we can test _any_ API written in _any_ language using this, but if you are used to PHP this will be very easy.
 
 <!-- more-->
 
+__Update 2015-11-30__: This article and examples have been updated to GuzzleHttp 6.
+
 ## PHPUnit and Guzzle
 
-First we download [PHPUnit](https://phpunit.de/) which is the testing framework in which we will write our tests. Then we download [Guzzle](http://guzzle.readthedocs.org/en/latest/overview.html#installation), which is a library that helps us make requests to the API. You can install both using [Composer](https://getcomposer.org/) if you like.
+First we download [PHPUnit](https://phpunit.de/) which is the testing framework in which we will write our tests. Then we download [Guzzle](http://guzzle.readthedocs.org/en/latest/overview.html#installation), which is a library that helps us make requests to the API. You can install both using [Composer](https://getcomposer.org/) if you like:
+
+    $ composer require guzzlehttp/guzzle:^6.1 phpunit/phpunit:^4.8
 
 ## Testing the API
 
@@ -27,8 +31,7 @@ We'll add our first test file called `BooksTest.php`:
         protected function setUp()
         {
             $this->client = new GuzzleHttp\Client([
-                'base_url' => 'http://mybookstore.com',
-                'defaults' => ['exceptions' => false]
+                'base_uri' => 'http://mybookstore.com'
             ]);
         }
 
@@ -42,7 +45,7 @@ We'll add our first test file called `BooksTest.php`:
 
             $this->assertEquals(200, $response->getStatusCode());
 
-            $data = $response->json();
+            $data = json_decode($response->getBody(), true);
 
             $this->assertArrayHasKey('bookId', $data);
             $this->assertArrayHasKey('title', $data);
@@ -55,7 +58,7 @@ There's a few going on here. First we include Guzzle and PHPUnit. If you install
 
 Then we create a test class for our `/books` endpoint called `BooksTest`. You can name this whatever you like, but I prefer to have tests for each endpoint in separate files/classes.
 
-Using the special `setUp()` function, we can instantiate a new Guzzle client before each test. This saves us some lines of code if we have more than one test. The option `'exceptions' => false` makes sure Guzzle don't throw an exception if our API returns an error code.
+Using the special `setUp()` function, we can instantiate a new Guzzle client before each test. This saves us some lines of code if we have more than one test.
 
 The last function `testGet_ValidInput_BookObject` is our actual test, which verifies that we can GET a single book from our API. We then assert that this book has the properties we are expecting.
 
@@ -68,7 +71,7 @@ Let's add an additional test, to see if we can also create a new book.
         $bookId = uniqid();
 
         $response = $this->client->post('/books', [
-            'body' => [
+            'json' => [
                 'bookId'    => $bookId,
                 'title'     => 'My Random Test Book',
                 'author'    => 'Test Author'
@@ -77,7 +80,7 @@ Let's add an additional test, to see if we can also create a new book.
 
         $this->assertEquals(200, $response->getStatusCode());
 
-        $data = $response->json();
+        $data = json_decode($response->getBody(), true);
 
         $this->assertEquals($bookId, $data['bookId']);
     }
@@ -86,11 +89,14 @@ Now we have some tests for the "happy path", but we should also check that our A
     
     public function testDelete_Error()
     {
-        $response = $this->client->delete('/books/random-book');
+        $response = $this->client->delete('/books/random-book', [
+            'http_errors' => false
+        ]);
         
         $this->assertEquals(405, $response->getStatusCode());
     }
 
+The option `'http_errors' => false` makes sure Guzzle don't throw an exception if our API returns an error code.
 
 ## Running the tests
 
