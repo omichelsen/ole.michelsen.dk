@@ -10,4 +10,4 @@
 - if (!date)
   - date = (new Date().getFullYear()) + '-' + (new Date().getMonth() + 1) + '-' + (new Date().getDate());
 
-time(datetime="#{ date }")= prettyDate(date)
+time(datetime=date itemprop=type)= prettyDate(date)

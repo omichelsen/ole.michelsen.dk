@@ -7,7 +7,7 @@ block content
       != yield
     else
       article(itemprop="blogPosts", itemscope, itemtype="http://schema.org/BlogPosting")
-        h1.entry-title= title
+        h1.entry-title(itemprop="headline")= title
         != partial('../_shared/entry-meta')
         != yield
         != partial('../_shared/blog-navigation', public.blog)

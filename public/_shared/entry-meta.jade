@@ -1,8 +1,8 @@
 .entry-meta
   span Article by
-  | &nbsp;
   span.author= author
-  | &nbsp;
   span posted on
-  | &nbsp;
-  include date
+  != partial('date', {type: 'datePublished'})
+  if dateModified
+    span , updated
+    != partial('date', {type: 'dateModified', date: dateModified})
