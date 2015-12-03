@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "autosize": "^3.0.8",
+    "highlight.js": "^9.0.0",
     "simple-slideshow": "^2.0.0"
   },
   "devDependencies": {
