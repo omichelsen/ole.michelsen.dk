@@ -37,6 +37,9 @@ mixin feed(item, url, defaultType)
       h4 Things I connect to
       ul.social
         li
+          a(href='https://github.com/omichelsen', rel='external', title='Github')
+            i.icon-github
+        li
           a(href='https://www.linkedin.com/in/olebjornmichelsen', rel='external', title='LinkedIn')
             i.icon-linkedin
         li
@@ -48,11 +51,6 @@ mixin feed(item, url, defaultType)
         li
           a(href='https://www.flickr.com/photos/olemichelsen', rel='external', title='Flickr')
             i.icon-flickr
-      .c
-        .postit
-          span
-            | You can also&nbsp;
-            a(href='mailto:#{ email }') drop me a line
 
 script.
   window.addEventListener('load', function () { var slsh = new SlideShow('.slideshow'); });
