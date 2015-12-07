@@ -12,10 +12,7 @@
     "index": {
         "title": "Web Development and Computer Science",
         "description": "Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.",
-        "date": "2015-03-06",
-        "javascripts": [
-            "https://cdn.rawgit.com/omichelsen/simple-slideshow/317a6d1d2dfd7e80d78daafceac3c08d44079e12/src/slideshow.js"
-        ],
+        "date": "2015-09-05",
         "updates": [
             {
                 "title": "New photo album “Italy”",

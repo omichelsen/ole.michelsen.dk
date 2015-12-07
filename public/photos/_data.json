@@ -2,10 +2,7 @@
     "index": {
         "title": "Photos",
         "description": "Photographs i have taken both home and abroad on my travels. Photography is an inspiration to look at the world in a fresh and creative way.",
-        "date": "2014-10-31",
-        "javascripts": [
-            "https://cdn.rawgit.com/omichelsen/simple-slideshow/317a6d1d2dfd7e80d78daafceac3c08d44079e12/src/slideshow.js"
-        ],
+        "date": "2015-08-30",
         "slideshow": [
             {
                 "url": "crow-pole.jpg",

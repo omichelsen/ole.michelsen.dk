@@ -22,6 +22,8 @@ section.inner.albums
   a.album.travel-map(href="travel-map.html")
     .title World Travel Map
 
+script
+  include ../../node_modules/simple-slideshow/src/slideshow.js
 script.
   window.addEventListener('load', function () {
     var albums = document.querySelectorAll('.flickr.albums .album');

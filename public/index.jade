@@ -52,5 +52,7 @@ mixin feed(item, url, defaultType)
           a(href='https://www.flickr.com/photos/olemichelsen', rel='external', title='Flickr')
             i.icon-flickr
 
+script
+  include ../node_modules/simple-slideshow/src/slideshow.js
 script.
   window.addEventListener('load', function () { var slsh = new SlideShow('.slideshow'); });
