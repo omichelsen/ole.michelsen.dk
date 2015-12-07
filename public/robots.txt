@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /viewsource/
 
-Sitemap: http://ole.michelsen.dk/sitemap.xml
+Sitemap: https://ole.michelsen.dk/sitemap.xml

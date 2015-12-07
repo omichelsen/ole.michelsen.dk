@@ -15,7 +15,7 @@ $(document).ready(function () {
         if (isiOS()) {
             $("#vcard-dialog").dialog("open");
         } else {
-            location.href = 'http://ole.michelsen.dk/olemichelsen.vcf';
+            location.href = 'https://ole.michelsen.dk/olemichelsen.vcf';
         }
     }
 

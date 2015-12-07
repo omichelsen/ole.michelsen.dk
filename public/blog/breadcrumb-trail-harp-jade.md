@@ -12,7 +12,7 @@ First we add a [mixin](http://jade-lang.com/reference/mixins/), which is a piece
 
     mixin breadcrumb(url, title)
       span(itemscope, itemtype='http://data-vocabulary.org/Breadcrumb')
-        a(href='http://ole.michelsen.dk/', itemprop='url')
+        a(href='https://ole.michelsen.dk/', itemprop='url')
           span(itemprop='title')= title
 
 Now we can use this mixin to loop through the current path, which is made available for us by Harp in a global variable [current](http://harpjs.com/docs/development/current):
@@ -44,7 +44,7 @@ Now we are done, so let’s look at the final result:
 
     mixin breadcrumb(url, title)
       span(itemscope, itemtype='http://data-vocabulary.org/Breadcrumb')
-        a(href='http://ole.michelsen.dk/', itemprop='url')
+        a(href='https://ole.michelsen.dk/', itemprop='url')
           span(itemprop='title')= title
 
     +breadcrumb('/', 'Home')

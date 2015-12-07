@@ -68,7 +68,7 @@ function setConfig() {
         // Set browser URI hash for bookmarking
         var uri = date.valueOf() + (m ? ',' + encodeURIComponent(m) : '');
         window.location.hash = uri;
-        $('#link').val('http://ole.michelsen.dk/tools/countdown.html#' + uri);
+        $('#link').val(window.location.href);
 
         // Reload the counter
         activateCounter(date, m);
