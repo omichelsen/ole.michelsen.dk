@@ -1,10 +1,11 @@
 ul.projects
   for item, slug in public.portfolio._data
     if (slug !== 'index')
+      - var img = slug + '/' + (item.image || 'thumb.png')
       li
         a(
           href='/portfolio/#{ slug }.html'
-          style='background-image: url(/images/portfolio/#{ slug }/thumb.png)'
+          style='background-image:url(/images/portfolio/#{ img })'
         )
           span.text
             span.title= item.title
