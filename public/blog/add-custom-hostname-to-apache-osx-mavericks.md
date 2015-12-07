@@ -1,4 +1,4 @@
-<img class="floatleft" src="https://www.apache.org/images/feather.png" alt="Logo of the Apache Software Foundation" height="55" width="178"> I have previously blogged on how to [setup a local web server in Mavericks](setup-local-web-server-apache-php-macos-x-mavericks.html), and use it to serve web sites directly from your Dropbox folders. This works very well for simple web sites, but if you are using a third party framework like the Facebook SDK, you might need to serve your sites from a specific hostname, e.g.: dev.mysite.com.
+<img class="entry-image" src="/images/blog/add-custom-hostname-to-apache-osx-mavericks/apache.svg" alt="Logo of the Apache Software Foundation" width="256" height="76"> I have previously blogged on how to [setup a local web server in Mavericks](setup-local-web-server-apache-php-macos-x-mavericks.html), and use it to serve web sites directly from your Dropbox folders. This works very well for simple web sites, but if you are using a third party framework like the Facebook SDK, you might need to serve your sites from a specific hostname, e.g.: dev.mysite.com.
 
 <!-- more-->
 

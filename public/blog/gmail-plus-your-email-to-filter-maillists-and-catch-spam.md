@@ -1,4 +1,4 @@
-<img class="floatleft" src="/images/blog/gmail-plus-your-email-to-filter-maillists-and-catch-spam/gmail.png" alt="Gmail by Google logo" width="200" height="90"> A great “hidden” feature in Gmail, is the option to append a + followed by any text you like to the username part of your email address.
+<img class="entry-image" src="/images/blog/gmail-plus-your-email-to-filter-maillists-and-catch-spam/gmail.svg" alt="Gmail by Google" width="180" height="130"> A great “hidden” feature in Gmail, is the option to append a + followed by any text you like to the username part of your email address.
 
 This text will be ignored by Gmail, and you will receive your emails as usual, but it allows you to create unique email addresses on the fly.
 
