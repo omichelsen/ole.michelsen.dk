@@ -1,25 +1,27 @@
-p
-  | This tool validates a range of&nbsp;
-  abbr(title='Uniform Resource Identifiers') URI
-  | 's against the official&nbsp;
-  a(href='http://validator.w3.org/docs/api.html', rel='external', target='_blank') W3C Markup Validation Web Service
-  | . Simply enter the URI of your sitemap file, and this tool will automatically read and validate the linked pages from the file. The sitemap must be in the&nbsp;
-  a(href='http://sitemaps.org/protocol.php', rel='external', target='_blank') Sitemap
-  | &nbsp;or&nbsp;
-  abbr(title='Really Simple Syndication') RSS
-  | &nbsp;feed format.
-p
-  | In accordance with best practices for consuming remote resources, this tool will only process&nbsp;
-  i one URI per second
-  | &nbsp;so not to overload the validator web service. Furthermore it will not process more than 30 URI's. I will perhaps revise this cap later, when I see how it performs.
+:markdown
+  This tool validates a range of <abbr title="Uniform Resource Identifiers">URI</abbr>'s against the official [W3C Markup Validation Web Service](http://validator.w3.org/docs/api.html). Simply enter the URI of your sitemap file, and this tool will automatically read and validate the linked pages from the file. The sitemap must be in the [Sitemap](http://sitemaps.org/protocol.php) or <abbr title="Really Simple Syndication">RSS</abbr> feed format.
+
+  In accordance with best practices for consuming remote resources, this tool will only process _one URI per second_ so not to overload the validator web service. Furthermore it will not process more than 30 URI's. I will perhaps revise this cap later, when I see how it performs.
+
 form#validator.c
   label(for='sitemapuri')
     b Sitemap URI:
   br
-  input#sitemapuri.text(autofocus='autofocus', name='sitemapuri', required='required', style='width: 500px;', tabindex='0', type='url', value='http://ole.michelsen.dk/tools/sitemap.test.xml')
+  input#sitemapuri.text(
+    autofocus='autofocus'
+    name='sitemapuri'
+    required='required'
+    style='width: 500px;'
+    tabindex='0'
+    type='url'
+    value='#{ url }tools/sitemap.test.xml'
+  )
   | &nbsp;
   input.button(type='submit', value='Validate')
+
+
 h3 Validation results
+
 table.tableFigure(style='width: 100%;')
   col(style='width: 40px;')
   col
