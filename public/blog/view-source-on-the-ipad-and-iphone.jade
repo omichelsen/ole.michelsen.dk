@@ -24,21 +24,8 @@ h2 The code
 p The following bookmarklet code basically posts the entire <abbr title="Document Object Model">DOM</abbr> to my server, which then takes care of business server-side:
 
 pre
-  code.language-javascript.
-    javascript:(function(){
-      var w = window.open('about:blank'),
-          s = w.document;
-      s.write('');
-      s.close();
-      var f = s.body.appendChild(s.createElement('form'));
-          f.setAttribute('method','post');
-          f.setAttribute('action','http://ole.michelsen.dk/viewsource/?uri='+location.href);
-      var i = f.appendChild(s.createElement('input'));
-          i.setAttribute('type','hidden');
-          i.setAttribute('name','DOM');
-          i.setAttribute('value',encodeURIComponent(document.documentElement.innerHTML));
-      f.submit();
-    })();
+  code.language-javascript
+    include ../viewsource/bookmarklet.js
 
 h2 How to install it
 
@@ -46,7 +33,7 @@ p To add it on your computer and sync it to your iPad, just drag this link to yo
 
 p.indent
   a(
-    href="javascript:(function(){var d=window.open('about:blank'),a=d.document;a.write('<!DOCTYPE html><html><head><title>Loading Source</title></head><body></body></html>');a.close();var b=a.body.appendChild(a.createElement('form'));b.setAttribute('method','post');b.setAttribute('action','http%3A%2F%2Fole.michelsen.dk%2Fviewsource%2F%3Furi%3D'+location.href);var c=b.appendChild(a.createElement('input'));c.setAttribute('type','hidden');c.setAttribute('name','DOM');c.setAttribute('value',encodeURIComponent(document.documentElement.innerHTML));b.submit()})()"
+    href="javascript:(function(){var w=window.open('about:blank'),d=w.document;d.write('<!DOCTYPE html><html><head><title>Loading Source</title></head><body></body></html>'),d.close();var f=d.createElement('form');f.setAttribute('method','post'),f.setAttribute('action','https://ole.michelsen.dk/viewsource/?uri='+encodeURIComponent(location.href));var i=d.createElement('input');i.setAttribute('type','hidden'),i.setAttribute('name','DOM'),i.setAttribute('value',encodeURIComponent(document.documentElement.innerHTML)),d.body.appendChild(f).appendChild(i),f.submit();})()"
     title="View Source Bookmarklet"
   )
     | View Source
@@ -56,13 +43,13 @@ p To add it directly from your iPad (or iPhone), you need to create the bookmark
 
 ol
   li Add this page as a bookmark
-  li Then <a href="http://ole.michelsen.dk/viewsource/bookmarklet.min.js">click here to see the bookmarklet code</a> and Select All → Copy
+  li Then <a href="https://ole.michelsen.dk/viewsource/bookmarklet.min.js">click here to see the bookmarklet code</a> and Select All → Copy
   li Now edit that same bookmark, paste the code you just copied into the URL and name it something like "View Source"
 
 p Voilá!
 
 p Note that the source shown is the generated <abbr title="Document Object Model">DOM</abbr>, and not the original HTML. These might differ depending on the amount of JavaScript used on the page.
 
-h3 Update April 5, 2012
+h3 Deploy your own server
 
-p By popular demand, I have <a title="Bookmarklet server-side source code (PHP)" href="https://github.com/bufferunderrun/View-Source" target="_blank">published the server-side PHP code to GitHub</a>, so you can modify or host your own version of the bookmarklet. Remember that <a title="GeSHi - Generic Syntax Highlighter" href="http://qbnz.com/highlighter/" target="_blank">GeSHi</a> is required.
+p By popular demand, I have <a title="Bookmarklet server-side source code (PHP)" href="https://github.com/omichelsen/View-Source" target="_blank">published the server-side PHP code to GitHub</a>, so you can modify or host your own version of the bookmarklet. Remember that <a title="GeSHi - Generic Syntax Highlighter" href="http://qbnz.com/highlighter/" target="_blank">GeSHi</a> is required.

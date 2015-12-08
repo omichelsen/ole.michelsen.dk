@@ -233,6 +233,7 @@
         "title": "View source on the iPad and iPhone",
         "description": "View source on the iPad using a bookmarklet to see the source code with syntax highlighting, selectable text and clickable links for URIs.",
         "date": "2011-07-28",
+        "dateModified": "2015-12-08",
         "tags": [
             "ios",
             "ipad",
