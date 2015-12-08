@@ -33,6 +33,7 @@
     "eet": {
         "title": "EET Group A/S",
         "description": "Presenting my work for EET creating a multinational webshop platform integrated with Navision, deployed to 16 countries in 11 languages to &gt;50000 users.",
+        "image": "logo.svg",
         "keywords": "Project Management · C#, T-SQL, ASP.NET MVC, HTML5",
         "created": "2006-2012",
         "date": "2014-06-14"
