@@ -51,6 +51,7 @@ RedirectPermanent /tools/regex.htm /tools/regex.html
 <IfModule mod_rewrite.c>
 	RewriteEngine  on
 	RewriteRule    blog/(.+)/$  /blog/$1.html  [R=301]
+	RewriteRule    portfolio/(.+)\.html$  /portfolio/$1/  [R=301]
 </IfModule>
 
 ## Enable CSP ##
