@@ -18,7 +18,7 @@ To reduce the number of image files used on the page, I am using CSS3 gradients 
       
 Furthermore, to remove the HTTP requests of downloading the sprites, I have [base64 encoded](/tools/base64.html "Tools: Base64 Encoder") them directly into the stylesheet. Base64 encoding has some downsides though: it doesn't work in IE6 and IE7, and generally increases size by 1/3. This must be considered against the benefit of the reduced HTTP requests.
 
-![YSlow Grade A - performance score 100/100](/images/portfolio/site-optimization/yslow-smallsite.png)
+![YSlow Grade A - performance score 100/100](/images/blog/site-optimization/yslow-smallsite.png)
 
 ### Minification and compression
 
@@ -28,7 +28,7 @@ Because the computer doesn't need the code to be humanly readable, we can remove
       
 For my site, minifying the stylesheet reduced size by 16%, and my JavaScripts by a whopping 46%! The overall reduction in file size using these compression techniques amounts to 57% for CSS, 78% for JS, and 60% for HTML, as shown in the chart below:
       
-![Compression results of 57% for CSS, 78% for JS and 60% for HTML](/images/portfolio/site-optimization/compression.png)
+![Compression results of 57% for CSS, 78% for JS and 60% for HTML](/images/blog/site-optimization/compression.png)
 
 _It's also possible to minify the HTML, but this require more control over the output/rendering process than I currently have implemented on my website._
 
@@ -44,7 +44,7 @@ To update these files, a rename is now necessary (versioning), but this is well 
 
 Measuring the performance and effect of these optimizations, can be done with a variety of tools. We can measure the use of best practice techniques described here with Google Page Speed. As you can see, my efforts have paid off, landing a solid score of 99/100:
 
-![Page Speed Score 99/100](/images/portfolio/site-optimization/page-speed.png)
+![Page Speed Score 99/100](/images/blog/site-optimization/page-speed.png)
 
 ### Search Engine Optimization
 
@@ -62,7 +62,7 @@ Optimizing the code can help give you the extra edge, and I have focused on the 
 
 #### Lynx text browser
 
-![This page when viewed through the Lynx web browser](/images/portfolio/site-optimization/lynx.png)
+![This page when viewed through the Lynx web browser](/images/blog/site-optimization/lynx.png)
 
 To really test your mettle, you can run your site through a text browser like Lynx. This can give you an idea how the web crawlers (as well as text-to-speak browsers for the handicapped) see your site, and how your content is actually structured when you cut away the design layer.
 
