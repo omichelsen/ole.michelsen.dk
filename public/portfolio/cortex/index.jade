@@ -5,7 +5,7 @@ p
   | , which of course, by todays standards, should be replaced by proper JavaScript. Menu also relies on HTML frames which would be completely unacceptable by modern standards.
 // more
 ul.screenshots
-  each image in public.images.portfolio.cortex._contents.slice(0, -1)
+  each image in public.portfolio.cortex.screens._contents
     li
       h4= image.replace('.png', '')
-      img.frame(src='/images/portfolio/cortex/#{ encodeURIComponent(image) }', alt='#{ image }', width='400', height='259')
+      img.frame(src='screens/#{ encodeURIComponent(image) }', alt='#{ image }', width='400', height='259')

@@ -1,7 +1,7 @@
 extends ../_layout.jade
 
 block head
-  link(rel="image_src", href="/images/portfolio/#{ current.source }/thumb.png")
+  link(rel="image_src", href="/#{ current.path.slice(0, -1).join('/') }/thumb.png")
 
 block content
   h1 Portfolio

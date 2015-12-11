@@ -4,10 +4,10 @@ p
   | . Site was made in PHP and featured a back end text editing interface for updates and calendar events, and a login system to an internal section for members.
 // more
 ul.screenshots
-  each image in public.images.portfolio.majazz._contents.slice(0, -1)
+  each image in public.portfolio.majazz.screens._contents
     li
       img.frame(
-        src='/images/portfolio/majazz/#{ encodeURIComponent(image) }'
+        src='screens/#{ encodeURIComponent(image) }'
         alt='#{ image.replace(/\d ([\w\s]+)\.png/, "$1") }'
         width='400'
         height='334'
