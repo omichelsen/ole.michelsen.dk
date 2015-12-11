@@ -7,11 +7,11 @@
 
 ul.projects
   each item in sortFolder(public.portfolio)
-    - var img = slug + '/' + (item.image || 'thumb.png')
+    - var img = item.key + '/' + (item._data.index.image || 'thumb.png')
     li
       a(
         href='/portfolio/#{ item.key }/'
-        style='background-image: url(/portfolio/#{ key }/#{ img })'
+        style='background-image: url(/portfolio/#{ img })'
       )
         span.text
           span.title= item._data.index.title
