@@ -6,7 +6,7 @@ block head
 block content
   h1 Portfolio
   section.inner(itemscope, itemtype="http://schema.org/CreativeWork")
-    if current.source === 'index'
+    if current.source === 'index' && current.path.length === 2
       p.tags
         | Programming and design from 1999-
         != new Date().getFullYear()
