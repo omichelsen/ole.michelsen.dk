@@ -1,0 +1,9 @@
+{
+    "index": {
+        "title": "Ernitec",
+        "description": "Website for surveillance company Ernitec using ASP.NET MVC and HTML5 with a presentaiton of the product range and contact information.",
+        "keywords": "ASP.NET MVC, HTML5, jQuery",
+        "created": "2011",
+        "date": "2011-10-06"
+    }
+}

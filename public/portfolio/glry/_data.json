@@ -1,0 +1,10 @@
+{
+    "index": {
+        "title": "glry",
+        "description": "Image gallery with mobile/touch support and no dependencies.",
+        "keywords": "JavaScript, touch gestures",
+        "created": "2014",
+        "date": "2014-11-22",
+        "layout": "../../_layout"
+    }
+}

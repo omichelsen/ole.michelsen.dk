@@ -1,0 +1,10 @@
+{
+    "index": {
+        "title": "Regex Crossword",
+        "description": "A crossword puzzle game using regular expressions. Solve a set of crossword challenges to earn acheivements you can share with your friends.",
+        "keywords": "JavaScript, AngularJS, PHP",
+        "image": "logo.svg",
+        "created": "2013-2015",
+        "date": "2015-12-11"
+    }
+}

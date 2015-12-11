@@ -1,0 +1,11 @@
+{
+    "index": {
+        "title": "Business Card",
+        "description": "My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.",
+        "keywords": "SVG",
+        "created": "2011",
+        "date": "2011-10-07",
+        "stylesheets": ["//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css"],
+        "javascripts": ["//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"]
+    }
+}
