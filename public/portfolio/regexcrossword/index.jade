@@ -1,45 +1,50 @@
-.row
-  .col
-    ul
-      li
-        img.frame(
-          src='front.png'
-          alt='Challenges in the Regex Crossword puzzle game'
-        )
-      li
-        img.frame(
-          src='puzzle.png'
-          alt='Puzzle challenge Bat Man from the Double Cross challenge'
-        )
-      li
-        img.frame(
-          src='player.png'
-          alt='Player profile and list of puzzles created by player'
-        )
-  .col
-    p
-      a(href='http://regexcrossword.com', target='_blank') RegexCrossword.com
-      | &nbsp;is a puzzle game where you must solve a crossword consisting of clues given in the form of regular expressions.
-    // more
-    p
-      | The idea to make Regex Crossword came from the MIT Mystery Hunt, which featured a very difficult&nbsp;
-      a(href='http://web.mit.edu/puzzle/www/2013/coinheist.com/rubik/a_regular_crossword/grid.pdf', target='_blank') multi-dimensional regular expression crossword
-      | .&nbsp;
-      a(href='http://hp-comic.com/') Maria Hagsten Pedersen
-      | &nbsp;and I thought this was a really fun variation on the normal crossword and soduku-like puzzles, so we decided to create a game with more puzzles and easier difficulty levels, so newcomers could also have a fun way to learn regular expressions.
-    p
-      | The site is developed in JavaScript as a single-page app using &nbsp;
-      a(href='http://angularjs.org/') AngularJS
-      | &nbsp;using&nbsp;
-      a(href='http://twitter.github.com/bootstrap/index.html') Twitter Bootstrap
-      | &nbsp;(and&nbsp;
-      a(href='http://lesscss.org/') LESS
-      | ).
-    p
-      | Players can login with their social accounts (Facebook, Twitter, Google and Microsoft Live), to save their progress and earn achievements when completing a set of crossword puzzles.
-    p
-      | The backend is implemented as a simple&nbsp;
-      a(href='http://en.wikipedia.org/wiki/Representational_state_transfer') REST
-      | -based API using PHP and MySQL. The backend handles player scores and achievements, as well as puzzles created and curated by the community.
-    p
-      a(href='/portfolio/') ← Back to Portfolio
+mixin picture(path, width, height, alt)
+  - var ext = path.substr(path.length - 4);
+  picture
+    source(
+      srcset="#{ path.replace(ext, '.webp') }, #{ path.replace(ext, '@2x.webp') } 2x"
+      type="image/webp"
+    )
+    img(
+      alt=alt
+      src=path
+      srcset="#{ path.replace(ext, '@2x' + ext) } 2x"
+      width=width
+      height=height
+    )
+
+p
+  a(href='http://regexcrossword.com', target='_blank') RegexCrossword.com
+  | &nbsp;is a puzzle game where you must solve a crossword consisting of clues given in the form of regular expressions.
+// more
+p
+  | The idea to make Regex Crossword came from the MIT Mystery Hunt, which featured a very difficult&nbsp;
+  a(href='http://web.mit.edu/puzzle/www/2013/coinheist.com/rubik/a_regular_crossword/grid.pdf', target='_blank') multi-dimensional regular expression crossword
+  | .&nbsp;
+  a(href='http://hp-comic.com/') Maria Hagsten Pedersen
+  | &nbsp;and I thought this was a really fun variation on the normal crossword and soduku-like puzzles, so we decided to create a game with more puzzles and easier difficulty levels, so newcomers could also have a fun way to learn regular expressions.
+p
+  | The site is developed in JavaScript as a single-page app using &nbsp;
+  a(href='http://angularjs.org/') AngularJS
+  | &nbsp;using&nbsp;
+  a(href='http://twitter.github.com/bootstrap/index.html') Twitter Bootstrap
+  | &nbsp;(and&nbsp;
+  a(href='http://lesscss.org/') LESS
+  | ).
+p
+  | Players can login with their social accounts (Facebook, Twitter, Google and Microsoft Live), to save their progress and earn achievements when completing a set of crossword puzzles.
+p
+  | The backend is implemented as a simple&nbsp;
+  a(href='http://en.wikipedia.org/wiki/Representational_state_transfer') REST
+  | -based API using PHP and MySQL. The backend handles player scores and achievements, as well as puzzles created and curated by the community.
+
+p
+  +picture("screens/front.jpg", 950, 603, "Challenges in the Regex Crossword puzzle game")
+
+p
+  +picture("screens/puzzle.jpg", 950, 603, "Puzzle challenge Bat Man from the Double Cross challenge")
+
+p
+  +picture("screens/profile.jpg", 950, 603, "Player profile and list of puzzles created by player")
+
+p: a(href="/portfolio/") ← Back to Portfolio
