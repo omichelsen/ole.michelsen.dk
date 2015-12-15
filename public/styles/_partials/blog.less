@@ -6,21 +6,12 @@
     }
 
     #content {
-        color: #333;
-        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        line-height: 26px;
-
         h1, h2, h3, h4, h5, h6 {
-            clear: both;
             margin: 0 0 15px 0;
-            color: @primary;
-            font-weight: 200;
-            line-height: 1.5em;
         }
 
-        p, ul, ol, dd, pre, hr {
-            margin-bottom: 24px;
+        h2 {
+            color: #333;
         }
 
         ul, ol {
@@ -37,12 +28,6 @@
             padding: 0 20px;
             border-left: 4px solid #ddd;
             color: #777;
-        }
-
-        pre code {
-            font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-            font-size: 13px;
-            line-height: 16px;
         }
 
         *:not(pre) {
@@ -79,6 +64,7 @@
         }
 
         .entry-meta {
+            margin-bottom: 1em;
             padding: 1em 0 .3em 0;
             border-bottom: 1px solid #EEE;
             color: #888;

@@ -25,7 +25,7 @@ section
         b Output:
       br
       textarea#output.text(name='output', style='width:940px;height:120px;font-size:smaller;', readonly='readonly')
-      span#resultstats.floatright  
+      span#resultstats.small.floatright  
 section
   h3 Embedding Base64 content
   p You can embed the Base64 output into various documents using the following code:
@@ -34,17 +34,14 @@ section
     dd
       code.code-block
         | &lt;img alt="Base64 Image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA..." /&gt;
-      br
     dt HTML embedded CSS
     dd
       code.code-block
         | &lt;link rel="stylesheet" type="text/css" href="data:text/css;base64,LyogKioqKiogVGVtcGxhdGUgKioq..." /&gt;
-      br
     dt HTML embedded JavaScript
     dd
       code.code-block
         | &lt;script type="text/javascript" src="data:text/javascript;base64,dmFyIHNjT2JqMSA9IG5ldyBzY3Jv..."&gt;&lt;/script&gt;
-      br
     dt CSS embedded PNG image
     dd
       code.code-block
@@ -53,7 +50,6 @@ section
         |   height:100px;
         |   background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIA...);
         | }
-      br
     dt XML embedded PNG image
     dd
       code.code-block

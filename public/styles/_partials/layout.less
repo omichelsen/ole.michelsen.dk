@@ -10,6 +10,10 @@
     clear: both;
     margin: 0 auto;
     max-width: @page-width;
+
+    @media (max-width: @page-width) {
+        padding: 0 5%;
+    }
 }
 
 #topnav a,
@@ -103,16 +107,6 @@
 
     ul.list {
         margin-left: 1.5em;
-    }
-
-    @media (max-width: @page-width) {
-        & > h1,
-        & > .inner {
-            padding: 0 5%;
-        }
-        & > h1 {
-            margin-bottom: 0;
-        }
     }
 }
 
