@@ -1,20 +1,27 @@
 .countdown {
+    section {
+        overflow: visible;
+    }
+
     .message {
-        font: bold 40pt/350% 'Century Gothic', Verdana;
+        padding: 60px 0;
+        font: bold 40pt/150% 'Century Gothic', Verdana;
         color: #333;
         text-shadow: 0 1px 2px #999;
     }
 
     .dash {
         position: relative;
-        width: 110px; height: 100px;
+        width: 110px;
+        height: 100px;
         float: left;
         margin-left: 20px;
 
         .digit {
             position: relative;
             float: left;
-            width: 55px; height: 90px;
+            width: 55px;
+            height: 90px;
             font: bold 55pt/55pt 'Times New Roman';
             color: #EEE;
         }
@@ -51,7 +58,8 @@
         position: relative;
         margin: 0 auto;
         overflow: hidden;
-        width: 580px; height: 180px;
+        width: 580px;
+        height: 200px;
     }
 
     #setup {
@@ -63,8 +71,10 @@
 
 #countdown {
     position: relative;
-    margin: 0 auto; padding: 40px;
-    width: 650px; height: 90px;
+    margin: 0 auto;
+    padding: 40px;
+    width: 650px;
+    height: 90px;
 
     background: #000;
     background: linear-gradient(#222 75px, #2A2A2A 75px);
