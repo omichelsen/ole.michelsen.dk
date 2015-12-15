@@ -4,17 +4,18 @@ block head
   link(rel="image_src", href="/#{ current.path.slice(0, -1).join('/') }/thumb.png")
 
 block content
-  h1 Portfolio
-  section.inner(itemscope, itemtype="http://schema.org/CreativeWork")
-    if current.source === 'index' && current.path.length === 2
-      p.tags
-        | Programming and design from 1999-
-        != new Date().getFullYear()
-    else
-      h2(itemprop='name')= title
-      p.tags(itemprop='keywords')
-        b(itemprop='dateCreated')= created
-        | &nbsp;·&nbsp;
-        != keywords
+  .content
+    h1 Portfolio
+    section(itemscope, itemtype="http://schema.org/CreativeWork")
+      if current.source === 'index' && current.path.length === 2
+        p.tags
+          | Programming and design from 1999-
+          != new Date().getFullYear()
+      else
+        h2(itemprop='name')= title
+        p.tags(itemprop='keywords')
+          b(itemprop='dateCreated')= created
+          | &nbsp;·&nbsp;
+          != keywords
 
-    != yield
+      != yield

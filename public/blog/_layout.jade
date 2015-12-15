@@ -2,7 +2,7 @@ extends ../_layout.jade
 
 block content
   .masthead
-  .inner(itemscope, itemtype="http://schema.org/Blog")
+  .content(itemscope, itemtype="http://schema.org/Blog")
     if current.source === 'index'
       != yield
     else

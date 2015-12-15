@@ -18,11 +18,11 @@ html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] :
 
     #container
       header#header
-        .title
+        .title.content
           h1= author
           h2= tagline
         nav#topnav
-          ul.menu
+          ul.menu.content
             li
               a(href="/") Home
             li
@@ -49,7 +49,7 @@ html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] :
           != yield
 
       footer#footer
-        .inner
+        .content
           p.colophon
             | Created by&nbsp;
             a(href='/profile.html', rel='author')= author

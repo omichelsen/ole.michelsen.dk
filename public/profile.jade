@@ -1,57 +1,58 @@
-#card(itemscope, itemtype='http://schema.org/Person')
-  .frame
-    .image
-      img(alt='Ole Bjørn Michelsen', itemprop='image', src='/images/olemichelsen-contact.jpg', width='200', height='200')
-  dl.hide
-    dt Name
-    dd(itemprop='name') Ole Bjørn Michelsen
-  dl
-    dt Birthday
-    dd(itemprop='birthDate') 18 December 1982
-    dt Location
-    dd(itemprop='homeLocation') Copenhagen, Denmark
-    dt Mail
-    dd
-      a(href='mailto:#{ email }', itemprop='email')= email
-    dt Social
-    dd
-      a(href='https://www.linkedin.com/in/olebjornmichelsen', rel='external', hreflang='en', title='LinkedIn') LinkedIn&nbsp;
-      a(href='https://www.twitter.com/omichelsen', rel='external', hreflang='en', title='Twitter') Twitter&nbsp;
-      a(href='https://plus.google.com/110191857554280492173?rel=author', rel='me', hreflang='en', title='Google Plus') Google+&nbsp;
-      a(href='https://www.facebook.com/olemichelsen', rel='external', hreflang='en', title='Facebook') Facebook&nbsp;
-      a(href='https://www.flickr.com/photos/olemichelsen', rel='external', hreflang='en') Flickr
-    dt vCard
-    dd
-      a#vcard-link(href='olemichelsen.vcf', title='Download my vCard')
-        i.icon-vcard
-
-.row.profile
-  .col
-    h2 About me
-    h3 Experience
-    ol
-      li Senior Software Engineer, Citrix — 2014-present
-      li Senior Developer and Scrum Master, Edora A/S — 2012-2014
-      li Web Systems Developer, EET Group A/S — 2006-2012
-      li Web Systems Developer, Sandberg A/S — 2001-2006
-      li IT supporter, DaimlerChrysler (Mercedes-Benz) — 1999-2001
-    h3 Education and certifications
-    ol
-      li Professional Scrum Master I, Scrum.org — 2013
-      li B.Sc. Computer Science, University of Copenhagen — 2010
-    p
-      a(href="https://dk.linkedin.com/in/olebjornmichelsen") LinkedIn profile
-
-  .col
-    h2 My open source projects
+.content
+  #card(itemscope, itemtype='http://schema.org/Person')
+    .frame
+      .image
+        img(alt='Ole Bjørn Michelsen', itemprop='image', src='/images/olemichelsen-contact.jpg', width='200', height='200')
+    dl.hide
+      dt Name
+      dd(itemprop='name') Ole Bjørn Michelsen
     dl
-      each repo in public._data.profile.repositories
-        dt
-          i.icon-github &nbsp;
-          a(href="#{ repo.html_url }")= repo.name
-          if repo.language
-            em= ' (' + repo.language + ')'
-        dd= repo.description
+      dt Birthday
+      dd(itemprop='birthDate') 18 December 1982
+      dt Location
+      dd(itemprop='homeLocation') Copenhagen, Denmark
+      dt Mail
+      dd
+        a(href='mailto:#{ email }', itemprop='email')= email
+      dt Social
+      dd
+        a(href='https://www.linkedin.com/in/olebjornmichelsen', rel='external', hreflang='en', title='LinkedIn') LinkedIn&nbsp;
+        a(href='https://www.twitter.com/omichelsen', rel='external', hreflang='en', title='Twitter') Twitter&nbsp;
+        a(href='https://plus.google.com/110191857554280492173?rel=author', rel='me', hreflang='en', title='Google Plus') Google+&nbsp;
+        a(href='https://www.facebook.com/olemichelsen', rel='external', hreflang='en', title='Facebook') Facebook&nbsp;
+        a(href='https://www.flickr.com/photos/olemichelsen', rel='external', hreflang='en') Flickr
+      dt vCard
+      dd
+        a#vcard-link(href='olemichelsen.vcf', title='Download my vCard')
+          i.icon-vcard
+
+  .row.profile
+    .col
+      h2 About me
+      h3 Experience
+      ol
+        li Senior Software Engineer, Citrix — 2014-present
+        li Senior Developer and Scrum Master, Edora A/S — 2012-2014
+        li Web Systems Developer, EET Group A/S — 2006-2012
+        li Web Systems Developer, Sandberg A/S — 2001-2006
+        li IT supporter, DaimlerChrysler (Mercedes-Benz) — 1999-2001
+      h3 Education and certifications
+      ol
+        li Professional Scrum Master I, Scrum.org — 2013
+        li B.Sc. Computer Science, University of Copenhagen — 2010
+      p
+        a(href="https://dk.linkedin.com/in/olebjornmichelsen") LinkedIn profile
+
+    .col
+      h2 My open source projects
+      dl
+        each repo in public._data.profile.repositories
+          dt
+            i.icon-github &nbsp;
+            a(href="#{ repo.html_url }")= repo.name
+            if repo.language
+              em= ' (' + repo.language + ')'
+          dd= repo.description
 
 #vcard-dialog(title='Mail vCard')
   form#vcard-form(action='profile.html', name='vcard-form')

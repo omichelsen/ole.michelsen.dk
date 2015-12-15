@@ -10,17 +10,18 @@
           height='600'
         )
 
-section.inner.albums.flickr
-  each album in public.photos._data.index.flickr
-    a.album(
-      href="https://www.flickr.com/photos/olemichelsen/sets/#{ album.id }/"
-      data-url="#{ album.thumbnail.url }"
-    )
-      .title= album.title
+.content
+  section.albums.flickr
+    each album in public.photos._data.index.flickr
+      a.album(
+        href="https://www.flickr.com/photos/olemichelsen/sets/#{ album.id }/"
+        data-url="#{ album.thumbnail.url }"
+      )
+        .title= album.title
 
-section.inner.albums
-  a.album.travel-map(href="travel-map.html")
-    .title World Travel Map
+  section.albums
+    a.album.travel-map(href="travel-map.html")
+      .title World Travel Map
 
 script
   include ../../node_modules/simple-slideshow/src/slideshow.js

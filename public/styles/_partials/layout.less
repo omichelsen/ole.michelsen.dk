@@ -1,8 +1,3 @@
-#topnav a,
-#footer a {
-    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Helvetica, Arial, sans-serif;
-}
-
 #container {
     position: relative; /* needed for footer positioning*/
     height: auto !important; /* real browsers */
@@ -11,13 +6,15 @@
     z-index: 1;
 }
 
-#header > .title,
-#header > nav > ul,
-#content,
-#footer > .inner {
+.content {
     clear: both;
     margin: 0 auto;
     max-width: @page-width;
+}
+
+#topnav a,
+#footer a {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Trebuchet MS", Helvetica, Arial, sans-serif;
 }
 
 #header {
@@ -108,10 +105,6 @@
         margin-left: 1.5em;
     }
 
-    .inner {
-        clear: both;
-    }
-
     @media (max-width: @page-width) {
         & > h1,
         & > .inner {
@@ -124,6 +117,7 @@
 }
 
 .masthead {
+    .content;
     position: relative;
     padding-bottom: 5px;
     background: @masthead-bg;

@@ -1,17 +1,27 @@
-img#moon(
-  alt=''
-  src='moon.jpg'
-  srcset='moon-2x.jpg 2x'
-  width='950'
-  height='950'
-)
-audio#audio(loop='', preload='')
-  source(src='Nocturne.ogg', type='audio/ogg')
-  source(src='Nocturne.mp3', type='audio/mpeg')
+.content
+  #moon
+    picture
+      source(
+        srcset="moon.webp, moon@2x.webp 2x"
+        type="image/webp"
+      )
+      img(
+        alt=""
+        src="moon.jpg"
+        srcset="moon@2x.jpg 2x"
+        width="950"
+        height="950"
+      )
+
+audio#audio(loop="", preload="")
+  source(src="Nocturne.ogg", type="audio/ogg")
+  source(src="Nocturne.mp3", type="audio/mpeg")
   | Your browser does not support the audio element.
-a#control(href='#')
+
+a#control(href="#")
+
 #loading
-  a#doStart(href='#') START ANIMATION
+  a#doStart(href="#") START ANIMATION
 
 script(src="#{ libs.jquery }")
 script.
