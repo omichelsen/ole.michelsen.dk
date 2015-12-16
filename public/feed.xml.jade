@@ -19,11 +19,3 @@ rss(version="2.0", xmlns:atom="http://www.w3.org/2005/Atom")
           pubDate= new Date(post.date)
           link #{ url }blog/#{ slug }.html
           guid(isPermaLink="true") #{ url }blog/#{ slug }.html
-    each post, slug in public.portfolio._data
-      if slug !== 'index'
-        item
-          title= post.title
-          description <![CDATA[!{ excerpt(partial('portfolio/' + slug)) }]]>
-          pubDate= new Date(post.date)
-          link #{ url }portfolio/#{ slug }.html
-          guid(isPermaLink="true") #{ url }portfolio/#{ slug }.html
