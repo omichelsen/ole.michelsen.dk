@@ -1,17 +1,4 @@
-mixin picture(path, width, height, alt)
-  - var ext = path.substr(path.length - 4);
-  picture
-    source(
-      srcset="#{ path.replace(ext, '.webp') }, #{ path.replace(ext, '@2x.webp') } 2x"
-      type="image/webp"
-    )
-    img(
-      alt=alt
-      src=path
-      srcset="#{ path.replace(ext, '@2x' + ext) } 2x"
-      width=width
-      height=height
-    )
+include ../../_shared/picture
 
 p
   a(href='http://regexcrossword.com', target='_blank') RegexCrossword.com
