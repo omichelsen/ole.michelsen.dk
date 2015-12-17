@@ -12,7 +12,7 @@ style
     - var img = path + (item._data.index.image || 'thumb.png');
     != '.' + item.key + '{background-image:url(' + img + ')}'
     if !/\.svg$/.test(img)
-      != '@media(min-resolution: 2dppx){.' + item.key + '{background-image:url(' + img.replace(/\.(\w{3})$/, '@2x.$1') + ')}}'
+      != '@media(-webkit-min-device-pixel-ratio:2),(min-resolution: 2dppx){.' + item.key + '{background-image:url(' + img.replace(/\.(\w{3})$/, '@2x.$1') + ')}}'
 <!--/email_off-->
 
 ul.projects
