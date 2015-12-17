@@ -9,7 +9,7 @@ ul.projects
   each item in sortFolder(public.portfolio)
     - var img = item.key + '/' + (item._data.index.image || 'thumb.png')
     li
-      a(
+      a.project(
         href='/portfolio/#{ item.key }/'
         style='background-image: url(/portfolio/#{ img })'
       )
