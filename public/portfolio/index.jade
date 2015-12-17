@@ -5,13 +5,20 @@
 -   return sorted;
 - };
 
+style
+  each item in sortFolder(public.portfolio)
+    - var path = '/portfolio/' + item.key + '/';
+    - var img = path + (item._data.index.image || 'thumb.png');
+    != '.' + item.key + '{background-image:url(' + img + ')}'
+    if !/\.svg$/.test(img)
+      != '@media(min-resolution: 2dppx){.' + item.key + '{background-image:url(' + img.replace(/\.(\w{3})$/, '@2x.$1') + ')}}'
+
 ul.projects
   each item in sortFolder(public.portfolio)
-    - var img = item.key + '/' + (item._data.index.image || 'thumb.png')
     li
       a.project(
-        href='/portfolio/#{ item.key }/'
-        style='background-image: url(/portfolio/#{ img })'
+        class=item.key
+        href="/portfolio/#{ item.key }/"
       )
         span.text
           span.title= item._data.index.title
