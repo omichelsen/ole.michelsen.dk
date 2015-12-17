@@ -5,6 +5,7 @@
 -   return sorted;
 - };
 
+<!--email_off-->
 style
   each item in sortFolder(public.portfolio)
     - var path = '/portfolio/' + item.key + '/';
@@ -12,6 +13,7 @@ style
     != '.' + item.key + '{background-image:url(' + img + ')}'
     if !/\.svg$/.test(img)
       != '@media(min-resolution: 2dppx){.' + item.key + '{background-image:url(' + img.replace(/\.(\w{3})$/, '@2x.$1') + ')}}'
+<!--/email_off-->
 
 ul.projects
   each item in sortFolder(public.portfolio)
