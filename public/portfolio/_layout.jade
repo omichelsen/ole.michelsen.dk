@@ -12,10 +12,6 @@ block content
           | Programming and design from 1999-
           != new Date().getFullYear()
       else
-        h2(itemprop='name')= title
-        p.tags(itemprop='keywords')
-          b(itemprop='dateCreated')= created
-          | &nbsp;·&nbsp;
-          != keywords
+        include ../_shared/portfolio-header
 
       != yield

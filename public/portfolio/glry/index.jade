@@ -6,12 +6,8 @@ section.content(itemscope, itemtype="http://schema.org/CreativeWork")
       a(href="http://xkcd.com") xkcd.com
 
   h1 Portfolio
-  h2(itemprop='name')= title
-   | &nbsp;- mobile first image gallery
-  p.tags(itemprop='keywords')
-    b(itemprop='dateCreated')= created
-    | &nbsp;·&nbsp;
-    != keywords
+  - title += ' - mobile first image gallery'
+  include ../../_shared/portfolio-header
 
   :markdown
     [glry](https://github.com/omichelsen/glry) is an open source image gallery plug-in. I needed a gallery that was mobile-first and could load the images given a function. But every plug-in I looked at required the images to be known/loaded beforehand, which is not optimal for large galleries on a slow or metered connection.

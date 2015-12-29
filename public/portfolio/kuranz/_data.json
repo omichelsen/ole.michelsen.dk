@@ -4,6 +4,8 @@
         "description": "Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.",
         "keywords": "JavaScript, Knockout, localStorage, geolocation",
         "created": "2013-2015",
-        "date": "2014-12-11"
+        "date": "2014-12-11",
+        "dateModified": "2015-12-30",
+        "layout": "../../_layout"
     }
 }
