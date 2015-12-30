@@ -4,11 +4,11 @@ section(itemscope, itemtype="http://schema.org/CreativeWork")
 	.content
 		h1 Portfolio
 		include ../../_shared/portfolio-header
-		p
-			a(href="http://app.kuranz.com/" target="_blank") Kuranz
-			| &nbsp;is a currency converter that can automatically detect which country you are in, and set the appropriate currency. It also works when you are offline, so you can take it on your travels without paying for an expensive data plan.
-		p
-			| Kuranz is a HTML5 web app, and can be run from any smartphone like iPhone or Android. Developed as a part of the beta program for the new Firefox OS, it has been thoroughly tested on the Geeksphone Keon..
+
+		:markdown
+			[Kuranz](http://app.kuranz.com/) is a currency converter that can automatically detect which country you are in, and set the appropriate currency. It also works when you are offline, so you can take it on your travels without paying for an expensive data plan.
+
+			Kuranz is a HTML5 web app, and can be run from any smartphone like iPhone or Android. Developed as a part of the beta program for the new Firefox OS, it has been thoroughly tested on the Geeksphone Keon.
 
 	.banner
 		.content
@@ -19,25 +19,15 @@ section(itemscope, itemtype="http://schema.org/CreativeWork")
 					+picture("iphone6plus-2.jpg", 400, 711, "Select favorite currencies for fast conversion")
 
 	.content
-		h3 Open web standards
-		p
-			| I created Kuranz to prove that mobile apps could be built using only open web standards. With localStorage, app cache and geolocation APIs, the app works well offline and can access the GPS hardware in the phone. Building a UI that feels native on all platforms is a challenge, but keeping things simple and using basic touch events, CSS transforms and transitions can get you pretty far.
+		:markdown
+			### Open web standards
 
-		h3 App store
-		p
-			| Download it now from&nbsp;
-			a(href="https://marketplace.firefox.com/app/kuranz") Firefox Marketplace
-			| , or go to&nbsp;
-			a(href="http://app.kuranz.com/") kuranz.com
-			| &nbsp;in your browser (can be bookmarked on your smartphone).
-		p
-			img(
-				src="firefox-marketplace.svg"
-				alt="Install Kuranz from Firefox Marketplace"
-				width="240"
-				height="60"
-			)
-		p
-			| On purpose I have chosen not to package it on the Apple App Store. The point of this app is partly to show that the web can provide a nice user experience on it's own terms.
-		p
-			a(href="/portfolio/") ← Back to Portfolio
+			I created Kuranz to prove that mobile apps could be built using only open web standards. With localStorage, app cache and geolocation APIs, the app works well offline and can access the GPS hardware in the phone. Building a UI that feels native on all platforms is a challenge, but keeping things simple and using basic touch events, CSS transforms and transitions can get you pretty far.
+
+			### App store
+
+			Download it now from [Firefox Marketplace](https://marketplace.firefox.com/app/kuranz), or go to [kuranz.com](https://kuranz.com/) in your browser (can be bookmarked on your smartphone). I have chosen not to package it on the Apple App Store. The point of this app is partly to show that the web can provide a nice user experience on it's own terms.
+
+			<img src="firefox-marketplace.svg" alt="Install Kuranz from Firefox Marketplace" width="240" height="60">
+
+			[← Back to Portfolio](/portfolio/)
