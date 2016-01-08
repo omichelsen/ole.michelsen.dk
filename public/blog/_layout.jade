@@ -12,22 +12,22 @@ block content
         != yield
         != partial('../_shared/blog-navigation', public.blog)
         #disqus_thread.entry-comments
-        noscript
-          | Please enable JavaScript to view the
-          a(href="https://disqus.com/?ref_noscript" rel="nofollow") comments powered by Disqus.
 
 block scripts
   if current.source !== 'index'
+    - var shortname = 'olemichelsen';
+    - var identifier = url + 'blog/' + current.source + '.html';
     script(src='#{ libs.highlight }')
     script.
       hljs.initHighlightingOnLoad();
     script.
-      var disqus_shortname = 'olemichelsen';
-      var disqus_identifier = '#{ url + 'blog/' + current.source + '.html' }';
-      var disqus_url = '#{ url + 'blog/' + current.source + '.html' }';
+      var disqus_config = function () {
+        this.page.identifier = '#{ identifier }';
+        this.page.url = '#{ identifier }';
+      };
       (function() {
-      var d = document, s = d.createElement('script');
-      s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
+        var d = document, s = d.createElement('script');
+        s.src = '//#{ shortname }.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
       })();
