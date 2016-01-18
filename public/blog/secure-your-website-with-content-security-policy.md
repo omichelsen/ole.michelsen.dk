@@ -14,11 +14,11 @@ The good news is that it's really easy to protect your website with CSP, you onl
 
 If you are running Apache, you just need to add this single line to your `.htaccess` configuration file:
 
-    Headers set Content-Security-Policy "default-src 'self'"
+    Header set Content-Security-Policy "default-src 'self'"
 
 This line will configure your website to only load scripts, images etc. from it's own domain. This is a little limiting though, especially if you are running scripts from third parties like Google Analytics and CloudFlare. In that case your config should probably look more like this (line breaks added for readability):
 
-    Headers set Content-Security-Policy "
+    Header set Content-Security-Policy "
         default-src 'self';
         script-src 'self' www.google-analytics.com *.cloudflare.com;
         img-src *.cloudflare.com
