@@ -1,6 +1,6 @@
 <img class="entry-image" src="/images/blog/secure-your-website-with-content-security-policy/CSP_Shield.png" srcset="/images/blog/secure-your-website-with-content-security-policy/CSP_Shield-2x.png 2x" alt="Content security policy shield" width="150" height="150"> So what is a content security policy (CSP), and why do I need one? A CSP is a contract that your server sends to the browser, defining from which domains it's ok to load scripts, style sheets, images etc.
 
-This is an important tool to protect against [cross-site scripting](https://en.wikipedia.org/wiki/Cross-site_scripting) (XSS) and other maladies of the internet today. XSS can be used by evildoers to place a script into your website, which for example could replace the login field in your online bank, so usernames and passwords are sent to somebody else. Another trick could be to load your page in an iframe on a similar domain, so it looks like your page loads normally, all the while evil hackers are snatching up passwords and credit card information.
+This is an important tool to protect against [cross-site scripting](https://en.wikipedia.org/wiki/Cross-site_scripting) (XSS) and other maladies of the internet today. XSS can be used by evildoers to place a script into your website, which for example could replace the login field in your online bank, sending usernames and passwords to somebody else. Another trick could be to load your page in an iframe on a similar domain, so it looks like your page loads normally, all the while evil hackers are snatching up passwords and credit card information.
 
 These techniques can be virtually undetectable to the user, as everything will look normal, and since these attacks happens on the client side, it doesn't matter how secure your server setup is once the damage is done.
 
@@ -10,7 +10,7 @@ This sounds terrible! How do I protect my users?? Content Security Policy to the
 
 ## Headers
 
-The good news is that it's really easy to protect your website with CSP, you only have to add a single line to your server configuration. If you already know about CSP, you can use [my CSP config generator](/tools/csp.html) to create a configuration for your webserver.
+Fortunately it's really easy to protect your website with CSP, you only have to add a single line to your server configuration. If you already know about CSP, you can use [my CSP config generator](/tools/csp.html) to create a configuration for your webserver.
 
 If you are running Apache, you just need to add this single line to your `.htaccess` configuration file:
 
