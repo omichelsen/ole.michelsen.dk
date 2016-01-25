@@ -1,4 +1,18 @@
 {
+    "social-signin-spa-jwt-server": {
+        "title": "Social sign in with single-page app and JWT server validation",
+        "description": "How to do client-side social sign in with providers like Facebook, Google and Twitter, and validate the user with JWT when talking to the server.",
+        "date": "2016-01-24",
+        "tags": [
+            "api",
+            "javascript",
+            "node",
+            "security",
+            "social",
+            "spa",
+            "webserver"
+        ]
+    },
     "making-an-offline-webapp-with-service-workers": {
         "title": "Making an offline web app with Service Workers",
         "description": "Introduction to Service Workers: a hands on example of how to build an offline capable web app.",
