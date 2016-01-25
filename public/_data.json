@@ -15,6 +15,12 @@
         "date": "2015-09-05",
         "updates": [
             {
+                "title": "New photo album “San Francisco",
+                "url": "https://www.flickr.com/photos/olemichelsen/albums/72157663213222719",
+                "date": "2016-01-24",
+                "type": "flickr"
+            },
+            {
                 "title": "New photo album “Italy”",
                 "url": "https://www.flickr.com/photos/olemichelsen/albums/72157657139531570",
                 "date": "2015-08-30",
@@ -42,12 +48,6 @@
                 "title": "Published express-ab module",
                 "url": "https://github.com/omichelsen/express-ab",
                 "date": "2014-10-23",
-                "type": "github"
-            },
-            {
-                "title": "Published angular-steps module",
-                "url": "https://github.com/omichelsen/angular-steps",
-                "date": "2014-07-09",
                 "type": "github"
             }
         ]
