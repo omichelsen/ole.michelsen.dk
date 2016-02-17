@@ -60,7 +60,7 @@
                 "id": "72157663213222719",
                 "title": "San Francisco",
                 "thumbnail": {
-                    "url": "https://farm2.staticflickr.com/1530/24297586260_082701ab14_m.jpg",
+                    "url": "https://farm2.staticflickr.com/1530/24297586260_f0bbcb476c_m.jpg",
                     "width": "240",
                     "height": "149"
                 }
@@ -1216,6 +1216,12 @@
                 "lat": 45.2567,
                 "lng": 9.1475,
                 "width": 100,
+                "height": 100
+            },
+            "2013-07-26.jpg": {
+                "lat": 43.3372,
+                "lng": 17.8147,
+                "width": 206,
                 "height": 100
             }
         }
