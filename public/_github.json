@@ -11,6 +11,11 @@
       "language": "JavaScript",
       "description": "Split your UI into (wizard-like) steps in AngularJS."
     }, {
+      "html_url": "https://github.com/omichelsen/blog-social-signin-spa-jwt-server",
+      "name": "blog-social-signin-spa-jwt-server",
+      "language": "HTML",
+      "description": "Code example for article https://ole.michelsen.dk/blog/social-signin-spa-jwt-server.html"
+    }, {
       "html_url": "https://github.com/omichelsen/clipboard-button",
       "name": "clipboard-button",
       "language": "JavaScript",
@@ -56,30 +61,15 @@
       "language": null,
       "description": ""
     }, {
+      "html_url": "https://github.com/omichelsen/logger",
+      "name": "logger",
+      "language": "JavaScript",
+      "description": "Simple logger can be used as wrapper for console, adds log output levels, multiple targets and history."
+    }, {
       "html_url": "https://github.com/omichelsen/meetbox-chrome",
       "name": "meetbox-chrome",
       "language": "JavaScript",
       "description": ""
-    }, {
-      "html_url": "https://github.com/omichelsen/ngTotemTicker",
-      "name": "ngTotemTicker",
-      "language": "JavaScript",
-      "description": "A vertical list scroller for AngularJS"
-    }, {
-      "html_url": "https://github.com/omichelsen/node-benchmark",
-      "name": "node-benchmark",
-      "language": "JavaScript",
-      "description": "Benchmarking scripts for comparing I/O handling in node.js vs Apache"
-    }, {
-      "html_url": "https://github.com/omichelsen/simple-slideshow",
-      "name": "simple-slideshow",
-      "language": "JavaScript",
-      "description": "Simple slideshow library with no dependencies like jQuery."
-    }, {
-      "html_url": "https://github.com/omichelsen/View-Source",
-      "name": "View-Source",
-      "language": "PHP",
-      "description": "Server-side PHP script which displays the source of a webside with syntax highlighting for viewing on an iPad"
     }]
   }
 }
