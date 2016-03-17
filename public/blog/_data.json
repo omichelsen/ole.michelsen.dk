@@ -42,12 +42,13 @@
             "windows"
         ]
     },
-    "schedule-jobs-with-crontab-on-osx-yosemite": {
-        "title": "Schedule jobs with crontab on OS X Yosemite",
-        "description": "Schedule jobs to run daily with crontab on OS X Yosemite to e.g. backup your MySQL database.",
+    "schedule-jobs-with-crontab-on-mac-osx": {
+        "title": "Schedule jobs with crontab on Mac OS X",
+        "description": "Schedule jobs to run daily with crontab on Mac OS X to e.g. backup your MySQL database.",
         "date": "2015-02-22",
         "tags": [
             "bash",
+            "crontab",
             "macos"
         ]
     },

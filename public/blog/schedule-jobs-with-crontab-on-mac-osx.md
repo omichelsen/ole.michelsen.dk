@@ -58,7 +58,7 @@ PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 So after you've set up your scripts and everything is honky dory, you might notice that the Terminal suddenly have started sending you e-mails.
 
-![](/images/blog/schedule-jobs-with-crontab-on-osx-yosemite/you-have-mail.png)
+![](/images/blog/schedule-jobs-with-crontab-on-mac-osx/you-have-mail.png)
 
 If being pen pals with your Terminal isn't your thing, you can disable this behaviour by inserting this line at the very top of your crontab file:
 

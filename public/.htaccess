@@ -37,6 +37,7 @@ AddType text/cache-manifest .manifest
 
 RedirectPermanent /blog/feed.html /feed.xml
 RedirectPermanent /blog/breadcrumb-trail-harp-jade /blog/breadcrumb-trail-harp-jade.html
+RedirectPermanent /blog/schedule-jobs-with-crontab-on-osx-yosemite.html /blog/schedule-jobs-with-crontab-on-mac-osx.html
 RedirectPermanent /blog/split-string-to-table-using-transact-sql/) /blog/split-string-to-table-using-transact-sql.html
 RedirectPermanent /demos/html5-animation.html /portfolio/html5-animation/
 RedirectPermanent /tools/regex.htm /tools/regex.html
