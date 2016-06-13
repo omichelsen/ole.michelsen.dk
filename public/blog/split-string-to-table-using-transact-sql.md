@@ -1,4 +1,4 @@
-There is no built-in function to split a delimited string in Microsoft SQL Server, but it is very easy to create your own. The following Table-Valued Function (TVF) will split a string with a custom delimiter, and return the results as a table. This means you can easily use the output directly in a join with some other data.
+There is no built-in function to split a delimited string in Microsoft SQL Server, but it is very easy to create your own. The following Table-Valued Function (TVF) will split a string with a custom delimiter, and return the results as a table. This means you can easily use the output directly in a `JOIN` with some other data.
 
 <!-- more-->
 
@@ -25,7 +25,7 @@ There is no built-in function to split a delimited string in Microsoft SQL Serve
     )
     GO
 
-To use `Split`, just call it in a `SELECT` as you would a normal table:
+To use `Split()`, just call it in a `SELECT` as you would a normal table:
 
     DECLARE @DelimitedString NVARCHAR(128)
     SET @DelimitedString = 'Duckman,Cornfed,Ajax,Charles,Mambo'
@@ -35,10 +35,10 @@ This will split the string and output an ordered table with each value:
 
 ![Output table example](/images/blog/split-string-to-table-using-transact-sql/output.png)
 
-The output table has the column “Id” containing the original index of the value in the string. The column “Data” contains each string value. You can also use `Split` directly in a join with another table like this:
+The output table has the column “Id” containing the original index of the value in the string. The column “Data” contains each string value. You can also use `Split()` directly in a join with another table like this:
 
     SELECT Users.[Name] FROM dbo.Users
         INNER JOIN dbo.Split(@DelimitedString, ',') AS split
             ON Users.[Name] = split.[DATA]
 
-Notice that `Split` uses common table expressions (CTE), a feature added to T-SQL in Microsoft SQL Server 2005, and will not work on earlier versions.
+Notice that `Split()` uses common table expressions (CTE), a feature added to T-SQL in Microsoft SQL Server 2005, and will not work on earlier versions.
