@@ -18,9 +18,9 @@ You add a job to crontab by editing the job list. A job is specified in the foll
 
 ## Example
 
-Let's make and example job. I personally use cronjobs to make regular backups of my MySQL databases, so I will show how to set this up to run once a day.
+Let's make an example job. I personally use cronjobs to make regular backups of my MySQL databases, so I will show how to set this up to run once a day.
 
-My script is called [`backup.sh`](https://gist.github.com/omichelsen/8968ea562fe646b78780), and will dump my MySQL database to a zip file. We will set it to run as a cronjob by editing the job list (with the `nano` editor):
+My script is called [`backup.sh`](https://gist.github.com/omichelsen/8968ea562fe646b78780), and will dump my MySQL database to a zip file. We'll set it to run as a cronjob by editing the job list (with the `nano` editor):
 
 ```bash
 env EDITOR=nano crontab -e
@@ -32,7 +32,7 @@ Now enter the following and press <kbd>CTRL</kbd>+<kbd>O</kbd> and <kbd>CTRL</kb
 0 12 * * *  cd ~/my/backup/folder && ./backup.sh
 ```
 
-This will execute the command every day at 12:00, which changes to the folder of the script and runs it. The double ampersand `&&` enables you to specify multiple commands that will run after each other. 
+This will execute the command every day at 12:00, which changes to the folder of the script and runs it. The double ampersand `&&` allows you to specify multiple commands that will run after each other. 
 
 Notice that if your computer is shut down or sleeping at the time, the script will not run until the next day at the specified time.
 
@@ -44,7 +44,7 @@ crontab -l
 
 ### Environment
 
-You might get a wierd "command not found" error when running your crontab jobs for the first time, even though the script works fine when you run it yourself. That is because crontab executes commands without any of the normal environment variables set up.
+You might get a weird "command not found" error when running your crontab jobs for the first time, even though the script works fine when you run it yourself. That's because crontab executes commands without any of the normal environment variables set up.
 
 To fix this, you can add the PATH in the beginning of your script, so it knows how to find programs like `mysqldump`:
 
@@ -70,14 +70,8 @@ Presto. Now your jobs will run silent.
 
 Here's a few small snippets which might come in handy:
 
-#### Execute on workdays 1AM
-
-    0 1 * * 1-5 /bin/execute/this/script.sh
-
-#### Execute every 10 minutes
-
-    */10 * * * * /bin/execute/this/script.sh
-   
-#### Log output to file
-
-    */10 * * * * /bin/execute/this/script.sh >> /var/log/script_output.log 2>&1
+| Description              | Script                   |  
+| ------------------------ | ------------------------ |  
+| Execute on workdays 1AM  | `0 1 * * 1-5 /bin/execute/this/script.sh`  |
+| Execute every 10 minutes | `*/10 * * * * /bin/execute/this/script.sh` |
+| Log output to file       | `*/10 * * * * /bin/execute/this/script.sh >> /var/log/script_output.log 2>&1` |
