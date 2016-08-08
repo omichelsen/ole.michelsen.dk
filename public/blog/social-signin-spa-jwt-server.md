@@ -1,6 +1,6 @@
-Having social sign in on your page is pretty standard nowadays, and if you are running a Single-Page App (SPA), you can sign in without ever reloading the page. This will allow your app to talk to all the social networks like Facebook and Twitter, and you can access profile info, friends/contacts, photos and more. This means you can build a pretty advanced app without handling anything on your server.
+Social sign in is ubiquitous nowadays, and if you are running a Single-Page App (SPA), you can sign in without ever reloading the page. This will allow your app to talk to all the social networks like Facebook and Twitter, and you can access profile info, friends/contacts, photos and more, all without handling anything on your server.
 
-However if you _do_ need to send some data to your server at some point, you need to ensure that the users posting to your server, are actually who they say they are. First let's look at how to create a simple sign in page.
+However if you _do_ need to send some data to your server at some point, you need to ensure that the users posting to your server, are actually who they say they are. This tutorial will go through the sign in process in a SPA, and validating the access tokens we recieve on our own server. First let's look at how to create a simple sign in page.
 
 <!-- more-->
 
