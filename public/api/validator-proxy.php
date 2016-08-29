@@ -44,7 +44,7 @@ function http_parse_headers($header)
 if ($_GET['uri'])
 {
 	// Create URI for W3C validation service (https://validator.w3.org/docs/api.html)
-	$validator = "https://validator.nu/check?level=error&out=json&doc=".urlencode($_GET['uri']);
+	$validator = "https://validator.nu/?level=error&out=json&doc=".urlencode($_GET['uri']);
 
 	// Request a W3C validation of the given URI
 	$w3cresult = fetchUri($validator);
