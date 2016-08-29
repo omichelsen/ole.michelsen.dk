@@ -27,7 +27,7 @@ function bindSitemapResponse(data) {
 
 	$.each(data, function(index, value) {
 		out += '<tr' + (index % 2 == 1 ? ' class="alt">' : '>')
-			+  '<td class="r">' + (index+1) + ':</td>'
+			+  '<td class="r">' + (index+1) + '</td>'
 			+  '<td>' + value + '</td>'
 			+  '<td class="c" id="loading' + index + '">'
 			+	(index < requestLimit ? '<img src="/images/loading.gif" height="11" width="16" />' : 'Deferred')
