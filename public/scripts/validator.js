@@ -3,21 +3,22 @@ var timerIntervalId = 0;
 
 $(document).ready(function() {
 	$('#validator').submit(function(event) {
+		event.preventDefault();
+
 		$('input[type=submit]').prop('disabled', true);
 
 		$('#results').html('<tr><td class="c" colspan="3">Processing sitemap...<br /><img src="/images/loading.gif" height="11" width="16" /></td></tr>');
 
-		$.getJSON('/api/validator-sitemap.php', {"uri": $("#sitemapuri").val()}, bindSitemapResponse);
-
-		event.preventDefault();
+		$.getJSON('/api/validator-sitemap.php', {'uri': $('#sitemapuri').val()}, bindSitemapResponse);
 	});
 });
 
 function bindSitemapResponse(data) {
 	if (!data.length) {
 		// No data was returned, so display error message and reenable submit for retry
-		$("#results td:first").html('<span style="color:#B00">Sitemap could not be parsed - wrong URI?</span>');
+		$('#results td:first').html('<span style="color:#B00">Sitemap could not be parsed - wrong URI?</span>');
 		$('input[type=submit]').prop('disabled', false);
+		return;
 	}
 
 	var delay = 2000;
@@ -41,14 +42,14 @@ function bindSitemapResponse(data) {
 		}
 	});
 
-	$("#results").html(out);
+	$('#results').html(out);
 }
 
 function validate(index, uri) {
 	$.getJSON('/api/validator-proxy.php', { 'uri': uri },
 		function (data) {
 			$('#loading' + index).html(
-				'<a href="https://validator.w3.org/nu/?doc=' + encodeURIComponent(uri) + '" target="_blank" style="color:' +
+				'<a href="' + data.report + '" target="_blank" rel="noopener noreferrer" style="color:' +
 				(data.valid == 'Passed' ? '#006400' : '#B00') + '">' +
 				(data.valid || data.error) +
 				'</a>'
