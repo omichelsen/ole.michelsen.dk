@@ -44,7 +44,7 @@ function http_parse_headers($header)
 if ($_GET['uri'])
 {
 	// Create URI for W3C validation service (https://validator.w3.org/docs/api.html)
-	$validator = "https://validator.w3.org/check?output=json&level=error&uri=".urlencode($_GET['uri']);
+	$validator = "https://validator.nu/check?level=error&out=json&doc=".urlencode($_GET['uri']);
 
 	// Request a W3C validation of the given URI
 	$w3cresult = fetchUri($validator);
@@ -53,11 +53,12 @@ if ($_GET['uri'])
 	$json = json_decode($w3cresult);
 	$valid = count($json->messages) == 0 ? "Passed" : "Failed";
 	$error = count($json->messages) . " error(s)";
+	$report = str_replace('&out=json', '', $validator);
 }
 
 // Output JSON object (empty value if error)
 echo json_encode([
 	'valid' => $valid,
 	'error' => $error,
-	'report' => $validator
+	'report' => $report
 ]);
