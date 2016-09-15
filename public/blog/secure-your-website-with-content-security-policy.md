@@ -1,22 +1,22 @@
 <img class="entry-image" src="/images/blog/secure-your-website-with-content-security-policy/CSP_Shield.png" srcset="/images/blog/secure-your-website-with-content-security-policy/CSP_Shield-2x.png 2x" alt="Content security policy shield" width="150" height="150"> So what is a content security policy (CSP), and why do I need one? A CSP is a contract that your server sends to the browser, defining from which domains it's ok to load scripts, style sheets, images etc.
 
-This is an important tool to protect against [cross-site scripting](https://en.wikipedia.org/wiki/Cross-site_scripting) (XSS) and other maladies of the internet today. XSS can be used by evildoers to place a script into your website, which for example could replace the login field in your online bank, sending usernames and passwords to somebody else. Another trick could be to load your page in an iframe on a similar domain, so it looks like your page loads normally, all the while evil hackers are snatching up passwords and credit card information.
+This is an important tool to protect against [cross-site scripting](https://en.wikipedia.org/wiki/Cross-site_scripting) (XSS), clickjacking and other client side attack vectors. XSS can for example be used by evildoers to place a script into your website, replace the login field in your online bank, and send usernames and passwords to somebody else. Another trick could be to load your page in an iframe on a similar domain, so it looks like your page loads normally, all the while evil hackers are snatching up passwords and credit card information.
 
-These techniques can be virtually undetectable to the user, as everything will look normal, and since these attacks happens on the client side, it doesn't matter how secure your server setup is once the damage is done.
+These techniques can be virtually undetectable to the user, as everything will look normal, and since these attacks happens on the client side, it can be difficult to detect until the damage is done.
 
-This sounds terrible! How do I protect my users?? Content Security Policy to the rescue!
+That's why you need a Content Security Policy!
 
 <!-- more-->
 
 ## Headers
 
-Fortunately it's really easy to protect your website with CSP, you only have to add a single line to your server configuration. If you already know about CSP, you can use [my CSP config generator](/tools/csp.html) to create a configuration for your webserver.
+To protect your website with a CSP, you only have to add a single line to your server configuration. If you already know about CSP, you can use [my CSP config generator](/tools/csp.html) to create a configuration for your webserver.
 
 If you are running Apache, you just need to add this single line to your `.htaccess` configuration file:
 
     Header set Content-Security-Policy "default-src 'self'"
 
-This line will configure your website to only load scripts, images etc. from it's own domain. This is a little limiting though, especially if you are running scripts from third parties like Google Analytics and CloudFlare. In that case your config should probably look more like this (line breaks added for readability):
+This line will configure your website to only load scripts, images etc. from the same domain. This is a little restrictive though, especially if you are running scripts from third parties like Google Analytics and CloudFlare. In that case your config should probably look more like this (line breaks added for readability):
 
     Header set Content-Security-Policy "
         default-src 'self';
@@ -24,7 +24,7 @@ This line will configure your website to only load scripts, images etc. from it'
         img-src *.cloudflare.com
     "
 
-You can set a policy for most types of resources a website can load, from scripts to images, style sheets and fonts. If you don't specifically define a header like `script-src` for scripts, the website will fallback to `default-src`.
+You can set a policy for most types of resources: scripts, images, style sheets, fonts etc. If you don't specifically define a header like `script-src` for scripts, the website will fallback to `default-src`.
 
 ### Supported directives
 
@@ -63,7 +63,7 @@ Each directive accepts domain patterns seperated by space, and domain patterns c
 
 ## Additional important headers
 
-There are a few extra headers that are worth setting while you're at it.
+There are a few extra headers worth setting while you're at it:
 
 ### Strict-Transport-Security
 
