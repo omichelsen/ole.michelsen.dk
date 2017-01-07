@@ -1,13 +1,10 @@
 -function prettyDate(dateString){
   -var date = new Date(dateString);
-  -var d = date.getDate();
-  -var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-  -var m = monthNames[date.getMonth()];
-  -var y = date.getFullYear();
-  -return m+' '+d+', '+y;
+  -var options = {month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC'};
+  -return date.toLocaleString('en-US', options);
 -}
 
-- if (!date)
-  - date = (new Date().getFullYear()) + '-' + (new Date().getMonth() + 1) + '-' + (new Date().getDate());
+-if (!date)
+  -date = new Date();
 
 time(datetime=date itemprop=type)= prettyDate(date)
