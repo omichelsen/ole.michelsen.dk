@@ -6,6 +6,8 @@ If you have an older Mac (2010-2012), you might have some trouble using Boot Cam
 
 Of course beware that this is not an offical Apple support guide. Use at your own discretion and do backups etc.
 
+__Update 2017-01-07__: Added instructions how to disable SIP on macOS El Capitan and later.
+
 ## Make a bootable USB flash drive
 
 First you need a USB flash drive of __8 GB__ or more. Then you need to start Boot Camp Assistant:
@@ -71,3 +73,14 @@ It seems that Boot Camp will mess up the partition table, but as long as you cre
 ## Final tip: fan control
 
 If you have installed an SSD in your old Mac, the heat sensors in the harddrive will no longer be what the system expects, and thus the fans are spinning at max to protect the hardware. Because it's nice to retain your hearing, you can install the wonderful [Macs Fan Control](http://www.crystalidea.com/macs-fan-control) app and set the system to watch for another sensor, e.g. the S.M.A.R.T one in your SSD.
+
+## macOS El Capitan and Sierra
+
+El Capitan added a new security feature called System Integrity Protection (SIP), that protects files from being modified, even by a root account. To modify `Info.plist` you will have to disable SIP using the following steps:
+
+1. Reboot your Mac into Recovery Mode by restarting your computer and holding down <kbd>CMD</kbd>+<kbd>R</kbd> until the Apple logo appears on your screen.
+1. Click Utilities > Terminal.
+1. In the Terminal window, type in `csrutil disable` and press Enter.
+1. Restart your Mac.
+
+You can reenable SIP by repeating these steps and running `csrutil enable` in the Terminal instead.

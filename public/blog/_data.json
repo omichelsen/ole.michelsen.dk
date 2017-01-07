@@ -48,6 +48,7 @@
         "title": "Install Windows 8 with Boot Camp on Yosemite with USB key",
         "description": "How to install Windows 8 or 8.1 on MacOS X Yosemite with Boot Camp and a bootable USB key.",
         "date": "2015-06-24",
+        "dateModified": "2017-01-07",
         "tags": [
             "macos",
             "windows"
