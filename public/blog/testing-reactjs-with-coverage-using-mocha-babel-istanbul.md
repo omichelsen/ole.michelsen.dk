@@ -55,7 +55,7 @@ Notice how I'm able to just run `mocha`. This actually takes a little more confi
 src/**/*.spec.js
 ```
 
-You can stick all your Mocha configuration in here; I am registering Babel, injecting jsdom (instead of having a real browser) and doing some general setup in `test/setup.js` like the extension handling detailed below, registering [sinon](http://sinonjs.org/) etc. Lastly I'm specifying where my tests are. Mocha will automatically scan the `test/` folder, so you can leave this out if all your tests are in here.
+You can put all your Mocha configuration in here; I am registering Babel, injecting jsdom (instead of having a real browser) and doing some general setup in `test/setup.js` like the extension handling detailed below, registering [sinon](http://sinonjs.org/) etc. Lastly I'm specifying where my tests are. Mocha will automatically scan the `test/` folder, so you can leave this out if all your tests are in here.
 
 ### Excludes and includes
 
@@ -105,12 +105,12 @@ As an added bonus you can now run only parts of your test suite by using grep: `
 
 ## Performance and conclusion
 
-For our project this setup meant we could remove a lot of dependencies, and it also runs incredily fast:
+For our project this setup meant we could remove a lot of dependencies, and it also runs incredibly fast:
 
 | Setup | `npm test` | `npm run coverage` |
 |-------|-----------:|-------------------:|
 | Karma + webpack + mocha + istanbul | 1m 45s |  |
-| mocha + istanbul | 5s | 25s | 
+| mocha + istanbul | 5s | 25s |
 
 In the end we saw an impressive _95% performance gain_ on running just our tests, and _76%_ improvement for coverage. Cutting out webpack gave us the biggest boost, but mind you this might not be for everybody. If you have a complicated setup of loaders etc., your code might not be able to run without it.
 
