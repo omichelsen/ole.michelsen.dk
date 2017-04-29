@@ -1,4 +1,15 @@
 {
+    "writing-library-with-typescript-test-coverage": {
+        "title": "Writing a library with TypeScript and proper test coverage",
+        "description": "How to write a library with TypeScript and test with Mocha, Sinon and Chai. Best practices for testing and using proxyquire to mock imports.",
+        "date": "2017-04-30",
+        "tags": [
+            "boilerplate",
+            "mocha",
+            "proxyquire",
+            "typescript"
+        ]
+    },
     "testing-reactjs-with-coverage-using-mocha-babel-istanbul": {
         "title": "Testing ReactJS with coverage using mocha+babel+istanbul",
         "description": "",
