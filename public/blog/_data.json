@@ -11,9 +11,10 @@
         ]
     },
     "testing-reactjs-with-coverage-using-mocha-babel-istanbul": {
-        "title": "Testing ReactJS with coverage using mocha+babel+istanbul",
+        "title": "Testing ReactJS with coverage using mocha+babel+nyc",
         "description": "",
         "date": "2016-06-26",
+        "dateModified": "2017-10-06",
         "tags": [
             "javascript",
             "node",

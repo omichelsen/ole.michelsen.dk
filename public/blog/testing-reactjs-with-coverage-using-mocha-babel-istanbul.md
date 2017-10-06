@@ -1,3 +1,5 @@
+__Update 2017-10-06__: Now using [nyc](https://github.com/istanbuljs/nyc) instead of isparta/istanbul.
+
 I recently worked on a project with all the latest and greatest tools: [React](https://facebook.github.io/react/), [Redux](http://redux.js.org/) and [webpack](https://webpack.github.io/). But our unit tests were running slowly to the point where we found ourselves constantly blocked in our workflow. Going for coffee every time you need to run `npm test` will quickly give you an upset stomach, so we decided to see what could be done to speed up the process, and ended up with a _95% speed improvement_ and being able to remove a lot of dependencies to boot.
 
 <!-- more-->
@@ -24,7 +26,7 @@ With these considerations we're ready to set up our test suite.
 I'll assume you've already configured Babel, and focus on the packages you need to run tests and create coverage from the command line:
 
 ```bash
-npm install babel-cli babel-core babel-register isparta istanbul jsdom jsdom-global mocha
+npm install babel-cli babel-core babel-register nyc jsdom jsdom-global mocha
 ```
 
 You can leave out jsdom if you don't need a browser-like DOM for testing, e.g. only use [shallow rendering](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering).
@@ -37,7 +39,7 @@ Under the "scripts" section of your `package.json`, add the following scripts:
 ```json
 {
     "scripts": {
-        "coverage": "babel-node ./node_modules/.bin/isparta cover --include 'src/**/*.js*' _mocha",
+        "coverage": "nyc mocha",
         "test": "mocha",
         "test:watch": "mocha --watch --reporter min"
     }
@@ -49,21 +51,35 @@ Now you can run `npm test` to just run unit tests and `npm run coverage` to run 
 Notice how I'm able to just run `mocha`. This actually takes a little more configuration, but we can stick all of that in a `test/mocha.opts` file to make it easier to run:
 
 ```bash
---compilers js:babel-register
+--require babel-register
 --require jsdom-global/register
 --require test/setup.js
-src/**/*.spec.js
+src/**/*.spec.jsx
 ```
 
 You can put all your Mocha configuration in here; I am registering Babel, injecting jsdom (instead of having a real browser) and doing some general setup in `test/setup.js` like the extension handling detailed below, registering [sinon](http://sinonjs.org/) etc. Lastly I'm specifying where my tests are. Mocha will automatically scan the `test/` folder, so you can leave this out if all your tests are in here.
 
 ### Excludes and includes
 
-In the `npm run coverage` script we include all the files we want covered (`'src/**/*.js*'` also matches `.jsx`), but something is still off with the coverage reports. It includes our test files (`*.spec.js`) and still doesn't include our react files (`*.jsx`). To fix this we need some configuration for Istanbul specifically, so create a `.istanbul.yml` file in the root of your project containing:
+In the `npm run coverage` script we include all the files we want covered (`'src/**/*.js*'` also matches `.jsx`), but something is still off with the coverage reports. It includes our test files (`*.spec.jsx`). To fix this we need some configuration for nyc, so add the following to your `package.json` file:
 
-    instrumentation:
-      excludes: ['*.spec.js']
-      extensions: ['.js', '.jsx']
+```json
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js*",
+      "test/**"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+```
 
 
 ### Ignoring required static files
@@ -110,7 +126,7 @@ For our project this setup meant we could remove a lot of dependencies, and it a
 | Setup | `npm test` | `npm run coverage` |
 |-------|-----------:|-------------------:|
 | Karma + webpack + mocha + istanbul | 1m 45s |  |
-| mocha + istanbul | 5s | 25s |
+| mocha + nyc | 5s | 25s |
 
 In the end we saw an impressive _95% performance gain_ on running just our tests, and _76%_ improvement for coverage. Cutting out webpack gave us the biggest boost, but mind you this might not be for everybody. If you have a complicated setup of loaders etc., your code might not be able to run without it.
 
