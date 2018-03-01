@@ -3,10 +3,10 @@
         "title": "Page Not Found",
         "description": "The page you were trying to access could not be found, please check your links and/or bookmarks, and try to find the correct address from my front page."
     },
-    "feed": {
+    "feed.xml": {
         "layout": false
     },
-    "sitemap": {
+    "sitemap.xml": {
         "layout": false
     },
     "index": {
