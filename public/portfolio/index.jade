@@ -1,7 +1,7 @@
 - function sortFolder(root) {
--   var folders = _.pick(root, (value, key) => key.indexOf('_') === -1);
+-   var folders = _.pickBy(root, (value, key) => key.indexOf('_') === -1);
 -   _.map(folders, (value, key) => _.merge(value, {key}));
--   var sorted = _.sortByOrder(folders, '_data.index.date', 'desc');
+-   var sorted = _.orderBy(folders, '_data.index.date', 'desc');
 -   return sorted;
 - };
 
