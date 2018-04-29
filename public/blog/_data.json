@@ -1,4 +1,14 @@
 {
+    "typescript-react-components-recipes-tips": {
+        "title": "TypeScript React components recipes and tips",
+        "description": "",
+        "date": "2018-02-18",
+        "tags": [
+            "react",
+            "typescript",
+            "component"
+        ]
+    },
     "writing-library-with-typescript-test-coverage": {
         "title": "Writing a library with TypeScript and proper test coverage",
         "description": "How to write a library with TypeScript and test with Mocha, Sinon and Chai. Best practices for testing and using proxyquire to mock imports.",
