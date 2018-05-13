@@ -16,7 +16,7 @@ My simple solution uses a generic Group class to hold the data and a key of your
 
     namespace LinqGrouping.Models
     {
-        public class Group<T, K>
+        public class Group<K, T>
         {
             public K Key;
             public IEnumerable<T> Values;
@@ -39,7 +39,7 @@ Create a list in a controller:
     using System.Linq;
     using System.Web.Mvc;
     using LinqGrouping.Models;
-     
+
     namespace LinqGrouping.Controllers
     {
         public class GroupingController : Controller
@@ -47,19 +47,19 @@ Create a list in a controller:
             public ActionResult Index()
             {
                 var books = new List<Book>();
-     
+
                 // Add test data
                 books.Add(new Book { Author = "Douglas Adams", Title = "The Hitchhiker's Guide to the Galaxy", Genre = "Fiction", Price = 159.95M });
                 books.Add(new Book { Author = "Scott Adams", Title = "The Dilbert Principle", Genre = "Fiction", Price = 23.95M });
                 books.Add(new Book { Author = "Douglas Coupland", Title = "Generation X", Genre = "Fiction", Price = 300.00M });
                 books.Add(new Book { Author = "Walter Isaacson", Title = "Steve Jobs", Genre = "Biography", Price = 219.25M });
                 books.Add(new Book { Author = "Michael Freeman", Title = "The Photographer's Eye", Genre = "Photography", Price = 195.50M });
-     
+
                 // Group the books by Genre
                 var booksGrouped = from b in books
                                    group b by b.Genre into g
                                    select new Group<string, Book> { Key = g.Key, Values = g };
-     
+
                 return View(booksGrouped.ToList());
             }
         }
@@ -69,13 +69,13 @@ The grouping is handled with the LINQ group by statement, and here we choose the
 
     @using LinqGrouping.Models
     @model List<Group<string, Book>>
-     
+
     @{
         ViewBag.Title = "LINQ Grouping";
     }
-     
+
     <h2>Grouping books by Genre</h2>
-     
+
     <table>
     <thead><tr><th>Author</th><th>Title</th><th>Price</th></tr></thead>
     <tbody>
