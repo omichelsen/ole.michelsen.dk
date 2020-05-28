@@ -1,330 +1,213 @@
 {
-    "typescript-react-components-recipes-tips": {
-        "title": "TypeScript React components recipes and tips",
-        "description": "",
-        "date": "2018-02-18",
-        "tags": [
-            "react",
-            "typescript",
-            "component"
-        ]
-    },
-    "writing-library-with-typescript-test-coverage": {
-        "title": "Writing a library with TypeScript and proper test coverage",
-        "description": "How to write a library with TypeScript and test with Mocha, Sinon and Chai. Best practices for testing and using proxyquire to mock imports.",
-        "date": "2017-04-30",
-        "tags": [
-            "boilerplate",
-            "mocha",
-            "proxyquire",
-            "typescript"
-        ]
-    },
-    "testing-reactjs-with-coverage-using-mocha-babel-istanbul": {
-        "title": "Testing ReactJS with coverage using mocha+babel+nyc",
-        "description": "",
-        "date": "2016-06-26",
-        "dateModified": "2017-10-06",
-        "tags": [
-            "javascript",
-            "node",
-            "test",
-            "unit"
-        ]
-    },
-    "social-signin-spa-jwt-server": {
-        "title": "Social sign in with single-page app and JWT server validation",
-        "description": "How to do client-side social sign in with providers like Facebook, Google and Twitter, and validate the user with JWT when talking to the server.",
-        "date": "2016-01-24",
-        "tags": [
-            "api",
-            "javascript",
-            "node",
-            "security",
-            "social",
-            "spa",
-            "webserver"
-        ]
-    },
-    "making-an-offline-webapp-with-service-workers": {
-        "title": "Making an offline web app with Service Workers",
-        "description": "Introduction to Service Workers: a hands on example of how to build an offline capable web app.",
-        "date": "2015-09-05",
-        "tags": [
-            "javascript",
-            "webapp"
-        ]
-    },
-    "secure-your-website-with-content-security-policy": {
-        "title": "Secure your website with Content Security Policy",
-        "description": "Protect your website against cross-site scripting (XSS) with a content security policy (CSP) with a custom header in Apache, nginx or IIS.",
-        "date": "2015-07-19",
-        "tags": [
-            "config",
-            "security",
-            "webserver",
-            "website"
-        ]
-    },
-    "install-windows-8-with-boot-camp-on-osx-yosemite-with-usb-key": {
-        "title": "Install Windows 8 with Boot Camp on Yosemite with USB key",
-        "description": "How to install Windows 8 or 8.1 on MacOS X Yosemite with Boot Camp and a bootable USB key.",
-        "date": "2015-06-24",
-        "dateModified": "2017-01-07",
-        "tags": [
-            "macos",
-            "windows"
-        ]
-    },
-    "schedule-jobs-with-crontab-on-mac-osx": {
-        "title": "Schedule jobs with crontab on Mac OS X",
-        "description": "Schedule jobs to run daily with crontab on Mac OS X to e.g. backup your MySQL database.",
-        "date": "2015-02-22",
-        "tags": [
-            "bash",
-            "crontab",
-            "macos"
-        ]
-    },
-    "testing-your-api-with-phpunit": {
-        "title": "Testing your API with PHPUnit",
-        "description": "How to test your RESTful API with PHPUnit and Guzzle and avoid regressions when developing your API.",
-        "date": "2014-12-30",
-        "dateModified": "2015-11-30",
-        "tags": [
-            "php",
-            "test"
-        ]
-    },
-    "setup-local-web-server-apache-php-osx-yosemite": {
-        "title": "Setup local web server with Apache and PHP on OS X Yosemite",
-        "description": "How to setup a local web server on OS X Yosemite with Apache and PHP and link projects directly from Dropbox to Apache.",
-        "date": "2014-11-25",
-        "dateModified": "2015-10-15",
-        "tags": [
-            "apache",
-            "macos",
-            "php"
-        ]
-    },
-    "download-and-edit-json-files-with-gulp": {
-        "title": "Download and edit JSON files with gulp",
-        "description": "How to download JSON files, e.g. from REST services, and edit/format/manipulate them with gulp.",
-        "date": "2014-11-05",
-        "tags": [
-            "gulp",
-            "javascript",
-            "json"
-        ]
-    },
-    "using-browser-sync-with-harp": {
-        "title": "Using BrowserSync with Harp",
-        "description": "Automatically refresh your browser when you update content or styles in Harp using BrowserSync.",
-        "date": "2014-10-17",
-        "tags": [
-            "bash",
-            "browsersync",
-            "harp",
-            "javascript"
-        ]
-    },
-    "showing-photo-gps-location-on-google-maps-with-gulp": {
-        "title": "Showing photo GPS location on Google Maps with gulp",
-        "description": "How to read the GPS data from photo EXIF data using gulp, and mark the coordinates on Google Maps.",
-        "date": "2014-10-11",
-        "tags": [
-            "exif",
-            "gulp",
-            "javascript",
-            "maps"
-        ]
-    },
-    "breadcrumb-trail-harp-jade": {
-        "title": "Breadcrumb trail with Harp and Jade",
-        "description": "How to create a microdata breadcrumb trail with Harp and Jade using the current page navigation path.",
-        "date": "2014-09-17",
-        "tags": [
-            "harp",
-            "jade",
-            "javascript",
-            "microdata"
-        ]
-    },
-    "add-custom-hostname-to-apache-osx-mavericks": {
-        "title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
-        "description": "How to use a custom hostname/domain with your local Apache web server on OSX Mavericks using Virtual Hosts and Dropbox.",
-        "date": "2014-05-07",
-        "dateModified": "2014-11-25",
-        "tags": [
-            "apache",
-            "bash",
-            "macos",
-            "terminal"
-        ]
-    },
-    "syntax-highlight-files-macos-terminal-less": {
-        "title": "Syntax highlight files in MacOS Terminal with less",
-        "description": "Display files in Terminal using less and GNU source-highlight. Install with Homebrew and setup with only three lines in .bash_profile.",
-        "date": "2014-03-25",
-        "tags": [
-            "bash",
-            "less",
-            "macos",
-            "terminal"
-        ]
-    },
-    "setup-local-web-server-apache-php-macos-x-mavericks": {
-        "title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
-        "description": "How to setup a local web server on MacOS X Mavericks with Apache and PHP and link projects directly from Dropbox to Apache.",
-        "date": "2013-12-30",
-        "dateModified": "2014-11-25",
-        "tags": [
-            "apache",
-            "macos",
-            "php"
-        ]
-    },
-    "navigate-form-fields-with-arrow-keys": {
-        "title": "Navigate form fields with arrow keys",
-        "description": "A simple jQuery plugin to navigate form fields using the arrow keys, code freely available on GitHub.",
-        "date": "2013-11-13",
-        "tags": [
-            "javascript",
-            "jquery"
-        ]
-    },
-    "split-string-to-table-using-transact-sql": {
-        "title": "Split a string to a table using T-SQL",
-        "description": "Split a delimited string (e.g. comma-separated) to a table using Transact-SQL using a table-valued function and common table expressions.",
-        "date": "2013-03-26",
-        "tags": [
-            "csv",
-            "sql"
-        ]
-    },
-    "serialize-object-into-a-query-string-with-reflection": {
-        "title": "Serialize object into a query string with Reflection",
-        "description": "Serialize any object in C# to a query string with the .ToQueryString() extension method. Supports primitives, strings, arrays and collections.",
-        "date": "2012-09-13",
-        "tags": [
-            ".net",
-            "c#",
-            "linq",
-            "mvc"
-        ]
-    },
-    "calculate-a-running-total-in-sql-server-2012": {
-        "title": "Calculate a running total in SQL Server 2012",
-        "description": "How to calculate a running total in SQL Server 2012 with alternative solution for SQL Server 2005 and 2008 using Common Table Expressions.",
-        "date": "2012-04-06",
-        "tags": [
-            "sql"
-        ]
-    },
-    "bind-a-model-property-to-a-different-named-query-string-field": {
-        "title": "Bind a model property to a different named query string field",
-        "description": "How to bind a model property to a different named query string field with a custom alias attribute and model binder in MVC3.",
-        "date": "2012-03-21",
-        "tags": [
-            ".net",
-            "c#",
-            "linq",
-            "mvc"
-        ]
-    },
-    "grouping-data-with-linq-and-mvc": {
-        "title": "Grouping data with LINQ and MVC",
-        "description": "Show a list or table of data grouped by category or group header using LINQ with a reusable generic class.",
-        "date": "2011-11-20",
-        "tags": [
-            ".net",
-            "c#",
-            "linq",
-            "mvc",
-            "sql"
-        ]
-    },
-    "mapping-relational-table-data-to-a-tree-structure-in-mvc": {
-        "title": "Mapping relational table data to a tree structure in MVC",
-        "description": "How to map SQL table data into a tree structure and display it as a nested list using recursive Razor display templates.",
-        "date": "2011-10-03",
-        "tags": [
-            ".net",
-            "c#",
-            "linq",
-            "mvc",
-            "sql"
-        ]
-    },
-    "localization-with-fallback-using-linq": {
-        "title": "Localization with fallback using LINQ",
-        "description": "How to get localization in MVC with fallback using a single LINQ statement, translated texts will be selected if available or fallback to a default.",
-        "date": "2011-08-17",
-        "tags": [
-            ".net",
-            "c#",
-            "l18i",
-            "linq",
-            "mvc"
-        ]
-    },
-    "firefox-auto-login-with-windows-authentication-and-ad": {
-        "title": "Firefox auto login with Windows Authentication and AD",
-        "description": "Get Firefox to login automatically on your intranet websites with Windows Authentication and Active Directory with a simple change in about:config.",
-        "date": "2011-08-07",
-        "tags": [
-            "ios",
-            "ipad",
-            "iphone"
-        ]
-    },
-    "view-source-on-the-ipad-and-iphone": {
-        "title": "View source on the iPad and iPhone",
-        "description": "View source on the iPad using a bookmarklet to see the source code with syntax highlighting, selectable text and clickable links for URIs.",
-        "date": "2011-07-28",
-        "dateModified": "2017-07-06",
-        "tags": [
-            "ios",
-            "ipad",
-            "iphone"
-        ]
-    },
-    "gmail-plus-your-email-to-filter-maillists-and-catch-spam": {
-        "title": "Gmail+ your email – filter maillists and catch spam",
-        "description": "Filter your Gmail by creating unique email addresses for each service you subscribe to by suffixing your username with a + and any text.",
-        "date": "2011-07-14",
-        "tags": [
-            "gmail"
-        ]
-    },
-    "custom-membershipprovider-principal-and-identity": {
-        "title": "Custom MembershipProvider, Principal and Identity",
-        "description": "Implementing a custom MembershipProvider, IPrincipal and IIdentity. How to cache the objects accross page requests and access the objects through a wrapper.",
-        "date": "2011-07-01",
-        "tags": [
-            ".net",
-            "c#",
-            "security"
-        ]
-    },
-    "using-uri-hash-instead-of-query-strings": {
-        "title": "Using URI hash instead of query strings",
-        "description": "Using URI location hash instead of query strings for bookmarkable JavaScript/AJAX pages with dynamic content.",
-        "date": "2011-06-17",
-        "tags": [
-            "ios",
-            "ipad",
-            "iphone"
-        ]
-    },
-    "site-optimization": {
-        "title": "Website optimization",
-        "description": "Techniques for optimizing websites and how to improve performance by reducing HTTP requests and minifying scripts.",
-        "date": "2011-02-07"
-    },
-    "index": {
-        "title": "Blog",
-        "description": "Ole Bjørn Michelsen is a programmer, speaker and photo hobbyist. I've been coding for a score of years and blogging on programming all the while.",
-        "date": "2015-02-22"
-    }
+	"apache-php-web-server-macos": {
+		"title": "Setup Apache and PHP on macOS",
+		"description": "How to setup a local web server on macOS Catalina using Apache and PHP.",
+		"date": "2020-05-26",
+		"tags": ["apache", "macos", "php"]
+	},
+	"typescript-react-components-recipes-tips": {
+		"title": "TypeScript React components recipes and tips",
+		"description": "",
+		"date": "2018-02-18",
+		"tags": ["react", "typescript", "component"]
+	},
+	"writing-library-with-typescript-test-coverage": {
+		"title": "Writing a library with TypeScript and proper test coverage",
+		"description": "How to write a library with TypeScript and test with Mocha, Sinon and Chai. Best practices for testing and using proxyquire to mock imports.",
+		"date": "2017-04-30",
+		"tags": ["boilerplate", "mocha", "proxyquire", "typescript"]
+	},
+	"testing-reactjs-with-coverage-using-mocha-babel-istanbul": {
+		"title": "Testing ReactJS with coverage using mocha+babel+nyc",
+		"description": "",
+		"date": "2016-06-26",
+		"dateModified": "2017-10-06",
+		"tags": ["javascript", "node", "test", "unit"]
+	},
+	"social-signin-spa-jwt-server": {
+		"title": "Social sign in with single-page app and JWT server validation",
+		"description": "How to do client-side social sign in with providers like Facebook, Google and Twitter, and validate the user with JWT when talking to the server.",
+		"date": "2016-01-24",
+		"tags": [
+			"api",
+			"javascript",
+			"node",
+			"security",
+			"social",
+			"spa",
+			"webserver"
+		]
+	},
+	"making-an-offline-webapp-with-service-workers": {
+		"title": "Making an offline web app with Service Workers",
+		"description": "Introduction to Service Workers: a hands on example of how to build an offline capable web app.",
+		"date": "2015-09-05",
+		"tags": ["javascript", "webapp"]
+	},
+	"secure-your-website-with-content-security-policy": {
+		"title": "Secure your website with Content Security Policy",
+		"description": "Protect your website against cross-site scripting (XSS) with a content security policy (CSP) with a custom header in Apache, nginx or IIS.",
+		"date": "2015-07-19",
+		"tags": ["config", "security", "webserver", "website"]
+	},
+	"install-windows-8-with-boot-camp-on-osx-yosemite-with-usb-key": {
+		"title": "Install Windows 8 with Boot Camp on Yosemite with USB key",
+		"description": "How to install Windows 8 or 8.1 on MacOS X Yosemite with Boot Camp and a bootable USB key.",
+		"date": "2015-06-24",
+		"dateModified": "2017-01-07",
+		"tags": ["macos", "windows"]
+	},
+	"schedule-jobs-with-crontab-on-mac-osx": {
+		"title": "Schedule jobs with crontab on Mac OS X",
+		"description": "Schedule jobs to run daily with crontab on Mac OS X to e.g. backup your MySQL database.",
+		"date": "2015-02-22",
+		"tags": ["bash", "crontab", "macos"]
+	},
+	"testing-your-api-with-phpunit": {
+		"title": "Testing your API with PHPUnit",
+		"description": "How to test your RESTful API with PHPUnit and Guzzle and avoid regressions when developing your API.",
+		"date": "2014-12-30",
+		"dateModified": "2015-11-30",
+		"tags": ["php", "test"]
+	},
+	"setup-local-web-server-apache-php-osx-yosemite": {
+		"title": "Setup local web server with Apache and PHP on OS X Yosemite",
+		"description": "How to setup a local web server on OS X Yosemite with Apache and PHP and link projects directly from Dropbox to Apache.",
+		"date": "2014-11-25",
+		"dateModified": "2015-10-15",
+		"tags": ["apache", "macos", "php"]
+	},
+	"download-and-edit-json-files-with-gulp": {
+		"title": "Download and edit JSON files with gulp",
+		"description": "How to download JSON files, e.g. from REST services, and edit/format/manipulate them with gulp.",
+		"date": "2014-11-05",
+		"tags": ["gulp", "javascript", "json"]
+	},
+	"using-browser-sync-with-harp": {
+		"title": "Using BrowserSync with Harp",
+		"description": "Automatically refresh your browser when you update content or styles in Harp using BrowserSync.",
+		"date": "2014-10-17",
+		"tags": ["bash", "browsersync", "harp", "javascript"]
+	},
+	"showing-photo-gps-location-on-google-maps-with-gulp": {
+		"title": "Showing photo GPS location on Google Maps with gulp",
+		"description": "How to read the GPS data from photo EXIF data using gulp, and mark the coordinates on Google Maps.",
+		"date": "2014-10-11",
+		"tags": ["exif", "gulp", "javascript", "maps"]
+	},
+	"breadcrumb-trail-harp-jade": {
+		"title": "Breadcrumb trail with Harp and Jade",
+		"description": "How to create a microdata breadcrumb trail with Harp and Jade using the current page navigation path.",
+		"date": "2014-09-17",
+		"tags": ["harp", "jade", "javascript", "microdata"]
+	},
+	"add-custom-hostname-to-apache-osx-mavericks": {
+		"title": "Add custom hostname to Apache on OSX 10.9 Mavericks",
+		"description": "How to use a custom hostname/domain with your local Apache web server on OSX Mavericks using Virtual Hosts and Dropbox.",
+		"date": "2014-05-07",
+		"dateModified": "2014-11-25",
+		"tags": ["apache", "bash", "macos", "terminal"]
+	},
+	"syntax-highlight-files-macos-terminal-less": {
+		"title": "Syntax highlight files in MacOS Terminal with less",
+		"description": "Display files in Terminal using less and GNU source-highlight. Install with Homebrew and setup with only three lines in .bash_profile.",
+		"date": "2014-03-25",
+		"tags": ["bash", "less", "macos", "terminal"]
+	},
+	"setup-local-web-server-apache-php-macos-x-mavericks": {
+		"title": "Setup local web server with Apache and PHP on MacOS X Mavericks",
+		"description": "How to setup a local web server on MacOS X Mavericks with Apache and PHP and link projects directly from Dropbox to Apache.",
+		"date": "2013-12-30",
+		"dateModified": "2014-11-25",
+		"tags": ["apache", "macos", "php"]
+	},
+	"navigate-form-fields-with-arrow-keys": {
+		"title": "Navigate form fields with arrow keys",
+		"description": "A simple jQuery plugin to navigate form fields using the arrow keys, code freely available on GitHub.",
+		"date": "2013-11-13",
+		"tags": ["javascript", "jquery"]
+	},
+	"split-string-to-table-using-transact-sql": {
+		"title": "Split a string to a table using T-SQL",
+		"description": "Split a delimited string (e.g. comma-separated) to a table using Transact-SQL using a table-valued function and common table expressions.",
+		"date": "2013-03-26",
+		"tags": ["csv", "sql"]
+	},
+	"serialize-object-into-a-query-string-with-reflection": {
+		"title": "Serialize object into a query string with Reflection",
+		"description": "Serialize any object in C# to a query string with the .ToQueryString() extension method. Supports primitives, strings, arrays and collections.",
+		"date": "2012-09-13",
+		"tags": [".net", "c#", "linq", "mvc"]
+	},
+	"calculate-a-running-total-in-sql-server-2012": {
+		"title": "Calculate a running total in SQL Server 2012",
+		"description": "How to calculate a running total in SQL Server 2012 with alternative solution for SQL Server 2005 and 2008 using Common Table Expressions.",
+		"date": "2012-04-06",
+		"tags": ["sql"]
+	},
+	"bind-a-model-property-to-a-different-named-query-string-field": {
+		"title": "Bind a model property to a different named query string field",
+		"description": "How to bind a model property to a different named query string field with a custom alias attribute and model binder in MVC3.",
+		"date": "2012-03-21",
+		"tags": [".net", "c#", "linq", "mvc"]
+	},
+	"grouping-data-with-linq-and-mvc": {
+		"title": "Grouping data with LINQ and MVC",
+		"description": "Show a list or table of data grouped by category or group header using LINQ with a reusable generic class.",
+		"date": "2011-11-20",
+		"tags": [".net", "c#", "linq", "mvc", "sql"]
+	},
+	"mapping-relational-table-data-to-a-tree-structure-in-mvc": {
+		"title": "Mapping relational table data to a tree structure in MVC",
+		"description": "How to map SQL table data into a tree structure and display it as a nested list using recursive Razor display templates.",
+		"date": "2011-10-03",
+		"tags": [".net", "c#", "linq", "mvc", "sql"]
+	},
+	"localization-with-fallback-using-linq": {
+		"title": "Localization with fallback using LINQ",
+		"description": "How to get localization in MVC with fallback using a single LINQ statement, translated texts will be selected if available or fallback to a default.",
+		"date": "2011-08-17",
+		"tags": [".net", "c#", "l18i", "linq", "mvc"]
+	},
+	"firefox-auto-login-with-windows-authentication-and-ad": {
+		"title": "Firefox auto login with Windows Authentication and AD",
+		"description": "Get Firefox to login automatically on your intranet websites with Windows Authentication and Active Directory with a simple change in about:config.",
+		"date": "2011-08-07",
+		"tags": ["ios", "ipad", "iphone"]
+	},
+	"view-source-on-the-ipad-and-iphone": {
+		"title": "View source on the iPad and iPhone",
+		"description": "View source on the iPad using a bookmarklet to see the source code with syntax highlighting, selectable text and clickable links for URIs.",
+		"date": "2011-07-28",
+		"dateModified": "2017-07-06",
+		"tags": ["ios", "ipad", "iphone"]
+	},
+	"gmail-plus-your-email-to-filter-maillists-and-catch-spam": {
+		"title": "Gmail+ your email – filter maillists and catch spam",
+		"description": "Filter your Gmail by creating unique email addresses for each service you subscribe to by suffixing your username with a + and any text.",
+		"date": "2011-07-14",
+		"tags": ["gmail"]
+	},
+	"custom-membershipprovider-principal-and-identity": {
+		"title": "Custom MembershipProvider, Principal and Identity",
+		"description": "Implementing a custom MembershipProvider, IPrincipal and IIdentity. How to cache the objects accross page requests and access the objects through a wrapper.",
+		"date": "2011-07-01",
+		"tags": [".net", "c#", "security"]
+	},
+	"using-uri-hash-instead-of-query-strings": {
+		"title": "Using URI hash instead of query strings",
+		"description": "Using URI location hash instead of query strings for bookmarkable JavaScript/AJAX pages with dynamic content.",
+		"date": "2011-06-17",
+		"tags": ["ios", "ipad", "iphone"]
+	},
+	"site-optimization": {
+		"title": "Website optimization",
+		"description": "Techniques for optimizing websites and how to improve performance by reducing HTTP requests and minifying scripts.",
+		"date": "2011-02-07"
+	},
+	"index": {
+		"title": "Blog",
+		"description": "Ole Bjørn Michelsen is a programmer, speaker and photo hobbyist. I've been coding for a score of years and blogging on programming all the while.",
+		"date": "2015-02-22"
+	}
 }
