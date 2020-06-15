@@ -1,9 +1,8 @@
 <?php
 /* Calls the W3C Markup Validator Web Service for a given URI
-   and returns the result in JSON format
+	 and returns the result in JSON format
  */
-function fetchUri($uri)
-{
+function fetchUri($uri) {
 	// Open connection
 	$ch = curl_init();
 
@@ -24,25 +23,23 @@ function fetchUri($uri)
 	return $doc;
 }
 
-function http_parse_headers($header)
-{
-    $retVal = array();
-    $fields = explode("\r\n", preg_replace('/\x0D\x0A[\x09\x20]+/', ' ', $header));
-    foreach( $fields as $field ) {
-        if( preg_match('/([^:]+): (.+)/m', $field, $match) ) {
-            $match[1] = preg_replace('/(?<=^|[\x09\x20\x2D])./e', 'strtoupper("\0")', strtolower(trim($match[1])));
-            if( isset($retVal[$match[1]]) ) {
-                $retVal[$match[1]] = array($retVal[$match[1]], $match[2]);
-            } else {
-                $retVal[$match[1]] = trim($match[2]);
-            }
-        }
-    }
-    return $retVal;
+function http_parse_headers($header) {
+	$retVal = array();
+	$fields = explode("\r\n", preg_replace('/\x0D\x0A[\x09\x20]+/', ' ', $header));
+	foreach( $fields as $field ) {
+		if( preg_match('/([^:]+): (.+)/m', $field, $match) ) {
+			$match[1] = preg_replace('/(?<=^|[\x09\x20\x2D])./e', 'strtoupper("\0")', strtolower(trim($match[1])));
+			if( isset($retVal[$match[1]]) ) {
+				$retVal[$match[1]] = array($retVal[$match[1]], $match[2]);
+			} else {
+				$retVal[$match[1]] = trim($match[2]);
+			}
+		}
+	}
+	return $retVal;
 }
 
-if ($_GET['uri'])
-{
+if ($_GET['uri']) {
 	// Create URI for W3C validation service (https://validator.w3.org/docs/api.html)
 	$validator = "https://validator.nu/?level=error&out=json&doc=".urlencode($_GET['uri']);
 

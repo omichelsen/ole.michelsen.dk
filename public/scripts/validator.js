@@ -1,70 +1,80 @@
-var activeTimers = 0;
-var timerIntervalId = 0;
+const delay = 3000
+const requestLimit = 100000
 
-$(document).ready(function() {
-	$('#validator').submit(function(event) {
-		event.preventDefault();
+let activeTimers = 0
+let timerIntervalId = 0
 
-		$('input[type=submit]').prop('disabled', true);
+const imgLoading = '<img src="/images/loading.gif" height="11" width="16" />'
 
-		$('#results').html('<tr><td class="c" colspan="3">Processing sitemap...<br /><img src="/images/loading.gif" height="11" width="16" /></td></tr>');
+const getJson = (url) =>
+	fetch(url).then((res) => (res.ok ? res.json() : undefined))
 
-		$.getJSON('/api/validator-sitemap.php', {'uri': $('#sitemapuri').val()}, bindSitemapResponse);
-	});
-});
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelector('#validator').addEventListener('submit', (event) => {
+		event.preventDefault()
 
-function bindSitemapResponse(data) {
+		document.querySelector('input[type=submit]').disabled = true
+
+		document.querySelector(
+			'#results'
+		).innerHTML = `<tr><td class="c" colspan="3">Processing sitemap...<br />${imgLoading}</td></tr>`
+
+		const url = document.querySelector('#sitemapuri').value
+		getJson(`/api/validator-sitemap.php?uri=${encodeURIComponent(url)}`).then(
+			handleSitemapResponse
+		)
+	})
+})
+
+function handleSitemapResponse(data = []) {
 	if (!data.length) {
 		// No data was returned, so display error message and reenable submit for retry
-		$('#results td:first').html('<span style="color:#B00">Sitemap could not be parsed - wrong URI?</span>');
-		$('input[type=submit]').prop('disabled', false);
-		return;
+		document.querySelector('#results td:first-child').innerHTML =
+			'<span style="color:#B00">Sitemap could not be parsed - wrong URI?</span>'
+		document.querySelector('input[type=submit]').disabled = false
+		return
 	}
 
-	var delay = 2000;
-	var out = '';
-	var requestLimit = 1000;
+	let out = ''
 
-	$.each(data, function(index, value) {
-		out += '<tr' + (index % 2 == 1 ? ' class="alt">' : '>')
-			+  '<td class="r">' + (index+1) + '</td>'
-			+  '<td>' + value + '</td>'
-			+  '<td class="c" id="loading' + index + '">'
-			+	(index < requestLimit ? '<img src="/images/loading.gif" height="11" width="16" />' : 'Deferred')
-			+  '</td></tr>';
+	data.forEach((value, index) => {
+		out += `<tr><td class="r">${
+			index + 1
+		}</td><td>${value}</td><td class="c" id="loading${index}">${
+			index < requestLimit ? imgLoading : 'Deferred'
+		}</td></tr>`
 
 		if (index < requestLimit) {
 			// Request the validation service for each uri with specified delay
-			setTimeout(validate.bind(this, index, value), delay * index);
+			setTimeout(validate.bind(this, index, value), delay * index)
 
 			// We have added a new timer
-			activeTimers++;
+			activeTimers++
 		}
-	});
+	})
 
-	$('#results').html(out);
+	document.querySelector('#results').innerHTML = out
 }
 
 function validate(index, uri) {
-	$.getJSON('/api/validator-proxy.php', { 'uri': uri },
-		function (data) {
-			$('#loading' + index).html(
-				'<a href="' + data.report + '" target="_blank" rel="noopener noreferrer" style="color:' +
-				(data.valid == 'Passed' ? '#006400' : '#B00') + '">' +
-				(data.valid || data.error) +
-				'</a>'
-			);
+	getJson(`/api/validator-proxy.php?uri=${encodeURIComponent(uri)}`).then(
+		(data) => {
+			document.querySelector(`#loading${index}`).innerHTML = `<a href="${
+				data.report
+			}" target="_blank" rel="noopener noreferrer" style="color:${
+				data.valid == 'Passed' ? '#006400' : '#B00'
+			}">${data.valid || data.error}</a>`
 
-			// Update timer count and check if there are still remaining
-			activeTimers--;
-			checkTimers();
+			// Update timer count and check for remaining
+			activeTimers--
+			checkTimers()
 		}
-	);
+	)
 }
 
 function checkTimers() {
 	if (activeTimers < 1) {
-		$('input[type=submit]').removeAttr('disabled');
-		clearInterval(timerIntervalId);
+		document.querySelector('input[type=submit]').disabled = false
+		clearInterval(timerIntervalId)
 	}
 }

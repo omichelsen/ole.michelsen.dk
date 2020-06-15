@@ -1,54 +1,56 @@
 {
-    "csp": {
-        "title": "CSP config generator",
-        "description": "Create a content security policy (CSP) configuration for your webserver to protect against cross-site scripting (XSS). Supports Apache, nginx and IIS.",
-        "date": "2015-07-17",
-        "javascripts": [
-            "https://cdn.rawgit.com/jackmoore/autosize/master/dist/autosize.js"
-        ]
-    },
-    "uriencode": {
-        "title": "URI Encoder/Decoder",
-        "description": "Encode or decode query string parameters using encodeURIComponent() ensuring that all characters are encoded and decoded correctly.",
-        "date": "2012-10-23"
-    },
-    "minifier": {
-        "title": "Script Minifier",
-        "description": "Minify CSS and JS scripts by rewriting the code to a more compact form. Minifying eliminates white-space and line breaks, and renames long variable names in JS.",
-        "date": "2012-10-23"
-    },
-    "regex": {
-        "title": "Regular Expression Tester",
-        "description": "Write and test regular expressions using the JavaScript or PHP regex engine, including a quick reference over the regular expression language.",
-        "date": "2014-04-04"
-    },
-    "base64": {
-        "title": "Base64 Encoder",
-        "description": "Encode your images to Base64 for inline embedding, use in style sheets, XML etc. Upload a file to convert it into its Base64-encoded string.",
-        "date": "2014-09-26"
-    },
-    "validator": {
-        "title": "HTML Batch Validator",
-        "description": "Batch validate multiple pages on your website from a sitemap file using the official W3C Markup Validator API. Supports HTML5, XHTML, HTML3-4 and SGML.",
-        "date": "2015-09-09"
-    },
-    "countdown": {
-        "title": "Yet Another Countdown Clock",
-        "description": "Create your own Countdown Clock to any date and time and bookmark and share the link with your friends and family.",
-        "date": "2012-06-14",
-        "layout": "../_layout",
-        "stylesheets": ["//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css"],
-        "javascripts": [
-            "//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js",
-            "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js",
-            "//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js",
-            "/scripts/jquery.countdown-1.0.min.js",
-            "/scripts/countdown.js"
-        ]
-    },
-    "index": {
-        "title": "Tools",
-        "description": "Tools for web development and optimization including common tasks as minifying, base64 encoding and HTML batch validation.",
-        "date": "2014-10-09"
-    }
+	"csp": {
+		"title": "CSP config generator",
+		"description": "Create a content security policy (CSP) configuration for your webserver to protect against cross-site scripting (XSS). Supports Apache, nginx and IIS.",
+		"date": "2015-07-17",
+		"javascripts": [
+			"https://cdn.rawgit.com/jackmoore/autosize/master/dist/autosize.js"
+		]
+	},
+	"uriencode": {
+		"title": "URI Encoder/Decoder",
+		"description": "Encode or decode query string parameters using encodeURIComponent() ensuring that all characters are encoded and decoded correctly.",
+		"date": "2012-10-23"
+	},
+	"minifier": {
+		"title": "Script Minifier",
+		"description": "Minify CSS and JS scripts by rewriting the code to a more compact form. Minifying eliminates white-space and line breaks, and renames long variable names in JS.",
+		"date": "2012-10-23"
+	},
+	"regex": {
+		"title": "Regular Expression Tester",
+		"description": "Write and test regular expressions using the JavaScript or PHP regex engine, including a quick reference over the regular expression language.",
+		"date": "2014-04-04"
+	},
+	"base64": {
+		"title": "Base64 Encoder",
+		"description": "Encode your images to Base64 for inline embedding, use in style sheets, XML etc. Upload a file to convert it into its Base64-encoded string.",
+		"date": "2014-09-26"
+	},
+	"validator": {
+		"title": "HTML Batch Validator",
+		"description": "Batch validate multiple pages on your website from a sitemap file using the official W3C Markup Validator API. Supports HTML5, XHTML, HTML3-4 and SGML.",
+		"date": "2020-06-15"
+	},
+	"countdown": {
+		"title": "Yet Another Countdown Clock",
+		"description": "Create your own Countdown Clock to any date and time and bookmark and share the link with your friends and family.",
+		"date": "2012-06-14",
+		"layout": "../_layout",
+		"stylesheets": [
+			"//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css"
+		],
+		"javascripts": [
+			"//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js",
+			"//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js",
+			"//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js",
+			"/scripts/jquery.countdown-1.0.min.js",
+			"/scripts/countdown.js"
+		]
+	},
+	"index": {
+		"title": "Tools",
+		"description": "Tools for web development and optimization including common tasks as minifying, base64 encoding and HTML batch validation.",
+		"date": "2014-10-09"
+	}
 }
