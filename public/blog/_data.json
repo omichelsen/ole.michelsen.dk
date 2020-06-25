@@ -1,4 +1,11 @@
 {
+	"view-source-on-the-ipad-and-iphone": {
+		"title": "View source on the iPad and iPhone",
+		"description": "View source on the iPad using a JavaScript bookmarklet to see the source code with syntax highlighting, selectable text and clickable links for URLs.",
+		"date": "2011-07-28",
+		"dateModified": "2020-06-25",
+		"tags": ["ios", "ipad", "iphone", "safari"]
+	},
 	"apache-php-web-server-macos": {
 		"title": "Setup Apache and PHP on macOS",
 		"description": "How to setup a local web server on macOS Catalina using Apache and PHP.",
@@ -173,13 +180,6 @@
 		"title": "Firefox auto login with Windows Authentication and AD",
 		"description": "Get Firefox to login automatically on your intranet websites with Windows Authentication and Active Directory with a simple change in about:config.",
 		"date": "2011-08-07",
-		"tags": ["ios", "ipad", "iphone"]
-	},
-	"view-source-on-the-ipad-and-iphone": {
-		"title": "View source on the iPad and iPhone",
-		"description": "View source on the iPad using a bookmarklet to see the source code with syntax highlighting, selectable text and clickable links for URIs.",
-		"date": "2011-07-28",
-		"dateModified": "2017-07-06",
 		"tags": ["ios", "ipad", "iphone"]
 	},
 	"gmail-plus-your-email-to-filter-maillists-and-catch-spam": {

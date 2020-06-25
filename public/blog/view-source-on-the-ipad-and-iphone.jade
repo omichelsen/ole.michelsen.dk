@@ -1,35 +1,52 @@
+include ../_shared/picture
+
 p
-  b Update 2017-07-06
-  | : As of iOS 9 this bookmarklet doesn't work reliably anymore. Any suggestions to fix it are most welcome.
+  b Update
+  | :
+  i The bookmarklet has been updated to work with iOS 13+ and without a server backend
 
-p As a web developer I'm frequently looking at the source code of various websites. Lately my new iPad has become my primary tool for surfing and reading documentation, but alas it completely lacks a view source feature.
+p My new iPad has become my primary tool for surfing, but alas it completely lacks a view source feature for looking at the source code of all those websites.
 
-p A fine solution is to create a bookmarklet, which is a piece of JavaScript saved as a bookmark. When you want to see the source of a web page, just click the bookmark and the source of the page is displayed. I was inspired by <a title="iPad View Source Bookmarklet" href="http://www.ravelrumba.com/blog/ipad-view-source-bookmarklet/" target="_blank">this bookmarklet by Rob Flaherty</a>, but it has a few shortcomings. To improve upon the bookmarklet concept, I created my own version with a few more bells and whistles:
+p To get around this limitation we can use a <i>bookmarklet</i> which is a piece of JavaScript saved as a bookmark. When you click the bookmark, the source code of the current page will be shown in a new window with a few bells and whistles:
 
 // more
 
 ul
-  li The code is syntax highlighted (using <a title="GeSHi - Generic Syntax Highlighter" href="http://qbnz.com/highlighter/" target="_blank">GeSHi</a>)
+  li The code is syntax highlighted (using <a title="Prism" href="https://prismjs.com" target="_blank">Prism</a>)
   li Links are clickable, so you can follow scripts etc.
   li Text is fully selectable
 
-.image-attachment
-  a(href="/images/blog/view-source-on-the-ipad-and-iphone/Bookmark.png")
-    img(
-      title="View Source Bookmarklet"
-      alt="Clicking the bookmarklet will display the source of the web page"
-      src="/images/blog/view-source-on-the-ipad-and-iphone/Bookmark.png"
-      width="564"
-      height="300"
-    )
+p
+  +picture("/images/blog/view-source-on-the-ipad-and-iphone/source.png", 723, 350, "Clicking the bookmarklet will display the source of the web page in a new window/tab")
 
 h2 The code
 
-p The following bookmarklet code basically posts the entire <abbr title="Document Object Model">DOM</abbr> to my server, which then takes care of business server-side:
+p The following bookmarklet code copies the <abbr title="Document Object Model">DOM</abbr> and shows it in a new window with syntax highlighting:
 
 pre
   code.language-javascript
-    include ../viewsource/bookmarklet.js
+    :markdown
+      javascript:(() => {
+        var e = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0',
+        t = window.open('about:blank').document;
+        t.write(\`
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <title>Source of ${location.href}</title>
+              <link rel=stylesheet href=${e}/themes/prism.min.css>
+            </head>
+            <body bgcolor=#f5f2f0>
+              <script src=${e}/components/prism-core.min.js></script>
+              <script src=${e}/plugins/autoloader/prism-autoloader.min.js></script>
+              <script src=${e}/plugins/autolinker/prism-autolinker.min.js></script>
+            </body>
+          </html>\`),
+        t.close();
+        var r = t.body.appendChild(t.createElement('pre')).appendChild(t.createElement('code'));
+        r.className = 'language-html',
+        r.appendChild(t.createTextNode(document.documentElement.outerHTML))
+      })();
 
 h2 How to install it
 
@@ -37,7 +54,7 @@ p To add it on your computer and sync it to your iPad, just drag this link to yo
 
 p.indent
   a(
-    href="javascript:(function(){var w=window.open('about:blank'),d=w.document;d.write('<!DOCTYPE html><html><head><title>Loading Source</title></head><body></body></html>'),d.close();var f=d.createElement('form');f.setAttribute('method','post'),f.setAttribute('action','https://ole.michelsen.dk/viewsource/?uri='+encodeURIComponent(location.href));var i=d.createElement('input');i.setAttribute('type','hidden'),i.setAttribute('name','DOM'),i.setAttribute('value',encodeURIComponent(document.documentElement.innerHTML)),d.body.appendChild(f).appendChild(i),f.submit();})()"
+    href="javascript:(()=>{var e='https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0',t=window.open('about:blank').document;t.write(`<!DOCTYPE html><html><head><title>Source of ${location.href}</title><link rel=stylesheet href=${e}/themes/prism.min.css></head><body bgcolor=#f5f2f0><script src=${e}/components/prism-core.min.js></script><script src=${e}/plugins/autoloader/prism-autoloader.min.js></script><script src=${e}/plugins/autolinker/prism-autolinker.min.js></script></body></html>`),t.close();var r=t.body.appendChild(t.createElement('pre')).appendChild(t.createElement('code'));r.className='language-html',r.appendChild(t.createTextNode(document.documentElement.outerHTML))})();"
     title="View Source Bookmarklet"
   )
     | View Source
@@ -50,10 +67,12 @@ ol
   li Then <a href="https://ole.michelsen.dk/viewsource/bookmarklet.min.js">click here to see the bookmarklet code</a> and Select All → Copy
   li Now edit that same bookmark, paste the code you just copied into the URL and name it something like "View Source"
 
+p
+  +picture("/images/blog/view-source-on-the-ipad-and-iphone/bookmarklet.png", 600, 450, "Edit the bookmark and paste the bookmarklet code")
+
 p Voilá!
 
 p Note that the source shown is the generated <abbr title="Document Object Model">DOM</abbr>, and not the original HTML. These might differ depending on the amount of JavaScript used on the page.
 
-h3 Deploy your own server
-
-p By popular demand, I have <a title="Bookmarklet server-side source code (PHP)" href="https://github.com/omichelsen/View-Source" target="_blank">published the server-side PHP code to GitHub</a>, so you can modify or host your own version of the bookmarklet. Remember that <a title="GeSHi - Generic Syntax Highlighter" href="http://qbnz.com/highlighter/" target="_blank">GeSHi</a> is required.
+p
+  i Originally inspired by <a title="iPad View Source Bookmarklet" href="http://www.ravelrumba.com/blog/ipad-view-source-bookmarklet/" target="_blank">this bookmarklet from Rob Flaherty</a>.
