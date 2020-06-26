@@ -184,8 +184,26 @@
     .colophon {
         float: right;
     }
+
     .sitemappath {
+        margin: 0;
+        padding: 0;
         float: left;
+        list-style: none;
+
+        li {
+            display: inline;
+
+            &:not(:last-child)::after {
+                content: '›';
+                padding: 0 3px;
+                font-size: 15px;
+            }
+
+            &:last-child a {
+                color: #ccc;
+            }
+        }
     }
 
     @media (max-width: @page-width) {

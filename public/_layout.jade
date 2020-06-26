@@ -55,8 +55,7 @@ html(lang="#{ language }", class="#{ current.path.length > 1 ? current.path[0] :
             a(href='/profile.html', rel='author')= author
             | &nbsp;updated&nbsp;
             include _shared/date
-          p.sitemappath
-            include _shared/breadcrumbs
+          include _shared/breadcrumbs
 
     include _shared/javascripts
     block scripts
