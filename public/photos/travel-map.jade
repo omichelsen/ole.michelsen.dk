@@ -4,6 +4,7 @@
     .images
       for image, slug in public.photos._data['travel-map'].images
         img(
+          alt=slug.replace('.jpg', '')
           class='image-fixed'
           data-echo='/images/photos/map/#{ encodeURIComponent(slug) }'
           src='/images/0.png'
