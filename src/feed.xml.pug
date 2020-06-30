@@ -1,0 +1,22 @@
+---
+permalink: "| feed.xml"
+eleventyExcludeFromCollections: true
+---
+
+- const excerpt = (s) => (s.includes("<!-- more-->")) ? s.split("<!-- more-->")[0] : s;
+
+doctype xml
+rss(version="2.0" xmlns:atom="http://www.w3.org/2005/Atom")
+  channel
+    title= global.title
+    link= global.url
+    description= global.description
+    language= global.language
+    atom:link(href=`${global.url}/feed.xml` rel="self" type="application/rss+xml")
+    each post in collections.blogDesc
+      item
+        title= post.data.title
+        description <![CDATA[!{ excerpt(post.templateContent) }]]>
+        pubDate= new Date(post.date).toUTCString()
+        link= global.url + post.url
+        guid(isPermaLink="true")= global.url + post.url

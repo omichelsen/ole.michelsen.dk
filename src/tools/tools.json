@@ -1,0 +1,5 @@
+{
+  "layout": "layouts/tools.pug",
+  "tags": "tools",
+  "className": "tools"
+}

@@ -1,0 +1,29 @@
+-const prettyDate = (s) => new Date(s).toLocaleString('en-US', {month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC'});
+
+mixin date(d, t)
+  time(datetime=date itemprop=t)= prettyDate(d)
+
+mixin picture(path, width, height, alt)
+  - var ext = path.substr(path.length - 4);
+  picture
+    source(
+      srcset=`${path.replace(ext, '.webp')}, ${path.replace(ext, '@2x.webp')} 2x`
+      type="image/webp"
+    )
+    img(
+      alt=alt
+      src=path
+      srcset=`${path.replace(ext, `@2x${ext}`)} 2x`
+      width=width
+      height=height
+    )
+
+mixin blogEntry({ date, dateModified })
+  div.entry-meta
+    span Article by
+    span.author= global.author
+    span posted on
+    +date(date, 'datePublished')
+    if dateModified
+      span , updated
+      +date(dateModified, 'dateModified')

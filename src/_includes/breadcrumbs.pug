@@ -1,0 +1,14 @@
+- const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+mixin breadcrumb(url, title, pos = 1)
+  li(itemscope itemtype='http://schema.org/ListItem' itemprop='itemListElement')
+    a(href=url itemprop='item')
+      span(itemprop='name')= title
+    meta(itemprop='position' content=pos)
+
+if page.url !== '/'
+  ol.sitemappath(itemscope itemtype='http://schema.org/BreadcrumbList')
+    +breadcrumb('/', 'Home', 1)
+    if tags && tags[0] && page.fileSlug !== tags[0]
+      +breadcrumb(`/${tags[0]}/`, capitalize(tags[0]), 2)
+    +breadcrumb(page.url, title, tags && tags[0] && page.fileSlug !== tags[0] ? 3 : 2)

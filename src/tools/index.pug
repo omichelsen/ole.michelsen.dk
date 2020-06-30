@@ -1,0 +1,19 @@
+---
+layout: layouts/base.pug
+eleventyExcludeFromCollections: true
+title: Tools
+description: Tools for web development and optimization including common tasks as minifying, base64 encoding and HTML batch validation.
+date: 2014-10-09
+---
+
+.content
+  h1 Tools
+
+  ul.projects
+    for item in collections.tools.reverse()
+      li
+        a(href=item.url)
+          span.image
+            img(src=`/images/tools/${ item.fileSlug }.png` alt=item.data.title)
+          span.text
+            span.title= item.data.title

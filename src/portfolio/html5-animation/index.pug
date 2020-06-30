@@ -1,0 +1,56 @@
+---
+title: HTML5 animation
+description: Animation using CSS3 transformations and HTML5 &lt;audio&gt; controls compatible with both Chrome, Safari and Firefox.
+keywords: JavaScript, CSS3
+created: 2012
+date: 2012-10-23
+layout: layouts/base.pug
+stylesheets:
+  - "/portfolio/html5-animation/styles.css"
+---
+
+include /mixins.pug
+
+link(rel="stylesheet" href="./styles.css")
+
+.content
+  #moon
+    +picture("moon.jpg", 950, 950, "Moon")
+
+audio#audio(loop="", preload="")
+  source(src="Nocturne.ogg", type="audio/ogg")
+  source(src="Nocturne.mp3", type="audio/mpeg")
+  | Your browser does not support the audio element.
+
+a#control
+
+#loading
+  a#doStart START ANIMATION
+
+script(src=global.libs.jquery)
+script.
+  $(function() {
+    var audio = this.getElementById('audio');
+    var $control = $('#control');
+
+    $(audio)
+      .bind('play',  function() { $control.addClass('playing'); })
+      .bind('pause', function() { $control.removeClass('playing'); })
+      .bind('ended', function() { audio.currentTime = 0; audio.play(); });
+
+    $control.click(function() {
+      (!audio.paused)
+        ? audio.pause()
+        : audio.play();
+      return false;
+    });
+
+    $('#doStart').click(function() {
+      $('#loading').fadeOut('fast');
+      $('#container').addClass('bg-anim');
+      $('#moon').addClass('moon-anim').show();
+      $control.fadeIn();
+      audio.play();
+      return false;
+    });
+  });

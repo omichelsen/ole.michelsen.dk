@@ -1,0 +1,44 @@
+---
+layout: layouts/base.pug
+title: Kuranz
+description: Currency converter which automatically detect the currency based on your geolocation, HTML5 web app available on Firefox Marketplace.
+keywords: JavaScript, Knockout, localStorage, geolocation
+created: 2013-2017
+date: 2014-12-11
+dateModified: 2017-09-25
+---
+
+include /mixins.pug
+
+section(itemscope itemtype="http://schema.org/CreativeWork")
+	.content
+		h1 Portfolio
+		include /portfolio-header.pug
+
+		p <a href="https://kuranz.com">Kuranz</a> is a currency converter that can automatically detect which country you are in, and set the appropriate currency. It also works when you are offline, so you can take it on your travels without paying for an expensive data plan.
+
+		p Kuranz is a HTML5 web app, and can be run from any smartphone like iPhone or Android. Developed as a part of the beta program for the new Firefox OS, it has been thoroughly tested on the Geeksphone Keon.
+
+	.banner
+		.content
+			.row
+				.col
+					+picture("iphone6plus-1.jpg", 400, 711, "Convert the currency of the country you are in")
+				.col
+					+picture("iphone6plus-2.jpg", 400, 711, "Select favorite currencies for fast conversion")
+
+	.content
+		h3 Open web standards
+
+		p I created Kuranz to prove that mobile apps could be built using only open web standards. With localStorage, app cache and geolocation APIs, the app works well offline and can access the GPS hardware in the phone. Building a UI that feels native on all platforms is a challenge, but keeping things simple and using basic touch events, CSS transforms and transitions can get you pretty far.
+
+		h3 App store
+
+		p Download it now from the <a href="https://itunes.apple.com/us/app/kuranz/id1273957336?mt=8">App Store</a>, or go to <a href="https://kuranz.com/">kuranz.com</a> in your browser (can be <a href="https://developer.chrome.com/multidevice/android/installtohomescreen">bookmarked</a> on your smartphone).
+
+		p
+			a(href="https://itunes.apple.com/us/app/kuranz/id1273957336?mt=8" target="_blank")
+				img(src="app-store.svg" alt="Install Kuranz from App Store" width="200" height="60")
+
+		p
+			a(href="/portfolio/") ← Back to Portfolio

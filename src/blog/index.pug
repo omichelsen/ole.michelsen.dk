@@ -1,0 +1,43 @@
+---
+layout: /layouts/base.pug
+eleventyExcludeFromCollections: true
+title: Blog
+description: Programmer, speaker and photo hobbyist. Been coding for a score of years and blogging on programming all the while.
+date: 2020-07-01
+---
+
+include /mixins.pug
+
+- const excerpt = (s) => (s.includes("<!-- more-->")) ? s.split("<!-- more-->")[0] : s;
+
+.masthead
+.content(itemscope itemtype="http://schema.org/Blog")
+  for item in collections.blogDesc.filter(({ data: { tags = [] } }) => !tags.includes('archive'))
+    article
+      h2.entry-title
+        a(href=item.url)= item.data.title
+      +blogEntry(item.data)
+      .entry-excerpt
+        != excerpt(item.templateContent)
+        .entry-link
+          a(href=item.url) Continue reading →
+
+  h3 Archive
+  ul
+    for item in collections.blogDesc.filter(({ data: { tags = [] } }) => tags.includes('archive'))
+      li
+        a(href=item.url)= item.data.title
+        | &nbsp;
+        +date(item.data.date)
+
+  ins.adsbygoogle(
+    style="display:block"
+    data-ad-format="fluid"
+    data-ad-layout="image-side"
+    data-ad-layout-key="-fe+5b+8u-ew-3y"
+    data-ad-client="ca-pub-6233724807987273"
+    data-ad-slot="1594249289"
+  )
+
+script(async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+script (adsbygoogle = window.adsbygoogle || []).push({});

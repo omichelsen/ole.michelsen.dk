@@ -1,0 +1,32 @@
+---
+layout: layouts/base.pug
+title: World Travel Map
+description: Selected photographic waypoints for all the places I have visited around the world, plotted on a world map using GPS EXIF image data.
+date: 2015-06-12
+className: photos
+---
+
+#travel-map
+  #map-canvas
+  .content
+    .images
+      for image, key in exif
+        img(
+          alt=key.replace('.jpg', '')
+          class='image-fixed'
+          data-echo=`/images/photos/map/${encodeURIComponent(key)}`
+          src='/images/0.png'
+          width=image.width
+          height=image.height
+        )
+
+script(src=`https://maps.googleapis.com/maps/api/js?key=${global.services.maps}`)
+script(src=global.libs.masonry)
+script
+  != `const locations = ${JSON.stringify(exif)};`
+script
+  include ../scripts/markerclusterer-1.0.min.js
+script
+  include ../scripts/travel-map.js
+script
+  include ../scripts/echo.js

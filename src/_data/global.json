@@ -1,0 +1,21 @@
+{
+  "title": "Ole Michelsen",
+  "tagline": "Web Development and Computer Science",
+  "description": "Web Development and Computer Science",
+  "url": "https://ole.michelsen.dk",
+  "language": "en",
+  "author": "Ole Michelsen",
+  "author_full": "Ole Bjørn Michelsen",
+  "email": "ole@michelsen.dk",
+  "libs": {
+    "jquery": "//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js",
+    "jqueryuicss": "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css",
+    "masonry": "//cdnjs.cloudflare.com/ajax/libs/masonry/4.1.0/masonry.pkgd.min.js",
+    "prism": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js",
+    "prismcss": "https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css"
+  },
+  "services": {
+    "analytics": "UA-19571265-2",
+    "maps": "AIzaSyCPqiUhRvSy2m5N__6fIvANVRq2j-q7w2A"
+  }
+}

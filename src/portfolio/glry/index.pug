@@ -1,0 +1,31 @@
+---
+layout: layouts/base.pug
+title: glry
+description: Image gallery with mobile/touch support and no dependencies.
+keywords: JavaScript, touch gestures
+created: 2014
+date: 2014-11-22
+---
+
+section.content(itemscope itemtype="http://schema.org/CreativeWork")
+
+  .masthead
+    iframe(src="https://rawgit.com/omichelsen/glry/master/demo/index.html")
+    .copyright Comics by&nbsp;
+      a(href="https://xkcd.com") xkcd.com
+
+  h1 Portfolio
+  - title += ' - mobile first image gallery'
+  include /portfolio-header
+
+  p <a href="https://github.com/omichelsen/glry">glry</a> is an open source image gallery plug-in. I needed a gallery that was mobile-first and could load the images given a function. But every plug-in I looked at required the images to be known/loaded beforehand, which is not optimal for large galleries on a slow or metered connection.
+
+  p So I created <a href="https://github.com/omichelsen/glry">glry</a> which support touch events on mobile, where you can swipe and drag the image to go to the next/previous, and tap the screen to see a navigation menu. On the desktop keyboard navigation is supported with the arrow keys.
+
+  p You can try the demo above, or open the <a href="https://rawgit.com/omichelsen/glry/master/demo/index.html">demo in full screen</a>.
+
+  h3 daily-glry
+
+  p I have also made the <a href="https://github.com/omichelsen/daily-glry">daily-glry</a> extension, which is intended for daily comic galleries, e.g. a daily Dilbert or Calvin & Hobbes cartoon. It extends <a href="https://github.com/omichelsen/glry">glry</a> and can also go to today's date and jump to a random comic if you shake your device.
+
+  p Both plug-ins are available on <a href="https://github.com/omichelsen/glry">GitHub</a>, <a href="https://www.npmjs.com/search?q=glry">npm</a> and <a href="https://bower.io/search/?q=glry">Bower</a>.

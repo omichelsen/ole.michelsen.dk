@@ -1,0 +1,38 @@
+---
+title: CSP config generator
+description: Create a content security policy (CSP) configuration for your webserver to protect against cross-site scripting (XSS). Supports Apache, nginx and IIS.
+date: 2015-07-17
+---
+
+- var fields = ['default-src', 'connect-src', 'font-src', 'img-src', 'media-src', 'object-src', 'script-src', 'style-src', 'frame-src'];
+
+p This tool is for generating a valid Content Security Policy (CSP) configuration for your webserver. The Apache, nginx and IIS formats are supported. For an explanation of the different fields and their purpose, please refer to the article <a href="/blog/secure-your-website-with-content-security-policy/">Secure your website with Content Security Policy</a>.
+
+p If you would like to edit your existing configuration, you can upload it and generate a new <abbr title="Content Security Policy">CSP</abbr> string.
+
+p
+  input#csp-output
+
+form#csp-form
+  .input-group
+    label
+      input(type="radio" name="format" value="apache" onchange="onRadioChange(this)" checked)
+      | Apache
+    label
+      input(type="radio" name="format" value="nginx" onchange="onRadioChange(this)")
+      | nginx
+    label
+      input#iis(type="radio" name="format" value="iis" onchange="onRadioChange(this)")
+      | IIS
+    label.upload-form-link.link
+      input(type="file" onchange="onFileChange(this.files)")
+      | Upload config file
+
+  dl#csp-list
+    each field in fields
+      dt= field
+      dd
+        textarea(name=field id=field rows="1")
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.min.js")
+script(src="/scripts/csp.js")

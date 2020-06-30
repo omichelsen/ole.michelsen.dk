@@ -1,0 +1,23 @@
+---
+title: MaJazz
+description: Webdesign for the amateur choir MaJazz made in PHP featuring editing of updates and calendar events, and a restricted section for members.
+keywords: "Design · Programming: PHP"
+created: 2004
+date: 2004-10-01
+---
+
+p A page for the amateur choir&nbsp;
+  a(href='http://www.majazz.dk' hreflang='da' rel='external') MaJazz
+  | . Site was made in PHP and featured a back end text editing interface for updates and calendar events, and a login system to an internal section for members.
+
+// more
+
+ul.screenshots
+  each image in ['1-front.png','2-calendar.png','3-pictures.png','4-sound-clips.png','5-contact.png','6-links.png']
+    li
+      img.frame(
+        src=`screens/${encodeURIComponent(image)}`
+        alt=image.replace(/\d ([\w\s]+)\.png/, "$1")
+        width='400'
+        height='334'
+      )

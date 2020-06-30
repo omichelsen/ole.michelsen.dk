@@ -1,2 +1,5 @@
 .DS_Store
-www
+.bundle/
+node_modules/
+public/
+vendor/

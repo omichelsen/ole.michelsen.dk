@@ -1,0 +1,37 @@
+---
+layout: layouts/base.pug
+eleventyExcludeFromCollections: true
+title: Portfolio
+description: Presentation of my work and projects, as well as freely available tools for web development.
+date: 2015-12-11
+---
+
+<!--email_off-->
+style
+  each item in collections.portfolio
+    - var path = '/portfolio/' + item.fileSlug + '/';
+    - var img = path + (item.data.image || 'thumb.png');
+    != '.' + item.fileSlug + '{background-image:url(' + img + ')}'
+    if !/\.svg$/.test(img)
+      != '@media(-webkit-min-device-pixel-ratio:2),(min-resolution: 2dppx){.' + item.fileSlug + '{background-image:url(' + img.replace(/\.(\w{3})$/, '@2x.$1') + ')}}'
+<!--/email_off-->
+
+.content
+  h1 Portfolio
+  section(itemscope itemtype="http://schema.org/CreativeWork")
+    p.tags
+      | Programming and design from 1999-
+      != new Date().getFullYear()
+    ul.projects
+      each item in collections.portfolio.reverse()
+        li
+          a.project(
+            class=item.fileSlug
+            href=item.url
+          )
+            span.text
+              span.title= item.data.title
+              span.tags
+                b= item.data.created
+                | &nbsp;·&nbsp;
+                != item.data.keywords

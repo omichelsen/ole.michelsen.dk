@@ -1,109 +1,110 @@
-var gulp = require('gulp'),
-    data = require('gulp-data'),
-    exif = require('gulp-exif'),
-    extend = require('gulp-extend'),
-    jeditor = require('gulp-json-editor'),
-    request = require('request'),
-    source = require('vinyl-source-stream'),
-    streamify = require('gulp-streamify');
+const gulp = require('gulp')
+const autoprefixer = require('gulp-autoprefixer')
+const cleanCSS = require('gulp-clean-css')
+const gdata = require('gulp-data')
+const gexif = require('gulp-exif')
+const extend = require('gulp-extend')
+const jeditor = require('gulp-json-editor')
+const gulpless = require('gulp-less')
+const streamify = require('gulp-streamify')
+const path = require('path')
+const request = require('request')
+const source = require('vinyl-source-stream')
 
-function gpsDecimal(direction, degrees, minutes, seconds) {
-    var d = degrees + minutes / 60 + seconds / (60 * 60);
-    return (direction === 'S' || direction === 'W') ? d *= -1 : d;
+const gpsDecimal = (direction, degrees, minutes, seconds) => {
+  const d = degrees + minutes / 60 + seconds / (60 * 60)
+  return direction === 'S' || direction === 'W' ? d * -1 : d
 }
 
-function roundDecimal(dec) {
-    return parseFloat(dec.toFixed(4));
-}
+const roundDecimal = (dec) => parseFloat(dec.toFixed(4))
 
-gulp.task('exif', function () {
-    return gulp.src('./public/images/photos/_map/*.jpg')
-        .pipe(exif())
-        .pipe(data(function (file) {
-            var filename = file.path.substring(file.path.lastIndexOf('/') + 1),
-                calcLat = gpsDecimal.bind(null, file.exif.gps.GPSLatitudeRef),
-                calcLng = gpsDecimal.bind(null, file.exif.gps.GPSLongitudeRef),
-                img = {
-                    lat: roundDecimal(calcLat.apply(null, file.exif.gps.GPSLatitude)),
-                    lng: roundDecimal(calcLng.apply(null, file.exif.gps.GPSLongitude)),
-                    width: file.exif.exif.ExifImageWidth,
-                    height: file.exif.exif.ExifImageHeight
-                },
-                data = {
-                    'travel-map': {
-                        'images': {}
-                    }
-                };
-            data['travel-map'].images[filename] = img;
-            file.contents = new Buffer(JSON.stringify(data));
-        }))
-        .pipe(extend('_exif.json', true, '    '))
-        .pipe(gulp.dest('./public/photos'));
-});
+const exif = () =>
+  gulp
+    .src('./exif/*.jpg')
+    .pipe(gexif())
+    .pipe(
+      gdata((file) => {
+        const filename = path.basename(file.path)
+        const img = {
+          lat: roundDecimal(
+            gpsDecimal(
+              file.exif.gps.GPSLatitudeRef,
+              ...file.exif.gps.GPSLatitude
+            )
+          ),
+          lng: roundDecimal(
+            gpsDecimal(
+              file.exif.gps.GPSLongitudeRef,
+              ...file.exif.gps.GPSLongitude
+            )
+          ),
+          width: file.exif.exif.ExifImageWidth,
+          height: file.exif.exif.ExifImageHeight,
+        }
+        file.contents = Buffer.from(JSON.stringify({ [filename]: img }))
+      })
+    )
+    .pipe(extend('exif.json', true, '  '))
+    .pipe(gulp.dest('./src/_data'))
 
-gulp.task('flickr', function () {
-    return request('https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=62b36a8cf6e44b19d379f36b51bb4535&format=json&nojsoncallback=1&user_id=16324363@N07&primary_photo_extras=url_s')
-        .pipe(source('_flickr.json'))
-        .pipe(streamify(jeditor(function (json) {
-            var data = {
-                'index': {
-                    'flickr': []
-                }
-            };
-            json.photosets.photoset.forEach(function (set) {
-                data.index.flickr.push({
-                    id: set.id,
-                    title: set.title._content,
-                    thumbnail: {
-                        url: set.primary_photo_extras.url_s,
-                        width: set.primary_photo_extras.width_s,
-                        height: set.primary_photo_extras.height_s
-                    }
-                });
-            });
-            return data;
-        })))
-        .pipe(gulp.dest('./public/photos'));
-});
+const flickr = () =>
+  request(
+    'https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=62b36a8cf6e44b19d379f36b51bb4535&format=json&nojsoncallback=1&user_id=16324363@N07&primary_photo_extras=url_s'
+  )
+    .pipe(source('flickr.json'))
+    .pipe(
+      streamify(
+        jeditor((json) =>
+          json.photosets.photoset.map((set) => ({
+            id: set.id,
+            title: set.title._content,
+            thumbnail: {
+              url: set.primary_photo_extras.url_s,
+              width: set.primary_photo_extras.width_s,
+              height: set.primary_photo_extras.height_s,
+            },
+          }))
+        )
+      )
+    )
+    .pipe(gulp.dest('./src/_data'))
 
-gulp.task('photos-data', ['exif', 'flickr'], function () {
-    return gulp.src('./public/photos/_*.json')
-        .pipe(extend('_data.json', true, '    '))
-        .pipe(gulp.dest('./public/photos'));
-});
+const github = () =>
+  request({
+    url: 'https://api.github.com/users/omichelsen/repos',
+    headers: {
+      'User-Agent': 'request',
+    },
+  })
+    .pipe(source('github.json'))
+    .pipe(
+      streamify(
+        jeditor((res) =>
+          res
+            .filter(({ fork }) => !fork)
+            .map(({ html_url, name, language, description }) => ({
+              description,
+              html_url,
+              language,
+              name,
+            }))
+        )
+      )
+    )
+    .pipe(gulp.dest('./src/_data'))
 
-gulp.task('github', function () {
-    return request({
-            url: 'https://api.github.com/users/omichelsen/repos',
-            headers: {
-                'User-Agent': 'request'
-            }
-        })
-        .pipe(source('_github.json'))
-        .pipe(streamify(jeditor(function (repositories) {
-            var data = {
-                'profile': {
-                    'repositories': []
-                }
-            };
-            repositories.forEach(function (repo) {
-                if (repo.fork) return;
-                data.profile.repositories.push({
-                    html_url: repo.html_url,
-                    name: repo.name,
-                    language: repo.language,
-                    description: repo.description
-                });
-            });
-            return data;
-        })))
-        .pipe(gulp.dest('./public'));
-});
+const styles = () =>
+  gulp
+    .src('./src/styles/index.less')
+    .pipe(gulpless())
+    .pipe(autoprefixer())
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('./src/styles'))
 
-gulp.task('public-data', ['github'], function () {
-    return gulp.src('./public/_*.json')
-        .pipe(extend('_data.json', true, '    '))
-        .pipe(gulp.dest('./public'));
-});
+const watch = () => gulp.watch('./src/styles/**/*.less', styles)
 
-gulp.task('default', ['exif', 'flickr', 'photos-data', 'github', 'public-data']);
+exports.exif = exif
+exports.flickr = flickr
+exports.github = github
+exports.styles = styles
+exports.watch = watch

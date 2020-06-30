@@ -1,0 +1,49 @@
+---
+title: Den Tatoverede Enke
+description: Website for the restaurant Den Tatoverede Enke using a pure AJAX interface and hash fragment based SEO with MVC on the backend.
+keywords: ASP.NET MVC, HTML5, jQuery
+created: 2011
+date: 2012-10-30
+---
+p
+  a(href='http://www.dentatoveredeenke.dk' rel='external') Den Tatoverede Enke
+  | &nbsp;was one of my favorite Danish restaurants in the middle of Copenhagen. The theme of restaurant was centered around Belgian beer, and an impressive menu of modern Danish cousine. The purpose of their website was an introduction to the menu and current specials, reviews and recommendations by other customers and clear directions to the location.
+
+// more
+
+p I did the design and programming together with my friend&nbsp;
+  a(href='https://www.jonatanpedersen.com' rel='external') Jonatan Fugl Pedersen
+  | , and we focused on a very visual and animated experience in a stylish design. The previous website was built in Flash, so our primary goal was to improve accessibility,&nbsp;
+  abbr(title='Search Engine Optimization') SEO
+  | &nbsp;and maintainability.
+br
+
+.row
+  .col-4
+    img.frame(alt='Front page' src='index.png' width='280' height='207')
+    br
+    br
+    h4 Stylish design
+    p To the owners wishes, the design was held in a minimalistic, Scandinavian, tradition with emphasis on black/white contrasts and focus directed towards the images.
+    h5 Animations and transitions
+    p Navigation through the design was eased by smooth animations between pages. Pictures of the food and drinks were presented in high resolution fading in using HTML5 transitions.
+  .col-4
+    img.frame(alt='Brasserie' src='brasserie.png' width='280' height='207')
+    br
+    br
+    h4 AJAX and SEO
+    p The content was loaded with AJAX so the interface is never "flashing" between pages. This also improved loading times by only sending the changes to the content when a page changes.
+    p SEO was ensured by using&nbsp;
+      a(href='https://developers.google.com/search/docs/ajax-crawling/docs/specification' rel='external' target='_blank') Google's hash fragment system
+      | , which ensures that all pages can be correctly indexed even though they were loaded with AJAX.
+  .col-4
+    img.frame(alt='About' src='about.png' width='280' height='207')
+    br
+    br
+    h4 Maintenance
+    p An important priority was the creation of a simple&nbsp;
+      abbr(title='Content Management System') CMS
+      | . It was important, that changes to the menu and bar lists could be edited quickly by all staff without prior training.
+    p A simple system was devised, with a column for Danish and one for English, making it easy to maintain the content in both languages.
+p
+  a(href='/portfolio/') ← Back to Portfolio

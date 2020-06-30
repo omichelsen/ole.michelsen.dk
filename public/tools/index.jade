@@ -1,9 +1,0 @@
-ul.projects
-  for item, slug in public.tools._data
-    if (slug !== 'index')
-      li
-        a(href='/tools/#{ slug }.html')
-          span.image
-            img(src='/images/tools/#{ slug }.png', alt='#{ item.title }')
-          span.text
-            span.title= item.title

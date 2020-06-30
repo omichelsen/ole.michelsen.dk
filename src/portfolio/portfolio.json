@@ -1,0 +1,5 @@
+{
+  "layout": "layouts/portfolio.pug",
+  "tags": "portfolio",
+  "className": "portfolio"
+}

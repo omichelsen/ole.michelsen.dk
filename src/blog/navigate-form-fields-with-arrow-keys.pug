@@ -1,0 +1,83 @@
+---
+title: Navigate form fields with arrow keys
+description: A simple jQuery plugin to navigate form fields using the arrow keys, code freely available on GitHub.
+date: 2013-11-13
+tags:
+  - blog
+  - archive
+//- tags: ["javascript", "jquery"]
+---
+
+p Recently I created a puzzle game called <a href="https://regexcrossword.com/">Regex Crossword</a>, where a lot of data is to be entered in a grid of input form fields. To improve a little on the user experience, I wanted to be able to navigate between fields using the arrow keys.
+
+// more
+
+p The following JavaScript snippet enables you to do just that, when you have a table containing input fields. I have wrapped it all as a jQuery plugin, to make it easy to use between projects.
+
+pre.language-javascript
+  code.language-javascript.
+    (function ($) {
+      $.fn.formNavigation = function () {
+        $(this).each(function () {
+          $(this).find('input').on('keyup', function(e) {
+            switch (e.which) {
+              case 39:
+                $(this).closest('td').next().find('input').focus(); break;
+              case 37:
+                $(this).closest('td').prev().find('input').focus(); break;
+              case 40:
+                $(this).closest('tr').next().children().eq($(this).closest('td').index()).find('input').focus(); break;
+              case 38:
+                $(this).closest('tr').prev().children().eq($(this).closest('td').index()).find('input').focus(); break;
+            }
+          });
+        });
+      };
+    })(jQuery);
+
+h2 Example
+
+p You can check out the script in this live example:
+
+table.gridexample
+  thead
+    tr
+      th
+      th A
+      th B
+      th C
+  tbody
+    tr
+      th 1
+      td
+        input(type='text', style='width:50px')
+      td
+        input(type='text', style='width:50px')
+      td
+        input(type='text', style='width:50px')
+    tr
+      th 2
+      td
+        input(type='text', style='width:50px')
+      td
+        input(type='text', style='width:50px')
+      td
+        input(type='text', style='width:50px')
+    tr
+      th 3
+      td
+        input(type='text', style='width:50px')
+      td
+        input(type='text', style='width:50px')
+      td
+        input(type='text', style='width:50px')
+p
+  | Code is also&nbsp;
+  a(href="https://github.com/omichelsen/FormNavigation") available on GitHub
+  | .
+script(src=global.libs.jquery)
+script(src="https://cdn.rawgit.com/omichelsen/FormNavigation/189029fff6cbdce007492b0f94d14187014cb6ee/jquery.formnavigation.js")
+script.
+  $(document).ready(function () {
+    $('.gridexample').formNavigation();
+  });

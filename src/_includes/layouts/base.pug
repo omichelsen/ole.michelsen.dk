@@ -1,0 +1,65 @@
+include /mixins.pug
+
+doctype
+html(lang=global.language class=className)
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    title= `${title} | Ole Michelsen`
+    meta(name="description" content=description)
+    meta(name="author" content=global.author)
+    each href in (stylesheets || [])
+      link(rel="stylesheet" href=href)
+    link(rel="stylesheet" href="/styles/index.css")
+    link(rel="shortcut icon" href="/favicon.ico")
+    link(rel="alternate" href=`${global.url}/feed.xml` type="application/rss+xml" title="Ole Michelsen Latest Updates")
+    block head
+    include /analytics.pug
+
+  body(itemscope itemtype="http://schema.org/WebPage")
+
+    #container
+      header#header
+        .title.content
+          h1= global.author
+          h2= global.tagline
+        nav#topnav
+          ul.menu.content
+            li
+              a(href="/") Home
+            li
+              a(href="/blog/" title="Um gesh de blårg blårg!") Blog
+                span.subtitle Things I say
+            li
+              a(href="/portfolio/") Portfolio
+                span.subtitle Things I do
+            li
+              a(href="/tools/") Tools
+                span.subtitle Things I build
+            li
+              a(href="/profile/") Profile
+                span.subtitle Things about me
+            li
+              a(href="/photos/") Photos
+                span.subtitle Things I see
+            li.feed
+              a(href="/feed.xml") Feed
+                span.subtitle Latest things
+
+      #content
+        block content
+          != content
+
+      footer#footer
+        .content
+          p.colophon
+            | Created by&nbsp;
+            a(href='/profile/' rel='author')= global.author
+            if (dateModified || date)
+              | &nbsp;updated&nbsp;
+              +date(dateModified || date)
+          include /breadcrumbs.pug
+
+    each src in (javascripts || [])
+      script(src=src)
+    block scripts

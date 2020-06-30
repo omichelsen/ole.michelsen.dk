@@ -1,0 +1,37 @@
+extends /layouts/base.pug
+
+block content
+  -
+    let pos = collections.blogDesc.findIndex(({ url }) => url === page.url)
+    let prev = collections.blogDesc[pos + 1]
+    let next = collections.blogDesc[pos - 1]
+
+  .masthead
+  .content(itemscope itemtype="http://schema.org/Blog")
+    article(itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting")
+      h1.entry-title(itemprop="headline")= title
+      +blogEntry({ date, dateModified })
+      != content
+      .navigation
+        if prev
+          .nav-previous
+            a(href=prev.url)= prev.data.title
+        if next
+          .nav-next
+            a(href=next.url)= next.data.title
+      #disqus_thread.entry-comments
+
+block scripts
+  - const shortname = 'olemichelsen';
+  - const identifier = global.url + page.url;
+  script.
+    var disqus_config = function () {
+      this.page.identifier = '!{ identifier }';
+      this.page.url = '!{ identifier }';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//!{ shortname }.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();

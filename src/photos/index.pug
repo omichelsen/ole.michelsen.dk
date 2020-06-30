@@ -1,0 +1,43 @@
+---
+layout: layouts/base.pug
+title: Photos
+description: Photographs I've taken home and on my travels. Photography is an inspiration to look at the world in a fresh and creative way.
+date: 2015-08-30
+className: photos
+---
+
+.masthead
+  ul.slideshow
+    each image in slideshow
+      li
+        img(
+          src=`/images/photos/slideshow/${image.url}`
+          title=image.title
+          alt=image.alt
+          width='950'
+          height='600'
+        )
+
+.content
+  section.albums
+    a.album.travel-map(href="travel-map")
+      .title World Travel Map
+
+  section.albums.flickr
+    each album in flickr
+      a.album(
+        href=`https://www.flickr.com/photos/olemichelsen/sets/${album.id}/`
+        data-url=album.thumbnail.url
+      )
+        .title= album.title
+
+script
+  include ../../node_modules/simple-slideshow/src/slideshow.js
+script.
+  window.addEventListener('load', () => {
+    var albums = document.querySelectorAll('.flickr.albums .album');
+    for (var i = 0; i < albums.length; i++) {
+      albums[i].style.backgroundImage = 'url(' + albums[i].getAttribute('data-url') + ')';
+    }
+    var slsh = new SlideShow('.slideshow');
+  });

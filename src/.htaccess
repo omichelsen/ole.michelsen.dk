@@ -1,0 +1,59 @@
+## Set cache expire headers ##
+<IfModule mod_headers.c>
+	Header unset ETag
+	FileETag None
+
+	<FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif|js|css|htc|svg|eot|ttf|webp|woff|woff2)$">
+		Header set Cache-Control "max-age=31557600, public"
+	</FilesMatch>
+
+	<FilesMatch "\.(txt|xml)$">
+		Header set Cache-Control "max-age=7200, public"
+	</FilesMatch>
+
+	<FilesMatch "\.manifest$">
+		Header set Cache-Control ""
+	</FilesMatch>
+</IfModule>
+
+## Enable gzip compression ##
+<IfModule mod_deflate.c>
+	<FilesMatch "\.(css|html|js|json|mustache|txt|xml)$">
+		SetOutputFilter DEFLATE
+	</FilesMatch>
+</IfModule>
+
+## Serve content as UTF8 ##
+AddDefaultCharset UTF-8
+
+## Custom error documents ##
+ErrorDocument 404 /404.html
+
+## Ensure correct MIME types ##
+AddType text/x-vcard .vcf
+
+## Enable .manifest files for HTML5 offline caching ##
+AddType text/cache-manifest .manifest
+
+RedirectPermanent /blog/feed.html /feed.xml
+RedirectPermanent /blog/schedule-jobs-with-crontab-on-osx-yosemite.html /blog/schedule-jobs-with-crontab-on-mac-osx/
+RedirectPermanent /blog/split-string-to-table-using-transact-sql/) /blog/split-string-to-table-using-transact-sql/
+RedirectPermanent /demos/html5-animation.html /portfolio/html5-animation/
+
+## Enable url rewrite ##
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteRule blog/(.+)\.html /blog/$1/ [R=301]
+	RewriteRule photos/(.+)\.html?$ /photos/$1/ [R=301]
+	RewriteRule portfolio/(.+)\.html$ /portfolio/$1/ [R=301]
+	RewriteRule tools/(.+)\.html?$ /tools/$1/ [R=301]
+</IfModule>
+
+## Enable CSP ##
+<IfModule mod_headers.c>
+	Header set Content-Security-Policy "default-src 'self' *.michelsen.dk; connect-src 'self' *.disqus.com; font-src 'self' data: https://*.gstatic.com; img-src 'self' *.apache.org *.cloudflare.com *.disqus.com *.disquscdn.com *.michelsen.dk data: https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com www.google-analytics.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.cloudflare.com *.disqus.com https://*.disquscdn.com https://*.googleapis.com https://*.gstatic.com https://*.rawgit.com www.google-analytics.com *.googlesyndication.com; style-src 'self' 'unsafe-inline' *.cloudflare.com *.disquscdn.com https://*.googleapis.com; frame-src disqus.com rawgit.com https://*.youtube.com *.doubleclick.net"
+	Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	Header set X-Content-Type-Options nosniff
+	Header set X-Frame-Options DENY
+	Header set X-Xss-Protection "1; mode=block"
+</IfModule>

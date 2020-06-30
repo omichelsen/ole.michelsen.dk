@@ -1,0 +1,45 @@
+---
+title: HTML Batch Validator
+description: Batch validate multiple pages on your website from a sitemap file using the official W3C Markup Validator API. Supports HTML5, XHTML, HTML3-4 and SGML.
+date: 2020-06-15
+---
+
+p This tool validates a range of <abbr title="Uniform Resource Identifiers">URI</abbr>'s against the official <a href="https://validator.w3.org/docs/api.html">W3C Markup Validation Web Service</a>. Simply enter the URI of your sitemap file, and this tool will automatically read and validate the linked pages from the file. The sitemap must be in the <a href="https://www.sitemaps.org/protocol.html">Sitemap</a> or <abbr title="Really Simple Syndication">RSS</abbr> feed format.
+
+p In accordance with best practices for consuming remote resources, this tool will only process <i>one URI per second</i> so not to overload the validator web service.
+
+form#validator.c
+  label(for='sitemapuri')
+    b Sitemap URI:
+  br
+  input#sitemapuri.text(
+    autofocus='autofocus'
+    name='sitemapuri'
+    placeholder='https://my.domain/sitemap.xml'
+    required='required'
+    style='width: 500px;'
+    tabindex='0'
+    type='url'
+  )
+  | &nbsp;
+  input.button(type='submit', value='Validate')
+
+
+h3 Validation results
+
+table.table(style='width: 100%;')
+  colgroup
+    col(style='width: 40px;')
+    col
+    col(style='width: 80px;')
+  thead
+    tr
+      th.r #
+      th URI
+      th.c Result
+  tbody#results
+    tr
+      td.c(colspan='3')
+        i Click "Validate" to process the sitemap
+
+script(src="/scripts/validator.js")

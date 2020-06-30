@@ -1,0 +1,11 @@
+extends /layouts/base.pug
+
+block head
+  link(rel="image_src" href=`/portfolio/${page.fileSlug}/thumb.png`)
+
+block content
+  .content
+    h1 Portfolio
+    section(itemscope itemtype="http://schema.org/CreativeWork")
+      include /portfolio-header
+      != content

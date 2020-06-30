@@ -1,0 +1,26 @@
+---
+title: Business Card
+description: My personal business card created in SVG with QR code adding vCard data directly to the address book in iPhone and Android.
+keywords: SVG
+created: 2011
+date: 2011-10-07
+---
+
+p For kicks I've designed a business card for myself, mostly because I wanted to try out a real world application of QR codes. Whenever you receive a card from anybody you would actually like to contact again, you have to arduously enter his/her information. With a QR code you can scan the card and immediately send the <a href="https://en.wikipedia.org/wiki/VCard" target="_blank">vCard</a> to your phone address book.
+
+// more
+
+.row
+  .col.c
+    img(alt="Front" src="card-front.svg" width="400" height="240")
+    br
+    i Front
+  .col.c
+    img(alt="Back" src="card-back.svg" width="400" height="240")
+    br
+    i Back
+p For my further amusement I also decided to create the cards using SVG. With no decent editor on hand, and since I wanted to familiarize myself with the standard, I decided to write them by hand (except the QR code, which was <a href="https://www.quickmark.com.tw/en/qrcode-datamatrix-generator/?qrBookmark" target="_blank">created with a tool</a>). The result is fairly simple, but very scalable and portable.
+
+pre(data-src="card-front.svg")
+
+script(src=global.libs.prism)
