@@ -3,6 +3,7 @@ layout: layouts/base.pug
 title: World Travel Map
 description: Selected photographic waypoints for all the places I have visited around the world, plotted on a world map using GPS EXIF image data.
 date: 2015-06-12
+dateModified: 2020-07-03
 className: photos
 ---
 
@@ -21,11 +22,10 @@ className: photos
         )
 
 script(src=`https://maps.googleapis.com/maps/api/js?key=${global.services.maps}`)
+script(src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js")
 script(src=global.libs.masonry)
 script
   != `const locations = ${JSON.stringify(exif)};`
-script
-  include ../scripts/markerclusterer-1.0.min.js
 script
   include ../scripts/travel-map.js
 script
