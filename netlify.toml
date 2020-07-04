@@ -2,7 +2,7 @@
   for = "/*"
 
   [headers.values]
-    Content-Security-Policy = "default-src 'self' *.michelsen.dk; connect-src 'self' *.disqus.com; font-src 'self' data: https://*.gstatic.com; img-src 'self' *.apache.org *.cloudflare.com *.disqus.com *.disquscdn.com *.michelsen.dk data: https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com www.google-analytics.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.cloudflare.com *.disqus.com https://*.disquscdn.com https://*.googleapis.com https://*.gstatic.com https://*.rawgit.com www.google-analytics.com *.googlesyndication.com https://unpkg.com; style-src 'self' 'unsafe-inline' *.cloudflare.com *.disquscdn.com https://*.googleapis.com; frame-src disqus.com rawgit.com https://*.youtube.com *.doubleclick.net"
+    Content-Security-Policy = "default-src 'self' *.michelsen.dk https://*.disquscdn.com; connect-src 'self' *.disqus.com; font-src 'self' data: https://*.gstatic.com; img-src 'self' *.apache.org *.cloudflare.com *.disqus.com *.disquscdn.com *.michelsen.dk data: https://*.googleapis.com https://*.gstatic.com https://*.staticflickr.com www.google-analytics.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' *.cloudflare.com *.disqus.com https://*.disquscdn.com https://*.googleapis.com https://*.gstatic.com https://*.rawgit.com www.google-analytics.com *.googlesyndication.com https://unpkg.com; style-src 'self' 'unsafe-inline' *.cloudflare.com *.disquscdn.com https://*.googleapis.com; frame-src disqus.com rawgit.com https://*.youtube.com *.doubleclick.net"
     Referrer-Policy = "no-referrer-when-downgrade"
     X-Frame-Options = "sameorigin"
     X-XSS-Protection = "1; mode=block"
