@@ -13,7 +13,7 @@ mixin feed(item, url, defaultType)
       span(class=`icon-${ item.type || defaultType || 'michelsen' }`)
     a.title(href=url)= item.title
     br
-    +date(item.date)
+    +date(item.dateModified || item.date)
 
 .landingpage.content
   section
