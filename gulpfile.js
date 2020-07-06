@@ -82,12 +82,16 @@ const github = () =>
         jeditor((res) =>
           res
             .filter(({ fork }) => !fork)
-            .map(({ html_url, name, language, description }) => ({
-              description,
-              html_url,
-              language,
-              name,
-            }))
+            .sort(({ watchers_count: a }, { watchers_count: b }) => b - a)
+            .map(
+              ({ description, html_url, language, name, watchers_count }) => ({
+                description,
+                html_url,
+                language,
+                name,
+                watchers_count,
+              })
+            )
         )
       )
     )
