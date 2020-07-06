@@ -1,6 +1,6 @@
 ---
-title: Schedule jobs with crontab on Mac OS X
-description: Schedule jobs to run daily with crontab on Mac OS X to e.g. backup your MySQL database.
+title: Schedule jobs with crontab on macOS
+description: Schedule jobs to run daily with crontab on macOS, e.g. a script to backup your MySQL database.
 date: 2015-02-22
 # tags: ["bash", "crontab", "macos"]
 ---
