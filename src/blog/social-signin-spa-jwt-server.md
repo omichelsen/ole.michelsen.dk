@@ -36,7 +36,7 @@ This bit of code allows us to sign in with Facebook, and if you [check out the A
 But now we want to allow the user to save some data on our server. Since we have authenticated client-side with Facebook, we have an authentication token from Facebook. This is used to validate our session when talking to Facebook. We need to establish the same level of trust with our own server. This diagram shows the flow we are trying to achieve:
 
 <p class="c">
-    <img src="/images/blog/social-signin-spa-jwt-server/token-authentication.png" alt="Token verification sequence diagram" width="537" height="491">
+    <img itemprop="image" src="/images/blog/social-signin-spa-jwt-server/token-authentication.png" alt="Token verification sequence diagram" width="537" height="491">
 </p>
 
 To secure communications between our client and server, we will first send the token to our server for verification. This snippet will POST the token to our own endpoint `/api/auth` using the small AJAX lib [superagent](https://visionmedia.github.io/superagent/):

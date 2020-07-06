@@ -1,7 +1,7 @@
 -const prettyDate = (s) => new Date(s).toLocaleString('en-US', {month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC'});
 
 mixin date(d, t)
-  time(datetime=date itemprop=t)= prettyDate(d)
+  time(datetime=d itemprop=t)= prettyDate(d)
 
 mixin picture(path, width, height, alt)
   - var ext = path.substr(path.length - 4);
@@ -21,7 +21,7 @@ mixin picture(path, width, height, alt)
 mixin blogEntry({ date, dateModified })
   div.entry-meta
     span Article by
-    span.author= global.author
+    span(itemprop="author publisher").author= global.author
     span posted on
     +date(date, 'datePublished')
     if dateModified

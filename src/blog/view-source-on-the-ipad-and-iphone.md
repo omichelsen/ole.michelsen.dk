@@ -23,6 +23,7 @@ To get around this limitation we can use a _bookmarklet_ which is a piece of Jav
     <source srcset="/images/blog/view-source-on-the-ipad-and-iphone/source.webp, /images/blog/view-source-on-the-ipad-and-iphone/source@2x.webp 2x" type="image/webp">
     <img
       alt="Clicking the bookmarklet will display the source of the web page in a new window/tab"
+      itemprop="image"
       src="/images/blog/view-source-on-the-ipad-and-iphone/source.png"
       srcset="/images/blog/view-source-on-the-ipad-and-iphone/source@2x.png 2x"
       width="723"
