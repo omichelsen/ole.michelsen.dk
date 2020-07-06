@@ -2,90 +2,101 @@
 @travel-map-image-spacing: 3px;
 
 .photos {
-    @media (max-width: @page-width) {
-        .slideshow .caption .title {
-            font-size: large;
-        }
-    }
+	.masthead {
+		margin-bottom: 1.5em;
+		padding: 0;
+		border: none;
 
-    .albums {
-        @album-size: 180px;
-        @album-margin: 6px;
+		.slideshow {
+			height: 600px;
+		}
+	}
 
-        overflow: hidden;
-        margin: 0 -@album-margin;
+	@media (max-width: @page-width) {
+		.slideshow .caption .title {
+			font-size: large;
+		}
+	}
 
-        .album {
-            position: relative;
-            float: left;
-            margin: @album-margin;
-            line-height: 0;
-            width: @album-size;
-            height: @album-size;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+	.albums {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		grid-gap: 12.5px;
 
-            .title {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding: 0 8px;
-                height: 2em;
-                color: #f4f4f4;
-                font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
-                font-size: 12pt;
-                font-weight: 200;
-                line-height: 2em;
-                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-                background: rgba(0, 0, 0, 0.5);
-            }
+		@media (max-width: @page-width) {
+			grid-template-columns: repeat(2, 135px);
+			grid-gap: 1.5em;
+		}
+	}
 
-            &.travel-map {
-                width: 100%;
-                height: 200px;
-                background-image: url(/images/photos/travel-map.jpg);
+	.album {
+		display: block;
+		position: relative;
+		width: 180px;
+		height: 180px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
 
-                @media (min-resolution: 2dppx) {
-                    background-image: url(/images/photos/travel-map@2x.jpg);
-                }
+		.title {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 0 8px;
+			height: 2em;
+			color: #f4f4f4;
+			font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+			font-size: 12pt;
+			font-weight: 200;
+			line-height: 2em;
+			text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+			background: rgba(0, 0, 0, 0.5);
+		}
 
-                .title {
-                    font-size: x-large;
-                }
-            }
+		&.travel-map {
+			width: 100%;
+			height: 200px;
+			background-image: url(/images/photos/travel-map.jpg);
 
-            @media (max-width: @page-width) {
-                width: 135px;
-                height: 135px;
-            }
-        }
-    }
+			@media (min-resolution: 2dppx) {
+				background-image: url(/images/photos/travel-map@2x.jpg);
+			}
+
+			.title {
+				font-size: x-large;
+			}
+		}
+
+		@media (max-width: @page-width) {
+			width: 135px;
+			height: 135px;
+		}
+	}
 }
 
 #travel-map {
-    #map-canvas {
-        margin-bottom: @travel-map-image-spacing;
-        height: @travel-map-height;
-    }
+	#map-canvas {
+		margin-bottom: @travel-map-image-spacing;
+		height: @travel-map-height;
+	}
 
-    .images {
-        overflow: hidden;
-        margin: 0 -@travel-map-image-spacing;
+	.images {
+		overflow: hidden;
+		margin: 0 -@travel-map-image-spacing;
 
-        .image-fixed {
-            float: left;
-            margin: @travel-map-image-spacing;
-            min-height: 100px;
-            min-width: 100px;
-            background: #f4f4f4;
+		.image-fixed {
+			float: left;
+			margin: @travel-map-image-spacing;
+			min-height: 100px;
+			min-width: 100px;
+			background: #f4f4f4;
 
-            &:hover {
-                margin-bottom: 1px;
-                border-bottom: 2px solid @secondary;
-                cursor: pointer;
-            }
-        }
-    }
+			&:hover {
+				margin-bottom: 1px;
+				border-bottom: 2px solid @secondary;
+				cursor: pointer;
+			}
+		}
+	}
 }
