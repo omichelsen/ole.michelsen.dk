@@ -24,14 +24,15 @@ block content
 block scripts
   - const shortname = 'olemichelsen';
   - const identifier = global.url + page.url;
-  script.
-    var disqus_config = function () {
-      this.page.identifier = '!{ identifier }';
-      this.page.url = '!{ identifier }';
-    };
-    (function() {
-      var d = document, s = d.createElement('script');
-      s.src = '//!{ shortname }.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
+  if (!tags.includes('draft'))
+    script.
+      var disqus_config = function () {
+        this.page.identifier = '!{ identifier }';
+        this.page.url = '!{ identifier }';
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//!{ shortname }.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
