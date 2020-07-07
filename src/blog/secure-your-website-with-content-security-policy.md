@@ -5,7 +5,7 @@ date: 2015-07-19
 # tags: ["config", "security", "webserver", "website"]
 ---
 
-<img class="entry-image" src="/images/blog/secure-your-website-with-content-security-policy/CSP_Shield.png" srcset="/images/blog/secure-your-website-with-content-security-policy/CSP_Shield-2x.png 2x" alt="Content security policy shield" width="150" height="150"> So what is a content security policy (CSP), and why do I need one? A CSP is a contract that your server sends to the browser, defining from which domains it's ok to load scripts, style sheets, images etc.
+<img itemprop="image" class="entry-image" src="/images/blog/secure-your-website-with-content-security-policy/CSP_Shield.png" srcset="/images/blog/secure-your-website-with-content-security-policy/CSP_Shield-2x.png 2x" alt="Content security policy shield" width="150" height="150"> So what is a content security policy (CSP), and why do I need one? A CSP is a contract that your server sends to the browser, defining from which domains it's ok to load scripts, style sheets, images etc.
 
 This is an important tool to protect against [cross-site scripting](https://en.wikipedia.org/wiki/Cross-site_scripting) (XSS), clickjacking and other client side attack vectors. XSS can for example be used by evildoers to place a script into your website, replace the login field in your online bank, and send usernames and passwords to somebody else. Another trick could be to load your page in an iframe on a similar domain, so it looks like your page loads normally, all the while evil hackers are snatching up passwords and credit card information.
 
