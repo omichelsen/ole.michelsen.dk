@@ -1,0 +1,40 @@
+---
+layout: layouts/base.pug
+title: Regex Crossword Mobile
+description: Regular expression crossword game designed for your mobile phone with easy tutorials, drag and drop interface and player created puzzles.
+keywords: Mobile, PWA, TypeScript
+created: 2019-2020
+date: 2020-07-07
+---
+
+include /mixins.pug
+
+section(itemscope itemtype="http://schema.org/CreativeWork")
+	.content
+		h1 Portfolio
+		include /portfolio-header.pug
+
+		p <a href="https://m.regexcrossword.com">Regex Crossword Mobile</a> is the app version of <a href="https://m.regexcrossword.com">Regex Crossword</a>, the popular regular expression crossword game. To work on a mobile device the whole UX had to be reimagined to support touch on a constrained screen size. This mobile version is ideal for a quick game on the move, or as a general introduction to regular expressions with the included tutorials.
+
+		p The game is developed as a <abbr title="Progressive Web App">PWA</abbr> and also shipped to the native app stores for both iOS and Android. It's using HTML5 API's for drag and drop and service workers to be able to run completely offline.
+
+	.banner
+		.content
+			.row
+				.col
+					+picture("iphone11-1.png", 400, 552, "Easy tutorial - learn regular expressions")
+				.col
+					+picture("iphone11-2.png", 400, 552, "Player puzzles - daily challenges")
+
+	.content
+		h3 App store
+
+		p Download it now from the app store or go to <a href="https://m.regexcrossword.com/">m.regexcrossword.com</a> in your browser (can be <a href="https://developer.chrome.com/multidevice/android/installtohomescreen">bookmarked</a> to the home screen on your phone).
+
+		p
+			+appStore("https://apps.apple.com/us/app/regex-crossword/id1239681767", "Install Regex Crossword from App Store")
+			| &nbsp;&nbsp;
+			+playStore("https://play.google.com/store/apps/details?id=com.michelsen.regexcrossword", "Install Regex Crossword from Google Play")
+
+		p
+			a(href="/portfolio/") ← Back to Portfolio
