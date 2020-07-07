@@ -45,7 +45,6 @@ RedirectPermanent /demos/html5-animation.html /portfolio/html5-animation/
 	RewriteEngine on
 	RewriteRule blog/(.+)\.html /blog/$1/ [R=301]
 	RewriteRule photos/(.+)\.html?$ /photos/$1/ [R=301]
-	RewriteRule portfolio/(.+)\.html$ /portfolio/$1/ [R=301]
 	RewriteRule tools/(.+)\.html?$ /tools/$1/ [R=301]
 </IfModule>
 
