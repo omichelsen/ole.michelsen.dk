@@ -9,7 +9,9 @@ It's often useful to peek at files directly from the Terminal, but wouldn't it b
 
 <!-- more-->
 
-`brew install source-highlight`
+```shell
+brew install source-highlight
+```
 
 Then copy+paste the following into your [.bash_profile](http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html):
 
@@ -24,7 +26,17 @@ This will make [less](https://ss64.com/osx/less.html) automatically syntax highl
 As you see we now have pretty syntax highlighting of our HTML file directly inside the Terminal!
 
 <p>
-    <img alt="Opening HTML file with less and syntax-highlight" src="/images/blog/syntax-highlight-files-macos-terminal-less/less.png" srcset="/images/blog/syntax-highlight-files-macos-terminal-less/less-2x.png 2x" width="509">
+  <picture>
+    <source srcset="/images/blog/syntax-highlight-files-macos-terminal-less/less.webp, /images/blog/syntax-highlight-files-macos-terminal-less/less@2x.webp 2x" type="image/webp">
+    <img
+      alt="Opening HTML file with less and syntax-highlight"
+      itemprop="image"
+      src="/images/blog/syntax-highlight-files-macos-terminal-less/less.png"
+      srcset="/images/blog/syntax-highlight-files-macos-terminal-less/less@2x.png 2x"
+      width="509"
+      height="354"
+    >
+  </picture>
 </p>
 
 In the last line of our`.bash_profile` we're adding some switches to less, which you can modify to your liking:
