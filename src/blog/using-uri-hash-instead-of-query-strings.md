@@ -2,6 +2,9 @@
 title: Using URI hash instead of query strings
 description: Using URI location hash instead of query strings for bookmarkable JavaScript/AJAX pages with dynamic content.
 date: 2011-06-17
+tags:
+  - blog
+  - archive
 # tags: ["ios", "ipad", "iphone"]
 ---
 
@@ -11,7 +14,7 @@ A URI hash is a great way to make JavaScript/AJAX pages with dynamic content boo
 
 For the uninitiated, a URI location hash is everything after the # sign in the URI:
 
-`http://domain.com/page.html#i-am-a-hash`
+> http://domain.com/page.html#i-am-a-hash
 
 A side note: URI hashes are not transferred back to the server, you can only access them client-side.
 
