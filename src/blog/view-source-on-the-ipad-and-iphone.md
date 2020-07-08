@@ -69,7 +69,7 @@ To add it on your computer and sync it to your iPad, just drag this link to your
 To add it directly from your iPad (or iPhone), you need to create the bookmark manually:
 
 1. Add this page as a bookmark
-1. Then [click here to see the bookmarklet code](https://ole.michelsen.dk/viewsource/bookmarklet.min.js) and Select All → Copy
+1. Then [click here to see the bookmarklet code](/scripts/bookmarklet.min.js) and Select All → Copy
 1. Now edit that same bookmark, paste the code you just copied into the URL and name it something like "View Source"
 
 <p>
