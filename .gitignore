@@ -1,5 +1,6 @@
 .DS_Store
 .bundle/
+.netlify
 node_modules/
 public/
 vendor/

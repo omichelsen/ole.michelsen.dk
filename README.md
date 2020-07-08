@@ -20,6 +20,19 @@ bundle install --deployment
 
 Tests can now be run with `yarn test` or `./test.sh`.
 
+## Debug
+
+To run [Netlify lambda functions](https://github.com/netlify/cli/blob/master/docs/netlify-dev.md#netlify-functions):
+
+```shell
+# start a dev server
+netlify dev
+
+# invoke lambda
+netlify functions:invoke validator-sitemap --querystring "url=https://ole.michelsen.dk/sitemap.xml"
+netlify functions:invoke validator-proxy --querystring "url=https://ole.michelsen.dk/"
+```
+
 ## Scripts
 
 #### `gulp exif`
