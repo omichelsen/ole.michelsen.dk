@@ -11,6 +11,7 @@
   "license": "ISC",
   "scripts": {
     "build": "eleventy",
+    "dev": "netlify dev",
     "prebuild": "yarn styles",
     "start": "yarn watch & eleventy --serve --watch",
     "styles": "gulp styles",
@@ -19,8 +20,10 @@
   },
   "dependencies": {
     "autosize": "^4.0.2",
+    "clean-css": "^4.2.3",
     "express": "^4.17.1",
-    "simple-slideshow": "^2.1.0"
+    "simple-slideshow": "^2.1.0",
+    "uglify-es": "^3.3.9"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
