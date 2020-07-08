@@ -1,108 +1,68 @@
-$(document).ready(function() {
+autosize(document.querySelectorAll('textarea'))
 
-	// Bind the validate and replace buttons of the input form
-	$('#regex').submit(runRegEx.bind(this, false));
-	$('#doReplace').bind('click', runRegEx.bind(this, true));
-	$('#doValidate').bind('click', runRegEx.bind(this, false));
+const elmPattern = document.getElementById('pattern')
+const elmInput = document.getElementById('input')
+const elmReplace = document.getElementById('replace')
+const elmMatches = document.getElementById('matches')
 
-	// Bind the sample "Test" links
-	$('#samples a').bind('click', function() { copySample($(this).attr('href')); return false; });
+const validate = (pattern, modifiers, replace, subject) => {
+  // Since forward slashes delimit the regular expression, any forward slashes that appear in the regex need to be escaped. E.g. the regex 1/2 is written as /1\/2/ in JavaScript.
+  const escaped = pattern.replace('/', '/')
 
-	function runRegEx(doReplace) {
+  // Instantiate RegExp object (needed when pattern is from variable)
+  const re = new RegExp(escaped, modifiers)
 
-		var pattern = $('#pattern').val();
-		var input = $('#input').val();
-		var replace = $('#replace').val();
+  if (replace && replace.length > 0) {
+    const m = subject.replace(re, replace)
+    return m == null ? 'No match' : m
+  } else {
+    const m = subject.match(re)
+    return m == null
+      ? 'No match'
+      : m.reduce((s, match, i) => s + `${i}: ${match}\n`, '')
+  }
+}
 
-		// Only pass on replace statement if replace button was clicked
-		if (!doReplace) replace = '';
+const handleFormInput = (event, doReplace) => {
+  event.preventDefault()
 
-		// Iterate the selected switches
-		var modifiers = '';
-		$('input:checked').each(function(){
-        	modifiers += $(this).val();
-        });
+  const pattern = elmPattern.value
+  const input = elmInput.value
+  const replace = doReplace ? elmReplace.value : ''
 
-        // Detect use of lookbehind and revert to PHP
-        if (pattern.indexOf("?<=") >= 0 || pattern.indexOf("?<!") >= 0)
-        	$('#engine').val("php");
+  const modifiers = Array.prototype.slice
+    .apply(document.querySelectorAll('input:checked'))
+    .reduce((m, elm) => m + elm.value, '')
 
-		if ($('#engine').val()=="js") {
+  try {
+    elmMatches.value = validate(pattern, modifiers, replace, input)
+  } catch (err) {
+    elmMatches.value = err
+  }
 
-			try {
-				$("#matches").val(jsRegEx(pattern, modifiers, replace, input));
-			} catch(err) {
-				$("#matches").val(err);
-			}
+  autosize.update(elmMatches)
+}
 
-		} else {
+// Bind form event listeners
+document.getElementById('regex').onsubmit = handleFormInput
+document.getElementById('doValidate').onclick = handleFormInput
+document.getElementById('doReplace').onclick = (e) => handleFormInput(e, true)
+elmPattern.oninput = handleFormInput
+elmInput.oninput = handleFormInput
+elmReplace.oninput = handleFormInput
 
-			phpRegEx(pattern, modifiers, replace, input);
+const copySample = (event) => {
+  event.preventDefault()
 
-		}
+  const id = event.target.getAttribute('href')
 
-		return false;
-	}
+  // Pattern is fetched from the first <td>
+  elmPattern.value = document.querySelector(`${id} td:first-child`).innerHTML
 
-	function jsRegEx(pattern, modifiers, replace, subject) {
-		// Since forward slashes delimit the regular expression, any forward slashes that appear in the regex need to be escaped. E.g. the regex 1/2 is written as /1\/2/ in JavaScript.
-		var escaped = pattern.replace('/','\/');
+  // Input is fetched from first <span> (in second <td>)
+  elmInput.value = document.querySelector(`${id} span:first-child`).innerHTML
+}
 
-		// Instantiate RegExp object (needed when pattern is from variable)
-		var re = new RegExp(escaped, modifiers);
-
-		if (replace && replace.length > 0) {
-			var m = subject.replace(re, replace);
-			if (m == null) {
-				return "No match";
-			} else {
-				return m;
-			}
-		}
-		else {
-			// Run regular expression against input string
-			var m = subject.match(re);
-
-			if (m == null) {
-				return "No match";
-			} else {
-				var s = "";
-				for (var i=0; i < m.length; i++) {
-					if(m[i])
-						s += i + ": " + m[i] + "\n";
-				}
-				return s;
-			}
-		}
-	}
-
-	function phpRegEx(pattern, modifiers, replace, subject) {
-
-		// Serialize form data
-		var formdata = 'pattern='+encodeURIComponent(pattern)
-			+'&modifiers='+encodeURIComponent(modifiers)
-			+'&replace='+encodeURIComponent(replace)
-			+'&input='+encodeURIComponent(subject);
-
-		// Post to PHP with AJAX
-		$.post('/api/regex.php'
-			, formdata
-			, function(data) {
-
-				$("#matches").val(data);
-
-			}
-		);
-	}
-
-	function copySample(sampleId) {
-
-		// Pattern is fetched from the first <td>
-		$("#pattern").val($(sampleId+' td:first').html());
-
-		// Input is fetched from first <span> (in second <td>)
-		$("#input").val($(sampleId+' span:first').html());
-
-	}
-
-});
+document.querySelectorAll('#samples a').forEach((elm) => {
+  elm.onclick = copySample
+})
