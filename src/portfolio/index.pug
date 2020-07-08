@@ -9,11 +9,11 @@ date: 2015-12-11
 <!--email_off-->
 style
   each item in collections.portfolio
-    - var path = '/portfolio/' + item.fileSlug + '/';
-    - var img = path + (item.data.image || 'thumb.png');
-    != '.' + item.fileSlug + '{background-image:url(' + img + ')}'
+    - const path = `/portfolio/${item.fileSlug}/`;
+    - const img = path + (item.data.image || 'thumb.png');
+    != `.${item.fileSlug}{background-image:url(${img})}`
     if !/\.svg$/.test(img)
-      != '@media(-webkit-min-device-pixel-ratio:2),(min-resolution: 2dppx){.' + item.fileSlug + '{background-image:url(' + img.replace(/\.(\w{3})$/, '@2x.$1') + ')}}'
+      != `@media(-webkit-min-device-pixel-ratio:2),(min-resolution: 2dppx){.${item.fileSlug}{background-image:url(${img.replace(/\.(\w{3})$/, '@2x.$1')})}}`
 <!--/email_off-->
 
 .content

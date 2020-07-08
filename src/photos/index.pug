@@ -27,16 +27,10 @@ className: photos
     each album in flickr
       a.album(
         href=`https://www.flickr.com/photos/olemichelsen/sets/${album.id}/`
-        data-url=album.thumbnail.url
+        style=`background-image: url(${album.thumbnail.url})`
       )
         .title= album.title
 
 script(src=global.libs.simpleslideshow)
 script.
-  window.addEventListener('load', () => {
-    var albums = document.querySelectorAll('.flickr.albums .album');
-    for (var i = 0; i < albums.length; i++) {
-      albums[i].style.backgroundImage = 'url(' + albums[i].getAttribute('data-url') + ')';
-    }
-    var slsh = new SlideShow('.slideshow');
-  });
+  new SlideShow('.slideshow')
