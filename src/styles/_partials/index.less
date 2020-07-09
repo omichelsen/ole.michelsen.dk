@@ -1,82 +1,76 @@
 .landingpage {
-    @media (max-width: @page-width) {
-        .slideshow .caption {
-            display: none;
-        }
-    }
+	@media (max-width: @page-width) {
+		.slideshow .caption {
+			display: none;
+		}
+	}
 
-    .row {
-        margin-top: 10px;
-        font: 200 14px 'Helvetica Neue', Arial, Helvetica, Norasi, sans-serif;
-        a:link, a:visited {
-            color: #333;
-            text-decoration: none;
-        }
-        a:hover {
-            color: maroon;
-        }
-        a:active {
-            color: #000;
-        }
-        ul {
-            display: block;
-            clear: both;
-            overflow: hidden;
-            list-style: none;
-        }
-    }
+	.links {
+		margin-top: 10px;
+		font: 200 14px 'Helvetica Neue', Arial, Helvetica, Norasi, sans-serif;
+		a:link, a:visited {
+			color: #333;
+			text-decoration: none;
+		}
+		a:hover {
+			color: maroon;
+		}
+		a:active {
+			color: #000;
+		}
+		ul {
+			display: block;
+			clear: both;
+			overflow: hidden;
+			list-style: none;
+		}
+	}
 
-    h4 {
-        margin-bottom: 5px;
-        padding-bottom: 5px;
-        border-bottom: 3px double #ccc;
-        color: #999;
-        font: italic 20px Georgia, "Bitstream Charter", serif;
-        text-shadow: 0 1px 1px #f3f3f3;
-    }
+	h4 {
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+		border-bottom: 3px double #ccc;
+		color: #999;
+		font: italic 20px Georgia, "Bitstream Charter", serif;
+		text-shadow: 0 1px 1px #f3f3f3;
+	}
 
-    .feed {
-        a:visited {
-            color: #333;
-            text-decoration: none;
-        }
-        li {
-            margin: 5px 0 5px 20px;
-            padding-top: 5px;
-            border-top: 1px dotted #eee;
-        }
-        li:first-child {
-            padding-top: 0;
-            border-top: none;
-        }
-        .type {
-            margin-left: -20px;
-            float: left;
-        }
-        time {
-            font-size: 11px;
-            font-style: italic;
-            letter-spacing: 1px;
-        }
-    }
+	.feed {
+		a:visited {
+			color: #333;
+			text-decoration: none;
+		}
+		li {
+			margin: 5px 0 5px 20px;
+			padding-top: 5px;
+			border-top: 1px dotted #eee;
+		}
+		li:first-child {
+			padding-top: 0;
+			border-top: none;
+		}
+		.type {
+			margin-left: -20px;
+			float: left;
+		}
+		time {
+			font-size: 11px;
+			font-style: italic;
+			letter-spacing: 1px;
+		}
+	}
 
-    .social {
-        margin: 10px 0;
-        text-align: center;
+	.social {
+		margin: 10px 0;
+		text-align: center;
 
-        li {
-            display: inline-block;
-            margin: 3%;
-        }
+		li {
+			display: inline-block;
+			margin: 3%;
+		}
 
-        [class^="icon-"], [class*=" icon-"] {
-            font-size: 32px;
-        }
-    }
-
-    @media (max-width: @page-width) {
-        .row {
-            padding: 0 1em;
-        }
-    }
+		[class^="icon-"], [class*=" icon-"] {
+			font-size: 32px;
+		}
+	}
 }

@@ -11,35 +11,35 @@ dateModified: 2020-07-07
 
 <section>
   <form id="regex">
-  <div class="row">
-    <div class="col">
-      <p>
-      <label for="pattern"><b>Regex pattern:</b></label><br>
-      <textarea autofocus class="text" id="pattern" name="pattern" style="width:440px;height:33px" tabindex="1" required></textarea>
-      </p>
+  <div class="grid">
+    <div>
+      <label>
+        <b>Regex pattern:</b><br>
+        <textarea autofocus class="text" id="pattern" style="width:100%" tabindex="1" required></textarea>
+      </label>
     </div>
 
-    <div class="col">
-      <p>
-      <label for="replace"><b>Replace:</b></label><br>
-      <textarea class="text" id="replace" name="replace" style="width:440px;height:33px" tabindex="3"></textarea>
-      </p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <p>
-      <label for="input"><b>Test input:</b></label><br>
-      <textarea class="text" id="input" name="input" style="width:440px;height:80px" tabindex="2" required></textarea>
-      </p>
+    <div>
+      <label>
+        <b>Replace:</b><br>
+        <textarea class="text" id="replace" style="width:100%" tabindex="3"></textarea>
+      </label>
     </div>
 
-    <div class="col">
+    <div>
       <p>
-      <label for="matches"><b>Matches:</b></label><br>
-      <textarea class="text" id="matches" name="matches" style="width:440px;height:80px" tabindex="10" readonly></textarea>
-      </p>
+      <label>
+        <b>Test input:</b><br>
+        <textarea class="text" id="input" style="width:100%" tabindex="2" required></textarea>
+      </label>
+    </div>
+
+    <div>
+      <p>
+      <label>
+        <b>Matches:</b><br>
+        <textarea class="text" id="matches" style="width:100%" tabindex="10" readonly></textarea>
+      </label>
     </div>
   </div>
 
@@ -91,8 +91,8 @@ dateModified: 2020-07-07
 
 <br>
 
-<section class="row small">
-  <div class="col-4">
+<section class="grid col-3 small">
+  <div>
     <table class="datasheet">
       <tr><th colspan="2">Special Characters</th></tr>
       <tr><td>\</td><td>Escape Character</td></tr>
@@ -124,7 +124,7 @@ dateModified: 2020-07-07
       <tr><td>\n</td><td>New line</td></tr>
     </table>
   </div>
-  <div class="col-4">
+  <div>
     <table class="datasheet">
       <tr><th colspan="2">Quantifiers</th></tr>
       <tr><td><i>n</i>*</td><td>0 or more <i>n</i></td></tr>
@@ -153,7 +153,7 @@ dateModified: 2020-07-07
       <tr><td>(?&lt;!<i>o</i>)<i>n</i></td><td>Negative lookbehind, <i>o</i> not preceding <i>n</i></td></tr>
     </table>
   </div>
-  <div class="col-4">
+  <div>
     <table class="datasheet">
       <tr><th colspan="2">Ranges</th></tr>
       <tr><td>.</td><td>Any character except new line (\n)</td></tr>

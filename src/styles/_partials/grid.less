@@ -2,10 +2,16 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 2em;
+	width: 100%;
+}
+
+.grid.col-3 {
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
 @media (max-width: @page-width) {
-	.grid {
-		grid-template-columns: 1fr;
+	.grid,
+	.grid.col-3 {
+		grid-template-columns: none;
 	}
 }

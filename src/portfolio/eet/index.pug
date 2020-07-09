@@ -18,8 +18,8 @@ section#website
   h3
     | Website platform and backend&nbsp;
     abbr(title='Enterprise Resource Planning') ERP
-  .row
-    .col-4
+  .grid(style="grid-template-columns: 1fr 2fr")
+    div
       p
         | The website is based on ASP.NET, utilizing both&nbsp;
         abbr(title='Asynchronous JavaScript and XML') AJAX
@@ -40,10 +40,10 @@ section#website
         | All data is being drawn live from the&nbsp;
         abbr(title='Microsoft Dynamics NAV') Navision
         | &nbsp;ERP system and it's 400+ GB database of products, customers and order transactions. This is served by a custom built synchronization system, and every day we are pre-caching more than 136 million product prices worldwide, tailored for each customer based on local currency, VAT, freight charges, purchase agreements etc.
-    .col-8.c
+    div
       img(src='screenflip.jpg', alt='Screenshots of eetnordic.com shown in a 3D fan', width='600', height='350')
-  .row
-    .col-4
+  .grid.col-3
+    div
       h4 Scalability
       p
         | When designing a multinational commerce system, you must account for extended "peak hours" across multiple time zones, and sudden increases in transactions, traffic etc.
@@ -57,7 +57,7 @@ section#website
           | During my employment with EET, the number of unique visitors has increased by more than 400%!
         p.c
           img(src='visitors.png', alt='Graph of the increase in unique visitors from 2007-2010', height='165', width='290')
-    .col-4
+    div
       h4 Statistics and tracking
       p
         | It is no easy task to gather and parse (meaningful) statistics, especially when the&nbsp;
@@ -74,7 +74,7 @@ section#website
         | &nbsp;attacks, as well as unauthorized crawling of our
         abbr(title='Intelligent Property') IP
         | &nbsp;data.
-    .col-4
+    div
       h4 CRN Image analysis 2010
       p
         | In a big image analysis by&nbsp;
@@ -82,7 +82,11 @@ section#website
         | , we ranked second among Danish IT distributors in the category "Electronic Communication/Website":
       p.c
         img(src='CRN-Image-2010.jpg', alt='Second place in the CRN Image analysis 2010 for IT distributors', height='345', width='270')
+
 section#guide
   h3 Product Guide
   p A special component of the eetnordic.com site is the Product Guide, which helps customers find spare parts or accessories for their existing IT equipment. If you have a laptop and is looking for a replacement battery or new peripherals like e.g. a FireWire PC Card, the Guide will list compatible solutions from a database counting over 60.000 known models.
   p The Guide is also offered for partners and can be embedded directly in other websites through an iframe. It supports customization - like different color schemes - and integration with the shopping basket on the hosting website.
+
+p
+  a(href='/portfolio/') ← Back to Portfolio

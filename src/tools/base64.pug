@@ -24,13 +24,13 @@ section
       label(for='fileToUpload')
         b Input file:
       br
-      input#fileToUpload.text(name='fileToUpload', type='file', onchange="handleFiles(this.files)")
-      img#loading(alt='Loading...', height='11', width='16', src='/images/loading.gif', style='display:none;')
+      input#fileToUpload.text(name='fileToUpload' type='file' onchange="handleFiles(this.files)")
+      img#loading(alt='Loading...' height='11' width='16' src='/images/loading.gif' style='display:none;')
     p
       label(for='output')
         b Output:
       br
-      textarea#output.text(name='output', style='width:940px;height:120px;font-size:smaller;', readonly='readonly')
+      textarea#output.text(name='output' style='width:940px;height:120px;font-size:smaller;' readonly='readonly')
       span#resultstats.small.floatright  
 section
   h3 Embedding Base64 content
