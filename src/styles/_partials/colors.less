@@ -1,8 +1,37 @@
-@primary: #000;
-@secondary: Maroon;
+:root {
+	--alt-color: Maroon;
+	--background-color: #fff;
+	--color: #333;
+	--color-title: #000;
+	--text-shadow: rgba(255, 255, 255, 0.1);
+	--border-color: rgba(128, 128, 128, 0.15);
+	--link-color: SteelBlue;
+	--link-active-color: LightSteelBlue;
+	--link-hover-color: DarkSteelBlue;
+	--code-background: #f0f0f0;
+	--code-border-radius: 4px;
+	--code-font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	--code-font-size: 13px;
+	--table-odd-background: rgba(200, 200, 200, 0.15);
+	--form-background: linear-gradient(#FFF, #fafafa);
+	--form-disabled-background: #f5f5f5;
+	--form-disabled-color: #999;
+}
 
-@link: SteelBlue;
-@link-hover: @secondary;
-@link-active: LightSteelBlue;
+@media (prefers-color-scheme: dark) {
+	:root {
+		--alt-color: #c60000;
+		--background-color: #222;
+		--color: #ddd;
+		--color-title: #fafafa;
+		--header-fade: #000;
+		--form-background: #eee;
+		--form-disabled-background: #999;
+		// --form-disabled-color: #999;
+		--code-background: #333;
+	}
+}
+
+@secondary: Maroon;
 
 @masthead-bg: #f4f4f4;

@@ -9,22 +9,22 @@ date: 2015-12-11
 
 include /mixins.pug
 
-p <a href="https://regexcrossword.com" target="_blank">RegexCrossword.com</a> is a puzzle game where you must solve a crossword consisting of clues given in the form of regular expressions.
+p <a href="https://regexcrossword.com/" target="_blank">Regex Crossword</a> is a puzzle game where you must solve a crossword consisting of clues given in the form of regular expressions.
 
 // more
 
 p The idea to make Regex Crossword came from the MIT Mystery Hunt, which featured a very difficult <a href="http://web.mit.edu/puzzle/www/2013/coinheist.com/rubik/a_regular_crossword/grid.pdf" target="_blank">multi-dimensional regular expression crossword</a>. I thought this was a really fun variation on the normal crossword and soduku-like puzzles, and decided to create a game with more puzzles and easier difficulty levels, so newcomers could also have a fun way to learn regular expressions.
 
-p I developed the site in JavaScript as a single-page app using <a href="http://angularjs.org/">AngularJS</a>. The backend is a <abbr title="Representational State Transfer">REST</abbr>-based API using PHP with the <a href="http://www.slimframework.com/">Slim Framework</a> and MySQL. The backend handles player scores and achievements, as well as puzzles created and curated by the community.
+p I developed the site in JavaScript as a single-page app using <a href="https://angularjs.org/" rel="external" target="_blank">AngularJS</a>. The backend is a <abbr title="Representational State Transfer">REST</abbr>-based API using PHP with the <a href="https://www.slimframework.com/" rel="external" target="_blank">Slim Framework</a> and MySQL. The backend handles player scores and achievements, as well as puzzles created and curated by the community.
 
-p: +picture("screens/front.jpg", 950, 603, "Challenges in the Regex Crossword puzzle game")
+p: +picture("screens/front.png", 950, 603, "Challenges in the Regex Crossword puzzle game")
 
-p: +picture("screens/puzzle.jpg", 950, 603, "Puzzle challenge Bat Man from the Double Cross challenge")
+p: +picture("screens/puzzle.png", 950, 603, "Puzzle challenge Bat Man from the Double Cross challenge")
 
 h3 Player profiles
 
 p Players can login with their social accounts (Facebook, Twitter, Google and Microsoft Live), to save their progress and earn achievements for completing puzzles. Security is handled by authenticating with the social networks on the front-end and then validating the tokens in the API and exchanging JSON Web Tokens.
 
-p: +picture("screens/profile.jpg", 950, 603, "Player profile and list of puzzles created by player")
+p: +picture("screens/profile.png", 950, 603, "Player profile and list of puzzles created by player")
 
 p: a(href="/portfolio/") ← Back to Portfolio

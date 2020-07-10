@@ -8,12 +8,13 @@
 	.links {
 		margin-top: 10px;
 		font: 200 14px 'Helvetica Neue', Arial, Helvetica, Norasi, sans-serif;
-		a:link, a:visited {
-			color: #333;
+		letter-spacing: 0.4px;
+		a {
+			color: var(--color);
 			text-decoration: none;
 		}
 		a:hover {
-			color: maroon;
+			color: var(--alt-color);
 		}
 		a:active {
 			color: #000;
@@ -32,18 +33,14 @@
 		border-bottom: 3px double #ccc;
 		color: #999;
 		font: italic 20px Georgia, "Bitstream Charter", serif;
-		text-shadow: 0 1px 1px #f3f3f3;
+		text-shadow: 0 1px 1px var(--text-shadow);
 	}
 
 	.feed {
-		a:visited {
-			color: #333;
-			text-decoration: none;
-		}
 		li {
 			margin: 5px 0 5px 20px;
 			padding-top: 5px;
-			border-top: 1px dotted #eee;
+			border-top: 1px dotted var(--border-color);
 		}
 		li:first-child {
 			padding-top: 0;

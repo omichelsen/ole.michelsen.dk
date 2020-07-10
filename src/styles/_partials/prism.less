@@ -10,7 +10,7 @@ pre[class*="language-"] {
 	background: none;
 	text-shadow: 0 1px white;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	font-size: 13px;
+	font-size: var(--code-font-size) !important; // overwrite dark mode theme
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -55,7 +55,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #f0f0f0;
+  background: var(--code-background) !important; // overwrite dark mode theme
   border-radius: 4px;
 }
 

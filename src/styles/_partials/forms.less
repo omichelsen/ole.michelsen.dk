@@ -3,7 +3,7 @@ select,
 textarea
 {
 	.form-element;
-	background: linear-gradient(#FFF, #F5F5F5);
+	background: var(--form-background);
 	font-size: 1em;
 	max-width: 100%;
 }
@@ -11,12 +11,12 @@ textarea
 input[disabled],
 input[readonly],
 textarea[readonly] {
-	background: #f5f5f5;
+	background: var(--form-disabled-background);
 }
 
 input[disabled],
 textarea[disabled] {
-	color: #999;
+	color: var(--form-disabled-color);
 }
 
 select {
