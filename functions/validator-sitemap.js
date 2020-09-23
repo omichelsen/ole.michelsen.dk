@@ -21,15 +21,20 @@ const fetchRaw = (url) =>
       .on('error', (err) => reject(err))
   })
 
-const parseUrls = (xml) =>
+const parseUrlsFromXml = (xml) =>
   [...xml.matchAll(/<loc>(.+?)<\/loc>/gi)].map(([, g1]) => g1)
+
+const parseUrlsFromTxt = (txt) =>
+  [...txt.matchAll(/(https?:\/\/.+?)$/gim)].map(([, g1]) => g1)
 
 exports.handler = (event, context, callback) => {
   const url = event.queryStringParameters.url
 
   fetchRaw(url)
     .then((data) => {
-      const response = parseUrls(data)
+      const response = data.includes('<?xml')
+        ? parseUrlsFromXml(data)
+        : parseUrlsFromTxt(data)
 
       callback(null, {
         statusCode: 200,
