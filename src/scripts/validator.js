@@ -9,35 +9,32 @@ let timerIntervalId = 0
 
 const imgLoading = '<img src="/images/loading.gif" height="11" width="16">'
 
-const getJson = (url) =>
-  fetch(url).then((res) => (res.ok ? res.json() : undefined))
-
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('#validator').addEventListener('submit', (event) => {
     event.preventDefault()
 
-    document.querySelector('input[type=submit]').disabled = true
+    toggleSubmitButton(true)
 
     document.querySelector(
       '#results'
     ).innerHTML = `<tr><td class="c" colspan="3">Processing sitemap...<br>${imgLoading}</td></tr>`
 
     const url = document.querySelector('#sitemapuri').value
-    getJson(`${apiSitemap}?url=${encodeURIComponent(url)}`).then(
-      handleSitemapResponse
-    )
+    getJson(`${apiSitemap}?url=${encodeURIComponent(url)}`)
+      .then(handleResponse)
+      .catch(handleError)
   })
 })
 
-function handleSitemapResponse(data = []) {
-  if (!data.length) {
-    // No data was returned, so display error message and reenable submit for retry
-    document.querySelector('#results td:first-child').innerHTML =
-      '<span style="color:#B00">Sitemap could not be parsed - wrong URI?</span>'
-    document.querySelector('input[type=submit]').disabled = false
-    return
-  }
+const handleError = (err) => {
+  // No data was returned, so display error message and reenable submit for retry
+  document.querySelector(
+    '#results td:first-child'
+  ).innerHTML = `<span style="color:#B00">Sitemap could not be parsed - wrong URI?</span><br><span style="color:#999">${err.message}</span>`
+  toggleSubmitButton(false)
+}
 
+const handleResponse = (data = []) => {
   let out = ''
 
   data.forEach((value, index) => {
@@ -59,7 +56,7 @@ function handleSitemapResponse(data = []) {
   document.querySelector('#results').innerHTML = out
 }
 
-function validate(index, uri) {
+const validate = (index, uri) => {
   getJson(`${apiValidator}?url=${encodeURIComponent(uri)}`).then((data) => {
     document.querySelector(`#loading${index}`).innerHTML = `<a href="${
       data.report
@@ -73,9 +70,20 @@ function validate(index, uri) {
   })
 }
 
-function checkTimers() {
+const checkTimers = () => {
   if (activeTimers < 1) {
-    document.querySelector('input[type=submit]').disabled = false
+    toggleSubmitButton(false)
     clearInterval(timerIntervalId)
   }
 }
+
+const toggleSubmitButton = (disabled = false) =>
+  (document.querySelector('input[type=submit]').disabled = disabled)
+
+const getJson = (url) =>
+  fetch(url).then((res) => {
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`)
+    }
+    return res.json()
+  })
