@@ -1,0 +1,36 @@
+---
+layout: layouts/base.pug
+title: Photos - Architecture
+description: Lines and textures of modern architecture, mostly buildings in San Francisco.
+date: 2021-06-01
+className: photo-album
+---
+
+ul.photos
+  li.photo
+    img(src="/images/photos/architecture/IMG_4694.jpeg" width=200 height=400)
+  li.photo
+    img(src="/images/photos/architecture/IMGP1182.jpeg" width=200 height=400)
+  li.photo
+    img(src="/images/photos/architecture/IMGP1215.jpeg" width=200 height=400)
+  li.photo
+    img(src="/images/photos/architecture/IMGP1217.jpeg" width=200 height=400)
+  li.photo
+    img(src="/images/photos/architecture/IMGP1218.jpeg" width=200 height=400)
+  li.photo
+    img(src="/images/photos/architecture/IMGP1221.jpeg" width=200 height=400)
+  li.photo
+    img(src="/images/photos/architecture/IMGP3890.jpeg" width=200 height=400)
+  li.photo
+    img(src="/images/photos/architecture/IMGP3891.jpeg" width=200 height=400)
+  li.photo
+    img(src="/images/photos/architecture/IMGP3992.jpeg" width=200 height=400)
+
+script(src=global.libs.masonry)
+script.
+  const msnry = new Masonry('.photos', {
+    itemSelector: '.photo',
+    columnWidth: 220,
+    gutter: 20,
+    resizable: false,
+  })

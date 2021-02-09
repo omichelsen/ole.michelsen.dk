@@ -18,17 +18,21 @@
 	--form-disabled-color: #999;
 }
 
+.darkMode() {
+	--alt-color: #c60000;
+	--background-color: #000;
+	--color: #ddd;
+	--color-title: #fafafa;
+	--header-fade: #000;
+	--form-background: #eee;
+	--form-disabled-background: #999;
+	// --form-disabled-color: #999;
+	--code-background: #333;
+}
+
 @media (prefers-color-scheme: dark) {
 	:root {
-		--alt-color: #c60000;
-		--background-color: #000;
-		--color: #ddd;
-		--color-title: #fafafa;
-		--header-fade: #000;
-		--form-background: #eee;
-		--form-disabled-background: #999;
-		// --form-disabled-color: #999;
-		--code-background: #333;
+		.darkMode();
 	}
 }
 
