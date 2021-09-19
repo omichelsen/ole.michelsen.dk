@@ -1,8 +1,11 @@
+const http = require('http')
 const https = require('https')
+
+const protocol = (url) => (url.startsWith('https') ? https : http)
 
 const fetchRaw = (url) =>
   new Promise((resolve, reject) => {
-    https
+    protocol(url)
       .get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
         if (res.statusCode !== 200) {
           res.resume()
