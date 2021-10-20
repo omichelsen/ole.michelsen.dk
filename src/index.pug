@@ -1,8 +1,8 @@
 ---
 layout: layouts/base.pug
-title: Web Development and Computer Science
-description: Portfolio of Ole Bjørn Michelsen, exploring the full potential of web development with HTML5, JavaScript, C#, ASP.NET and SQL.
-date: 2015-09-05
+title: Ole Michelsen
+description: I'm a Software Engineer and hobby photographer from Denmark living in San Francisco.
+date: 2021-10-21
 ---
 
 include /mixins.pug
@@ -15,49 +15,82 @@ mixin feed(item, url, defaultType)
     br
     +date(item.dateModified || item.date)
 
-.landingpage.content
-  section
-    ul.slideshow
-      li
-        a(href='/profile/')
-          img(src='/images/olemichelsen-1.jpg' title='Welcome' alt='This is my new curriculum vitae website' width='950' height='400')
-      li
-        a(href='/portfolio/')
-          img(src='/images/olemichelsen-2.jpg' title='Portfolio' alt='Presenting some of my work and projects' width='950' height='400')
-      li
-        a(href='/photos/')
-          img(src='/images/olemichelsen-3.jpg' title='Photos' alt='Shots from my travels around the world' width='950' height='400')
+.landingpage
+  .hero
+    h2 Hi, I'm
+    h1 Ole Michelsen
 
-  .grid.col-3.links
-    div
-      h4 Things I say
-      ul.feed
-        each item in collections.blogDesc.slice(0, 6)
-          +feed(item.data, item.url, 'blog')
-    div
-      h4 Things I do
-      ul.feed
-        each item in updates
-          +feed(item, item.url)
-    div
-      h4 Things I connect to
-      ul.social
+  .panels.grid
+    section.profileTitle.text
+      h2 About
+      p I work at LogMeIn building GoToMeeting, remote conference software allowing you to have meetings from your sofa.
+      p I'm from Denmark, now living in San Francisco.
+      p I like traveling and taking a #[a(href="/photos/") lot of photos].
+      p I made a game, #[a(href="/portfolio/regexmobile/") Regex Crossword], that lets you to solve crossword puzzles with regular expressions. How cool is that.
+      p I write #[a(href="/blog/") blog articles] to remember things.
+
+      ul.socialIconLinks
         li
-          a(href='https://github.com/omichelsen' rel='external' title='Github')
+          a.iconLink(href='https://github.com/omichelsen' rel='external' title='Github')
             i.icon-github
         li
-          a(href='https://www.linkedin.com/in/omichelsen/' rel='external' title='LinkedIn')
+          a.iconLink(href='https://www.linkedin.com/in/omichelsen/' rel='external' title='LinkedIn')
             i.icon-linkedin
         li
-          a(href='https://twitter.com/omichelsen' rel='external' title='Twitter')
+          a.iconLink(href='https://twitter.com/omichelsen' rel='external' title='Twitter')
             i.icon-twitter
         li
-          a(href='https://www.facebook.com/olemichelsen' rel='external' title='Facebook')
+          a.iconLink(href='https://www.facebook.com/olemichelsen' rel='external' title='Facebook')
             i.icon-facebook
-        li
-          a(href='https://www.flickr.com/photos/olemichelsen' rel='external' title='Flickr')
-            i.icon-flickr
 
-script(src=global.libs.simpleslideshow)
-script.
-  new SlideShow('.slideshow')
+    section.profileDetails.text
+      h3 Experience
+      ol
+        li LogMeIn #[em.small (Software Engineer &amp; Head of Engineering Community — 2017-present)]
+        li Citrix #[em.small (Software Engineer — 2014-2017)]
+        li Edora A/S #[em.small (Senior Developer and Scrum Master — 2012-2014)]
+        li EET Group A/S #[em.small (Software Developer — 2006-2012)]
+        li Sandberg A/S #[em.small (Software Developer — 2001-2006)]
+        li DaimlerChrysler (Mercedes-Benz) #[em.small (IT — 1999-2001)]
+
+      h3 Education and certifications
+      ol
+        li B.Sc. Computer Science, University of Copenhagen #[em.small 2010]
+        li Professional Scrum Master I, Scrum.org #[em.small 2013]
+
+    section.workTitle.text
+      h2 Work
+      p I have worked on a lot of cool projects during my career. Most of them on the web tech stack.
+      p Besides that I create a bunch of side projects when I want to learn some new technology. Some of them are here.
+
+    section.workDetails.text
+      h3 Projects
+      dl
+        each item in [...collections.portfolio].reverse().slice(0, 4)
+          dt
+            a(href=item.url)= item.data.title
+            em.small= ` (${item.data.keywords})`
+          dd.small= item.data.short
+
+
+      h3 Open source
+      dl
+        each repo in github.filter(({ watchers_count }) => watchers_count > 10)
+          dt
+            i.icon-github &nbsp;
+            a(href=repo.html_url)= repo.name
+            if repo.language
+              em.small= ` (${repo.language})`
+          dd.small= repo.description
+
+    section.photosTitle.text
+      h2 Photos
+      p Taking photos has taken me to some incredible places and outside of my normal comfort zone.
+      p I've met interesting and wonderful people and it's provided me a different perspective on life and an incentive to keep exploring the world around me.
+
+    section.photosDetails
+      a.grid(href="/photos/" title="Photo gallery")
+        .tile
+        .tile
+        .tile
+        .tile

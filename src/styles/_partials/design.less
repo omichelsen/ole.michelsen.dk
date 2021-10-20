@@ -23,7 +23,7 @@ h1 {
 	font-weight: bold;
 }
 h2 {
-	color: var(--alt-color);
+	color: var(--primary);
 	font-size: 18pt;
 }
 h3 {
@@ -56,10 +56,33 @@ a,
 
 .a { color: SteelBlue; }
 
+.iconLink {
+	margin: 0 5px;
+	color: var(--color);
+	text-decoration: none;
+
+	&:hover {
+		color: var(--primary);
+	}
+	&:active {
+		color: #000;
+	}
+}
+
 nav ul { list-style: none; }
 
 p, ul, ol, dd, pre, hr {
 	margin-bottom: 24px;
+}
+
+.bulleted,
+.numbered {
+	margin-left: 2em;
+	list-style: square;
+}
+
+.numbered {
+	list-style: decimal;
 }
 
 img:not(.image-fixed) {
@@ -159,7 +182,8 @@ p > .floatright {
 
 .banner {
 	margin: 30px 0;
-	background: #eee;
+	background: var(--surface);
+	color: var(--on-surface);
 
 	img {
 		display: block; /* removes trailing white space */

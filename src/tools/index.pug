@@ -9,11 +9,8 @@ date: 2014-10-09
 .content
   h1 Tools
 
-  ul.projects
+  ul.bulleted
     for item in collections.tools.reverse()
       li
         a(href=item.url)
-          span.image
-            img(src=`/images/tools/${ item.fileSlug }.png` alt=item.data.title)
-          span.text
-            span.title= item.data.title
+          span.title= item.data.title

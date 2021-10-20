@@ -35,3 +35,9 @@ mixin blogEntry({ date, dateModified })
 		if dateModified
 			span , updated
 			+date(dateModified, 'dateModified')
+
+mixin blogDateShort({ date, dateModified })
+	if dateModified
+		+date(dateModified, 'dateModified')
+	else
+		+date(date, 'datePublished')

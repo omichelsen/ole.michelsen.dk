@@ -3,31 +3,31 @@
   "html_url": "https://github.com/omichelsen/compare-versions",
   "language": "JavaScript",
   "name": "compare-versions",
-  "watchers_count": 259
+  "watchers_count": 368
 }, {
   "description": "Copy to clipboard with AngularJS directive, without using Flash.",
   "html_url": "https://github.com/omichelsen/angular-clipboard",
   "language": "JavaScript",
   "name": "angular-clipboard",
-  "watchers_count": 196
+  "watchers_count": 197
 }, {
   "description": "Middleware for AB testing in Express",
   "html_url": "https://github.com/omichelsen/express-ab",
   "language": "JavaScript",
   "name": "express-ab",
-  "watchers_count": 87
+  "watchers_count": 94
+}, {
+  "description": "Split your UI into (wizard-like) steps in AngularJS.",
+  "html_url": "https://github.com/omichelsen/angular-steps",
+  "language": "JavaScript",
+  "name": "angular-steps",
+  "watchers_count": 25
 }, {
   "description": "Code example for article https://ole.michelsen.dk/blog/social-signin-spa-jwt-server.html",
   "html_url": "https://github.com/omichelsen/blog-social-signin-spa-jwt-server",
   "language": "HTML",
   "name": "blog-social-signin-spa-jwt-server",
   "watchers_count": 25
-}, {
-  "description": "Split your UI into (wizard-like) steps in AngularJS.",
-  "html_url": "https://github.com/omichelsen/angular-steps",
-  "language": "JavaScript",
-  "name": "angular-steps",
-  "watchers_count": 24
 }, {
   "description": "jQuery plugin which lets you navigate form fields with arrow keys.",
   "html_url": "https://github.com/omichelsen/FormNavigation",
@@ -46,6 +46,18 @@
   "language": "JavaScript",
   "name": "clipboard-button",
   "watchers_count": 5
+}, {
+  "description": "Boilerplate for writing a TypeScript based library using Mocha",
+  "html_url": "https://github.com/omichelsen/boilerplate-lib",
+  "language": "TypeScript",
+  "name": "boilerplate-lib",
+  "watchers_count": 4
+}, {
+  "description": "Image gallery with mobile/touch support and no dependencies.",
+  "html_url": "https://github.com/omichelsen/glry",
+  "language": "JavaScript",
+  "name": "glry",
+  "watchers_count": 2
 }, {
   "description": "Daily comic strip gallery with mobile/touch support.",
   "html_url": "https://github.com/omichelsen/daily-glry",
@@ -77,15 +89,9 @@
   "name": "eslint-config-omichelsen",
   "watchers_count": 0
 }, {
-  "description": "Image gallery with mobile/touch support and no dependencies.",
-  "html_url": "https://github.com/omichelsen/glry",
-  "language": "JavaScript",
-  "name": "glry",
-  "watchers_count": 0
-}, {
   "description": "Search page for a glry based image archive",
   "html_url": "https://github.com/omichelsen/glry-search",
-  "language": "CSS",
+  "language": "JavaScript",
   "name": "glry-search",
   "watchers_count": 0
 }, {

@@ -5,9 +5,10 @@ html(lang=global.language class=className)
   head
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1')
-    title= `${title} | Ole Michelsen`
+    title=title
     meta(name="description" content=description)
     meta(name="author" content=global.author)
+    meta(name="theme-color" content="#222")
     each href in (stylesheets || [])
       link(rel="stylesheet" href=href)
     link(rel="stylesheet" href="/styles/index.css")
@@ -21,31 +22,20 @@ html(lang=global.language class=className)
 
     #container
       header#header
-        .title.content
-          h1= global.author
-          h2= global.tagline
         nav#topnav
           ul.menu.content
             li
               a(href="/") Home
             li
               a(href="/blog/" title="Um gesh de blårg blårg!") Blog
-                span.subtitle Things I say
             li
-              a(href="/portfolio/") Portfolio
-                span.subtitle Things I do
+              a(href="/portfolio/" title="Things I do") Portfolio
             li
-              a(href="/tools/") Tools
-                span.subtitle Things I build
+              a(href="/tools/" title="Things I build") Tools
             li
-              a(href="/profile/") Profile
-                span.subtitle Things about me
-            li
-              a(href="/photos/") Photos
-                span.subtitle Things I see
+              a(href="/photos/" title="Things I see") Photos
             li.feed
-              a(href="/feed.xml") Feed
-                span.subtitle Latest things
+              a(href="/feed.xml" title="Latest things") Feed
 
       #content
         block content
@@ -54,10 +44,8 @@ html(lang=global.language class=className)
       footer#footer
         .content
           p.colophon
-            | Created by&nbsp;
-            a(href='/profile/' rel='author')= global.author
             if (dateModified || date)
-              | &nbsp;updated&nbsp;
+              | Updated&nbsp;
               +date(dateModified || date)
           include /breadcrumbs.pug
 

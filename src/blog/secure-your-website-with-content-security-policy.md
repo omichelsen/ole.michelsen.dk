@@ -67,7 +67,7 @@ Each directive accepts domain patterns seperated by space, and domain patterns c
 
 * __'none'__: Nothing is allowed.
 * __'self'__: Allow resources to load from the websites own (origin) domain.
-* __'unsafe-inline'__: Allows inline `<script>` and `<style>` elements. This can be further secured by [specifying a hash](https://www.owasp.org/index.php/Content_Security_Policy_Cheat_Sheet#Refactoring_inline_code) of the code.
+* __'unsafe-inline'__: Allows inline `<script>` and `<style>` elements. This can be further secured by [specifying a hash](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html#Refactoring_inline_code) of the code.
 * __'unsafe-eval'__: Allows use of `eval()` in scripts. Needed for Angular.
 * __https__: Forces all resources to be loaded over HTTPS.
 * __data:__ Allows resources to be inlined with base64.
@@ -78,7 +78,7 @@ There are a few extra headers worth setting while you're at it:
 
 ### Strict-Transport-Security
 
-Ensures that all traffic is sent [through HTTPS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security).
+Ensures that all traffic is sent [through HTTPS](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html).
 
 ```apacheconf
 Header set Strict-Transport-Security "max-age=631138519; includeSubDomains"

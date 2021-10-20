@@ -8,19 +8,19 @@ date: 2020-07-01
 
 include /mixins.pug
 
-- const excerpt = (s) => (s.includes("<!-- more-->")) ? s.split("<!-- more-->")[0] : s;
+- const excerpt = (s) => (s.includes("<!-- more-->")) ? s.split("<!-- more-->")[0].replace(/(<([^>]+)>)/gi, "").replace('\n', '').trim() : s;
 
 .masthead
+
 .content(itemscope itemtype="http://schema.org/Blog")
-  for item in collections.blogDesc.filter(({ data: { tags = [] } }) => !tags.includes('archive'))
-    article
-      h2.entry-title
-        a(href=item.url)= item.data.title
-      +blogEntry(item.data)
-      .entry-excerpt
-        != excerpt(item.templateContent)
-        .entry-link
-          a(href=item.url) Continue reading →
+  h1 Blog
+  h2 Articles
+  ul
+    for item in collections.blogDesc.filter(({ data: { tags = [] } }) => !tags.includes('archive'))
+      li
+        a(href=item.url title=excerpt(item.templateContent))= item.data.title
+        | &nbsp;
+        +blogDateShort(item.data)
 
   h3 Archive
   ul
