@@ -1,0 +1,28 @@
+---
+layout: layouts/base.pug
+title: Architecture
+description: Photos of architecture and details from buildings mostly taken in black and white.
+date: 2021-10-23
+tags: gallery
+className: photos
+---
+
+include /mixins.pug
+
+.gallery(data-masonry='{ "itemSelector": "img", "columnWidth": 200, "gutter": 20, "fitWidth": true }')
+  +picture("/images/photos/architecture/DSC05655.jpg", 200, 300, "Silo")
+  +picture("/images/photos/architecture/IMGP1182.jpg", 200, 389, "Architecture")
+  +picture("/images/photos/architecture/IMGP1215.jpg", 200, 301, "Architecture")
+  +picture("/images/photos/architecture/IMGP1217.jpg", 200, 301, "Architecture")
+  +picture("/images/photos/architecture/IMGP1218.jpg", 200, 313, "Architecture")
+  +picture("/images/photos/architecture/IMGP1221.jpg", 200, 301, "Architecture")
+  +picture("/images/photos/architecture/IMGP1548.jpg", 200, 301, "Architecture")
+  +picture("/images/photos/architecture/IMGP1683.jpg", 200, 301, "Architecture")
+  +picture("/images/photos/architecture/IMGP3890.jpg", 200, 269, "Architecture")
+  +picture("/images/photos/architecture/IMGP3891.jpg", 200, 408, "Architecture")
+  +picture("/images/photos/architecture/IMGP3992.jpg", 200, 301, "Architecture")
+  +picture("/images/photos/architecture/IMGP5494.jpg", 200, 261, "Architecture")
+  +picture("/images/photos/architecture/IMG_3434.jpg", 200, 371, "Architecture")
+  +picture("/images/photos/architecture/IMG_4694.jpg", 200, 295, "Architecture")
+
+script(src=global.libs.masonry)

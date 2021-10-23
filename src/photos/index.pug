@@ -2,7 +2,7 @@
 layout: layouts/base.pug
 title: Photos
 description: Photographs I've taken home and on my travels. Photography is an inspiration to look at the world in a fresh and creative way.
-date: 2015-08-30
+date: 2021-10-23
 className: photos
 ---
 
@@ -20,16 +20,12 @@ className: photos
 
 .content
   section
-    a.album.travel-map(href="travel-map")
-      .title World Travel Map
-
-  section.albums.flickr
-    each album in flickr
-      a.album(
-        href=`https://www.flickr.com/photos/olemichelsen/sets/${album.id}/`
-        style=`background-image: url(${album.thumbnail.url})`
-      )
-        .title= album.title
+    ul.bulleted
+      for item in collections.gallery
+        li
+          a(href=item.url)= item.data.title
+      li
+        a(href="travel-map") Travel Map
 
 script(src=global.libs.simpleslideshow)
 script.
