@@ -9,7 +9,13 @@ className: photos
 
 include /mixins.pug
 
-.gallery(data-masonry='{ "itemSelector": "img", "columnWidth": 200, "gutter": 20, "fitWidth": true }')
+.hero
+
+header.c
+  h1 Architecture
+  p.subtitle An exploration of abstract urban environments
+
+.gallery(data-masonry='{ "itemSelector": "img", "columnWidth": 200, "gutter": 5, "fitWidth": true }')
   +picture("/images/photos/architecture/DSC05655.jpg", 200, 300, "Silo")
   +picture("/images/photos/architecture/IMGP1182.jpg", 200, 389, "Architecture")
   +picture("/images/photos/architecture/IMGP1215.jpg", 200, 301, "Architecture")
