@@ -3,30 +3,15 @@ layout: layouts/base.pug
 title: Photos
 description: Photographs I've taken home and on my travels. Photography is an inspiration to look at the world in a fresh and creative way.
 date: 2021-10-23
-className: photos
+className: photos index
 ---
 
-.masthead
-  ul.slideshow
-    each image in slideshow
-      li
-        img(
-          src=`/photos/slideshow/${image.url}`
-          title=image.title
-          alt=image.alt
-          width='950'
-          height='600'
-        )
-
-.content
-  section
-    ul.bulleted
+section.content
+  .nav.c
+    h1 Photos
+    ul
       for item in collections.gallery
         li
           a(href=item.url)= item.data.title
       li
         a(href="travel-map") Travel Map
-
-script(src=global.libs.simpleslideshow)
-script.
-  new SlideShow('.slideshow')

@@ -2,19 +2,35 @@
 @travel-map-image-spacing: 3px;
 
 .photos {
-	.masthead {
-		margin-bottom: 1.5em;
-		padding: 0;
-		border: none;
+	&.index {
+		.darkMode();
 
-		.slideshow {
-			height: 600px;
+		body {
+			background-image: url(/photos/hero.jpg);
+			background-image: image-set(
+				url(/photos/hero.webp) 1x
+			);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
 		}
 	}
 
-	@media (max-width: @page-width) {
-		.slideshow .caption .title {
-			font-size: large;
+	.nav {
+		margin-top: 30vh;
+	}
+
+	.hero {
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		height: 30vh;
+
+		&.architecture {
+			background-image: url(/photos/architecture/hero.jpg);
+			background-image: image-set(
+				url(/photos/architecture/hero.webp) 1x
+			);
 		}
 	}
 
@@ -25,17 +41,6 @@
 		img {
 			margin-bottom: 5px; // must be in sync with masonry gutter
 		}
-	}
-
-	.hero {
-		background-image: url(../../photos/architecture/hero.jpg);
-		background-image: image-set(
-			url(../../photos/architecture/hero.webp) 1x
-		);
-		background-repeat: no-repeat;
-		background-position: center, center;
-		background-size: cover;
-		height: 30vh;
 	}
 }
 

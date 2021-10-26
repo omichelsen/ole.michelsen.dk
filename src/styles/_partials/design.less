@@ -85,6 +85,18 @@ p, ul, ol, dd, pre, hr {
 	list-style: decimal;
 }
 
+.horizontal {
+	> * {
+		display: inline-block;
+		padding: 1em 0;
+	}
+
+	:not(:last-child)::after {
+		content: '·';
+		padding: 0 1em;
+	}
+}
+
 img:not(.image-fixed) {
 	max-width: 100%;
 	height: auto;
