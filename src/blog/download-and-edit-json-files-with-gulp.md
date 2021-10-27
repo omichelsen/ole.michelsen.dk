@@ -29,7 +29,7 @@ var gulp = require('gulp'),
 
 ## Downloading JSON from a web service
 
-For this example I'm going to use GitHub's API to download a list of my own GitHub repositories. I already use this to create a [list on my own website](/profile/).
+For this example I'm going to use GitHub's API to download a list of my own GitHub repositories. I already use this to create a [list on my own website](/).
 
 The entire code looks as follows:
 
