@@ -6,7 +6,13 @@ dateModified: 2015-11-30
 # tags: ["php", "test"]
 ---
 
-<img class="floatright" src="/images/blog/testing-your-api-with-phpunit/phpunit.png" srcset="/images/blog/testing-your-api-with-phpunit/phpunit@2x.png 2x" alt="Example output from PHPUnit" height="352" width="482"> It's always a good idea to have tests for your code, and your API is no exception. In addition to normal unit tests, API tests can test the full code stack, and ensure that the data from your database actually reaches the clients in the correct format.
+<picture class="floatright">
+  <source type="image/webp" srcset="/images/blog/testing-your-api-with-phpunit/phpunit.webp 1x, /images/blog/testing-your-api-with-phpunit/phpunit@2x.webp 2x">
+  <source type="image/jpeg" srcset="/images/blog/testing-your-api-with-phpunit/phpunit.png 1x, /images/blog/testing-your-api-with-phpunit/phpunit@2x.png 2x">
+  <img src="/images/blog/testing-your-api-with-phpunit/phpunit.png" alt="Example output from PHPUnit" loading="lazy" width="482" height="352">
+</picture>
+
+It's always a good idea to have tests for your code, and your API is no exception. In addition to normal unit tests, API tests can test the full code stack, and ensure that the data from your database actually reaches the clients in the correct format.
 
 REST uses the standard [HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to indicate the success of a request, so we must ensure it returns the expected codes, especially in error scenarios.
 
@@ -33,19 +39,16 @@ We'll add our first test file called `BooksTest.php`:
 
 require('vendor/autoload.php');
 
-class BooksTest extends PHPUnit_Framework_TestCase
-{
+class BooksTest extends PHPUnit_Framework_TestCase {
     protected $client;
 
-    protected function setUp()
-    {
+    protected function setUp() {
         $this->client = new GuzzleHttp\Client([
             'base_uri' => 'http://mybookstore.com'
         ]);
     }
 
-    public function testGet_ValidInput_BookObject()
-    {
+    public function testGet_ValidInput_BookObject() {
         $response = $this->client->get('/books', [
             'query' => [
                 'bookId' => 'hitchhikers-guide-to-the-galaxy'
@@ -77,8 +80,7 @@ The last function `testGet_ValidInput_BookObject` is our actual test, which veri
 Let's add an additional test, to see if we can also create a new book.
 
 ```php
-public function testPost_NewBook_BookObject()
-{
+public function testPost_NewBook_BookObject() {
     $bookId = uniqid();
 
     $response = $this->client->post('/books', [
@@ -100,8 +102,7 @@ public function testPost_NewBook_BookObject()
 Now we have some tests for the "happy path", but we should also check that our API correctly rejects invalid requests like DELETE:
 
 ```php
-public function testDelete_Error()
-{
+public function testDelete_Error() {
     $response = $this->client->delete('/books/random-book', [
         'http_errors' => false
     ]);
