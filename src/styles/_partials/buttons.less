@@ -1,27 +1,24 @@
-.button
-{
-    .form-element;
-    width: auto;
-    background: linear-gradient(#FAFAFA, #DDD);
-    border: 1px solid #757575;
-    color: #333;
-    cursor: pointer;
-    overflow: visible;
-    text-decoration: none;
-    text-align: center;
+.button {
+	.form-element;
+	width: auto;
+	border: 1px solid #757575;
+	cursor: pointer;
+	overflow: visible;
+	text-decoration: none;
+	text-align: center;
 
-    &:hover {
-        color: #000;
-        border-color: Maroon;
-    }
-    &[disabled] {
-        color: #999;
-        border-color: #DDD;
-        cursor: default;
-    }
-    &[disabled]:hover {
-        color: #999;
-        border-color: #DDD;
-        background: linear-gradient(#FAFAFA, #DDD);
-    }
+	&:hover {
+		color: var(--on-surface);
+		border-color: Maroon;
+	}
+	&[disabled] {
+		color: #999;
+		border-color: #DDD;
+		cursor: default;
+	}
+	&[disabled]:hover {
+		color: #999;
+		border-color: #DDD;
+		background: linear-gradient(#FAFAFA, #DDD);
+	}
 }

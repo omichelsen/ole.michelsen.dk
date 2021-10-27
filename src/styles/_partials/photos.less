@@ -28,9 +28,9 @@
 	}
 
 	.hero {
-		background-image: url(../../images/photos/architecture/hero.jpg);
+		background-image: url(../../photos/architecture/hero.jpg);
 		background-image: image-set(
-			url(../../images/photos/architecture/hero.webp) 1x
+			url(../../photos/architecture/hero.webp) 1x
 		);
 		background-repeat: no-repeat;
 		background-position: center, center;
@@ -47,14 +47,13 @@
 
 	.images {
 		overflow: hidden;
-		margin: 0 -@travel-map-image-spacing;
+		margin: 0 auto;
 
 		.image-fixed {
-			float: left;
 			margin: @travel-map-image-spacing;
 			min-height: 100px;
 			min-width: 100px;
-			background: #f4f4f4;
+			background: rgba(244, 244, 244, .3);
 
 			&:hover {
 				margin-bottom: 1px;

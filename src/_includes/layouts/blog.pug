@@ -1,5 +1,8 @@
 extends /layouts/base.pug
 
+block styles
+  link(rel="stylesheet" href=global.libs.prismokadiacss media="screen and (prefers-color-scheme: dark)")
+
 block content
   -
     let pos = collections.blogDesc.findIndex(({ url }) => url === page.url)

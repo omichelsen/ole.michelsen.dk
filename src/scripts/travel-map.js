@@ -84,4 +84,5 @@ var msnry = new Masonry('.images', {
   itemSelector: '.image-fixed',
   columnWidth: 106,
   resizable: false,
+  fitWidth: true,
 })

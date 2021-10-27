@@ -12,7 +12,7 @@ html(lang=global.language class=className)
     each href in (stylesheets || [])
       link(rel="stylesheet" href=href)
     link(rel="stylesheet" href="/styles/index.css")
-    link(rel="stylesheet" href=global.libs.prismokadiacss media="screen and (prefers-color-scheme: dark)")
+    block styles
     link(rel="shortcut icon" href="/favicon.ico")
     link(rel="alternate" href=`${global.url}/feed.xml` type="application/rss+xml" title="Ole Michelsen Latest Updates")
     block head
