@@ -16,6 +16,7 @@ mixin picture(path, width, height, alt)
 			srcset=`${path.replace(ext, `@2x${ext}`)} 2x`
 			width=width
 			height=height
+			loading="lazy"
 		)
 
 mixin appStore(url, alt)
