@@ -73,11 +73,11 @@ cwebp -q 80 image.png -o image.webp
 After installing cwebp you can use macOS Automator to create a Quick Action, letting you to right click multiple image files and convert them all to WebP:
 
 <picture>
-  <source type="image/webp" srcset="/images/blog/using-webp-images-html-css/automator-dark.webp 1x, /images/blog/using-webp-images-html-css/automator-dark@2x.webp 2x" media="(prefers-color-scheme: dark)">
-  <source type="image/webp" srcset="/images/blog/using-webp-images-html-css/automator.webp 1x, /images/blog/using-webp-images-html-css/automator@2x.webp 2x">
-  <source type="image/jpeg" srcset="/images/blog/using-webp-images-html-css/automator-dark.png 1x, /images/blog/using-webp-images-html-css/automator-dark@2x.png 2x" media="(prefers-color-scheme: dark)">
-  <source type="image/jpeg" srcset="/images/blog/using-webp-images-html-css/automator.png 1x, /images/blog/using-webp-images-html-css/automator@2x.png 2x">
-  <img src="/images/blog/using-webp-images-html-css/automator.png" alt="Creating an Automator Quick Action for converting images to WebP" loading="lazy" width="720" height="548">
+  <source type="image/webp" srcset="/images/blog/using-webp/automator-dark.webp 1x, /images/blog/using-webp/automator-dark@2x.webp 2x" media="(prefers-color-scheme: dark)">
+  <source type="image/webp" srcset="/images/blog/using-webp/automator.webp 1x, /images/blog/using-webp/automator@2x.webp 2x">
+  <source type="image/png" srcset="/images/blog/using-webp/automator-dark.png 1x, /images/blog/using-webp/automator-dark@2x.png 2x" media="(prefers-color-scheme: dark)">
+  <source type="image/png" srcset="/images/blog/using-webp/automator.png 1x, /images/blog/using-webp/automator@2x.png 2x">
+  <img src="/images/blog/using-webp/automator.png" alt="Creating an Automator Quick Action for converting images to WebP" loading="lazy" width="720" height="548">
 </picture>
 
 The script is here for copy+paste. The first line is to get the right `PATH` setup. You might have a different shell configuration (e.g. `~/.bashrc`).

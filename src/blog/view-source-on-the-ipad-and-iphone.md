@@ -20,15 +20,11 @@ To get around this limitation we can use a _bookmarklet_ which is a piece of Jav
 
 <p>
   <picture>
-    <source srcset="/images/blog/view-source-on-the-ipad-and-iphone/source.webp, /images/blog/view-source-on-the-ipad-and-iphone/source@2x.webp 2x" type="image/webp">
-    <img
-      alt="Clicking the bookmarklet will display the source of the web page in a new window/tab"
-      itemprop="image"
-      src="/images/blog/view-source-on-the-ipad-and-iphone/source.png"
-      srcset="/images/blog/view-source-on-the-ipad-and-iphone/source@2x.png 2x"
-      width="723"
-      height="350"
-    >
+    <source type="image/webp" srcset="/images/blog/view-source/source-dark.webp 1x, /images/blog/view-source/source-dark@2x.webp 2x" media="(prefers-color-scheme: dark)">
+    <source type="image/webp" srcset="/images/blog/view-source/source.webp 1x, /images/blog/view-source/source@2x.webp 2x">
+    <source type="image/png" srcset="/images/blog/view-source/source-dark.png 1x, /images/blog/view-source/source-dark@2x.png 2x" media="(prefers-color-scheme: dark)">
+    <source type="image/png" srcset="/images/blog/view-source/source.png 1x, /images/blog/view-source/source@2x.png 2x">
+    <img src="/images/blog/view-source/source.png" alt="Clicking the bookmarklet will display the source of the web page in a new window/tab" loading="lazy" width="740" height="524">
   </picture>
 </p>
 
@@ -74,14 +70,11 @@ To add it directly from your iPad (or iPhone), you need to create the bookmark m
 
 <p>
   <picture>
-    <source srcset="/images/blog/view-source-on-the-ipad-and-iphone/bookmarklet.webp, /images/blog/view-source-on-the-ipad-and-iphone/bookmarklet@2x.webp 2x" type="image/webp">
-    <img
-      alt="Edit the bookmark and paste the bookmarklet code"
-      src="/images/blog/view-source-on-the-ipad-and-iphone/bookmarklet.png"
-      srcset="/images/blog/view-source-on-the-ipad-and-iphone/bookmarklet@2x.png 2x"
-      width="600"
-      height="450"
-    >
+    <source type="image/webp" srcset="/images/blog/view-source/bookmarklet-dark.webp 1x, /images/blog/view-source/bookmarklet-dark@2x.webp 2x" media="(prefers-color-scheme: dark)">
+    <source type="image/webp" srcset="/images/blog/view-source/bookmarklet.webp 1x, /images/blog/view-source/bookmarklet@2x.webp 2x">
+    <source type="image/png" srcset="/images/blog/view-source/bookmarklet-dark.png 1x, /images/blog/view-source/bookmarklet-dark@2x.png 2x" media="(prefers-color-scheme: dark)">
+    <source type="image/png" srcset="/images/blog/view-source/bookmarklet.png 1x, /images/blog/view-source/bookmarklet@2x.png 2x">
+    <img src="/images/blog/view-source/bookmarklet.png" alt="Edit the bookmark and paste the bookmarklet code" loading="lazy" width="740" height="524">
   </picture>
 </p>
 
