@@ -1,4 +1,4 @@
-var fields = [
+const fields = [
   'default-src',
   'connect-src',
   'font-src',
@@ -9,8 +9,8 @@ var fields = [
   'style-src',
   'frame-src',
 ]
-var format = 'apache'
-var elmList, elmOutput
+const format = 'plain'
+let elmList, elmOutput
 
 function fillInput(config) {
   elmList.forEach(function (elm) {
@@ -23,11 +23,11 @@ function fillInput(config) {
 }
 
 function parseConfig(pattern, config) {
-  var match = pattern.exec(config)
+  const match = pattern.exec(config)
   if (match && match.length > 0) {
-    var obj = {},
-      firstSpacePos
-    match[1].split(';').forEach(function (item) {
+    const obj = {}
+    let firstSpacePos
+    match[1].split(';').forEach((item) => {
       item = item.trim()
       firstSpacePos = item.indexOf(' ')
       obj[item.substring(0, firstSpacePos)] = item.substr(firstSpacePos + 1)
@@ -37,25 +37,26 @@ function parseConfig(pattern, config) {
 }
 
 function parseApache(config) {
-  var pattern = /^\s*Header\s(?:always\s)?(?:set|append|merge|add)\sContent-Security-Policy\s"(.+)"/im
+  const pattern =
+    /^\s*Header\s(?:always\s)?(?:set|append|merge|add)\sContent-Security-Policy\s"(.+)"/im
   fillInput(parseConfig(pattern, config))
   setRadioChecked('apache')
 }
 
 function parseNginx(config) {
-  var pattern = /^\s*add_header\sContent-Security-Policy\s"(.+)"/im
+  const pattern = /^\s*add_header\sContent-Security-Policy\s"(.+)"/im
   fillInput(parseConfig(pattern, config))
   setRadioChecked('nginx')
 }
 
 function parseIis(config) {
-  var pattern = /<add name="Content-Security-Policy" value="(.+)"/im
+  const pattern = /<add name="Content-Security-Policy" value="(.+)"/im
   fillInput(parseConfig(pattern, config))
   setRadioChecked('iis')
 }
 
 function parseFile(file, result) {
-  var config = window.atob(result.substr(result.indexOf(',') + 1))
+  const config = window.atob(result.substr(result.indexOf(',') + 1))
   if (config.indexOf('add_header') > -1) {
     parseNginx(config)
   } else if (config.indexOf('Header') > -1) {
@@ -69,24 +70,20 @@ function parseFile(file, result) {
 function onFileChange(files) {
   if (files.length === 0) return
 
-  var file = files[0]
-  var reader = new FileReader()
+  const file = files[0]
+  const reader = new FileReader()
 
-  reader.onloadend = function () {
-    parseFile(file, reader.result)
-  }
+  reader.onloadend = () => parseFile(file, reader.result)
 
   reader.readAsDataURL(file)
 }
 
 function setRadioChecked(value) {
-  var elm = document.querySelector(`input[value=${value}]`)
+  const elm = document.querySelector(`input[value=${value}]`)
   elm.checked = true
 }
 
-function formatInput(text) {
-  return text.split(/\n/).sort().join(' ')
-}
+const formatInput = (text) => text.split(/\n/).sort().join(' ')
 
 function formatOutput(outputList) {
   if (format === 'apache') {
@@ -96,6 +93,7 @@ function formatOutput(outputList) {
   } else if (format === 'iis') {
     return formatIis(outputList)
   }
+  return outputList.join('; ')
 }
 
 function formatApache(cspList) {
@@ -116,16 +114,14 @@ function onRadioChange(radio) {
 }
 
 function onInputChange() {
-  var outputList = elmList
-    .map(function (curr) {
-      var val = formatInput(curr.value)
+  const outputList = elmList
+    .map((curr) => {
+      const val = formatInput(curr.value)
       if (val.length) {
         return `${curr.id} ${val}`
       }
     })
-    .filter(function (item) {
-      return !!item
-    })
+    .filter((item) => !!item)
   elmOutput.value = formatOutput(outputList)
 }
 
@@ -136,13 +132,9 @@ function init() {
     this.select()
   })
 
-  elmList = fields.map(function (id) {
-    return document.getElementById(id)
-  })
+  elmList = fields.map((id) => document.getElementById(id))
 
-  elmList.forEach(function (elm) {
-    elm.addEventListener('change', onInputChange)
-  })
+  elmList.forEach((elm) => elm.addEventListener('change', onInputChange))
 
   autosize(elmList)
 

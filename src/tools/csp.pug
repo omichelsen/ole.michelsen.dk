@@ -4,7 +4,7 @@ description: Create a content security policy (CSP) configuration for your webse
 date: 2015-07-17
 ---
 
-- var fields = ['default-src', 'connect-src', 'font-src', 'img-src', 'media-src', 'object-src', 'script-src', 'style-src', 'frame-src'];
+- const fields = ['default-src', 'connect-src', 'font-src', 'img-src', 'media-src', 'object-src', 'script-src', 'style-src', 'frame-src'];
 
 p This tool is for generating a valid Content Security Policy (CSP) configuration for your webserver. The Apache, nginx and IIS formats are supported. For an explanation of the different fields and their purpose, please refer to the article <a href="/blog/secure-your-website-with-content-security-policy/">Secure your website with Content Security Policy</a>.
 
@@ -16,7 +16,13 @@ p
 form#csp-form
   .input-group
     label
-      input(type="radio" name="format" value="apache" onchange="onRadioChange(this)" checked)
+      input(type="radio" name="format" value="plain" onchange="onRadioChange(this)" checked)
+      | Plain
+    label
+      input(type="radio" name="format" value="html" onchange="onRadioChange(this)" checked)
+      | HTML
+    label
+      input(type="radio" name="format" value="apache" onchange="onRadioChange(this)")
       | Apache
     label
       input(type="radio" name="format" value="nginx" onchange="onRadioChange(this)")
