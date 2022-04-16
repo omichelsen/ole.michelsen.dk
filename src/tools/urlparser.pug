@@ -1,0 +1,17 @@
+---
+title: URL Parser
+description: Parse a full URL including the query string into human readable segments. Supports JSON decoding of parameters and more.
+date: 2022-04-16
+---
+
+section
+  form#urlform
+    input#url.text(
+      autofocus
+      style="width:100%"
+      placeholder="Paste URL here"
+    )
+
+section#out
+
+script(src="/scripts/urlparser.js" type="module")
