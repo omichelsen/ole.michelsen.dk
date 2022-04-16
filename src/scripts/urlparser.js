@@ -23,10 +23,14 @@ const createReport = (url) =>
     ['port', url.port],
     ['pathname', url.pathname],
   ])}
-  ${createTable('Query string', [...url.searchParams.entries()])}`
+  ${url.search && createTable('Query string', [...url.searchParams.entries()])}
+  ${url.hash && createTable('Hash', [['hash', url.hash]])}`
 
 const createTable = (caption, arr) =>
   html`<table class="datasheet small">
+    <colgroup>
+      <col width="200" />
+    </colgroup>
     <thead>
       <tr>
         <th colspan="2">${caption}</th>
