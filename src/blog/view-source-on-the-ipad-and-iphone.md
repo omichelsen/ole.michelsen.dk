@@ -82,4 +82,4 @@ Voilá!
 
 Note that the source shown is the generated <abbr title="Document Object Model">DOM</abbr>, and not the original HTML. These might differ depending on the amount of JavaScript used on the page.
 
-_Originally inspired by <a title="iPad View Source Bookmarklet" href="http://www.ravelrumba.com/blog/ipad-view-source-bookmarklet/" target="_blank">this bookmarklet from Rob Flaherty</a>._
+_Originally inspired by <a title="iPad View Source Bookmarklet" href="https://www.ravelrumba.com/blog/ipad-view-source-bookmarklet/" target="_blank">this bookmarklet from Rob Flaherty</a>._

@@ -13,7 +13,7 @@ But if you are serious about creating libraries, proper test coverage is a must,
 
 ## Setup
 
-To get started you'll need these libraries. I'm including some handy plugins for [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org/), but you can pick what you need:
+To get started you'll need these libraries. I'm including some handy plugins for [Chai](https://chaijs.com/) and [Sinon](https://sinonjs.org/), but you can pick what you need:
 
 ```bash
 npm install -D chai chai-as-promised mocha nyc proxyquire sinon sinon-chai ts-node tslint typescript

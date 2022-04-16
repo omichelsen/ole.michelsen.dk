@@ -49,7 +49,7 @@ You might be asked to download a developer tool from Apple. After installation o
 Start Boot Camp Assistant again, and it should look like the screenshot. Now just go through the steps, point it to your Windows installation ISO, and create a bootable flash drive.
 
 <!--
-(source 1) http://apple.stackexchange.com/questions/168808/install-windows-7-with-bootcamp-on-os-x-yosemite-with-usb-key
+(source 1) https://apple.stackexchange.com/questions/168808/install-windows-7-with-bootcamp-on-os-x-yosemite-with-usb-key
 (source 2) http://forums.atomicmpc.com.au/index.php/topic/51873-enable-create-a-windows-usb-install-disk-in-bootcamp-assistant-for-mountain-lion/
 -->
 

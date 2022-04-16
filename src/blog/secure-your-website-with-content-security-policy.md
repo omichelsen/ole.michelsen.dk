@@ -53,7 +53,7 @@ You can set a policy for most types of resources: scripts, images, style sheets,
 
 #### New in CSP2
 
-CSP version 2 introduces some new directives. You should [check out browser support](http://caniuse.com/#feat=contentsecuritypolicy2) first though, as it's kind of spotty right now.
+CSP version 2 introduces some new directives. You should [check out browser support](https://caniuse.com/contentsecuritypolicy2) first though, as it's kind of spotty right now.
 
 * __form-action__: Define which URIs can be used as the action of HTML form elements
 * __frame-ancestors__: Indicates whether the user agent should allow embedding the resource using a frame, iframe, object, embed or applet element, or equivalent functionality in non-HTML resources (replaces __frame-src__)

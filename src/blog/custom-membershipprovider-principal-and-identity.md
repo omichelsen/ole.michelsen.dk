@@ -132,7 +132,7 @@ I use this class for other user related functions, such as `GetIP()` etc. so it�
 
 Below is a list of recommended resources for more detailed explanations and examples of each of the above mentioned interfaces and classes.
 
-* Very thorough walkthrough: [ASP.NET Membership, Roles and Profile – 18 part series](http://www.4guysfromrolla.com/articles/120705-1.aspx)
+* ~~Very thorough walkthrough: ASP.NET Membership, Roles and Profile – 18 part series~~
 * Documentation that IsAuthenticated = !Name.isEmpty (bottom of page): [MSDN, GenericIdentity Class](https://msdn.microsoft.com/en-us/library/system.security.principal.genericidentity.aspx)
 
 And just to prove I’m not the only one who’s a bit confused over this ;-):

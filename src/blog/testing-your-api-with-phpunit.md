@@ -14,7 +14,7 @@ dateModified: 2015-11-30
 
 It's always a good idea to have tests for your code, and your API is no exception. In addition to normal unit tests, API tests can test the full code stack, and ensure that the data from your database actually reaches the clients in the correct format.
 
-REST uses the standard [HTTP status codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to indicate the success of a request, so we must ensure it returns the expected codes, especially in error scenarios.
+REST uses the standard [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to indicate the success of a request, so we must ensure it returns the expected codes, especially in error scenarios.
 
 I recently implemented a simple REST API in PHP for [Regex Crossword](https://regexcrossword.com/), so in this article I will show how to write some API tests using PHPUnit 5.0 and Guzzle 6.1. Actually we can test _any_ API written in _any_ language using this, but if you are used to PHP this will be very easy.
 

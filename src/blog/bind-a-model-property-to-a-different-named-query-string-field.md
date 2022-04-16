@@ -90,7 +90,7 @@ public class BindAliasAttribute : Attribute
 
 This was quite a mouthful, but most of it is straightforward boilerplate. By implementing a PropertyDescriptor, we can register the property with the alias name, but still use the default model binding, type validation etc.
 
-We have marked our attribute with AllowMultiple, but by default the MemberDescriptor base class will see all BindAliasAttributes as being of identical type and [filter them as duplicates](http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/e6bb4146-eb1a-4c1b-a5b1-f3528d8a7864/) (FilterAttributesIfNeeded). To avoid this we must implement the [TypeId property](http://msdn.microsoft.com/en-us/library/system.attribute.typeid.aspx), and make sure it returns a unique value for each attribute. The easiest is just to return the alias name.
+We have marked our attribute with AllowMultiple, but by default the MemberDescriptor base class will see all BindAliasAttributes as being of identical type and [filter them as duplicates](https://social.msdn.microsoft.com/Forums/en-US/winforms/thread/e6bb4146-eb1a-4c1b-a5b1-f3528d8a7864/) (FilterAttributesIfNeeded). To avoid this we must implement the [TypeId property](https://msdn.microsoft.com/en-us/library/system.attribute.typeid.aspx), and make sure it returns a unique value for each attribute. The easiest is just to return the alias name.
 
 Finally we have to handle our BindAliasAttribute using a custom model binder:
 

@@ -8,7 +8,7 @@ tags:
 # tags: ["bash", "browsersync", "harp", "javascript"]
 ---
 
-So you love using [Harp](http://harpjs.com/), but you hate refreshing the browser every time you've made a change? [BrowserSync](http://www.browsersync.io/) to the rescue!
+So you love using [Harp](http://harpjs.com/), but you hate refreshing the browser every time you've made a change? [BrowserSync](https://www.browsersync.io/) to the rescue!
 
 The good guys at Harp are working on building this into the platform, but until then it's actually very easy to do yourself. You just need [npm](https://www.npmjs.org/) and to enter a single command in the Terminal.
 

@@ -10,7 +10,7 @@ tags:
 
 I have always liked the concept of static site generation for sites, which really doesn’t need constant updates through the day (like mine). So recently I decided to check out the [vast amount of offerings](https://www.staticgen.com/), and fell upon [Harp](http://harpjs.com/).
 
-In this brief article I will show how to make a [microdata breadcrumb](https://support.google.com/webmasters/answer/185417) trail using the [Jade templating engine](http://jade-lang.com/). For those new to Jade, like me, it will show a few of the key features in Jade.
+In this brief article I will show how to make a [microdata breadcrumb](https://support.google.com/webmasters/answer/185417) trail using the [Jade templating engine](https://jade-lang.com/). For those new to Jade, like me, it will show a few of the key features in Jade.
 
 <!-- more-->
 
@@ -18,7 +18,7 @@ In this brief article I will show how to make a [microdata breadcrumb](https://s
 
 So let’s start coding. Our breadcrumbs will be implemented as a partial, so let’s make a file called `/public/_shared/breadcrumbs.jade`.
 
-First we add a [mixin](http://jade-lang.com/reference/mixins/), which is a piece of saved code or markup, that we can reuse. We will create a Jade template for one breadcrumb link, which has a URL and a title:
+First we add a [mixin](https://jade-lang.com/reference/mixins/), which is a piece of saved code or markup, that we can reuse. We will create a Jade template for one breadcrumb link, which has a URL and a title:
 
 ```pug
 mixin breadcrumb(url, title)

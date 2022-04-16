@@ -8,11 +8,11 @@ dateModified: 2017-10-06
 
 __Update 2017-10-06__: Now using [nyc](https://github.com/istanbuljs/nyc) instead of isparta/istanbul.
 
-I recently worked on a project with all the latest and greatest tools: [React](https://facebook.github.io/react/), [Redux](http://redux.js.org/) and [webpack](https://webpack.github.io/). But our unit tests were running slowly to the point where we found ourselves constantly blocked in our workflow. Going for coffee every time you need to run `npm test` will quickly give you an upset stomach, so we decided to see what could be done to speed up the process, and ended up with a _95% speed improvement_ and being able to remove a lot of dependencies to boot.
+I recently worked on a project with all the latest and greatest tools: [React](https://facebook.github.io/react/), [Redux](https://redux.js.org/) and [webpack](https://webpack.github.io/). But our unit tests were running slowly to the point where we found ourselves constantly blocked in our workflow. Going for coffee every time you need to run `npm test` will quickly give you an upset stomach, so we decided to see what could be done to speed up the process, and ended up with a _95% speed improvement_ and being able to remove a lot of dependencies to boot.
 
 <!-- more-->
 
-The requirements for our testing setup remained unchanged though: if a unit test or a piece of code fails, we need to have a correct error log of the source file, line and column. We write our code in ES6/ES7, so support for [Babel](http://babeljs.io/) is mandatory. And we need code coverage of the original source files, not the transpiled version.
+The requirements for our testing setup remained unchanged though: if a unit test or a piece of code fails, we need to have a correct error log of the source file, line and column. We write our code in ES6/ES7, so support for [Babel](https://babeljs.io/) is mandatory. And we need code coverage of the original source files, not the transpiled version.
 
 
 ### Bad Karma
@@ -65,7 +65,7 @@ Notice how I'm able to just run `mocha`. This actually takes a little more confi
 src/**/*.spec.jsx
 ```
 
-You can put all your Mocha configuration in here; I am registering Babel, injecting jsdom (instead of having a real browser) and doing some general setup in `test/setup.js` like the extension handling detailed below, registering [sinon](http://sinonjs.org/) etc. Lastly I'm specifying where my tests are. Mocha will automatically scan the `test/` folder, so you can leave this out if all your tests are in here.
+You can put all your Mocha configuration in here; I am registering Babel, injecting jsdom (instead of having a real browser) and doing some general setup in `test/setup.js` like the extension handling detailed below, registering [sinon](https://sinonjs.org/) etc. Lastly I'm specifying where my tests are. Mocha will automatically scan the `test/` folder, so you can leave this out if all your tests are in here.
 
 ### Excludes and includes
 
