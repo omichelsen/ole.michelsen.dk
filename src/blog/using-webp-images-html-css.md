@@ -11,15 +11,15 @@ tags: blog
 
 The [WebP](https://en.wikipedia.org/wiki/WebP) image format from Google promises to replace both JPEG and PNG/GIF with more efficient compression and higher quality. [Safari 14 recently added support](https://developer.apple.com/documentation/safari-release-notes/safari-14-release-notes#Media) for the format and it's now [supported in all major browsers](https://caniuse.com/?search=webp).
 
-WebP supports lossy compression, like JPEG, where you chose a quality target between 1-100 (usually 75-85 yields nice results) and the image will be compressed. This can introduce artifacts (blocks) in the image but also great size savings. To replace PNG/GIF WebP also supports lossless compression, support for alpha transparancy and animations.
+WebP supports lossy compression, like JPEG, where you chose a quality target between 1-100 (usually 75-85 yields nice results) and the image will be compressed. This can introduce artifacts (blocks) in the image but also great file size savings. Like PNG/GIF WebP also supports lossless compression, support for alpha transparancy and animations.
 
 <!-- more-->
 
 ### Using WebP in HTML
 
-You can use a WebP image in a normal `<img>` tag, but in browsers that doesn't support WebP the image would be broken. We'd also like to support high-res displays with 2x (or even 3x) pixel density as well as dark mode.
+You can use a WebP image in a normal `<img>` tag, but in browsers that without WebP support the image would be broken. 
 
-Instead the `<picture>` tag allows us to specify a list of images with different resolutions and versions for dark mode. The browser will pick the most appropriate and fall back to the image defined in the `<img>` tag if it doesn't support WebP:
+Instead the `<picture>` tag allows us to specify a list of different image formats as well as versions for dark mode and various resolutions. The browser will pick the most appropriate version and fall back to the image defined in the `<img>` tag if WebP isn't supported:
 
 ```html
 <picture>
@@ -31,11 +31,13 @@ Instead the `<picture>` tag allows us to specify a list of images with different
 </picture>
 ```
 
+In the code above we have different image versions in both WebP and JPEG to support high-res displays with 2x pixel density as well as dark mode.
+
 The image at the end of this article uses this code. Try and [toggle dark mode in your browser](https://developer.chrome.com/docs/devtools/customize/dark-theme/) to see it in effect.
 
 ### Using WebP in CSS
 
-It's also possible to use WebP as a background with CSS. [`image-set`](https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set()) is an emerging notation which is now finally [supported on all major browsers](https://caniuse.com/?search=image-set) (might require a `-webkit-` prefix). The concept is the same as above, we specify a range of different file types and resolutions of our image, and the browser will pick the appropriate version. As a fallback we specify a normal `background-image` instruction first:
+It's also possible to use WebP as a background with CSS. [`image-set`](https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set()) is an emerging notation which is now [supported on all major browsers](https://caniuse.com/?search=image-set) (some might require a `-webkit-` prefix). The concept is the same as above, we specify a range of different file types and resolutions of our image, and the browser will pick the appropriate version. As a fallback we specify a normal `background-image` instruction first:
 
 ```css
 .masthead {
@@ -70,7 +72,7 @@ Google also provides a handy command line tool [cwebp](https://developers.google
 cwebp -q 80 image.png -o image.webp
 ```
 
-After installing cwebp you can use macOS Automator to create a Quick Action, letting you to right click multiple image files and convert them all to WebP:
+After installing cwebp you can use macOS Automator to create a Quick Action, letting you right click multiple image files and convert them all to WebP:
 
 <picture>
   <source type="image/webp" srcset="/images/blog/using-webp/automator-dark.webp 1x, /images/blog/using-webp/automator-dark@2x.webp 2x" media="(prefers-color-scheme: dark)">
