@@ -9,6 +9,12 @@ className: photos
 
 include /mixins.pug
 
+.hero.blues
+
+header.c
+  h1 Blues
+  p.subtitle Cool landscapes from San Francisco
+
 .gallery(data-masonry='{ "itemSelector": "img", "columnWidth": 200, "gutter": 5, "fitWidth": true }')
   +picture("/photos/blues/DSC02294.jpg", 420, 148, "Blues")
   +picture("/photos/blues/IMGP1041.jpg", 200, 301, "Blues")
@@ -16,6 +22,7 @@ include /mixins.pug
   +picture("/photos/blues/IMGP9155.jpg", 200, 109, "Blues")
   +picture("/photos/blues/IMGP9716.jpg", 420, 125, "Blues")
   +picture("/photos/blues/IMGP9730.jpg", 200, 114, "Blues")
+  +picture("/photos/blues/IMGP3932.jpg", 200, 269, "Blues")
   +picture("/photos/blues/IMGP9756.jpg", 200, 138, "Blues")
 
 script(src=global.libs.masonry)
