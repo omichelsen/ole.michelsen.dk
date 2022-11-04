@@ -5,8 +5,10 @@ keywords: ASP.NET MVC, HTML5, jQuery
 created: 2011
 date: 2012-10-30
 ---
-p
-  Den Tatoverede Enke was one of my favorite Danish restaurants in the middle of Copenhagen. The theme of restaurant was centered around Belgian beer, and an impressive menu of modern Danish cousine. The purpose of their website was an introduction to the menu and current specials, reviews and recommendations by other customers and clear directions to the location.
+
+include /mixins.pug
+
+p Den Tatoverede Enke was one of my favorite Danish restaurants in the middle of Copenhagen. The theme of restaurant was centered around Belgian beer, and an impressive menu of modern Danish cousine. The purpose of their website was an introduction to the menu and current specials, reviews and recommendations by other customers and clear directions to the location.
 
 // more
 
@@ -19,7 +21,7 @@ br
 
 .grid.col-3
   div
-    img.frame(alt='Front page' src='index.png' width='280' height='207')
+    +picture("index.png", 295, 247, "Landing page")
     br
     br
     h4 Stylish design
@@ -27,7 +29,7 @@ br
     h5 Animations and transitions
     p Navigation through the design was eased by smooth animations between pages. Pictures of the food and drinks were presented in high resolution fading in using HTML5 transitions.
   div
-    img.frame(alt='Brasserie' src='brasserie.png' width='280' height='207')
+    +picture("bar.png", 295, 247, "Bar")
     br
     br
     h4 AJAX and SEO
@@ -36,7 +38,7 @@ br
       a(href='https://developers.google.com/search/docs/ajax-crawling/docs/specification' rel='external' target='_blank') Google's hash fragment system
       | , which ensures that all pages can be correctly indexed even though they were loaded with AJAX.
   div
-    img.frame(alt='About' src='about.png' width='280' height='207')
+    +picture("about.png", 295, 247, "About")
     br
     br
     h4 Maintenance
