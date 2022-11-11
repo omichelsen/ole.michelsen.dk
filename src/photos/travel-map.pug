@@ -14,7 +14,7 @@ className: photos
       img(
         alt=key.replace('.jpg', '')
         class='image-fixed'
-        data-echo=`/photos/map/${encodeURIComponent(key)}`
+        data-echo=`/photos/map/${encodeURIComponent(key.replace('.jpg', '.webp'))}`
         src='/images/0.png'
         width=image.width
         height=image.height
