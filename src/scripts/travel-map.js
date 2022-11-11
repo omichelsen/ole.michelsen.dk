@@ -1,14 +1,14 @@
 // https://developers.google.com/maps/documentation/javascript/marker-clustering
 
 function initialize() {
-  var opt = {
+  const opt = {
     zoom: 2,
     center: new google.maps.LatLng(40.416698, -3.700354),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: [{ stylers: [{ saturation: -100 }] }],
   }
-  var elmMap = document.getElementById('map-canvas')
-  var map = new google.maps.Map(elmMap, opt)
+  const elmMap = document.getElementById('map-canvas')
+  const map = new google.maps.Map(elmMap, opt)
 
   var marker
   for (var img in locations) {
@@ -28,7 +28,10 @@ function initialize() {
     opt_textSize: 9,
   }
   var markers = Object.keys(locations).map((l) => locations[l])
-  var mc = new MarkerClusterer(map, markers, {
+  
+  new markerClusterer.MarkerClusterer({
+    map, 
+    markers, 
     gridSize: 20,
     maxZoom: 4,
     styles: [markerStyle, markerStyle],
@@ -39,7 +42,7 @@ function initialize() {
     var difference = to - element.scrollTop
     var perTick = (difference / duration) * 10
 
-    setTimeout(function () {
+    setTimeout(() => {
       element.scrollTop = element.scrollTop + perTick
       if (element.scrollTop === to) return
       scrollTo(element, to, duration - 10)
@@ -54,7 +57,7 @@ function initialize() {
 
     // Activate new pin
     var path = this.dataset.echo
-    var filename = decodeURIComponent(path.substring(path.lastIndexOf('/') + 1))
+    var filename = decodeURIComponent(path.substring(path.lastIndexOf('/') + 1)).replace('webp', 'jpg')
     marker = locations[filename]
     marker.setAnimation(google.maps.Animation.BOUNCE)
     map.panTo(marker.getPosition())
@@ -71,16 +74,16 @@ function initialize() {
     )
   }
 
-  var elmImages = document.querySelectorAll('.images .image-fixed')
-  for (var i = 0; i < elmImages.length; i++) {
+  const elmImages = document.querySelectorAll('.images .image-fixed')
+  for (let i = 0; i < elmImages.length; i++) {
     elmImages[i].addEventListener('click', imageClickHandler, false)
   }
 }
 
-google.maps.event.addDomListener(window, 'load', initialize)
+window.addEventListener('load', initialize)
 
 // Init Masonry
-var msnry = new Masonry('.images', {
+const msnry = new Masonry('.images', {
   itemSelector: '.image-fixed',
   columnWidth: 106,
   resizable: false,
