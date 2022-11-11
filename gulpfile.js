@@ -5,6 +5,7 @@ const gdata = require('gulp-data')
 const gexif = require('gulp-exif')
 const jeditor = require('gulp-json-editor')
 const gulpless = require('gulp-less')
+const imageResize = require('gulp-image-resize')
 const merge = require('gulp-merge-json')
 const streamify = require('gulp-streamify')
 const path = require('path')
@@ -47,6 +48,18 @@ const exif = () =>
     .pipe(merge({ fileName: 'exif.json' }))
     .pipe(gulp.dest('./src/_data'))
 
+const travel = () => 
+  gulp.src('./exif/source/square/*.jpeg')
+    .pipe(imageResize({
+      width: 100,
+      height: 100,
+      crop: true,
+      gravity: 'Center',
+      quality: 0.85,
+      format: 'jpg',
+    }))
+    .pipe(gulp.dest('./exif'))
+  
 const flickr = () =>
   request(
     'https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=62b36a8cf6e44b19d379f36b51bb4535&format=json&nojsoncallback=1&user_id=16324363@N07&primary_photo_extras=url_s'
@@ -108,6 +121,7 @@ const styles = () =>
 const watch = () => gulp.watch('./src/styles/**/*.less', styles)
 
 exports.exif = exif
+exports.travel = travel
 exports.flickr = flickr
 exports.github = github
 exports.styles = styles
