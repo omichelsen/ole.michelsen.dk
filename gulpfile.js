@@ -3,11 +3,13 @@ const autoprefixer = require('gulp-autoprefixer')
 const cleanCSS = require('gulp-clean-css')
 const gdata = require('gulp-data')
 const gexif = require('gulp-exif')
+const gm = require('gulp-gm')
 const jeditor = require('gulp-json-editor')
 const gulpless = require('gulp-less')
-const imageResize = require('gulp-image-resize')
 const merge = require('gulp-merge-json')
 const streamify = require('gulp-streamify')
+const webp = require('gulp-webp')
+const sizeOf = require('image-size')
 const path = require('path')
 const request = require('request')
 const source = require('vinyl-source-stream')
@@ -21,10 +23,11 @@ const roundDecimal = (dec) => parseFloat(dec.toFixed(4))
 
 const exif = () =>
   gulp
-    .src('./exif/*.jpg')
+    .src('./exif/gps/*.jpg')
     .pipe(gexif())
     .pipe(
       gdata((file) => {
+        const { width, height } = sizeOf(file.path)
         const filename = path.basename(file.path)
         const img = {
           lat: roundDecimal(
@@ -39,8 +42,8 @@ const exif = () =>
               ...file.exif.gps.GPSLongitude
             )
           ),
-          width: file.exif.exif.ExifImageWidth,
-          height: file.exif.exif.ExifImageHeight,
+          width,
+          height,
         }
         file.contents = Buffer.from(JSON.stringify({ [filename]: img }))
       })
@@ -48,18 +51,42 @@ const exif = () =>
     .pipe(merge({ fileName: 'exif.json' }))
     .pipe(gulp.dest('./src/_data'))
 
-const travel = () => 
-  gulp.src('./exif/source/square/*.jpeg')
-    .pipe(imageResize({
-      width: 100,
-      height: 100,
-      crop: true,
-      gravity: 'Center',
-      quality: 0.85,
-      format: 'jpg',
-    }))
-    .pipe(gulp.dest('./exif'))
-  
+const convertToWebp = () =>
+  gulp
+    .src('./exif/gps/*.jpg')
+    .pipe(webp({ quality: 80 }))
+    .pipe(gulp.dest('./src/photos/map'))
+
+const travelResize = (type, w, h) =>
+  gulp
+    .src(`./exif/source/${type}/*.jpeg`)
+    .pipe(
+      gm(
+        (file) =>
+          file
+            .resize(w, h, '^')
+            .gravity('Center')
+            .extent(w, h)
+            .quality(0.95)
+            .setFormat('jpg'),
+        {
+          imageMagick: true,
+        }
+      )
+    )
+    .pipe(gulp.dest('./exif/gps'))
+
+const square = () => travelResize('square', 100, 100)
+const portrait = () => travelResize('portrait', 100, 206)
+const landscape = () => travelResize('landscape', 206, 100)
+const large = () => travelResize('large', 206, 206)
+
+const travel = gulp.series(
+  gulp.parallel(square, portrait, landscape, large),
+  exif,
+  convertToWebp
+)
+
 const flickr = () =>
   request(
     'https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=62b36a8cf6e44b19d379f36b51bb4535&format=json&nojsoncallback=1&user_id=16324363@N07&primary_photo_extras=url_s'
