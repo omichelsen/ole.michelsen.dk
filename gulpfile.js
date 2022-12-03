@@ -7,6 +7,7 @@ const gm = require('gulp-gm')
 const jeditor = require('gulp-json-editor')
 const gulpless = require('gulp-less')
 const merge = require('gulp-merge-json')
+const newer = require('gulp-newer')
 const streamify = require('gulp-streamify')
 const webp = require('gulp-webp')
 const sizeOf = require('image-size')
@@ -54,12 +55,14 @@ const exif = () =>
 const convertToWebp = () =>
   gulp
     .src('./exif/gps/*.jpg')
+    .pipe(newer({ dest: './src/photos/map', ext: '.webp' }))
     .pipe(webp({ quality: 80 }))
     .pipe(gulp.dest('./src/photos/map'))
 
 const travelResize = (type, w, h) =>
   gulp
     .src(`./exif/source/${type}/*.jpeg`)
+    .pipe(newer({ dest: './exif/gps', ext: '.jpg' }))
     .pipe(
       gm(
         (file) =>
