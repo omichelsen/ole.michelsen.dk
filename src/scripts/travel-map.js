@@ -10,8 +10,8 @@ function initialize() {
   const elmMap = document.getElementById('map-canvas')
   const map = new google.maps.Map(elmMap, opt)
 
-  var marker
-  for (var img in locations) {
+  let marker
+  for (let img in locations) {
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(locations[img].lat, locations[img].lng),
       map: map,
@@ -20,27 +20,39 @@ function initialize() {
     locations[img] = marker
   }
 
-  // Cluster adjacent markers depending on zoom level
-  var markerStyle = {
-    url: '/images/mapmarker.svg',
-    width: 20,
-    height: 20,
-    opt_textSize: 9,
-  }
-  var markers = Object.keys(locations).map((l) => locations[l])
-  
+  const markers = Object.keys(locations).map((l) => locations[l])
+
   new markerClusterer.MarkerClusterer({
-    map, 
-    markers, 
-    gridSize: 20,
-    maxZoom: 4,
-    styles: [markerStyle, markerStyle],
+    map,
+    markers,
+    renderer: {
+      render: function ({ count, position }) {
+        const svg = window.btoa(`
+  <svg fill="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+    <circle cx="120" cy="120" opacity=".8" r="70" />
+  </svg>`)
+        return new google.maps.Marker({
+          position,
+          icon: {
+            url: `data:image/svg+xml;base64,${svg}`,
+            scaledSize: new google.maps.Size(55, 55),
+          },
+          label: {
+            text: String(count),
+            color: 'rgba(255,255,255,0.9)',
+            fontSize: '12px',
+          },
+          // adjust zIndex to be above other markers
+          zIndex: Number(google.maps.Marker.MAX_ZINDEX) + count,
+        })
+      },
+    },
   })
 
   function scrollTo(element, to, duration) {
     if (duration < 0) return
-    var difference = to - element.scrollTop
-    var perTick = (difference / duration) * 10
+    const difference = to - element.scrollTop
+    const perTick = (difference / duration) * 10
 
     setTimeout(() => {
       element.scrollTop = element.scrollTop + perTick
@@ -56,8 +68,10 @@ function initialize() {
     if (marker) marker.setAnimation(null)
 
     // Activate new pin
-    var path = this.dataset.echo
-    var filename = decodeURIComponent(path.substring(path.lastIndexOf('/') + 1)).replace('webp', 'jpg')
+    const path = this.dataset.echo
+    const filename = decodeURIComponent(
+      path.substring(path.lastIndexOf('/') + 1)
+    ).replace('webp', 'jpg')
     marker = locations[filename]
     marker.setAnimation(google.maps.Animation.BOUNCE)
     map.panTo(marker.getPosition())
