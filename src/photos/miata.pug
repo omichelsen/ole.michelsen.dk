@@ -1,0 +1,35 @@
+---
+layout: layouts/base.pug
+title: Miata
+description:
+date: 2022-12-02
+tags: photos
+className: photos
+---
+
+include /mixins.pug
+
+header.c(style='padding:80px 0')
+  h1 Miata
+  p.subtitle For the love of a sports car
+
+.gallery(data-masonry='{ "itemSelector": "img", "columnWidth": 200, "gutter": 5, "fitWidth": true }')
+  +picture("miata-01.jpg", 200, 254, "Miata")
+  +picture("miata-02.jpg", 200, 302, "Miata")
+  +picture("miata-03.jpg", 200, 302, "Miata")
+  +picture("miata-08.jpg", 200, 266, "Miata")
+  +picture("miata-2.jpg", 405, 220, "Miata")
+  +picture("miata-6.jpg", 405, 270, "Miata")
+  +picture("miata-04.jpg", 200, 302, "Miata")
+  +picture("miata-06.jpg", 200, 274, "Miata")
+  +picture("miata-4.jpg", 405, 262, "Miata")
+  +picture("miata-07.jpg", 200, 261, "Miata")
+  +picture("miata-3.jpg", 405, 269, "Miata")
+  +picture("miata-5.jpg", 405, 269, "Miata")
+  +picture("miata-7.jpg", 405, 282, "Miata")
+  +picture("miata-09.jpg", 200, 300, "Miata")
+  +picture("miata-1.jpg", 405, 252, "Miata")
+  +picture("miata-05.jpg", 200, 302, "Miata")
+  +picture("miata-010.jpg", 200, 237, "Miata")
+
+script(src=global.libs.masonry)
