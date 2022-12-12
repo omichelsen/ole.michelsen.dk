@@ -20,7 +20,7 @@ __Update 2015-10-15__: This guide will also work with MacOS 10.11 El Capitain.
 <!-- more-->
 
 <p class="c">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/J2lQky0r00A" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/J2lQky0r00A" allowfullscreen style="border:none"></iframe>
 </p>
 
 Thanks to the people at Webucator this guide is now also available as a video, so check out their [Apache Web Server training](https://www.webucator.com/) if you want to learn more.
