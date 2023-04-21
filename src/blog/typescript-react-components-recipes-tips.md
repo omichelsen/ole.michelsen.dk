@@ -2,6 +2,8 @@
 title: TypeScript React components recipes and tips
 description: ""
 date: 2018-02-18
+tags:
+  - archive
 # tags: ["react", "typescript", "component"]
 ---
 
