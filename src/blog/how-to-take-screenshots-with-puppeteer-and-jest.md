@@ -153,9 +153,11 @@ We are now protected against unexpected changes to our app! In case the change w
 
 Snapshots will be saved in the folder `__image_snapshots__` which should be checked into git so they can be compared on future runs.
 
-### E2E testing with Puppeteer and Jest
+### E2E testing and video recording with Puppeteer and Jest
 
-I thought I'd show how to write end-to-end tests using Puppeteer since the code is very similar. This also is a nice use case for recording videos. Since Puppeteer is headless (no UI), videos can be help for debugging complex user interaction flows of an E2E test if a test unexpectedly fails.
+I thought I'd show how to write end-to-end (E2E) tests using Puppeteer since the code is very similar. This also is a nice use case for recording videos. Since Puppeteer is headless (no UI), videos can help debug complex user interaction flows of an E2E test if a test unexpectedly fails.
+
+Recording videos can also be a powerful tool to produce marketing videos (e.g. to show in the App Store), examples for documentation etc.
 
 Here we are using the following packages: `yarn add -D puppeteer jest puppeteer-screen-recorder`. For this test we're going to fill out the input field and click the submit button:
 
@@ -208,6 +210,6 @@ We now have a passing test of our example form as you can see here:
   <source src="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/e2e.mp4" type="video/mp4">
 </video>
 
-You do not have to use Jest to record videos (e.g. to show in the App Store), you can also use `puppeteer-screen-recorder` in a normal script like in our first example.
+You do not have to use Jest to record videos, you can also use `puppeteer-screen-recorder` in a normal script like in our first example.
 
 These are just some of the use cases I have found very helpful when developing, testing and marketing web apps. If you have other ideas how to use Puppeteer, please let me know in the comments below!
