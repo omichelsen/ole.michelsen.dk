@@ -37,7 +37,7 @@ const removeEcho = (elm, i) => {
 /**
  * Echo the images and callbacks on page load.
  */
-const echoImages = () => {
+const echoImages = (...args) => {
   for (let i = 0; i < echoStore.length; i++) {
     const elm = echoStore[i]
     if (scrolledIntoView(elm)) {
@@ -54,3 +54,4 @@ const echoImages = () => {
 document.querySelectorAll('img[data-echo]').forEach(addEcho)
 document.addEventListener('DOMContentLoaded', echoImages, false)
 document.addEventListener('scroll', echoImages, false)
+document.addEventListener('layout', echoImages, false) // triggered from travel-map.js

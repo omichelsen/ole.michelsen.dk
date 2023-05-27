@@ -1,4 +1,5 @@
 // https://developers.google.com/maps/documentation/javascript/marker-clustering
+// https://developers.google.com/maps/documentation/javascript/events
 
 function initialize() {
   const opt = {
@@ -16,6 +17,7 @@ function initialize() {
       position: new google.maps.LatLng(locations[img].lat, locations[img].lng),
       map: map,
     })
+    marker.id = img.replace('.jpg', '')
     // Overwrite image obj with Marker object instead
     locations[img] = marker
   }
@@ -92,6 +94,21 @@ function initialize() {
   for (let i = 0; i < elmImages.length; i++) {
     elmImages[i].addEventListener('click', imageClickHandler, false)
   }
+
+  // filter images based on map zoom
+  google.maps.event.addListener(map, 'idle', function () {
+    const bounds = map.getBounds()
+    for (const img of Object.values(locations)) {
+      const elmImg = document.querySelector(`[alt="${img.id}"]`)
+      const isVisible = bounds.contains(img.getPosition())
+      elmImg.style.display = isVisible ? 'block' : 'none'
+    }
+    msnry.layout()
+    setTimeout(
+      () => document.dispatchEvent(new Event('layout')), // triggers echo.js
+      200
+    )
+  })
 }
 
 window.addEventListener('load', initialize)
