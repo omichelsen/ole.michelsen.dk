@@ -5,9 +5,9 @@ date: 2023-04-08
 # tags: ["javascript"]
 ---
 
-You can use a Puppeteer, a headless browser that lets you program user interactions, to load your website and capture screenshots (and videos). This can be highly useful for documentation, marketing (App Store, blog posts etc.), comparison testing etc.
+Puppeteer is a headless browser that lets you load your website, program user interactions, and capture screenshots and videos. This can be highly useful for documentation, marketing for the App Store, blog posts, comparison testing etc.
 
-_Note_: For this article I'm going to use the following example project with a simple input form: https://github.com/omichelsen/puppeteer-example.
+_Note_: For this article I'm going to use an example project with a simple input form: https://github.com/omichelsen/puppeteer-example.
 
 ## Taking screenshots with Puppeteer
 
@@ -49,7 +49,7 @@ Running this will give us a nice screenshot of the whole page:
 	>
 </picture>
 
-If you want to capture just a single component (could be a button or a whole table), replace the above line `await page.screenshot(...)` with this:
+If you want to capture just a single component (could be a button or a whole table), replace the line `await page.screenshot(...)` with this:
 
 ```js
 // take a screenshot of the input component
@@ -57,7 +57,7 @@ const element = await page.$('input')
 await element.screenshot({ path: 'component.png' })
 ```
 
-Which gives us a screenshot of only the input element:
+This gives us a screenshot of only the input element:
 
 <picture>
 	<source srcset="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/component.webp, /images/blog/how-to-take-screenshots-with-puppeteer-and-jest/component@2x.webp 2x" type="image/webp">
@@ -67,7 +67,7 @@ Which gives us a screenshot of only the input element:
 		src="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/component.png"
 		srcset="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/component@2x.png 2x"
 		width="188"
-		height="36"
+		height="37"
 	>
 </picture>
 
@@ -110,7 +110,7 @@ describe('puppeteer-example', () => {
 })
 ```
 
-On the first run the snapshots will be written, and the output will look like this:
+The snapshots will be written on the first run and the output will look like this:
 
 ```bash
  PASS  ./screenshot.test.js
@@ -136,22 +136,22 @@ Now for the testing part: let's say you go and change the `placeholder` text of 
 ```
 
 <picture>
-	<source srcset="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/screenshot-test-js-puppeteer-example-component-renders-correctly-1-snap-diff.webp, /images/blog/how-to-take-screenshots-with-puppeteer-and-jest/screenshot-test-js-puppeteer-example-component-renders-correctly-1-snap-diff@2x.webp 2x" type="image/webp">
+	<source srcset="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/screenshot-test-js-puppeteer-example-page-renders-correctly-1-snap-diff.webp, /images/blog/how-to-take-screenshots-with-puppeteer-and-jest/screenshot-test-js-puppeteer-example-page-renders-correctly-1-snap-diff@2x.webp 2x" type="image/webp">
 	<img
-		alt="Expected image to match or be a close match to snapshot but was 2.485963356973995% different from snapshot (673 differing pixels)"
+		alt="Expected image to match or be a close match to snapshot but was 2.1707878090856814% different from snapshot (604 differing pixels)."
 		itemprop="image"
-		src="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/screenshot-test-js-puppeteer-example-component-renders-correctly-1-snap-diff.png"
-		srcset="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/screenshot-test-js-puppeteer-example-component-renders-correctly-1-snap-diff@2x.png 2x"
-		width="564"
-		height="36"
+		src="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/screenshot-test-js-puppeteer-example-page-renders-correctly-1-snap-diff.png"
+		srcset="/images/blog/how-to-take-screenshots-with-puppeteer-and-jest/screenshot-test-js-puppeteer-example-page-renders-correctly-1-snap-diff@2x.png 2x"
+		width="1500"
+		height="300"
 	>
 </picture>
 
-The diff output shows a before and after (left and right) and an overlay in the middle marking differences with yellow and red (before and after).
+The diff output shows a before and after (left and right) and an overlay in the middle marking differences with yellow (before) and red (after).
 
-We are now protected against unexpected changes to our app! In case the change was intended, you can update your snapshots by running `jest -u`.
+We are now protected against unexpected changes to our app! In case the change was intentional, update your snapshots by running `jest -u`.
 
-Snapshots will be saved in the folder `__image_snapshots__` which should be checked into git so they can be compared on future runs.
+Snapshots are saved to the folder `__image_snapshots__` which should be commited to git for comparison on future runs.
 
 ### E2E testing and video recording with Puppeteer and Jest
 
