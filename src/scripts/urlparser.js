@@ -1,4 +1,4 @@
-import { html, render } from 'https://unpkg.com/lit-html?module'
+import { html, render } from 'https://unpkg.com/lit-html'
 
 const elmForm = document.getElementById('urlform')
 const elmUri = document.getElementById('url')
