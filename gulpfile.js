@@ -12,6 +12,7 @@ const streamify = require('gulp-streamify')
 const webp = require('gulp-webp')
 const sizeOf = require('image-size')
 const path = require('path')
+const rename = require('gulp-rename')
 const request = require('request')
 const source = require('vinyl-source-stream')
 
@@ -59,10 +60,10 @@ const convertToWebp = () =>
     .pipe(webp({ quality: 80 }))
     .pipe(gulp.dest('./src/photos/map'))
 
-const travelResize = (type, w, h) =>
+const resize = (source, dest, w, h, suffix = '') =>
   gulp
-    .src(`./exif/source/${type}/*.jpeg`)
-    .pipe(newer({ dest: './exif/gps', ext: '.jpg' }))
+    .src(source)
+    .pipe(newer({ dest, ext: '.jpg' }))
     .pipe(
       gm(
         (file) =>
@@ -77,17 +78,41 @@ const travelResize = (type, w, h) =>
         }
       )
     )
-    .pipe(gulp.dest('./exif/gps'))
+    .pipe(rename({ suffix }))
+    .pipe(gulp.dest(dest))
 
-const square = () => travelResize('square', 100, 100)
-const portrait = () => travelResize('portrait', 100, 206)
-const landscape = () => travelResize('landscape', 206, 100)
-const large = () => travelResize('large', 206, 206)
+const square = () =>
+  resize('./exif/source/square/*.jpeg', './exif/gps', 100, 100)
+const portrait = () =>
+  resize('./exif/source/portrait/*.jpeg', './exif/gps', 100, 206)
+const landscape = () =>
+  resize('./exif/source/landscape/*.jpeg', './exif/gps', 206, 100)
+const large = () => resize('./exif/source/large/*.jpeg', './exif/gps', 206, 206)
 
 const travel = gulp.series(
   gulp.parallel(square, portrait, landscape, large),
   exif,
   convertToWebp
+)
+
+const autumn1 = () =>
+  resize('./photos/autumn/*.jpg', './src/photos/autumn', 200, 300)
+
+const autumn2 = () =>
+  resize('./photos/autumn/*.jpg', './src/photos/autumn', 400, 600, '@2x')
+
+const autumnWebp = (source) =>
+  function jpgToWebp() {
+    return gulp
+      .src(`${source}/*.jpg`)
+      .pipe(newer({ dest: source, ext: '.webp' }))
+      .pipe(webp({ quality: 80 }))
+      .pipe(gulp.dest(source))
+  }
+
+const galleryAutumn = gulp.series(
+  gulp.parallel(autumn1, autumn2),
+  autumnWebp('./src/photos/autumn')
 )
 
 const flickr = () =>
@@ -156,3 +181,5 @@ exports.flickr = flickr
 exports.github = github
 exports.styles = styles
 exports.watch = watch
+
+exports.galleryAutumn = galleryAutumn

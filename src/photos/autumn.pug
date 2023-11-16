@@ -1,0 +1,36 @@
+---
+layout: layouts/base.pug
+title: Autumn Colors
+description: Orange and reds from beautiful autumn landscapes
+date: 2023-11-15
+tags: photos
+className: photos
+---
+
+include /mixins.pug
+
+header.c.c(style='padding:80px 0')
+  h1 Autumn Colors
+  p.subtitle Orange and reds from beautiful autumn landscapes
+
+.gallery.inline
+  +picture("/photos/autumn/DSC00028.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC00031.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC00064.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC00439.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01594.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01599.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01602.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01607.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01610.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01613.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01908.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01925.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01933.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01941.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01956.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC01958.jpg", "200", "300", "")
+  +picture("/photos/autumn/DSC02056.jpg", "200", "300", "")
+  +picture("/photos/autumn/IMG_0030.jpg", "200", "300", "")
+
+script(src=global.libs.masonry)

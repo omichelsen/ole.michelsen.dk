@@ -3,5 +3,6 @@
 .netlify
 exif/source/
 node_modules/
+/photos/
 public/
 vendor/
