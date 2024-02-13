@@ -109,6 +109,16 @@ function initialize() {
       200
     )
   })
+
+  map.setZoom(4)
+  const animate = () => {
+    setTimeout(() => map.panTo({ lat: 35.647,	lng: -120.6701, }), 2000) // paso
+    setTimeout(() => map.panTo({ lat: 21.033, lng: 105.8538, }), 4000) // viet
+    setTimeout(() => map.panTo({ lat: 49.0081, lng: 8.4038, }), 6000) // kar
+  }
+  animate()
+  setInterval(animate, 8000)
+
 }
 
 window.addEventListener('load', initialize)
