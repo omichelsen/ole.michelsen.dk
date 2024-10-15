@@ -1,10 +1,14 @@
-const cacheBuster = require('@mightyplow/eleventy-plugin-cache-buster')
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
+import ejsPlugin from '@11ty/eleventy-plugin-ejs'
+import pugPlugin from '@11ty/eleventy-plugin-pug'
+import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight'
+import cacheBuster from '@mightyplow/eleventy-plugin-cache-buster'
 
-module.exports = (eleventyConfig) => {
+export default function (eleventyConfig) {
   eleventyConfig.setQuietMode(true)
 
   eleventyConfig.addPlugin(cacheBuster({ outputDirectory: 'public' }))
+  eleventyConfig.addPlugin(ejsPlugin)
+  eleventyConfig.addPlugin(pugPlugin)
   eleventyConfig.addPlugin(syntaxHighlight)
 
   eleventyConfig.addPassthroughCopy('src/_redirects')

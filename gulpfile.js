@@ -1,20 +1,20 @@
-const gulp = require('gulp')
-const autoprefixer = require('gulp-autoprefixer')
-const cleanCSS = require('gulp-clean-css')
-const gdata = require('gulp-data')
-const gexif = require('gulp-exif')
-const gm = require('gulp-gm')
-const jeditor = require('gulp-json-editor')
-const gulpless = require('gulp-less')
-const merge = require('gulp-merge-json')
-const newer = require('gulp-newer')
-const streamify = require('gulp-streamify')
-const webp = require('gulp-webp')
-const sizeOf = require('image-size')
-const path = require('path')
-const rename = require('gulp-rename')
-const request = require('request')
-const source = require('vinyl-source-stream')
+import gulp from 'gulp'
+import autoprefixer from 'gulp-autoprefixer'
+import cleanCSS from 'gulp-clean-css'
+import gdata from 'gulp-data'
+import gexif from 'gulp-exif'
+import gm from 'gulp-gm'
+import jeditor from 'gulp-json-editor'
+import gulpless from 'gulp-less'
+import merge from 'gulp-merge-json'
+import newer from 'gulp-newer'
+import rename from 'gulp-rename'
+import streamify from 'gulp-streamify'
+import webp from 'gulp-webp'
+import sizeOf from 'image-size'
+import path from 'path'
+import request from 'request'
+import source from 'vinyl-source-stream'
 
 const gpsDecimal = (direction, degrees, minutes, seconds) => {
   const d = degrees + minutes / 60 + seconds / (60 * 60)
@@ -23,7 +23,7 @@ const gpsDecimal = (direction, degrees, minutes, seconds) => {
 
 const roundDecimal = (dec) => parseFloat(dec.toFixed(4))
 
-const exif = () =>
+export const exif = () =>
   gulp
     .src('./exif/gps/*.jpg')
     .pipe(gexif())
@@ -89,7 +89,7 @@ const landscape = () =>
   resize('./exif/source/landscape/*.jpeg', './exif/gps', 206, 100)
 const large = () => resize('./exif/source/large/*.jpeg', './exif/gps', 206, 206)
 
-const travel = gulp.series(
+export const travel = gulp.series(
   gulp.parallel(square, portrait, landscape, large),
   exif,
   convertToWebp
@@ -110,12 +110,12 @@ const autumnWebp = (source) =>
       .pipe(gulp.dest(source))
   }
 
-const galleryAutumn = gulp.series(
+export const galleryAutumn = gulp.series(
   gulp.parallel(autumn1, autumn2),
   autumnWebp('./src/photos/autumn')
 )
 
-const flickr = () =>
+export const flickr = () =>
   request(
     'https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=62b36a8cf6e44b19d379f36b51bb4535&format=json&nojsoncallback=1&user_id=16324363@N07&primary_photo_extras=url_s'
   )
@@ -137,7 +137,7 @@ const flickr = () =>
     )
     .pipe(gulp.dest('./src/_data'))
 
-const github = () =>
+export const github = () =>
   request({
     url: 'https://api.github.com/users/omichelsen/repos',
     headers: {
@@ -165,7 +165,7 @@ const github = () =>
     )
     .pipe(gulp.dest('./src/_data'))
 
-const styles = () =>
+export const styles = () =>
   gulp
     .src('./src/styles/index.less')
     .pipe(gulpless())
@@ -173,13 +173,4 @@ const styles = () =>
     .pipe(cleanCSS())
     .pipe(gulp.dest('./src/styles'))
 
-const watch = () => gulp.watch('./src/styles/**/*.less', styles)
-
-exports.exif = exif
-exports.travel = travel
-exports.flickr = flickr
-exports.github = github
-exports.styles = styles
-exports.watch = watch
-
-exports.galleryAutumn = galleryAutumn
+export const watch = () => gulp.watch('./src/styles/**/*.less', styles)
