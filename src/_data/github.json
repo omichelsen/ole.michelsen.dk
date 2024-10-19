@@ -1,45 +1,45 @@
 [{
   "description": "Compare semver version strings to find which is greater, equal or lesser.",
   "html_url": "https://github.com/omichelsen/compare-versions",
-  "language": "JavaScript",
+  "language": "TypeScript",
   "name": "compare-versions",
-  "watchers_count": 368
+  "watchers_count": 593
 }, {
   "description": "Copy to clipboard with AngularJS directive, without using Flash.",
   "html_url": "https://github.com/omichelsen/angular-clipboard",
   "language": "JavaScript",
   "name": "angular-clipboard",
-  "watchers_count": 197
+  "watchers_count": 194
 }, {
   "description": "Middleware for AB testing in Express",
   "html_url": "https://github.com/omichelsen/express-ab",
   "language": "JavaScript",
   "name": "express-ab",
-  "watchers_count": 94
+  "watchers_count": 95
 }, {
   "description": "Split your UI into (wizard-like) steps in AngularJS.",
   "html_url": "https://github.com/omichelsen/angular-steps",
   "language": "JavaScript",
   "name": "angular-steps",
-  "watchers_count": 25
+  "watchers_count": 24
 }, {
   "description": "Code example for article https://ole.michelsen.dk/blog/social-signin-spa-jwt-server.html",
   "html_url": "https://github.com/omichelsen/blog-social-signin-spa-jwt-server",
   "language": "HTML",
   "name": "blog-social-signin-spa-jwt-server",
-  "watchers_count": 25
+  "watchers_count": 24
+}, {
+  "description": "Example code on how to save EXIF data from photos to a JSON file.",
+  "html_url": "https://github.com/omichelsen/exif-gps-to-json-example",
+  "language": "JavaScript",
+  "name": "exif-gps-to-json-example",
+  "watchers_count": 7
 }, {
   "description": "jQuery plugin which lets you navigate form fields with arrow keys.",
   "html_url": "https://github.com/omichelsen/FormNavigation",
   "language": "JavaScript",
   "name": "FormNavigation",
   "watchers_count": 7
-}, {
-  "description": "Example code on how to save EXIF data from photos to a JSON file.",
-  "html_url": "https://github.com/omichelsen/exif-gps-to-json-example",
-  "language": "JavaScript",
-  "name": "exif-gps-to-json-example",
-  "watchers_count": 6
 }, {
   "description": "Copy text to clipboard by clicking a button, using only vanilla javascript without Flash.",
   "html_url": "https://github.com/omichelsen/clipboard-button",
@@ -53,22 +53,34 @@
   "name": "boilerplate-lib",
   "watchers_count": 4
 }, {
+  "description": "Daily comic strip gallery with mobile/touch support.",
+  "html_url": "https://github.com/omichelsen/daily-glry",
+  "language": "JavaScript",
+  "name": "daily-glry",
+  "watchers_count": 2
+}, {
   "description": "Image gallery with mobile/touch support and no dependencies.",
   "html_url": "https://github.com/omichelsen/glry",
   "language": "JavaScript",
   "name": "glry",
   "watchers_count": 2
 }, {
-  "description": "Daily comic strip gallery with mobile/touch support.",
-  "html_url": "https://github.com/omichelsen/daily-glry",
+  "description": "Search page for a glry based image archive",
+  "html_url": "https://github.com/omichelsen/glry-search",
   "language": "JavaScript",
-  "name": "daily-glry",
+  "name": "glry-search",
   "watchers_count": 1
 }, {
   "description": "Boilerplate project for React+Webpack",
   "html_url": "https://github.com/omichelsen/boilerplate-react",
   "language": "JavaScript",
   "name": "boilerplate-react",
+  "watchers_count": 0
+}, {
+  "description": null,
+  "html_url": "https://github.com/omichelsen/compare-versions-test",
+  "language": "JavaScript",
+  "name": "compare-versions-test",
   "watchers_count": 0
 }, {
   "description": "Config files for my Terminal",
@@ -87,12 +99,6 @@
   "html_url": "https://github.com/omichelsen/eslint-config-omichelsen",
   "language": "JavaScript",
   "name": "eslint-config-omichelsen",
-  "watchers_count": 0
-}, {
-  "description": "Search page for a glry based image archive",
-  "html_url": "https://github.com/omichelsen/glry-search",
-  "language": "JavaScript",
-  "name": "glry-search",
   "watchers_count": 0
 }, {
   "description": "Backend API for glry-search",
