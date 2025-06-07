@@ -35,6 +35,10 @@ netlify functions:invoke validator-proxy --querystring "url=https://ole.michelse
 
 ## Scripts
 
+#### `gulp travel`
+
+Scans all photos in `exif/source` and create thumbnails and output for `gulp exit`.
+
 #### `gulp exif`
 
 Scans all photos in `exif/` for EXIF data and outputs to `src/_data/exif.json` to use in Travel Map.
