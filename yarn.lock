@@ -61,10 +61,10 @@
     debug "^4.3.5"
     pug "^3.0.3"
 
-"@11ty/eleventy-plugin-syntaxhighlight@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@11ty/eleventy-plugin-syntaxhighlight/-/eleventy-plugin-syntaxhighlight-5.0.1.tgz#7af582e85ccf2a6b42a8c35736aaffcec0b51694"
-  integrity sha512-xDPF3Ay38XlmWZe9ER0SLtMmNah7olUBlGORhUiCUkPh3jYGVCDTDayi4tbFI9Dxha8NwKlfBZ2FXM/s3aZzAg==
+"@11ty/eleventy-plugin-syntaxhighlight@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@11ty/eleventy-plugin-syntaxhighlight/-/eleventy-plugin-syntaxhighlight-5.0.2.tgz#22688060cb05cc25ce1a51cce0f87033aa8b2477"
+  integrity sha512-T6xVVRDJuHlrFMHbUiZkHjj5o1IlLzZW+1IL9eUsyXFU7rY2ztcYhZew/64vmceFFpQwzuSfxQOXxTJYmKkQ+A==
   dependencies:
     prismjs "^1.30.0"
 
@@ -73,10 +73,10 @@
   resolved "https://registry.yarnpkg.com/@11ty/eleventy-utils/-/eleventy-utils-2.0.7.tgz#40fa604864d64e98412f4f068a34379b471beddd"
   integrity sha512-6QE+duqSQ0GY9rENXYb4iPR4AYGdrFpqnmi59tFp9VrleOl0QSh8VlBr2yd6dlhkdtj7904poZW5PvGr9cMiJQ==
 
-"@11ty/eleventy@3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@11ty/eleventy/-/eleventy-3.1.1.tgz#9be05effd83b64811a129afaff467cc5597764cf"
-  integrity sha512-nsMCW44WSYzpi6JSQ1ar/wlotj/2cxuP4AABX5Dxqwol3IQ3SkEMgcAugP1t1mthv5I0kIB9lql1Jv/lhUHIkg==
+"@11ty/eleventy@3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@11ty/eleventy/-/eleventy-3.1.2.tgz#a3b400babd31e0244ae9284bb60c811d773dca5d"
+  integrity sha512-IcsDlbXnBf8cHzbM1YBv3JcTyLB35EK88QexmVyFdVJVgUU6bh9g687rpxryJirHzo06PuwnYaEEdVZQfIgRGg==
   dependencies:
     "@11ty/dependency-tree" "^4.0.0"
     "@11ty/dependency-tree-esm" "^2.0.0"
@@ -85,13 +85,13 @@
     "@11ty/eleventy-utils" "^2.0.7"
     "@11ty/lodash-custom" "^4.17.21"
     "@11ty/posthtml-urls" "^1.0.1"
-    "@11ty/recursive-copy" "^4.0.1"
+    "@11ty/recursive-copy" "^4.0.2"
     "@sindresorhus/slugify" "^2.2.1"
     bcp-47-normalize "^2.3.0"
     chokidar "^3.6.0"
     debug "^4.4.1"
     dependency-graph "^1.0.0"
-    entities "^6.0.0"
+    entities "^6.0.1"
     filesize "^10.1.6"
     gray-matter "^4.0.3"
     iso-639-1 "^3.1.5"
@@ -127,10 +127,10 @@
     list-to-array "^1.1.0"
     parse-srcset "^1.0.2"
 
-"@11ty/recursive-copy@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@11ty/recursive-copy/-/recursive-copy-4.0.1.tgz#6b55a36ffc64d976099aac377ed94d38ca53c8eb"
-  integrity sha512-Zsg1xgfdVTMKNPj9o4FZeYa73dFZRX856CL4LsmqPMvDr0TuIK4cH9CVWJyf0OkNmM8GmlibGX18fF0B75Rn1w==
+"@11ty/recursive-copy@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@11ty/recursive-copy/-/recursive-copy-4.0.2.tgz#6349f2e0a38c7229ff32773ba164e8e9eb2e3fc6"
+  integrity sha512-174nFXxL/6KcYbLYpra+q3nDbfKxLxRTNVY1atq2M1pYYiPfHse++3IFNl8mjPFsd7y2qQjxLORzIjHMjL3NDQ==
   dependencies:
     errno "^1.0.0"
     junk "^3.1.0"
@@ -320,7 +320,7 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.7.0.tgz#64c441bdae033b378b6eef7d0c3d77c329b9378e"
   integrity sha512-k107IF4+Xr7UHjwDc7Cfd6PRQfbdkiRabXGRjo07b4WyPahFBZCZ1sE+BNxYIJPPg73UkfOsVOLwqVc/6ETrIA==
 
-"@types/vinyl@^2.0.9":
+"@types/vinyl@^2.0.12", "@types/vinyl@^2.0.9":
   version "2.0.12"
   resolved "https://registry.yarnpkg.com/@types/vinyl/-/vinyl-2.0.12.tgz#17642ca9a8ae10f3db018e9f885da4188db4c6e6"
   integrity sha512-Sr2fYMBUVGYq8kj3UthXFAu5UN6ZW+rYr4NACjZQJvHvj+c8lYv0CahmZ2P/r7iUkN44gGUBwqxZkrKXYPb7cw==
@@ -755,7 +755,7 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-autoprefixer@^10.4.16:
+autoprefixer@^10.4.21:
   version "10.4.21"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.21.tgz#77189468e7a8ad1d9a37fbc08efc9f480cf0a95d"
   integrity sha512-O+A6LWV5LDHSJD3LjHYoNi4VLsj/Whi7k6zG12xTYaU4cQ8oxQGckXNX8cRHK5yOZ/ppVHe0ZBXGzSV9jXdVbQ==
@@ -1665,10 +1665,10 @@ entities@^4.4.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-4.5.0.tgz#5d268ea5e7113ec74c4d033b79ea5a35a488fb48"
   integrity sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
 
-entities@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/entities/-/entities-6.0.0.tgz#09c9e29cb79b0a6459a9b9db9efb418ac5bb8e51"
-  integrity sha512-aKstq2TDOndCn4diEyp9Uq/Flu2i1GlLkc6XIDQSDMuaFE3OPW5OphLCyQ5SpSJZTb4reN+kTcYru5yIfXoRPw==
+entities@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-6.0.1.tgz#c28c34a43379ca7f61d074130b2f5f7020a30694"
+  integrity sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==
 
 errno@^0.1.1:
   version "0.1.8"
@@ -2696,14 +2696,14 @@ gray-matter@^4.0.3:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-gulp-autoprefixer@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/gulp-autoprefixer/-/gulp-autoprefixer-9.0.0.tgz#ef5acdba212058023637545f2cac276fa3bc9460"
-  integrity sha512-lVQz5fqdjm4RMB1O3xLPtaZNMbFFoGKbV+SN3NJgT9X+PIyYld7dXARpoXIKEZAqE9WC2SoDQU0mxqZahWq07A==
+gulp-autoprefixer@10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-autoprefixer/-/gulp-autoprefixer-10.0.0.tgz#a1bf48b2551e3dca98104cc860b8fdfdc61a1e49"
+  integrity sha512-z3cSJFGRVrK9BRY6Ld884AhPxiSrS7XnleLusQ4luYBF8ZHPz0eB4Osbrykd0BsnPwwTYpLk59C2rR6Lni/5sA==
   dependencies:
-    autoprefixer "^10.4.16"
-    gulp-plugin-extras "^0.2.2"
-    postcss "^8.4.31"
+    autoprefixer "^10.4.21"
+    gulp-plugin-extras "^1.1.0"
+    postcss "^8.5.6"
     vinyl-sourcemaps-apply "^0.2.1"
 
 gulp-clean-css@^4.3.0:
@@ -2804,7 +2804,7 @@ gulp-newer@^1.4.0:
     kew "^0.7.0"
     plugin-error "^0.1.2"
 
-gulp-plugin-extras@^0.2.1, gulp-plugin-extras@^0.2.2:
+gulp-plugin-extras@^0.2.1:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/gulp-plugin-extras/-/gulp-plugin-extras-0.2.2.tgz#8f4af2c0acdc95aaac9dcd86e54f200a6e2842c4"
   integrity sha512-0gssXzTNrrOocYBWN4qOZqd03cz3bxhjxVUPZV9iJdBR0ZZbwMQO/OT8hZChYoc9GjKaA5meaqDr6CjkmKA7BA==
@@ -2813,10 +2813,19 @@ gulp-plugin-extras@^0.2.1, gulp-plugin-extras@^0.2.2:
     chalk "^5.3.0"
     easy-transform-stream "^1.0.1"
 
-gulp-rename@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-2.0.0.tgz#9bbc3962b0c0f52fc67cd5eaff6c223ec5b9cf6c"
-  integrity sha512-97Vba4KBzbYmR5VBs9mWmK+HwIf5mj+/zioxfZhOKeXtx5ZjBk57KFlePf5nxq9QsTtFl0ejnHE3zTC9MHXqyQ==
+gulp-plugin-extras@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-plugin-extras/-/gulp-plugin-extras-1.1.0.tgz#47bb1022bed0ea0216ac6c6a61a35c4fe014318e"
+  integrity sha512-T0AXOEVoKYzLIBlwEZ7LtAx2w4ExIozIoxVeYEVLFbdxI7i0sWvFDq0F8mm47djixDF3vAqDPoyGwh3Sg/PWtQ==
+  dependencies:
+    "@types/vinyl" "^2.0.12"
+    chalk "^5.3.0"
+    easy-transform-stream "^1.0.1"
+
+gulp-rename@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-2.1.0.tgz#3a9900f81f3a8338409ea5ea542affc25080d9f4"
+  integrity sha512-dGuzuH8jQGqCMqC544IEPhs5+O2l+IkdoSZsgd4kY97M1CxQeI3qrmweQBIrxLBbjbe/8uEWK8HHcNBc3OCy4g==
 
 gulp-streamify@1.0.2:
   version "1.0.2"
@@ -2825,10 +2834,10 @@ gulp-streamify@1.0.2:
   dependencies:
     plexer "1.0.1"
 
-gulp-webp@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/gulp-webp/-/gulp-webp-5.0.0.tgz#99f140f9ff66b2ed6c930abaa622920e7806216b"
-  integrity sha512-beC5SXale2fBFJr6KtBOwMCYFFSx4SVKyt5ta2h6i928KaM61E1+uL3X1dTS5QkYQeNRAmym0xjbiyPY846oYA==
+gulp-webp@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-webp/-/gulp-webp-5.1.0.tgz#c25eee4cf03402b16363b2d039c6eca8db5de41c"
+  integrity sha512-TJKjGMAKRMnpSI7MeYpebApPadsUV3QQLFuzBWQPLGRiYDr6JJo/zvqXZg8AO7AcKTX943i1AmHStag313K+zA==
   dependencies:
     gulp-plugin-extras "^0.2.1"
     imagemin-webp "^8.0.0"
@@ -4424,10 +4433,10 @@ postcss-value-parser@^4.2.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.4.31:
-  version "8.5.4"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.4.tgz#d61014ac00e11d5f58458ed7247d899bd65f99c0"
-  integrity sha512-QSa9EBe+uwlGTFmHsPKokv3B/oEMQZxfqW0QqNCyhpa6mB1afzulwn8hihglqAb2pOw+BJgNlmXQ8la2VeHB7w==
+postcss@^8.5.6:
+  version "8.5.6"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.6.tgz#2825006615a619b4f62a9e7426cc120b349a8f3c"
+  integrity sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==
   dependencies:
     nanoid "^3.3.11"
     picocolors "^1.1.1"
