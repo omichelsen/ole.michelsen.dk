@@ -119,25 +119,20 @@ get_dimensions() {
           "$file" 2>/dev/null
 }
 
-# ── Convert one file to one format at one width ───────────────────────────────
-# Args: src  dest_no_ext  width  format  quality  avif_quality  verbose
+# ── Convert one file to one format with a given filter ───────────────────────
+# Args: src  dest_no_ext  vf_filter  format  quality  avif_quality  verbose
 convert_one() {
-  local src="$1" base="$2" width="$3" fmt="$4" quality="$5" avifq="$6" verbose="$7"
+  local src="$1" base="$2" vf_filter="$3" fmt="$4" quality="$5" avifq="$6" verbose="$7"
   local dest="${base}.${fmt}"
   local ff_quiet=(-loglevel error)
   $verbose && ff_quiet=()
 
-  local scale_filter="scale=${width}:-2:flags=lanczos"
-
   case "$fmt" in
     avif)
-      # ffmpeg's libaom-av1 encoder is not always compiled into Homebrew builds.
-      # Instead: decode+scale via ffmpeg to a temp PNG, then encode with avifenc.
-      # avifenc quality: 0=worst, 100=lossless (60–80 is a good range for photos)
       local tmp_png
       tmp_png="$(mktemp /tmp/convert_XXXXXX.png)"
       ffmpeg "${ff_quiet[@]}" -y -i "$src" \
-        -vf "$scale_filter" \
+        -vf "$vf_filter" \
         "$tmp_png"
       if $verbose; then
         avifenc --jobs all -q "$avifq" "$tmp_png" "$dest"
@@ -147,12 +142,10 @@ convert_one() {
       rm -f "$tmp_png"
       ;;
     webp)
-      # ffmpeg's libwebp encoder is not compiled into the standard Homebrew build.
-      # Instead: decode+scale via ffmpeg to a temp PNG, then encode with cwebp.
       local tmp_png
       tmp_png="$(mktemp /tmp/convert_XXXXXX.png)"
       ffmpeg "${ff_quiet[@]}" -y -i "$src" \
-        -vf "$scale_filter" \
+        -vf "$vf_filter" \
         "$tmp_png"
       local cwebp_quiet=(-quiet)
       $verbose && cwebp_quiet=()
@@ -161,13 +154,10 @@ convert_one() {
       ;;
     jpg)
       ffmpeg "${ff_quiet[@]}" -y -i "$src" \
-        -vf "$scale_filter" \
+        -vf "$vf_filter" \
         -q:v 2 \
         -huffman optimal \
         "$dest"
-      # Apply quality with a second pass using sips (macOS native) if available
-      # — ffmpeg JPEG quality via -q:v is approximate; for fine control we
-      #   re-encode with sips which respects a 0-100 scale.
       if command -v sips &>/dev/null; then
         sips --setProperty formatOptions "$quality" "$dest" &>/dev/null || true
       fi
@@ -192,16 +182,29 @@ process_image() {
   local w h
   IFS=',' read -r w h <<< "$dims"
 
-  # Determine orientation and base widths
-  local w1x w2x orientation
+  # Determine orientation and build ffmpeg filter strings
+  #
+  # Portrait images: scale to target width, preserve aspect ratio
+  # Landscape images: center-crop to 2:3 (portrait) then scale to target width
+  #
+  # The crop filter computes the largest 2:3 region centred in the frame:
+  #   crop_h = source height
+  #   crop_w = crop_h * 2/3
+  #   x offset = (source_width - crop_w) / 2  (centres horizontally)
+  local orientation filter1x filter2x w1x w2x
+
   if (( h > w )); then
     orientation="portrait"
-    w1x=200
-    w2x=400
+    w1x=200; w2x=400
+    filter1x="scale=${w1x}:-2:flags=lanczos"
+    filter2x="scale=${w2x}:-2:flags=lanczos"
   else
-    orientation="landscape"
-    w1x=400
-    w2x=800
+    orientation="landscape→crop"
+    w1x=200; w2x=400
+    # crop=w:h:x:y  — iw/ih are input width/height at filter time
+    # crop to 2:3 from centre, then scale down
+    filter1x="crop=ih*2/3:ih:(iw-ih*2/3)/2:0,scale=${w1x}:-2:flags=lanczos"
+    filter2x="crop=ih*2/3:ih:(iw-ih*2/3)/2:0,scale=${w2x}:-2:flags=lanczos"
   fi
 
   log "$(basename "$src")  [${w}×${h} px, ${orientation}]"
@@ -212,13 +215,8 @@ process_image() {
     local dir_fmt="${OUTPUT_DIR}/${fmt}"
     mkdir -p "$dir_fmt"
 
-    # 1× (standard)
-    local dest1x="${dir_fmt}/${filename}@1x"
-    convert_one "$src" "$dest1x" "$w1x" "$fmt" "$QUALITY" "$AVIF_QUALITY" "$VERBOSE"
-
-    # 2× (retina)
-    local dest2x="${dir_fmt}/${filename}@2x"
-    convert_one "$src" "$dest2x" "$w2x" "$fmt" "$QUALITY" "$AVIF_QUALITY" "$VERBOSE"
+    convert_one "$src" "${dir_fmt}/${filename}@1x" "$filter1x" "$fmt" "$QUALITY" "$AVIF_QUALITY" "$VERBOSE"
+    convert_one "$src" "${dir_fmt}/${filename}@2x" "$filter2x" "$fmt" "$QUALITY" "$AVIF_QUALITY" "$VERBOSE"
 
     ok "  ${fmt}: ${w1x}px @1x + ${w2x}px @2x → ${dir_fmt}/"
   done
