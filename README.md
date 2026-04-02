@@ -54,3 +54,9 @@ Downloads a list of repositories for Profile to `src/_data/github.json`.
 #### `gulp styles`
 
 Parse LESS to CSS to `src/styles/index.css`.
+
+#### `photos brz`
+
+Convert src AVIF to AVIF, WEBP and JPEG `./photos-generate.sh ./src/photos/brz/src ./src/photos/brz`.
+
+`./photos.sh` to get a list of images and resolution.

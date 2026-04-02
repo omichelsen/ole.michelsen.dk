@@ -36,6 +36,7 @@ export default function (eleventyConfig) {
       output: 'public',
     },
     templateFormats: [
+      'avif',
       'css',
       'ejs',
       'gif',

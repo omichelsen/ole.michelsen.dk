@@ -1,0 +1,37 @@
+---
+layout: layouts/base.pug
+title: BRZ
+description: Roadtrips and fun times with friends in cars
+date: 2026-04-01
+tags: photos
+className: photos
+---
+
+include /mixins.pug
+
+header.c(style='padding:80px 0')
+  h1 BRZ
+  p.subtitle Roadtrips and fun times with friends in cars
+
+.gallery(data-masonry='{ "itemSelector": "img", "columnWidth": 200, "gutter": 5, "fitWidth": true }')
+  +pictureAvif("DSC05545@1x.jpg", 400, 266, "BRZ")
+  +pictureAvif("DSC05559@1x.jpg", 200, 276, "BRZ")
+  +pictureAvif("DSC05560@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC05568@1x.jpg", 200, 310, "BRZ")
+  +pictureAvif("DSC05572@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC07970@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC07974@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC07975@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC08090@1x.jpg", 400, 266, "BRZ")
+  +pictureAvif("DSC08093@1x.jpg", 400, 266, "BRZ")
+  +pictureAvif("DSC08096@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC08098@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC08099@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC08100@1x.jpg", 400, 266, "BRZ")
+  +pictureAvif("DSC08101@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC08104@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC08110@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC08145@1x.jpg", 200, 300, "BRZ")
+  +pictureAvif("DSC08156@1x.jpg", 200, 300, "BRZ")
+
+script(src=global.libs.masonry)
