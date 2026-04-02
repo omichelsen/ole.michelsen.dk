@@ -26,7 +26,7 @@
     "uglify-es": "^3.3.9"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.1.2",
+    "@11ty/eleventy": "3.1.5",
     "@11ty/eleventy-plugin-ejs": "^1.0.0",
     "@11ty/eleventy-plugin-pug": "^1.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.2",
@@ -46,7 +46,7 @@
     "gulp-streamify": "1.0.2",
     "gulp-webp": "5.1.0",
     "image-size": "2.0.2",
-    "pug": "^3.0.3",
+    "pug": "^3.0.4",
     "request": "^2.88.2",
     "vinyl-source-stream": "^2.0.0"
   },
