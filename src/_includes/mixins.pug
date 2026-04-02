@@ -3,21 +3,20 @@
 mixin date(d, t)
 	time(datetime=d itemprop=t)= prettyDate(d)
 
-mixin pictureAvif(path, width, height, alt)
-	- var ext = `@1x${path.substr(path.length - 4)}`;
+mixin pictureAvif(fileName, width, height, alt)
 	picture
 		source(
-			srcset=`converted/avif/${path.replace(ext, '@1x.avif')}, converted/avif/${path.replace(ext, '@2x.avif')} 2x`
+			srcset=`converted/avif/${fileName.concat('@1x.avif')}, converted/avif/${fileName.concat('@2x.avif')} 2x`
 			type="image/avif"
 		)
 		source(
-			srcset=`converted/webp/${path.replace(ext, '@1x.webp')}, converted/webp/${path.replace(ext, '@2x.webp')} 2x`
+			srcset=`converted/webp/${fileName.concat('@1x.webp')}, converted/webp/${fileName.concat('@2x.webp')} 2x`
 			type="image/webp"
 		)
 		img(
 			alt=alt
-			src=`converted/jpg/${path}`
-			srcset=`converted/jpg/${path.replace(ext, `@2x${ext}`)} 2x`
+			src=`converted/jpg/${fileName}@1x.jpg`
+			srcset=`converted/jpg/${fileName.concat('@2x.jpg')} 2x`
 			width=width
 			height=height
 			loading="lazy"

@@ -13,7 +13,7 @@ However if you _do_ need to send some data to your server at some point, you nee
 
 ## Client app and hello.js
 
-To sign in with a social network provider actually turns out to be the easiest part. Using the great library [hello.js](https://adodson.com/hello.js/) you just have to sign up for a client key with the providers you wish to support (e.g. [Facebook](https://developers.facebook.com/apps)) and call `login()`.
+To sign in with a social network provider actually turns out to be the easiest part. Using the great library [hello.js](https://github.com/MrSwitch/hello.js/) you just have to sign up for a client key with the providers you wish to support (e.g. [Facebook](https://developers.facebook.com/apps)) and call `login()`.
 
 ```js
 hello.init({

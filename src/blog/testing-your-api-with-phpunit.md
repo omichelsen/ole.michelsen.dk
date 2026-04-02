@@ -24,7 +24,7 @@ __Update 2015-11-30__: This article and examples have been updated to GuzzleHttp
 
 ## PHPUnit and Guzzle
 
-First we download [PHPUnit](https://phpunit.de/) which is the testing framework in which we will write our tests. Then we download [Guzzle](http://guzzle.readthedocs.org/en/latest/overview.html#installation), which is a library that helps us make requests to the API. You can install both using [Composer](https://getcomposer.org/) if you like:
+First we download [PHPUnit](https://phpunit.de/) which is the testing framework in which we will write our tests. Then we download [Guzzle](https://docs.guzzlephp.org/en/latest/overview.html#installation), which is a library that helps us make requests to the API. You can install both using [Composer](https://getcomposer.org/) if you like:
 
     $ composer require guzzlehttp/guzzle:^6.1 phpunit/phpunit:^5.0
 

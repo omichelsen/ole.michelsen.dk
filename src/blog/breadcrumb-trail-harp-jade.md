@@ -8,7 +8,7 @@ tags:
 # tags: ["harp", "jade", "javascript", "microdata"]
 ---
 
-I have always liked the concept of static site generation for sites, which really doesn’t need constant updates through the day (like mine). So recently I decided to check out the [vast amount of offerings](https://www.staticgen.com/), and fell upon [Harp](http://harpjs.com/).
+I have always liked the concept of static site generation for sites, which really doesn’t need constant updates through the day (like mine). So recently I decided to check out the [vast amount of offerings](https://www.staticgen.com/), and fell upon [Harp](https://harp.sh).
 
 In this brief article I will show how to make a [microdata breadcrumb](https://support.google.com/webmasters/answer/185417) trail using the [Jade templating engine](https://jade-lang.com/). For those new to Jade, like me, it will show a few of the key features in Jade.
 
@@ -27,7 +27,7 @@ mixin breadcrumb(url, title)
       span(itemprop='title')= title
 ```
 
-Now we can use this mixin to loop through the current path, which is made available for us by Harp in a global variable [current](http://harpjs.com/docs/development/current):
+Now we can use this mixin to loop through the current path, which is made available for us by Harp in a global variable [current](https://harp.sh/docs/development/current):
 
 ```pug
 +breadcrumb('/', 'Home')
