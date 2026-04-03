@@ -32,13 +32,13 @@ mixin feed(item, url, defaultType)
       ul.socialIconLinks
         li
           a.iconLink(href='https://github.com/omichelsen' rel='external' title='Github')
-            img.icon(src='/images/icons/github.svg' alt='Github' width='32' height='32')
+            +icon('github', 'Github')(width='32' height='32')
         li
           a.iconLink(href='https://www.linkedin.com/in/omichelsen/' rel='external' title='LinkedIn')
-            img.icon(src='/images/icons/linkedin.svg' alt='LinkedIn' width='32' height='32')
+            +icon('linkedin', 'LinkedIn')(width='32' height='32')
         li
           a.iconLink(href='https://www.facebook.com/olemichelsen' rel='external' title='Facebook')
-            img.icon(src='/images/icons/facebook.svg' alt='Facebook' width='32' height='32')
+            +icon('facebook', 'Facebook')(width='32' height='32')
 
     section.profileDetails.text
       h3 Experience
@@ -75,7 +75,7 @@ mixin feed(item, url, defaultType)
       dl
         each repo in github.filter(({ watchers_count }) => watchers_count > 10)
           dt
-            img.icon.inlineIcon(src='/images/icons/github.svg' alt='' width='16' height='16' aria-hidden='true')
+            +icon('github')(class='inlineIcon' width='16' height='16')
             | &nbsp;
             a(href=repo.html_url)= repo.name
             if repo.language

@@ -81,6 +81,21 @@ a,
   }
 }
 
+.icon {
+  display: inline-block;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.inlineIcon {
+  width: 1em;
+  height: 1em;
+}
+
+.iconDiku {
+  color: #355c37;
+}
+
 nav ul {
   list-style: none;
 }
