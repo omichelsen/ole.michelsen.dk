@@ -11,9 +11,9 @@ style
   each item in collections.portfolio
     - const path = `/portfolio/${item.fileSlug}/`;
     - const img = path + (item.data.image || 'thumb.png');
-    != `.${item.fileSlug}{background-image:url(${img})}`
+    != `.${item.fileSlug} .thumbnail{background-image:url(${img})}`
     if !/\.svg$/.test(img)
-      != `@media(-webkit-min-device-pixel-ratio:2),(min-resolution: 2dppx){.${item.fileSlug}{background-image:url(${img.replace(/\.(\w{3})$/, '@2x.$1')})}}`
+      != `@media(-webkit-min-device-pixel-ratio:2),(min-resolution: 2dppx){.${item.fileSlug} .thumbnail{background-image:url(${img.replace(/\.(\w{3})$/, '@2x.$1')})}}`
 <!--/email_off-->
 
 .content
@@ -29,9 +29,8 @@ style
             class=item.fileSlug
             href=item.url
           )
+            span.thumbnail
             span.text
+              span.date= item.data.created
+              span.tags= item.data.keywords
               span.title= item.data.title
-              span.tags
-                b= item.data.created
-                | &nbsp;·&nbsp;
-                != item.data.keywords
