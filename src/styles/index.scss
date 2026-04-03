@@ -1,24 +1,23 @@
-@use "_partials/variables" as *;
+@use '_partials/variables' as *;
 
 /* Reset
  ------------------------------------------ */
-@use "_partials/reset";
-@use "_partials/prism";
-@use "_partials/colors";
-@use "_partials/fonts";
-@use "_partials/code";
-@use "_partials/design";
-@use "_partials/layout";
-@use "_partials/buttons";
-@use "_partials/grid";
-@use "_partials/forms";
-@use "_partials/tables";
-@use "_partials/print";
-@use "_partials/404" as p404;
-@use "_partials/index";
-@use "_partials/blog";
-@use "_partials/photos";
-@use "_partials/portfolio";
-@use "_partials/tools";
-@use "_partials/countdown";
-@use "../../node_modules/simple-slideshow/src/slideshow.css";
+@use '_partials/reset';
+@use '_partials/prism';
+@use '_partials/colors';
+@use '_partials/code';
+@use '_partials/design';
+@use '_partials/layout';
+@use '_partials/buttons';
+@use '_partials/grid';
+@use '_partials/forms';
+@use '_partials/tables';
+@use '_partials/print';
+@use '_partials/404' as p404;
+@use '_partials/index';
+@use '_partials/blog';
+@use '_partials/photos';
+@use '_partials/portfolio';
+@use '_partials/tools';
+@use '_partials/countdown';
+@use '../../node_modules/simple-slideshow/src/slideshow.css';

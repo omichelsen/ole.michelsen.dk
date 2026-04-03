@@ -152,8 +152,10 @@
 			margin: 20px 5px 10px 5px;
 		}
 
-		[class^="icon-"], [class*=" icon-"] {
-			font-size: 32px;
+		.icon {
+			width: 32px;
+			height: 32px;
+			filter: brightness(0) invert(1);
 		}
 	}
 }

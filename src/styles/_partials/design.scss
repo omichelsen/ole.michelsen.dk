@@ -1,4 +1,4 @@
-@use "mixins" as *;
+@use 'mixins' as *;
 
 html,
 body {
@@ -225,6 +225,16 @@ p > .floatright {
 sup a {
   font-size: inherit;
   text-decoration: none;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.inlineIcon {
+  width: 1em;
+  height: 1em;
 }
 
 #footnotes {
