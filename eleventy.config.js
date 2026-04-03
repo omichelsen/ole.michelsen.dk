@@ -8,6 +8,7 @@ import path from 'path'
 
 export default function (eleventyConfig) {
   const siteCssPath = path.join(process.cwd(), 'src/styles/index.css')
+  const portfolioCssPath = path.join(process.cwd(), 'src/styles/portfolio.css')
 
   // Pug does not support paired shortcodes in this setup, so we add global CSS
   // to each page bundle here.
@@ -21,6 +22,9 @@ export default function (eleventyConfig) {
     if (!cssManager) return content
 
     cssManager.addToPage(this.page.url, readFileSync(siteCssPath, 'utf8'))
+    if (this.page.url.startsWith('/portfolio/')) {
+      cssManager.addToPage(this.page.url, readFileSync(portfolioCssPath, 'utf8'))
+    }
     return content
   })
 
