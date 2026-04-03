@@ -170,7 +170,12 @@ export const github = () =>
 
 export const styles = () =>
   gulp
-    .src(['./src/styles/index.scss', './src/styles/portfolio.scss'])
+    .src([
+      './src/styles/index.scss',
+      './src/styles/portfolio.scss',
+      './src/styles/blog.scss',
+      './src/styles/photos.scss',
+    ])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(cleanCSS())

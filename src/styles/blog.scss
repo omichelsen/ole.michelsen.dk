@@ -1,5 +1,5 @@
-@use "mixins" as *;
-@use "variables" as *;
+@use "_partials/mixins" as *;
+@use "_partials/variables" as *;
 
 .blog {
   .masthead {
@@ -10,7 +10,12 @@
   }
 
   #content {
-		h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin: 0 0 15px 0;
     }
 
@@ -18,7 +23,8 @@
       color: var(--color);
     }
 
-		ul, ol {
+    ul,
+    ol {
       margin-left: 2em;
       list-style: square;
     }
@@ -48,17 +54,18 @@
 
     .entry-meta {
       margin-bottom: 2em;
-			padding: 1em 0 .3em 0;
+      padding: 1em 0 0.3em 0;
       color: #888;
       font: normal 12px Georgia;
       font-style: italic;
-			letter-spacing: .15em;
+      letter-spacing: 0.15em;
 
       span:after {
         content: ' ';
       }
 
-			.author, time {
+      .author,
+      time {
         color: #666;
         font-size: 12px;
         font-style: normal;
@@ -87,7 +94,9 @@
       line-height: 18px;
       overflow: hidden;
 
-			&, a:link, a:visited {
+      &,
+      a:link,
+      a:visited {
         color: #888;
         text-decoration: none;
       }
@@ -97,16 +106,17 @@
         width: 50%;
 
         &::before {
-					content: '← '
+          content: '← ';
         }
       }
+
       .nav-next {
         float: right;
         text-align: right;
         width: 50%;
 
         &::after {
-					content: ' →'
+          content: ' →';
         }
       }
     }
@@ -131,7 +141,6 @@
     }
   }
 
-  // Disqus
   @media (prefers-color-scheme: dark) {
     .entry-comments {
       background: #ddd;
