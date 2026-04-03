@@ -1,12 +1,12 @@
 .portfolio {
-	@spacing: 10px;
+	$spacing: 10px;
 
 	h2 {
 		margin-bottom: 5px;
 	}
 
 	.projects {
-		margin: 0 -@spacing;
+		margin: 0 (-$spacing);
 		line-height: 0;
 		overflow: hidden;
 
@@ -14,9 +14,9 @@
 			overflow: hidden;
 			position: relative;
 			float: left;
-			margin: @spacing;
+			margin: $spacing;
 			width: 300px;
-			max-width: calc(~"100% -" @spacing * 2);
+			max-width: calc(100% - #{$spacing * 2});
 			height: 200px;
 			background: #efefef;
 			border: 1px solid #ddd;
@@ -80,14 +80,14 @@
 	}
 
 	.screenshots {
-		@spacing: 10px;
+		$spacing: 10px;
 
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-around;
 
 		li {
-			margin: @spacing 0;
+			margin: $spacing 0;
 
 			h4 {
 				margin: 0 0 5px 0;
@@ -95,7 +95,7 @@
 			}
 
 			img {
-				max-width: calc(~"100% -" @spacing);
+				max-width: calc(100% - #{$spacing});
 			}
 		}
 	}

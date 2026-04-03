@@ -1,3 +1,5 @@
+@use "mixins" as *;
+
 html,
 body {
   height: 100%; /* needed for #footer placement */
@@ -159,8 +161,7 @@ time {
 }
 
 .floatleft {
-  float: left;
-  margin: 10px 10px 10px 0;
+  @include floatleft;
 }
 
 .floatright {
@@ -173,8 +174,7 @@ p > .floatright {
 }
 
 .clear {
-  clear: both;
-  overflow: hidden;
+  @include clear;
 }
 
 .c {
@@ -197,18 +197,7 @@ p > .floatright {
 }
 
 .form-element {
-  box-sizing: border-box;
-  padding: 5px 7px;
-  min-height: 32px; /* even height of input fields and buttons (especially in FF) */
-  background: var(--form-background);
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  color: var(--form-color);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 200;
-  line-height: 130%;
-  vertical-align: middle;
+  @include form-element;
 }
 
 .tags {

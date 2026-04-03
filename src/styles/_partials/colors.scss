@@ -1,3 +1,5 @@
+@use "mixins" as *;
+
 :root {
 	--primary: Maroon;
 	--primary-light: #b00;
@@ -30,34 +32,8 @@
 	--form-disabled-color: #999;
 }
 
-.darkMode() {
-	--primary: #c60000;
-	--background: Black;
-	--on-background: White;
-	--surface: #292929;
-	--on-surface: #fff;
-
-
-	--background-color: #000;
-	--color: #ddd;
-	--color-title: #fafafa;
-
-	--link-color: White;
-	--link-active-color: SteelBlue;
-	--link-hover-color: LightSteelBlue;
-
-	--header-fade: #000;
-
-	--form-color: #fafafa;
-	--form-background: #222;
-	--form-disabled-background: #555;
-	--form-disabled-color: #999;
-
-	--code-background: #333;
-}
-
 @media (prefers-color-scheme: dark) {
 	:root {
-		.darkMode();
+		@include dark-mode;
 	}
 }

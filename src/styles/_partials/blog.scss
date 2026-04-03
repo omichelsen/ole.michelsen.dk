@@ -1,3 +1,6 @@
+@use "mixins" as *;
+@use "variables" as *;
+
 .blog {
   .masthead {
     margin-bottom: 1.4em;
@@ -67,7 +70,7 @@
     }
 
     .entry-image {
-      .floatleft;
+      @include floatleft;
       margin: 5px 30px 10px 0;
     }
 
@@ -113,7 +116,7 @@
     }
   }
 
-  @media (max-width: @page-width) {
+  @media (max-width: $page-width) {
     .masthead {
       display: none;
       background: none;

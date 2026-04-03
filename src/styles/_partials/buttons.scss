@@ -1,5 +1,7 @@
+@use "mixins" as *;
+
 .button {
-	.form-element;
+	@include form-element;
 	width: auto;
 	border: 1px solid #757575;
 	cursor: pointer;

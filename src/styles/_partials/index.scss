@@ -1,3 +1,6 @@
+@use "mixins" as *;
+@use "variables" as *;
+
 .landingpage {
 	.hero {
 		background-image: url(../../images/landing/hero.jpg);
@@ -28,7 +31,7 @@
 			margin-bottom: -30px;
 		}
 
-		@media (max-width: @page-width) {
+		@media (max-width: $page-width) {
 			height: 80vh;
 
 			h1 {
@@ -54,13 +57,13 @@
 		.text {
 			padding: 3rem 4rem;
 
-			@media (max-width: @page-width) {
+			@media (max-width: $page-width) {
 				padding: 3rem;
 			}
 		}
 
 		.profileTitle {
-			.darkMode();
+			@include dark-mode;
 			background: Maroon; // not --primary we always want this color
 
 			&, h2 {
@@ -73,7 +76,7 @@
 		}
 
 		.photosTitle {
-			.darkMode();
+			@include dark-mode;
 			background: #292929;
 
 			&, h2 {

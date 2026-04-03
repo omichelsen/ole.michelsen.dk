@@ -5,7 +5,7 @@ import gdata from 'gulp-data'
 import gexif from 'gulp-exif'
 import gm from 'gulp-gm'
 import jeditor from 'gulp-json-editor'
-import gulpless from 'gulp-less'
+import gulpSass from 'gulp-sass'
 import merge from 'gulp-merge-json'
 import newer from 'gulp-newer'
 import rename from 'gulp-rename'
@@ -14,7 +14,10 @@ import webp from 'gulp-webp'
 import sizeOf from 'image-size'
 import path from 'path'
 import request from 'request'
+import * as sassCompiler from 'sass'
 import source from 'vinyl-source-stream'
+
+const sass = gulpSass(sassCompiler)
 
 const gpsDecimal = (direction, degrees, minutes, seconds) => {
   const d = degrees + minutes / 60 + seconds / (60 * 60)
@@ -167,10 +170,10 @@ export const github = () =>
 
 export const styles = () =>
   gulp
-    .src('./src/styles/index.less')
-    .pipe(gulpless())
+    .src('./src/styles/index.scss')
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(cleanCSS())
     .pipe(gulp.dest('./src/styles'))
 
-export const watch = () => gulp.watch('./src/styles/**/*.less', styles)
+export const watch = () => gulp.watch('./src/styles/**/*.scss', styles)

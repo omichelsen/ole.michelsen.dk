@@ -1,3 +1,15 @@
+@use "variables" as *;
+
+@mixin content-layout {
+	clear: both;
+	margin: 0 auto;
+	max-width: $page-width;
+
+	@media (max-width: $page-width) {
+		padding: 0 5%;
+	}
+}
+
 #container {
 	position: relative; /* needed for footer positioning*/
 	height: auto !important; /* real browsers */
@@ -7,13 +19,7 @@
 }
 
 .content {
-	clear: both;
-	margin: 0 auto;
-	max-width: @page-width;
-
-	@media (max-width: @page-width) {
-		padding: 0 5%;
-	}
+	@include content-layout;
 }
 
 #topnav {
@@ -40,7 +46,7 @@
 		padding: 10px 20px;
 	}
 
-	@media (max-width: @page-width) {
+	@media (max-width: $page-width) {
 		.menu {
 			a {
 				font-size: 14px;
@@ -70,7 +76,7 @@
 }
 
 .masthead {
-	.content;
+	@include content-layout;
 	position: relative;
 	line-height: 0;
 
@@ -158,7 +164,7 @@
 		}
 	}
 
-	@media (max-width: @page-width) {
+	@media (max-width: $page-width) {
 		.colophon, .sitemappath {
 			float: none;
 			text-align: center;

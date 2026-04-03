@@ -1,7 +1,9 @@
+@use "mixins" as *;
+
 input.text,
 select,
 textarea {
-	.form-element;
+	@include form-element;
 	background: var(--form-background);
 	font-size: 1em;
 	max-width: 100%;
@@ -23,7 +25,7 @@ select {
 }
 
 .input-group {
-	.clear;
+	@include clear;
 
 	label {
 		display: inline-block;

@@ -1,9 +1,11 @@
-@travel-map-height: 400px;
-@travel-map-image-spacing: 3px;
+@use "mixins" as *;
+
+$travel-map-height: 400px;
+$travel-map-image-spacing: 3px;
 
 .photos {
 	&.index {
-		.darkMode();
+		@include dark-mode;
 
 		body {
 			background-image: url(/photos/hero.jpg);
@@ -63,8 +65,8 @@
 
 #travel-map {
 	#map-canvas {
-		margin-bottom: @travel-map-image-spacing;
-		height: @travel-map-height;
+		margin-bottom: $travel-map-image-spacing;
+		height: $travel-map-height;
 	}
 
 	.images {
@@ -72,7 +74,7 @@
 		margin: 0 auto;
 
 		.image-fixed {
-			margin: @travel-map-image-spacing;
+			margin: $travel-map-image-spacing;
 			min-height: 100px;
 			min-width: 100px;
 			background: rgba(244, 244, 244, .3);

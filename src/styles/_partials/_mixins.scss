@@ -1,0 +1,49 @@
+@mixin dark-mode {
+  --primary: #c60000;
+  --background: Black;
+  --on-background: White;
+  --surface: #292929;
+  --on-surface: #fff;
+
+  --background-color: #000;
+  --color: #ddd;
+  --color-title: #fafafa;
+
+  --link-color: White;
+  --link-active-color: SteelBlue;
+  --link-hover-color: LightSteelBlue;
+
+  --header-fade: #000;
+
+  --form-color: #fafafa;
+  --form-background: #222;
+  --form-disabled-background: #555;
+  --form-disabled-color: #999;
+
+  --code-background: #333;
+}
+
+@mixin floatleft {
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+
+@mixin clear {
+  clear: both;
+  overflow: hidden;
+}
+
+@mixin form-element {
+  box-sizing: border-box;
+  padding: 5px 7px;
+  min-height: 32px; /* even height of input fields and buttons (especially in FF) */
+  background: var(--form-background);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: var(--form-color);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 130%;
+  vertical-align: middle;
+}
