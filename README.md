@@ -53,7 +53,7 @@ Downloads a list of repositories for Profile to `src/_data/github.json`.
 
 #### `gulp styles`
 
-Parse LESS to CSS to `src/styles/index.css`.
+Parse SASS to CSS to `src/styles/index.css`.
 
 #### `photos brz`
 
