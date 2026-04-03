@@ -1,12 +1,34 @@
 import ejsPlugin from '@11ty/eleventy-plugin-ejs'
+import bundlePlugin from '@11ty/eleventy-plugin-bundle'
 import pugPlugin from '@11ty/eleventy-plugin-pug'
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight'
+import { readFileSync } from 'fs'
+import path from 'path'
 // import cacheBuster from '@mightyplow/eleventy-plugin-cache-buster'
 
 export default function (eleventyConfig) {
+  const siteCssPath = path.join(process.cwd(), 'src/styles/index.css')
+
+  // Pug does not support paired shortcodes in this setup, so we add global CSS
+  // to each page bundle here.
+  eleventyConfig.addTransform('bundle-global-css', function (content) {
+    if (!this.page?.url) return content
+    if (!content.includes('/*__EleventyBundle:get:css:default:EleventyBundle__*/')) {
+      return content
+    }
+
+    const cssManager = eleventyConfig.getBundleManagers?.().css
+    if (!cssManager) return content
+
+    cssManager.addToPage(this.page.url, readFileSync(siteCssPath, 'utf8'))
+    return content
+  })
+
   eleventyConfig.setQuietMode(true)
 
   // eleventyConfig.addPlugin(cacheBuster({ outputDirectory: 'public' }))
+  eleventyConfig.addPlugin(bundlePlugin, { bundles: false })
+  eleventyConfig.addBundle('css', { delayed: true })
   eleventyConfig.addPlugin(ejsPlugin)
   eleventyConfig.addPlugin(pugPlugin)
   eleventyConfig.addPlugin(syntaxHighlight)

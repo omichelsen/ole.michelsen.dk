@@ -11,7 +11,7 @@ html(lang=global.language class=className)
     meta(name="theme-color" content="#222")
     each href in (stylesheets || [])
       link(rel="stylesheet" href=href)
-    link(rel="stylesheet" href="/styles/index.css")
+    != "<style>/*__EleventyBundle:get:css:default:EleventyBundle__*/</style>"
     block styles
     link(rel="shortcut icon" href="/favicon.ico")
     link(rel="alternate" href=`${global.url}/feed.xml` type="application/rss+xml" title="Ole Michelsen Latest Updates")
