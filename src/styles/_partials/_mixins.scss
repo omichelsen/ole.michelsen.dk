@@ -48,20 +48,17 @@
   vertical-align: middle;
 }
 
-@mixin responsive-background($image) {
-  background-image: url(../../images/landing/tiles/converted/jpg/#{$image}@1x.jpg);
+@mixin responsive-background(
+  $fileName,
+  $path: '../../images/landing/tiles/converted/'
+) {
+  background-image: url(#{$path}jpg/#{$fileName}@1x.jpg);
   background-image: image-set(
-    url(../../images/landing/tiles/converted/avif/#{$image}@1x.avif)
-      type('image/avif') 1x,
-    url(../../images/landing/tiles/converted/avif/#{$image}@2x.avif)
-      type('image/avif') 2x,
-    url(../../images/landing/tiles/converted/webp/#{$image}@1x.webp)
-      type('image/webp') 1x,
-    url(../../images/landing/tiles/converted/webp/#{$image}@2x.webp)
-      type('image/webp') 2x,
-    url(../../images/landing/tiles/converted/jpg/#{$image}@1x.jpg)
-      type('image/jpeg') 1x,
-    url(../../images/landing/tiles/converted/jpg/#{$image}@2x.jpg)
-      type('image/jpeg') 2x
+    url(#{$path}avif/#{$fileName}@1x.avif) type('image/avif') 1x,
+    url(#{$path}avif/#{$fileName}@2x.avif) type('image/avif') 2x,
+    url(#{$path}webp/#{$fileName}@1x.webp) type('image/webp') 1x,
+    url(#{$path}webp/#{$fileName}@2x.webp) type('image/webp') 2x,
+    url(#{$path}jpg/#{$fileName}@1x.jpg) type('image/jpeg') 1x,
+    url(#{$path}jpg/#{$fileName}@2x.jpg) type('image/jpeg') 2x
   );
 }

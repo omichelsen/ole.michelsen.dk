@@ -1,4 +1,4 @@
-@use "_partials/mixins" as *;
+@use '_partials/mixins' as *;
 
 $travel-map-height: 400px;
 $travel-map-image-spacing: 3px;
@@ -8,8 +8,7 @@ $travel-map-image-spacing: 3px;
     @include dark-mode;
 
     body {
-      background-image: url(/photos/hero.jpg);
-      background-image: image-set(url(/photos/hero.webp) 1x);
+      @include responsive-background('hero', '/photos/index/converted/');
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
