@@ -152,6 +152,7 @@ export const styles = () =>
   gulp
     .src([
       './src/styles/index.scss',
+      './src/styles/home.scss',
       './src/styles/portfolio.scss',
       './src/styles/blog.scss',
       './src/styles/photos.scss',

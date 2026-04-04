@@ -1,5 +1,5 @@
-@use "mixins" as *;
-@use "variables" as *;
+@use '_partials/mixins' as *;
+@use '_partials/variables' as *;
 
 .landingpage {
 	.hero {
