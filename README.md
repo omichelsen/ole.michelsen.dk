@@ -4,11 +4,13 @@
 
 ## Build
 
-`yarn build`
+`pnpm build`
 
 ## Development
 
-`yarn start`
+`pnpm start`
+
+Install dependencies with `pnpm install`.
 
 ## Test
 
@@ -18,7 +20,7 @@ To install the required Ruby dependencies:
 bundle install --deployment
 ```
 
-Tests can now be run with `yarn test` or `./test.sh`.
+Tests can now be run with `pnpm test` or `./test.sh`.
 
 ## Debug
 
