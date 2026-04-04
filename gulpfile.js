@@ -5,10 +5,10 @@ import gdata from 'gulp-data'
 import gexif from 'gulp-exif'
 import gm from 'gulp-gm'
 import jeditor from 'gulp-json-editor'
-import gulpSass from 'gulp-sass'
 import merge from 'gulp-merge-json'
 import newer from 'gulp-newer'
 import rename from 'gulp-rename'
+import gulpSass from 'gulp-sass'
 import streamify from 'gulp-streamify'
 import webp from 'gulp-webp'
 import sizeOf from 'image-size'
@@ -96,26 +96,6 @@ export const travel = gulp.series(
   gulp.parallel(square, portrait, landscape, large),
   exif,
   convertToWebp
-)
-
-const autumn1 = () =>
-  resize('./photos/autumn/*.jpg', './src/photos/autumn', 200, 300)
-
-const autumn2 = () =>
-  resize('./photos/autumn/*.jpg', './src/photos/autumn', 400, 600, '@2x')
-
-const autumnWebp = (source) =>
-  function jpgToWebp() {
-    return gulp
-      .src(`${source}/*.jpg`)
-      .pipe(newer({ dest: source, ext: '.webp' }))
-      .pipe(webp({ quality: 80 }))
-      .pipe(gulp.dest(source))
-  }
-
-export const galleryAutumn = gulp.series(
-  gulp.parallel(autumn1, autumn2),
-  autumnWebp('./src/photos/autumn')
 )
 
 export const flickr = () =>

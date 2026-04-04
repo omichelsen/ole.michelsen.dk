@@ -55,8 +55,10 @@ Downloads a list of repositories for Profile to `src/_data/github.json`.
 
 Parse SASS to CSS to `src/styles/index.css`.
 
-#### `photos brz`
+#### `photos-generate autumn|brz`
 
-Convert src AVIF to AVIF, WEBP and JPEG `./photos-generate.sh ./src/photos/brz/src ./src/photos/brz`.
+Convert source AVIF or JPEG images to AVIF, WEBP and JPEG with optional custom sizing via `--width` and `--height`, for example `./photos-generate.sh ./src/photos/brz/src --output ./src/photos/brz --width 200 --height 300`.
 
 `./photos.sh` to get a list of images and resolution.
+
+`./photos-to-avif.sh ./src/photos/autumn` to convert a folder of JPG into AVIF (used to store originals without taking too much space).

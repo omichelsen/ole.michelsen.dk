@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =============================================================================
 # convert_images.sh
-# Converts AVIF images in a folder to multi-format, multi-resolution versions
+# Converts AVIF and JPEG images in a folder to multi-format, multi-resolution versions
 # optimised for retina displays.
 #
 # Output formats per image:
@@ -10,8 +10,9 @@
 #   • JPEG  (universal fallback)
 #
 # Output sizes per image:
-#   • Portrait  (height > width) → 200 px wide  @1x, 400 px wide  @2x (retina)
-#   • Landscape (width >= height) → 400 px wide  @1x, 800 px wide  @2x (retina)
+#   • Default portrait  (height > width) → 200 px wide  @1x, 400 px wide  @2x
+#   • Default landscape (width >= height) → centre-cropped to 2:3, 200 px wide @1x, 400 px wide @2x
+#   • Custom size via --width/--height → exact WxH @1x, doubled at @2x
 #
 # Usage:
 #   ./convert_images.sh <folder_path> [options]
@@ -19,6 +20,8 @@
 # Options:
 #   -q, --quality <0-100>   JPEG/WebP quality        (default: 85)
 #   -a, --avif-quality <0-100> AVIF quality (higher=better) (default: 70)
+#   -w, --width <px>        Output width for @1x     (optional)
+#   -H, --height <px>       Output height for @1x    (optional)
 #   -o, --output <folder>   Output folder            (default: <folder>/converted)
 #   -v, --verbose           Show per-file ffmpeg output
 #   -h, --help              Show this help
@@ -37,6 +40,8 @@ QUALITY=85
 AVIF_QUALITY=70
 OUTPUT_DIR=""
 VERBOSE=false
+TARGET_WIDTH=""
+TARGET_HEIGHT=""
 
 # ── Colours ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
@@ -50,7 +55,11 @@ header() { echo -e "\n${BOLD}$*${RESET}"; }
 
 # ── Usage ─────────────────────────────────────────────────────────────────────
 usage() {
-  grep '^#' "$0" | grep -v '#!/' | sed 's/^# \{0,2\}//'
+  awk '
+    /^#!/ { next }
+    /^# =============================================================================$/ { in_header = !in_header; if (!in_header) exit; next }
+    in_header && /^#/ { sub(/^# ?/, ""); print }
+  ' "$0"
   exit 0
 }
 
@@ -85,6 +94,8 @@ parse_args() {
     case "$1" in
       -q|--quality)        QUALITY="$2";      shift 2 ;;
       -a|--avif-quality)   AVIF_QUALITY="$2"; shift 2 ;;
+      -w|--width)          TARGET_WIDTH="$2"; shift 2 ;;
+      -H|--height)         TARGET_HEIGHT="$2"; shift 2 ;;
       -o|--output)         OUTPUT_DIR="$2";   shift 2 ;;
       -v|--verbose)        VERBOSE=true;      shift   ;;
       -h|--help)           usage ;;
@@ -104,6 +115,20 @@ parse_args() {
 
   [[ -z "${INPUT_DIR:-}" ]] && { error "No input folder specified."; exit 1; }
   [[ ! -d "$INPUT_DIR" ]]   && { error "Folder not found: $INPUT_DIR"; exit 1; }
+  [[ -n "$TARGET_WIDTH" && ! "$TARGET_WIDTH" =~ ^[1-9][0-9]*$ ]] && {
+    error "Width must be a positive integer: $TARGET_WIDTH"
+    exit 1
+  }
+  [[ -n "$TARGET_HEIGHT" && ! "$TARGET_HEIGHT" =~ ^[1-9][0-9]*$ ]] && {
+    error "Height must be a positive integer: $TARGET_HEIGHT"
+    exit 1
+  }
+  if [[ -n "$TARGET_WIDTH" || -n "$TARGET_HEIGHT" ]]; then
+    [[ -n "$TARGET_WIDTH" && -n "$TARGET_HEIGHT" ]] || {
+      error "Custom sizing requires both --width and --height."
+      exit 1
+    }
+  fi
 
   # Default output dir sits inside the input dir
   [[ -z "$OUTPUT_DIR" ]] && OUTPUT_DIR="${INPUT_DIR%/}/converted"
@@ -117,6 +142,12 @@ get_dimensions() {
           -show_entries stream=width,height \
           -of csv=p=0 \
           "$file" 2>/dev/null
+}
+
+build_exact_filter() {
+  local target_w="$1" target_h="$2"
+  printf "scale=%s:%s:force_original_aspect_ratio=increase:flags=lanczos,crop=%s:%s" \
+    "$target_w" "$target_h" "$target_w" "$target_h"
 }
 
 # ── Convert one file to one format with a given filter ───────────────────────
@@ -133,11 +164,20 @@ convert_one() {
       tmp_png="$(mktemp /tmp/convert_XXXXXX.png)"
       ffmpeg "${ff_quiet[@]}" -y -i "$src" \
         -vf "$vf_filter" \
-        "$tmp_png"
+        "$tmp_png" || {
+          rm -f "$tmp_png"
+          return 1
+        }
       if $verbose; then
-        avifenc --jobs all -q "$avifq" "$tmp_png" "$dest"
+        avifenc --jobs all -q "$avifq" "$tmp_png" "$dest" || {
+          rm -f "$tmp_png"
+          return 1
+        }
       else
-        avifenc --jobs all -q "$avifq" "$tmp_png" "$dest" > /dev/null 2>&1
+        avifenc --jobs all -q "$avifq" "$tmp_png" "$dest" > /dev/null 2>&1 || {
+          rm -f "$tmp_png"
+          return 1
+        }
       fi
       rm -f "$tmp_png"
       ;;
@@ -146,10 +186,16 @@ convert_one() {
       tmp_png="$(mktemp /tmp/convert_XXXXXX.png)"
       ffmpeg "${ff_quiet[@]}" -y -i "$src" \
         -vf "$vf_filter" \
-        "$tmp_png"
+        "$tmp_png" || {
+          rm -f "$tmp_png"
+          return 1
+        }
       local cwebp_quiet=(-quiet)
       $verbose && cwebp_quiet=()
-      cwebp "${cwebp_quiet[@]}" -q "$quality" -m 6 "$tmp_png" -o "$dest"
+      cwebp "${cwebp_quiet[@]}" -q "$quality" -m 6 "$tmp_png" -o "$dest" || {
+        rm -f "$tmp_png"
+        return 1
+      }
       rm -f "$tmp_png"
       ;;
     jpg)
@@ -157,7 +203,7 @@ convert_one() {
         -vf "$vf_filter" \
         -q:v 2 \
         -huffman optimal \
-        "$dest"
+        "$dest" || return 1
       if command -v sips &>/dev/null; then
         sips --setProperty formatOptions "$quality" "$dest" &>/dev/null || true
       fi
@@ -165,11 +211,12 @@ convert_one() {
   esac
 }
 
-# ── Process a single AVIF source image ────────────────────────────────────────
+# ── Process a single source image ─────────────────────────────────────────────
 process_image() {
   local src="$1"
   local filename
-  filename="$(basename "$src" .avif)"
+  filename="$(basename "$src")"
+  filename="${filename%.*}"
 
   # Get dimensions
   local dims
@@ -182,18 +229,16 @@ process_image() {
   local w h
   IFS=',' read -r w h <<< "$dims"
 
-  # Determine orientation and build ffmpeg filter strings
-  #
-  # Portrait images: scale to target width, preserve aspect ratio
-  # Landscape images: center-crop to 2:3 (portrait) then scale to target width
-  #
-  # The crop filter computes the largest 2:3 region centred in the frame:
-  #   crop_h = source height
-  #   crop_w = crop_h * 2/3
-  #   x offset = (source_width - crop_w) / 2  (centres horizontally)
-  local orientation filter1x filter2x w1x w2x
+  # Determine orientation and build ffmpeg filter strings.
+  local orientation filter1x filter2x w1x w2x h1x h2x
 
-  if (( h > w )); then
+  if [[ -n "$TARGET_WIDTH" && -n "$TARGET_HEIGHT" ]]; then
+    orientation="custom ${TARGET_WIDTH}×${TARGET_HEIGHT}"
+    w1x="$TARGET_WIDTH"; h1x="$TARGET_HEIGHT"
+    w2x=$(( TARGET_WIDTH * 2 )); h2x=$(( TARGET_HEIGHT * 2 ))
+    filter1x="$(build_exact_filter "$w1x" "$h1x")"
+    filter2x="$(build_exact_filter "$w2x" "$h2x")"
+  elif (( h > w )); then
     orientation="portrait"
     w1x=200; w2x=400
     filter1x="scale=${w1x}:-2:flags=lanczos"
@@ -201,6 +246,7 @@ process_image() {
   else
     orientation="landscape→crop"
     w1x=200; w2x=400
+    h1x=300; h2x=600
     # crop=w:h:x:y  — iw/ih are input width/height at filter time
     # crop to 2:3 from centre, then scale down
     filter1x="crop=ih*2/3:ih:(iw-ih*2/3)/2:0,scale=${w1x}:-2:flags=lanczos"
@@ -215,10 +261,14 @@ process_image() {
     local dir_fmt="${OUTPUT_DIR}/${fmt}"
     mkdir -p "$dir_fmt"
 
-    convert_one "$src" "${dir_fmt}/${filename}@1x" "$filter1x" "$fmt" "$QUALITY" "$AVIF_QUALITY" "$VERBOSE"
-    convert_one "$src" "${dir_fmt}/${filename}@2x" "$filter2x" "$fmt" "$QUALITY" "$AVIF_QUALITY" "$VERBOSE"
+    convert_one "$src" "${dir_fmt}/${filename}@1x" "$filter1x" "$fmt" "$QUALITY" "$AVIF_QUALITY" "$VERBOSE" || return 1
+    convert_one "$src" "${dir_fmt}/${filename}@2x" "$filter2x" "$fmt" "$QUALITY" "$AVIF_QUALITY" "$VERBOSE" || return 1
 
-    ok "  ${fmt}: ${w1x}px @1x + ${w2x}px @2x → ${dir_fmt}/"
+    if [[ -n "${h1x:-}" && -n "${h2x:-}" ]]; then
+      ok "  ${fmt}: ${w1x}×${h1x} @1x + ${w2x}×${h2x} @2x → ${dir_fmt}/"
+    else
+      ok "  ${fmt}: ${w1x}px @1x + ${w2x}px @2x → ${dir_fmt}/"
+    fi
   done
 }
 
@@ -231,20 +281,23 @@ main() {
   echo "  Input : $INPUT_DIR"
   echo "  Output: $OUTPUT_DIR"
   echo "  JPEG/WebP quality : $QUALITY  |  AVIF quality: $AVIF_QUALITY"
+  if [[ -n "$TARGET_WIDTH" && -n "$TARGET_HEIGHT" ]]; then
+    echo "  Size  : ${TARGET_WIDTH}×${TARGET_HEIGHT} @1x | $(( TARGET_WIDTH * 2 ))×$(( TARGET_HEIGHT * 2 )) @2x"
+  fi
 
-  # Collect AVIF files (case-insensitive extension)
+  # Collect supported source files (case-insensitive extension)
   local files=()
   while IFS= read -r -d '' f; do
     files+=("$f")
-  done < <(find "$INPUT_DIR" -maxdepth 1 -type f \( -iname "*.avif" \) -print0 | sort -z)
+  done < <(find "$INPUT_DIR" -maxdepth 1 -type f \( -iname "*.avif" -o -iname "*.jpg" -o -iname "*.jpeg" \) -print0 | sort -z)
 
   local count="${#files[@]}"
   if (( count == 0 )); then
-    warn "No AVIF files found in: $INPUT_DIR"
+    warn "No AVIF or JPEG files found in: $INPUT_DIR"
     exit 0
   fi
 
-  echo "  Found : ${count} AVIF file(s)"
+  echo "  Found : ${count} source file(s)"
   mkdir -p "$OUTPUT_DIR"
 
   local i=0 errors=0
