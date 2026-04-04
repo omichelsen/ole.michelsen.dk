@@ -62,3 +62,5 @@ Convert source AVIF or JPEG images to AVIF, WEBP and JPEG with optional custom s
 `./photos.sh` to get a list of images and resolution.
 
 `./photos-to-avif.sh ./src/photos/autumn` to convert a folder of JPG into AVIF (used to store originals without taking too much space).
+
+- Landing page: `./photos-generate.sh ./src/images/landing/tiles -w 300 -H 200`
