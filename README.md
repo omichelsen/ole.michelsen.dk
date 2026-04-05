@@ -37,13 +37,25 @@ netlify functions:invoke validator-proxy --querystring "url=https://ole.michelse
 
 ## Scripts
 
-#### `gulp travel`
+#### `photos-to-avif.sh`
+
+Converts photos to AVIF with custom sizes:
+
+```
+./photos-to-avif.sh -i ./src/photos/travel-map/landscape -o ./src/photos/travel-map/converted -w 206 -h 100 -q 50 &
+./photos-to-avif.sh -i ./src/photos/travel-map/large -o ./src/photos/travel-map/converted -w 206 -h 206 -q 50 &
+./photos-to-avif.sh -i ./src/photos/travel-map/portrait -o ./src/photos/travel-map/converted -w 100 -h 206 -q 50 &
+./photos-to-avif.sh -i ./src/photos/travel-map/square -o ./src/photos/travel-map/converted -w 100 -h 100 -q 50 &
+wait
+```
 
 Scans all photos in `exif/source` and create thumbnails and output for `gulp exit`.
 
-#### `gulp exif`
+#### `photos-exif-to-json.sh`
 
 Scans all photos in `exif/` for EXIF data and outputs to `src/_data/exif.json` to use in Travel Map.
+
+- `./photos-exif-to-json.sh -i ./src/photos/travel-map/converted -o ./src/_data/exif.json`
 
 #### `gulp flickr`
 

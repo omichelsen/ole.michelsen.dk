@@ -1,102 +1,14 @@
 import gulp from 'gulp'
 import autoprefixer from 'gulp-autoprefixer'
 import cleanCSS from 'gulp-clean-css'
-import gdata from 'gulp-data'
-import gexif from 'gulp-exif'
-import gm from 'gulp-gm'
 import jeditor from 'gulp-json-editor'
-import merge from 'gulp-merge-json'
-import newer from 'gulp-newer'
-import rename from 'gulp-rename'
 import gulpSass from 'gulp-sass'
 import streamify from 'gulp-streamify'
-import webp from 'gulp-webp'
-import sizeOf from 'image-size'
-import path from 'path'
 import request from 'request'
 import * as sassCompiler from 'sass'
 import source from 'vinyl-source-stream'
 
 const sass = gulpSass(sassCompiler)
-
-const gpsDecimal = (direction, degrees, minutes, seconds) => {
-  const d = degrees + minutes / 60 + seconds / (60 * 60)
-  return direction === 'S' || direction === 'W' ? d * -1 : d
-}
-
-const roundDecimal = (dec) => parseFloat(dec.toFixed(4))
-
-export const exif = () =>
-  gulp
-    .src('./exif/gps/*.jpg')
-    .pipe(gexif())
-    .pipe(
-      gdata((file) => {
-        const { width, height } = sizeOf(file.path)
-        const filename = path.basename(file.path)
-        const img = {
-          lat: roundDecimal(
-            gpsDecimal(
-              file.exif.gps.GPSLatitudeRef,
-              ...file.exif.gps.GPSLatitude
-            )
-          ),
-          lng: roundDecimal(
-            gpsDecimal(
-              file.exif.gps.GPSLongitudeRef,
-              ...file.exif.gps.GPSLongitude
-            )
-          ),
-          width,
-          height,
-        }
-        file.contents = Buffer.from(JSON.stringify({ [filename]: img }))
-      })
-    )
-    .pipe(merge({ fileName: 'exif.json' }))
-    .pipe(gulp.dest('./src/_data'))
-
-const convertToWebp = () =>
-  gulp
-    .src('./exif/gps/*.jpg')
-    .pipe(newer({ dest: './src/photos/map', ext: '.webp' }))
-    .pipe(webp({ quality: 80 }))
-    .pipe(gulp.dest('./src/photos/map'))
-
-const resize = (source, dest, w, h, suffix = '') =>
-  gulp
-    .src(source)
-    .pipe(newer({ dest, ext: '.jpg' }))
-    .pipe(
-      gm(
-        (file) =>
-          file
-            .resize(w, h, '^')
-            .gravity('Center')
-            .extent(w, h)
-            .quality(0.95)
-            .setFormat('jpg'),
-        {
-          imageMagick: true,
-        }
-      )
-    )
-    .pipe(rename({ suffix }))
-    .pipe(gulp.dest(dest))
-
-const square = () =>
-  resize('./exif/source/square/*.jpeg', './exif/gps', 100, 100)
-const portrait = () =>
-  resize('./exif/source/portrait/*.jpeg', './exif/gps', 100, 206)
-const landscape = () =>
-  resize('./exif/source/landscape/*.jpeg', './exif/gps', 206, 100)
-const large = () => resize('./exif/source/large/*.jpeg', './exif/gps', 206, 206)
-
-export const travel = gulp.series(
-  gulp.parallel(square, portrait, landscape, large),
-  exif,
-  convertToWebp
-)
 
 export const flickr = () =>
   request(
