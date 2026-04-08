@@ -8,12 +8,12 @@ Usage:
   ./photos-to-avif.sh -i <input_dir> -o <output_dir> -w <width> -h <height> [-q <quality>]
 
 Description:
-  Resize and center-crop JPG/JPEG images from an input folder and write them
-  as AVIF files to an output folder, stripping metadata and restoring only GPS
-  EXIF tags to reduce file size while preserving location data.
+  Resize and center-crop JPG/JPEG/HEIC images from an input folder and write
+  them as AVIF files to an output folder, stripping metadata and restoring
+  only GPS EXIF tags to reduce file size while preserving location data.
 
 Options:
-  -i  Input folder containing JPG/JPEG files
+  -i  Input folder containing JPG/JPEG/HEIC files
   -o  Output folder for generated AVIF files
   -w  Output width in pixels
   -h  Output height in pixels
@@ -95,11 +95,11 @@ require_command exiftool
 mkdir -p "$OUTPUT_DIR"
 
 shopt -s nullglob nocaseglob
-FILES=("$INPUT_DIR"/*.{jpg,jpeg})
+FILES=("$INPUT_DIR"/*.{jpg,jpeg,heic})
 shopt -u nullglob nocaseglob
 
 if [[ ${#FILES[@]} -eq 0 ]]; then
-  echo "No JPG/JPEG files found in '$INPUT_DIR'"
+  echo "No JPG/JPEG/HEIC files found in '$INPUT_DIR'"
   exit 0
 fi
 

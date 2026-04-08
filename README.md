@@ -49,8 +49,6 @@ Converts photos to AVIF with custom sizes:
 wait
 ```
 
-Scans all photos in `exif/source` and create thumbnails and output for `gulp exit`.
-
 #### `photos-exif-to-json.sh`
 
 Scans all photos in `exif/` for EXIF data and outputs to `src/_data/exif.json` to use in Travel Map.
@@ -75,7 +73,7 @@ Convert source AVIF or JPEG images to AVIF, WEBP and JPEG with optional custom s
 
 `./photos.sh` to get a list of images and resolution.
 
-`./photos-to-avif.sh ./src/photos/autumn` to convert a folder of JPG into AVIF (used to store originals without taking too much space).
+`./photos-to-avif.sh ./src/photos/autumn` to convert a folder of JPG, JPEG, or HEIC images into AVIF (used to store originals without taking too much space).
 
 - Landing page hero: `./photos-generate.sh ./src/images/landing -w 1920 -H 1080 -a 40`
 - Landing page tiles: `./photos-generate.sh ./src/images/landing/tiles -w 300 -H 200 -a 60`
