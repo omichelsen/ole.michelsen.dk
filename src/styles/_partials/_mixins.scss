@@ -52,13 +52,13 @@
   $fileName,
   $path: '../../images/landing/tiles/converted/'
 ) {
-  background-image: url(#{$path}jpg/#{$fileName}@1x.jpg);
+  background-image: url(#{$path}/#{$fileName}@1x.jpg);
   background-image: image-set(
-    url(#{$path}avif/#{$fileName}@1x.avif) type('image/avif') 1x,
-    url(#{$path}avif/#{$fileName}@2x.avif) type('image/avif') 2x,
-    url(#{$path}webp/#{$fileName}@1x.webp) type('image/webp') 1x,
-    url(#{$path}webp/#{$fileName}@2x.webp) type('image/webp') 2x,
-    url(#{$path}jpg/#{$fileName}@1x.jpg) type('image/jpeg') 1x,
-    url(#{$path}jpg/#{$fileName}@2x.jpg) type('image/jpeg') 2x
+    url(#{$path}/#{$fileName}@1x.avif) type('image/avif') 1x,
+    url(#{$path}/#{$fileName}@2x.avif) type('image/avif') 2x,
+    url(#{$path}/#{$fileName}@1x.webp) type('image/webp') 1x,
+    url(#{$path}/#{$fileName}@2x.webp) type('image/webp') 2x,
+    url(#{$path}/#{$fileName}@1x.jpg) type('image/jpeg') 1x,
+    url(#{$path}/#{$fileName}@2x.jpg) type('image/jpeg') 2x
   );
 }

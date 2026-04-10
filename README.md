@@ -67,7 +67,7 @@ Downloads a list of repositories for Profile to `src/_data/github.json`.
 
 Parse SASS to CSS to `src/styles/index.css`.
 
-#### `photos-generate.sh`
+#### `photos-convert.sh`
 
 Convert source AVIF or JPEG images to AVIF, WEBP and JPEG with optional custom sizing via `--width` and `--height`.
 
@@ -75,14 +75,14 @@ Convert source AVIF or JPEG images to AVIF, WEBP and JPEG with optional custom s
 
 `./photos-to-avif.sh ./src/photos/autumn` to convert a folder of JPG, JPEG, or HEIC images into AVIF (used to store originals without taking too much space).
 
-- Landing page hero: `./photos-generate.sh ./src/images/landing -w 1920 -H 1080 -a 40`
-- Landing page tiles: `./photos-generate.sh ./src/images/landing/tiles -w 300 -H 200 -a 60`
-- Photos: `./photos-generate.sh ./src/photos/index -w 1920 -H 1080 -a 40`
-- Autumn: `./photos-generate.sh ./src/photos/autumn -w 200 -H 300 -a 60`
-- BRZ: `./photos-generate.sh ./src/photos/brz -w 200 -H 300 -a 60`
+- Landing page hero: `./photos-convert.sh -s ./src/images/landing -o ./src/images/landing/converted -w 1920 -h 1080`
+- Landing page tiles: `./photos-convert.sh -s ./src/images/landing/tiles -o ./src/images/landing/tiles/converted -w 300 -h 200`
+- Photos: `./photos-convert.sh -s ./src/photos/index -o ./src/photos/index/converted -w 1920 -h 1080`
+- Autumn: `./photos-convert.sh -s ./src/photos/autumn -o ./src/photos/autumn/converted -w 200 -h 300`
+- BRZ: `./photos-convert.sh -s ./src/photos/brz -o ./src/photos/brz/converted/ -w 200 -h 300`
 - Miata:
   ```
-  ./photos-retina.sh -w 405 -h 269 ./src/photos/miata/landscape ./src/photos/miata/converted &
-  ./photos-retina.sh -w 200 -h 300 ./src/photos/miata/portrait ./src/photos/miata/converted &
+  ./photos-convert.sh -s ./src/photos/miata/landscape -o ./src/photos/miata/converted -w 405 -h 269 &
+  ./photos-convert.sh -s ./src/photos/miata/portrait -o ./src/photos/miata/converted -w 200 -h 300 &
   wait
   ```
