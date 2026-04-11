@@ -22,7 +22,7 @@ className: photos
 
 script(src=`https://maps.googleapis.com/maps/api/js?key=${global.services.maps}`)
 script(src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js")
-script(src=global.libs.masonry)
+script!= masonry
 script
   != `const locations = ${JSON.stringify(exif)};`
 script
