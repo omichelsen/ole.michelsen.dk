@@ -78,6 +78,7 @@ Convert source AVIF or JPEG images to AVIF, WEBP and JPEG with optional custom s
 - Landing page hero: `./photos-convert.sh -s ./src/images/landing -o ./src/images/landing/converted -w 1920 -h 1080`
 - Landing page tiles: `./photos-convert.sh -s ./src/images/landing/tiles -o ./src/images/landing/tiles/converted -w 300 -h 200`
 - Photos: `./photos-convert.sh -s ./src/photos/index -o ./src/photos/index/converted -w 1920 -h 1080`
+- Architecture: `./photos-convert.sh -s ./src/photos/architecture -o ./src/photos/architecture/converted -w 200`
 - Autumn: `./photos-convert.sh -s ./src/photos/autumn -o ./src/photos/autumn/converted -w 200 -h 300`
 - BRZ: `./photos-convert.sh -s ./src/photos/brz -o ./src/photos/brz/converted/ -w 200 -h 300`
 - Miata:
