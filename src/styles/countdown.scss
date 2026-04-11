@@ -31,7 +31,7 @@
     .dash_title {
       position: absolute;
       display: block;
-      bottom: 0px;
+      bottom: 0;
       right: 6px;
       font-size: 9pt;
       color: #555;
@@ -78,10 +78,8 @@
   padding: 40px;
   width: 650px;
   height: 90px;
-
   background: #000;
   background: linear-gradient(#222 75px, #2a2a2a 75px);
-
   border: 4px inset #eee;
   border-radius: 10px;
   box-shadow: #666 0 0 10px;
