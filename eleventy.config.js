@@ -8,6 +8,7 @@ import path from 'path'
 
 export default function (eleventyConfig) {
   const siteCssPath = path.join(process.cwd(), 'src/styles/index.css')
+  const notFoundCssPath = path.join(process.cwd(), 'src/styles/404.css')
   const homeCssPath = path.join(process.cwd(), 'src/styles/home.css')
   const portfolioCssPath = path.join(process.cwd(), 'src/styles/portfolio.css')
   const blogCssPath = path.join(process.cwd(), 'src/styles/blog.css')
@@ -25,6 +26,9 @@ export default function (eleventyConfig) {
     if (!cssManager) return content
 
     cssManager.addToPage(this.page.url, readFileSync(siteCssPath, 'utf8'))
+    if (this.page.url === '/404.html') {
+      cssManager.addToPage(this.page.url, readFileSync(notFoundCssPath, 'utf8'))
+    }
     if (this.page.url === '/') {
       cssManager.addToPage(this.page.url, readFileSync(homeCssPath, 'utf8'))
     }
