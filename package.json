@@ -15,7 +15,7 @@
     "build": "eleventy",
     "dev": "netlify dev",
     "prebuild": "pnpm run styles",
-    "start": "pnpm run watch & eleventy --serve --incremental",
+    "start": "pnpm run styles && eleventy --serve",
     "styles": "gulp styles",
     "test": "./test.sh",
     "watch": "gulp watch"

@@ -2,6 +2,7 @@ import ejsPlugin from '@11ty/eleventy-plugin-ejs'
 import bundlePlugin from '@11ty/eleventy-plugin-bundle'
 import pugPlugin from '@11ty/eleventy-plugin-pug'
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight'
+import { execFileSync } from 'child_process'
 import { readFileSync } from 'fs'
 import path from 'path'
 // import cacheBuster from '@mightyplow/eleventy-plugin-cache-buster'
@@ -56,13 +57,26 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(ejsPlugin)
   eleventyConfig.addPlugin(pugPlugin)
   eleventyConfig.addPlugin(syntaxHighlight)
+  eleventyConfig.setChokidarConfig({
+    usePolling: true,
+    interval: 150,
+  })
 
   eleventyConfig.addPassthroughCopy('src/_redirects')
   eleventyConfig.addPassthroughCopy('src/portfolio/mmt/site')
   eleventyConfig.addPassthroughCopy('src/scripts')
   eleventyConfig.addPassthroughCopy('src/viewsource')
 
-  eleventyConfig.addWatchTarget('src/styles/*.css')
+  eleventyConfig.addWatchTarget('src/styles/**/*.scss')
+
+  eleventyConfig.on('eleventy.beforeWatch', (changedFiles = []) => {
+    const hasScssChanges = changedFiles.some((file) => file.endsWith('.scss'))
+    if (!hasScssChanges) {
+      return
+    }
+
+    execFileSync('pnpm', ['run', 'styles'], { stdio: 'inherit' })
+  })
 
   eleventyConfig.addCollection('blogDesc', (collectionApi) =>
     collectionApi
